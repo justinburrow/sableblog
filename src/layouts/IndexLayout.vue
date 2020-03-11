@@ -1,14 +1,12 @@
 <template>
   <Layout>
-    <div class="container">
-      <h1>Welcome to my blog :)</h1>
-        <ul class="post-list">
-          <li v-for="{ node } in $page.allWordPressPost.edges" :key="node.id">
-            <Post :post="node" />
-          </li>
-        </ul>
-        <Pager :info="$page.allWordPressPost.pageInfo"/>
-    </div>
+    <h1>Welcome to my blog :)</h1>
+    <ul class="post-list">
+      <li v-for="{ node } in $page.allWordPressPost.edges" :key="node.id">
+        <Post :post="node" />
+      </li>
+    </ul>
+    <Pager :info="$page.allWordPressPost.pageInfo"/>
   </Layout>
 </template>
 
@@ -34,14 +32,16 @@ query Home ($page: Int) {
 <script>
 import { Pager } from 'gridsome'
 import Post from '~/components/Post.vue'
+import IndexLayout from '~/layouts/IndexLayout.vue'
 
 export default {
   components: {
     Pager,
-    Post
+    Post,
+    IndexLayout
   },
   metaInfo: {
-    title: 'S\'able Labs'
+    title: 'Welcome to my blog :)'
   }
 }
 </script>

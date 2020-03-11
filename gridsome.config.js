@@ -1,6 +1,6 @@
 module.exports = {
-  siteName: 'Gridsome',
-  siteDescription: 'A WordPress starter for Gridsome',
+  siteName: 'S\'able Labs',
+  siteDescription: 'The S\'able Labs Blog',
 
   templates: {
     WordPressCategory: '/category/:slug', // adds route for "category" post type (Optional)
@@ -12,8 +12,14 @@ module.exports = {
     {
       use: '@gridsome/source-wordpress',
       options: {
-        baseUrl: process.env.WORDPRESS_URL, // required
+        baseUrl: 'http://sableblog.local', // required
         typeName: 'WordPress', // GraphQL schema name (Optional)
+        customEndpoints: [
+          {
+            typeName: "TopCategories",
+            route: '/wp/v2/categories',
+          }
+        ]
       }
     }
   ]
