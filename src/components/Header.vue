@@ -2,7 +2,7 @@
     <div class="header">
         <div class="header__content container-full">
             <div class="logo">
-                <g-image src="~/assets/images/sable-logo.svg"></g-image>
+                <img src="~@/assets/images/sable-logo.svg" width="370" alt="S'able Labs" />
             </div>
             <div class="navigation">
                 <TopCategories />

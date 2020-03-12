@@ -1,6 +1,8 @@
 <template>
     <ul class="top-categories">
-        <li v-for="cat in $static.categories.edges | removeUncat()" :key="cat.id">{{cat.node.title}}</li>
+        <li v-for="cat in $static.categories.edges" :key="cat.id">
+          <HeaderCat :title="cat.node.title" :catId="cat.node.id" />
+        </li>
     </ul>
 </template>
 
@@ -18,22 +20,16 @@
 </static-query>
 
 <script>
+import HeaderCat from '~/components/HeaderCat.vue'
+
 export default {
     name: 'TopCategories',
-    data() {
-        return {
-
-        }
+    components: {
+      HeaderCat
     },
-    filters: {
-        removeUncat(cat) {
-            if (cat == 'Uncategorized') {
-                return;
-            }
-        }
-    },
-    methods: {
-
+    props: {
+      title: String,
+      catId: Number
     }
 }
 </script>

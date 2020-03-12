@@ -12,6 +12,13 @@
   },
   "devDependencies": {
     "node-sass": "^4.13.1",
+    "prettier": "1.19.1",
     "sass-loader": "^8.0.2"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2, 
+    "semi": false,
+    "singleQuote": true
   }
 }
