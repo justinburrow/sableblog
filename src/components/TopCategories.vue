@@ -1,6 +1,6 @@
 <template>
     <ul class="top-categories">
-        <li v-for="cat in $static.categories.edges" :key="cat.id" v-if="cat.node.title != 'Uncategorized'">{{cat.node.title}}</li>
+        <li v-for="cat in $static.categories.edges | removeUncat()" :key="cat.id">{{cat.node.title}}</li>
     </ul>
 </template>
 
@@ -23,6 +23,13 @@ export default {
     data() {
         return {
 
+        }
+    },
+    filters: {
+        removeUncat(cat) {
+            if (cat == 'Uncategorized') {
+                return;
+            }
         }
     },
     methods: {
