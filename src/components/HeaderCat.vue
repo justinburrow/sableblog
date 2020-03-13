@@ -1,8 +1,7 @@
 <template>
-    <div class="header-cat">
-        <p class="title" @mouseover="showDropdown()" @mouseout="hideDropdown()">{{this.title}}</p>
-        <div class="dropdown" ref="dropdown">
-
+    <div class="header-cat" @mouseover="showDropdown()">
+        <p class="title">{{this.title}}</p>
+        <div class="dropdown" ref="dropdown" @mouseleave="hideDropdown()">
         </div>
     </div>  
 </template>
@@ -14,10 +13,10 @@ export default {
     props: ['title', 'catId'],
     methods: {
       showDropdown() {
-        this.$refs.dropdown.classList.toggle('show');
+        this.$refs.dropdown.classList.add('show');
       },
       hideDropdown() {
-        this.$refs.dropdown.classList.toggle('show');
+        this.$refs.dropdown.classList.remove('show');
       }
     }
 }
@@ -38,9 +37,11 @@ export default {
     height: 100px;
     left: 0;
     opacity: 0;
+    height: 0;
     &.show {
       transition: opacity 0.3s ease;
       opacity: 1;
+      height: 100px;
     }
   }
 }
