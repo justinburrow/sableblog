@@ -1,11 +1,26 @@
 <template>
     <div class="header">
         <div class="header__content container-full">
-            <div class="logo">
-                <img src="~@/assets/images/sable-logo.svg" width="370" alt="S'able Labs" />
+          <div class="logo">
+              <img src="~@/assets/images/sable-logo.svg" width="370" alt="S'able Labs" />
             </div>
+
             <div class="navigation">
+              <div class="categories">
                 <TopCategories />
+              </div>
+
+              <div class="spacer"></div>
+
+              <div class="search">
+                <input type="text">
+              </div>
+
+              <ul class="social">
+                <li><a href="#"><img src="~@/assets/images/instagram.svg" width="20" alt="S'able Labs Instagram"></a></li>
+                <li><a href="#"><img src="~@/assets/images/facebook.svg" width="10" alt="S'able Labs Facebook"></a></li>
+                <li><a href="#"><img src="~@/assets/images/twitter.svg" width="20" alt="S'able Labs Twitter"></a></li>
+              </ul>
             </div>
         </div>
     </div>
@@ -44,9 +59,68 @@ export default {
         &__content {
             background: white;
             padding: 20px 0;
+            width: 100%;
             .logo {
+                width: 100%;
                 text-align: center;
+                padding-bottom: 20px;
+                img {
+                  width: 350px;
+                }
+            }
+            .navigation {
+              display: flex;
+              width: 100%;
+              justify-content: space-between;
+
+              .categories {
+                width: calc(50% - 175px);
+                ul {
+                display: flex;
+                justify-content: space-between;
+                margin: 0;
+                padding: 0 50px 0 0;
+                  li {
+                    margin: 0;
+                    padding: 0;
+                    text-transform: uppercase;
+                  }
+                }
+              }
+
+              .spacer {
+                width: 350px;
+              }
+              
+            .search {
+              margin-left: 50px;
+              flex: 1;
+              align-self: flex-end;
+              padding-right: 50px;
+              input {
+                width: 100%;
+              }
+            }
+
+            .social {
+              display: flex;
+              justify-content: flex-end;
+              align-self: flex-end;
+              margin: 0;
+              padding: 0;
+              height: 100%;
+              li {
+                list-style-type: none;
+                margin-right: 30px;
+                &:first-child {
+                  margin-left: 0;
+                }
+                img {
+                  vertical-align: middle;
+                }
+              }
             }
         }
+      }
     }
 </style>
