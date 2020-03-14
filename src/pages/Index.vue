@@ -1,7 +1,6 @@
 <template>
   <Layout>
-    <div class="container">
-      <h1>Welcome to my blog :)</h1>
+    <div class="home-post">
         <ul class="post-list">
           <li v-for="{ node } in $page.allWordPressPost.edges" :key="node.id">
             <Post :post="node" />
@@ -14,7 +13,7 @@
 
 <page-query>
 query Home ($page: Int) {
-  allWordPressPost (page: $page, perPage: 10) @paginate {
+  allWordPressPost (page: $page, perPage: 5) @paginate {
     pageInfo {
       totalPages
       currentPage
