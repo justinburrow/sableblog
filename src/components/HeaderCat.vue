@@ -1,7 +1,7 @@
 <template>
     <div class="header-cat" @mouseover="showDropdown()">
         <p class="title">{{this.title}}</p>
-        <div class="dropdown" ref="dropdown" @mouseleave="hideDropdown()">
+        <div class="dropdown" ref="dropdown" @mouseover="showDropdown()" @mouseleave="hideDropdown()">
         </div>
     </div>  
 </template>
@@ -15,16 +15,16 @@ export default {
       showDropdown() {
         this.$refs.dropdown.classList.add('show');
       },
+
       hideDropdown() {
-        this.$refs.dropdown.classList.remove('show');
+          this.$refs.dropdown.classList.remove('show');
+        }
       }
-    }
-}
+  }
 </script>
 
 <style lang="scss">
 .header-cat {
-  display: inline;
   p {
     display: inline;
     padding: 5px;
@@ -34,14 +34,15 @@ export default {
     background: black;
     position: absolute;
     width: 100%;
-    height: 100px;
+    bottom: -200px;
     left: 0;
     opacity: 0;
     height: 0;
+    z-index: 100;
     &.show {
-      transition: opacity 0.3s ease;
+      transition: opacity 0.6s ease;
       opacity: 1;
-      height: 100px;
+      height: 200px;
     }
   }
 }

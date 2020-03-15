@@ -72,7 +72,7 @@ export default {
       text-transform: uppercase;
       font-size: 15px;
       text-align: center;
-      padding: 7px 0 5px 0;
+      padding: 8px 0 6px 0;
       color: white;
       letter-spacing: 1px;
       font-weight: 300;

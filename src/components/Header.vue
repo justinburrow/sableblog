@@ -47,6 +47,7 @@ export default {
 
 <style lang="scss">
     .header {
+        position: relative;
         width: 100%;
         &::before {
             display: block;
