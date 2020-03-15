@@ -3,27 +3,29 @@
     <div class="home-post">
         <ul class="post-list">
           <li v-for="{ node } in $page.allWordPressPost.edges" :key="node.id">
-            <Post :post="node" />
+            <HomePost :post="node" />
           </li>
         </ul>
-        <Pager :info="$page.allWordPressPost.pageInfo"/>
     </div>
   </Layout>
 </template>
 
 <page-query>
-query Home ($page: Int) {
-  allWordPressPost (page: $page, perPage: 5) @paginate {
-    pageInfo {
-      totalPages
-      currentPage
-    }
+query Home {
+  allWordPressPost(limit: 4, sortBy: "date", order: DESC) {
     edges {
       node {
         id
         title
         path
         excerpt
+        categories {
+          title
+        }
+        featuredMedia {
+          sourceUrl
+          altText
+        }
       }
     }
   }
@@ -31,16 +33,32 @@ query Home ($page: Int) {
 </page-query>
 
 <script>
-import { Pager } from 'gridsome'
-import Post from '~/components/Post.vue'
+import HomePost from '~/components/HomePost.vue'
 
 export default {
   components: {
-    Pager,
-    Post
+    HomePost
   },
   metaInfo: {
     title: 'S\'able Labs'
   }
 }
 </script>
+
+<style lang="scss">
+  .post-list {
+    padding: 0;
+    list-style-type: none;
+    width: 100%;
+    li {
+      margin: 0;
+      padding: 0;
+      margin-bottom: 80px;
+      padding-bottom: 80px;
+      border-bottom: 1px solid black;
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+</style>
