@@ -45,7 +45,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .header {
         position: relative;
         width: 100%;
@@ -75,7 +75,8 @@ export default {
               justify-content: space-between;
 
               .categories {
-                width: calc(50% - 175px);
+                width: calc(50% - 240px);
+                margin-left: 30px;
                 ul {
                 display: flex;
                 justify-content: space-between;
@@ -85,6 +86,7 @@ export default {
                     margin: 0;
                     padding: 0;
                     text-transform: uppercase;
+
                   }
                 }
               }

@@ -1,14 +1,10 @@
 <template>
-  <div>
-    <div class="home-slider">
-      <ClientOnly>
-        <carousel :dots="true" :items="1" :nav="false">
-          <div class="slide">slide 1</div>
-          <div class="slide">slide 2</div>
-          <div class="slide">slide 3</div>
-        </carousel>
-      </ClientOnly>
-    </div>
+  <div class="home-slider">
+      <carousel :dots="false" :items="1" :nav="false" :autoplay="true">
+        <div class="slide"><g-image src="~/assets/images/slides/slide1.jpg" alt="slide1"></g-image></div>
+        <div class="slide"><g-image src="~/assets/images/slides/slide2.jpg" alt="slide2"></g-image></div>
+        <div class="slide"><g-image src="~/assets/images/slides/slide3.jpg" alt="slide3"></g-image></div>
+      </carousel>
   </div>
 </template>
 
@@ -26,21 +22,28 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .home-slider {
   margin-bottom: 50px;
   width: 100%;
+  height: 500px;
   &:after {
     content: ' ';
     display: block;
     height: 15px;
     width: 100%;
-    margin-bottom: 100px;
+    margin-top: 50px;
     background: black;
   }
   .slide {
     width: 100%;
-    height: 100px;
+    height: 500px;
+    img {
+      width: 100%;
+      max-width: 100%;
+      object-fit: cover;
+      height: 100%;
+    }
   }
 }
     
