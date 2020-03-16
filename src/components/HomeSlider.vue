@@ -12,7 +12,6 @@
 
 
 <script>
-import carousel from 'vue-owl-carousel'
 export default {
   name: 'HeaderSlider',
   components: {
