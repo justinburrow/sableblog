@@ -12,6 +12,7 @@
     "@gridsome/source-wordpress": "^0.4.0",
     "gridsome": "^0.7.0",
     "jquery": "^3.4.1",
+    "moment": "^2.24.0",
     "owl.carousel2": "^2.2.1",
     "vue": "^2.6.11",
     "vue-carousel": "^0.18.0",

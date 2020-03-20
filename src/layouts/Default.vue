@@ -1,7 +1,9 @@
 <template>
   <div class="layout">
-    <Header />
-    <HomeFeatured v-if="$route.fullPath == '/'"/>
+    <header>
+      <Header />
+      <HomeFeatured v-if="$route.fullPath == '/'"/>
+    </header>
     <div class="container">
       <slot/>
     </div>
@@ -18,3 +20,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  header {
+    &:after {
+      content: '';
+      display: block;
+      border-top: 12px solid black;
+      padding-top: 45px;
+      width: 100%;
+    }
+  }
+</style>

@@ -1,9 +1,9 @@
 <template>
-  <div class="home-featured" :style="{ backgroundImage: `url(${post.featuredMedia.sourceUrl})`}">
+  <div class="home-featured" :style="{ backgroundImage: `url(${this.$static.newestPost.edges[0].node.featuredMedia.sourceUrl})`}">
     <div class="post-info">
-      <p class="category">{{post.categories[0].slug}}</p>
-      <h2><g-link :to="post.path">{{post.title}}</g-link></h2>
-      <p class="read-more"><g-link :to="post.path">Read More</g-link></p>
+      <p class="category">{{this.$static.newestPost.edges[0].node.categories[0].slug}}</p>
+      <h2><g-link :to="this.$static.newestPost.edges[0].node.path">{{this.$static.newestPost.edges[0].node.title}}</g-link></h2>
+      <p class="read-more"><g-link :to="this.$static.newestPost.edges[0].node.path">Read More</g-link></p>
     </div>  
   </div>
 </template>
@@ -36,11 +36,8 @@ export default {
   name: 'HomeFeatured',
   data() {
     return {
-      post: null,
+
     }
-  },
-  mounted() {
-    this.post = this.$static.newestPost.edges[0].node
   }
 }
 </script>
@@ -52,6 +49,7 @@ export default {
     height: 500px;
     color: white;
     position: relative;
+    margin-bottom: 45px;
     .post-info {
       width: 350px;
       position: absolute;

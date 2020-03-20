@@ -64,7 +64,7 @@ export default {
             .logo {
                 width: 100%;
                 text-align: center;
-                padding-bottom: 20px;
+                padding-bottom: 40px;
                 img {
                   width: 350px;
                 }

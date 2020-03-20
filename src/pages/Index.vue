@@ -2,7 +2,7 @@
   <Layout>
     <section class="home-posts">
         <ul class="post-list">
-          <li v-for="{ node } in $page.allWordPressPost.edges" :key="node.id">
+          <li v-for="node in $page.allWordPressPost.edges" :key="node.id">
             <HomePost :post="node" />
           </li>
         </ul>
@@ -15,12 +15,13 @@
 
 <page-query>
 query Home {
-  allWordPressPost(limit: 4, sortBy: "date", order: DESC) {
+  allWordPressPost(limit: 4, sortBy: "date", order: DESC, skip: 1) {
     edges {
       node {
         id
         title
         path
+        date
         excerpt
         categories {
           title
@@ -50,7 +51,7 @@ export default {
 
 <style lang="scss">
   .post-list {
-    margin: 120px 0 0 0;
+    margin: 60px 0 0 0;
     padding: 0;
     list-style-type: none;
     width: 100%;
@@ -68,6 +69,9 @@ export default {
             a {
               color: white;
             }
+            .post-icon {
+              filter: brightness(100);
+            }
           }
         }
       }
@@ -79,6 +83,7 @@ export default {
             a {
               color: black;
             }
+            
           }
         }
       }
@@ -89,6 +94,9 @@ export default {
             color: white;
             a {
               color: white;
+            }
+            .post-icon {
+              filter: brightness(100);
             }
           }
         }
