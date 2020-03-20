@@ -7,11 +7,11 @@
       <h2 v-for="(cat, i) in post.node.categories" :key="cat.id">
         <span v-if="i == 0">{{cat.title}}</span>
       </h2>
-      <h1 v-html="post.title" />
+      <h1 v-html="post.node.title" />
       <p class="excerpt">
         <v-clamp class="excerpt" :max-lines="7">{{post.node.excerpt | removeHTML}}</v-clamp>
         </p>
-      <g-link :to="post.path" class="read-more">
+      <g-link :to="post.node.path" class="read-more">
         Read More 
       </g-link>
       <p class="date">{{this.formatDate(post.node.date)}}</p>
