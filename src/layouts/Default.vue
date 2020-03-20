@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
     <Header />
-    <HomeSlider />
+    <HomeFeatured v-if="$route.fullPath == '/'"/>
     <div class="container">
       <slot/>
     </div>
@@ -10,11 +10,11 @@
 
 <script>
 import Header from '~/components/Header.vue'
-import HomeSlider from '~/components/HomeSlider.vue'
+import HomeFeatured from '~/components/HomeFeatured.vue'
 export default {
   components: {
     Header,
-    HomeSlider
+    HomeFeatured
   }
 }
 </script>

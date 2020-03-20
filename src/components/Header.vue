@@ -7,7 +7,7 @@
 
             <div class="navigation">
               <div class="categories">
-                <TopCategories />
+                <Categories />
               </div>
 
               <div class="spacer"></div>
@@ -27,12 +27,12 @@
 </template>
 
 <script>
-import TopCategories from '~/components/TopCategories.vue'
+import Categories from '~/components/Categories.vue'
 
 export default {
     name: 'Header',
     components: {
-        TopCategories
+        Categories
     },
     data() {
         return {

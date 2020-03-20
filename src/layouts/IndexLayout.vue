@@ -33,12 +33,14 @@ query Home ($page: Int) {
 import { Pager } from 'gridsome'
 import Post from '~/components/Post.vue'
 import IndexLayout from '~/layouts/IndexLayout.vue'
+import HomeFeatured from '~/components/HomeFeatured.vue'
 
 export default {
   components: {
     Pager,
     Post,
-    IndexLayout
+    IndexLayout,
+    HomeFeatured
   },
   metaInfo: {
     title: 'Welcome to my blog :)'

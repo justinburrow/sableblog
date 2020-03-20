@@ -56,9 +56,7 @@ export default {
     }
     .content {
       width: 40%;
-      background: black;
       margin: 30px 0;
-      color: white;
       padding: 30px 60px;
       h1 {
         font-family: 'DIN Condensed', Helvetica, sans-serif;

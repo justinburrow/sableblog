@@ -48,7 +48,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .post-list {
     margin: 120px 0 0 0;
     padding: 0;
@@ -60,6 +60,50 @@ export default {
       margin-bottom: 80px;
       padding-bottom: 80px;
       border-bottom: 1px solid black;
+      &:nth-child(1) {
+         article {
+          .content {
+            background: #1d4a45;
+            color: white;
+            a {
+              color: white;
+            }
+          }
+        }
+      }
+      &:nth-child(2) {
+         article {
+          .content {
+            background: #f1f1f1;
+            color: black;
+            a {
+              color: black;
+            }
+          }
+        }
+      }
+      &:nth-child(3) {
+         article {
+          .content {
+            background: #4d4d4f;
+            color: white;
+            a {
+              color: white;
+            }
+          }
+        }
+      }
+      &:nth-child(4) {
+         article {
+          .content {
+            background: #c0bdbd;
+            color: black;
+            a {
+              color: black;
+            }
+          }
+        }
+      }
       &:last-child {
         border: none;
       }

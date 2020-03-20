@@ -47,7 +47,6 @@ query WordPressPost ($id: ID!) {
     tags {
       id
       title
-      path
     }
   }
 }
