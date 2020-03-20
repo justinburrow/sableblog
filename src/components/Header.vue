@@ -2,7 +2,7 @@
     <div class="header">
         <div class="header__content container-full">
           <div class="logo">
-              <img src="~@/assets/images/sable-logo.svg" width="370" alt="S'able Labs" />
+              <a href="/"><img src="~@/assets/images/sable-logo.svg" width="370" alt="S'able Labs" /></a>
             </div>
 
             <div class="navigation">
@@ -67,6 +67,9 @@ export default {
                 padding-bottom: 40px;
                 img {
                   width: 350px;
+                }
+                a {
+                  border: none;
                 }
             }
             .navigation {
