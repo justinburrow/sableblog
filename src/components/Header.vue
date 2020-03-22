@@ -13,7 +13,7 @@
               <div class="spacer"></div>
 
               <div class="search">
-                <input type="text">
+                <input id="search" type="text" v-model="searchTerm" class="input" placeholder="Search">
               </div>
 
               <ul class="social">
@@ -28,7 +28,7 @@
 
 <script>
 import Categories from '~/components/Categories.vue'
-
+import Search from 'gridsome-plugin-flexsearch'
 export default {
     name: 'Header',
     components: {
@@ -36,11 +36,18 @@ export default {
     },
     data() {
         return {
-
+          searchTerm: ''
         }
     },
     methods: {
 
+    },
+    computed: {
+      searchResults () {
+        const searchTerm = this.searchTerm
+        if (searchTerm.length < 3) return []
+        return this.$search.search({ query: searchTerm, limit: 5 })
+    }
     }
 }
 </script>

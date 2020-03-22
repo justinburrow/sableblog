@@ -1,15 +1,21 @@
 module.exports = {
-  siteName: 'S\'able Labs',
-  siteDescription: 'The S\'able Labs Blog',
+  siteName: "S'able Labs",
+  siteDescription: "The S'able Labs Blog",
 
   templates: {
     WordPressCategory: '/category/:slug', // adds route for "category" post type (Optional)
     WordPressPost: [
       {
         path: '/:year/:month/:day/:slug',
-        component: './src/templates/WordPressPost.vue' //adds route for "post" post type (Optional)
-      }
-    ]
+        component: './src/templates/WordPressPost.vue', //adds route for "post" post type (Optional)
+      },
+    ],
+  },
+
+  configureWebpack: {
+    node: {
+      fs: "empty"
+    }
   },
 
   plugins: [
@@ -20,11 +26,29 @@ module.exports = {
         typeName: 'WordPress', // GraphQL schema name (Optional)
         customEndpoints: [
           {
-            typeName: "TopCategories",
+            typeName: 'TopCategories',
             route: '/wp/v2/categories',
-          }
-        ]
-      }
-    }
-  ]
+          },
+          {
+            typeName: 'Posts',
+            route: '/wp/v2/posts',
+            normalize: true,
+          },
+        ],
+      },
+    },
+    {
+      use: 'gridsome-plugin-flexsearch',
+      options: {
+        collections: [
+          {
+            typeName: 'Posts',
+            indexName: 'Posts',
+            fields: ['title'],
+          },
+        ],
+        searchFields: ['title'],
+      },
+    },
+  ],
 }

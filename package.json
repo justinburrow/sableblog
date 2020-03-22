@@ -11,24 +11,19 @@
     "@chenfengyuan/vue-carousel": "^1.0.3",
     "@gridsome/source-wordpress": "^0.4.0",
     "gridsome": "^0.7.0",
+    "gridsome-plugin-flexsearch": "^0.1.15",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
     "owl.carousel2": "^2.2.1",
     "vue": "^2.6.11",
     "vue-carousel": "^0.18.0",
     "vue-clamp": "^0.2.2",
+    "vue-mailchimp-subscribe": "^1.1.0",
     "vue-owl-carousel": "^2.0.3",
     "vue-template-compiler": "^2.6.11"
   },
   "devDependencies": {
     "node-sass": "^4.13.1",
-    "prettier": "1.19.1",
     "sass-loader": "^8.0.2"
-  },
-  "prettier": {
-    "trailingComma": "es5",
-    "tabWidth": 2,
-    "semi": false,
-    "singleQuote": true
   }
 }
