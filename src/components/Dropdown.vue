@@ -80,7 +80,7 @@ export default {
 
 <style lang="scss" scoped>
   .dropdown {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     position: absolute;
     width: 100vw;
     left: -30px;

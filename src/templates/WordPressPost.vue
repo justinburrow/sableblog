@@ -1,29 +1,23 @@
 <template>
   <Layout>
-    <h1 v-html="$page.wordPressPost.title"/>
-    <img
-      v-if="$page.wordPressPost.featuredMedia"
-      :src="$page.wordPressPost.featuredMedia.sourceUrl"
-      :width="$page.wordPressPost.featuredMedia.mediaDetails.width"
-      :alt="$page.wordPressPost.featuredMedia.altText"
-    />
-    <div v-html="$page.wordPressPost.content"/>
-    <template v-if="$page.wordPressPost.categories.length">
-      <h4>Posted in</h4>
-      <ul class="list categories">
-        <li v-for="category in $page.wordPressPost.categories" :key="category.id" >
-          <g-link :to="category.path">{{ category.title }}</g-link>
-        </li>
-      </ul>
-    </template>
-    <template v-if="$page.wordPressPost.tags.length">
-      <h4>Tags</h4>
-      <ul class="list tags">
-        <li v-for="tag in $page.wordPressPost.tags" :key="tag.id" >
-          <g-link :to="tag.path">{{ tag.title }}</g-link>
-        </li>
-      </ul>
-    </template>
+    <div class="post">
+      <h2 v-html="$page.wordPressPost.categories[0].title"></h2>
+      <h1 v-html="$page.wordPressPost.title"/>
+      <div class="post-image">
+       <img
+        v-if="$page.wordPressPost.featuredMedia"
+        :src="$page.wordPressPost.featuredMedia.sourceUrl"
+        :alt="$page.wordPressPost.featuredMedia.altText"
+      />
+      </div>
+      <div class="post-details">
+        <span class="author">Photography: {{$page.wordPressPost.featuredMedia.caption | removeHTML}}</span>
+        <span class="date">{{formatDate($page.wordPressPost.date)}}</span>
+      </div>
+      <div class="post-content" v-html="$page.wordPressPost.content"> 
+      </div>
+    </div>
+    
   </Layout>
 </template>
 
@@ -35,51 +29,86 @@ query WordPressPost ($id: ID!) {
     featuredMedia {
       sourceUrl
       altText
-      mediaDetails {
-        width
-      }
+      caption
     }
     categories {
       id
       title
       path
     }
-    tags {
-      id
-      title
-    }
   }
 }
 </page-query>
 
 <script>
+import moment from 'moment'
 export default {
   metaInfo () {
     return {
       title: this.$page.wordPressPost.title
     }
-  }
+  },
+  methods: {
+    formatDate(postDate) {
+      return moment(postDate).format('MMM Do, YYYY')
+    }
+  },
+  filters: {
+    removeHTML: function (val) {
+      let regex = /(<([^>]+)>)/ig;
+      return val.replace(regex, "");
+    }
+  },
 }
 </script>
 
-<style>
-  ul.list {
-    list-style: none;
+<style lang="scss">
+  .post {
+    padding-bottom: 120px;
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+  h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    margin: 0 0 10px 0;
+    padding: 0;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+  }
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 60px;
+    margin: 0 0 20px;
     padding: 0;
   }
-  ul.list li {
-    display: inline-block;
-    margin-right: 0.25em;
+  .post-image {
+    padding-bottom: 61%;
+    position: relative;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
-  ul.list.tags li a {
-    padding: 0.25em 0.5em;
-    background-color: lightgray;
+  .post-details {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0 60px 0;
+    color: #B2B2B2;
+    font-weight: 300;
+    .date {
+      font-style: italic;
+    }
   }
-  ul.list.categories li:after {
-    content: ',';
-    display: inline-block;
-  }
-  ul.list li:last-child:after {
-    content: '';
+  .post-content {
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.4;
   }
 </style>
