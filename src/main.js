@@ -9,4 +9,10 @@ export default function (Vue, {head}) {
     rel: 'icon',
     href: 'data:,'
   });
+
+  head.link.push({
+    rel: 'stylesheet',
+    href: 'https://use.typekit.net/qnx3vjf.css'
+
+  })
 }

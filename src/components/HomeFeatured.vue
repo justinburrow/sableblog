@@ -58,7 +58,6 @@ export default {
       transform: translateY(-50%);
       p {
         margin: 0;
-        font-weight: 300;
         margin-bottom: 20px;
         text-transform: uppercase;
         font-size: 14px;
@@ -67,9 +66,12 @@ export default {
         margin: 0;
         padding: 0;
         text-transform: uppercase;
-        font-family: 'Kenzo', Helvetica, sans-serif;
+        font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;
         font-size: 50px;
         letter-spacing: 2px;
+        text-align: left;
+        line-height: 1;
+        margin-bottom: 10px;
         a {
           text-decoration: none;
           color: white;

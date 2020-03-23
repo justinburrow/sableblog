@@ -1,5 +1,5 @@
 <template>
-    <div class="dropdown" ref="dropdown" :class="showDropdown ? 'show' : 'hide'" @mouseleave="showDropdown=false"> 
+    <div class="dropdown" ref="dropdown" :class="showDropdown ? 'show' : 'hide'" @mouseleave="hideDropdown()"> 
       <ul class="items">
         <li class="title"><h3 class="title">{{ currentCatTitle }}</h3></li>
         <li v-for="post in catPosts" class="post" :key="post.node.id">
@@ -39,19 +39,21 @@
 <script>
 export default {
     name: 'Dropdown',
-    props: ['currentCat', 'currentCatTitle'],
+    props: ['currentCat', 'currentCatTitle', 'dropdownState'],
     data() {
         return {
           catPosts: [],
           category: this.currentCat,
-          showDropdown: false
+          showDropdown: this.dropdownState
         }
     },
     watch: {
       currentCat: function(id) {
         this.category = id;
         this.filterPosts();
-        this.showDropdown = true;
+      },
+      dropdownState: function(state) {
+        this.showDropdown = state
       }
     },
     methods: {
@@ -70,9 +72,8 @@ export default {
           }
         });
       },
-
-      closeMenu() {
-
+      hideDropdown: function() {
+        this.$emit('hideDropdown')
       }
     }
   }
@@ -143,12 +144,13 @@ export default {
       width: 100%;
       display: flex;
       h4 {
-        font-family: 'Kenzo', Helvetica, sans-serif;
+        font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;
         flex-grow: 1;
         text-align: left;
         font-size: 22px;
         text-transform: uppercase;
         margin: 0 10px 0 0;
+        line-height: 1;
       }
       a {
         color: white;

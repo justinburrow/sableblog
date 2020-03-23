@@ -1,57 +1,6 @@
-@font-face {
-  font-family: 'Acumin';
-  font-style: bold;
-  font-weight: 400;
-  src: url('fonts/AcuminPro-Bold.woff2') format('woff2'),
-    url('fonts/AcuminPro-Bold.woff') format('woff'),
-    url('fonts/AcuminPro-Bold.ttf') format('truetype'),
-    url('fonts/AcuminPro-Bold.eot') format('embedded-opentype');
-}
-
-@font-face {
-  font-family: 'Acumin';
-  font-style: normal;
-  font-weight: 300;
-  src: url('fonts/AcuminPro-Regular.woff2') format('woff2'),
-    url('fonts/AcuminPro-Regular.woff') format('woff'),
-    url('fonts/AcuminPro-Regular.ttf') format('truetype'),
-    url('fonts/AcuminPro-Regular.eot') format('embedded-opentype');
-}
-
-@font-face {
-  font-family: 'DIN Condensed';
-  font-style: normal;
-  font-weight: bold;
-  src: url('fonts/DINCondensed-Bold.woff2') format('woff2'),
-    url('fonts/DINCondensed-Bold.woff') format('woff'),
-    url('fonts/DINCondensed-Bold.ttf') format('truetype'),
-    url('fonts/DINCondensed-Bold.eot') format('embedded-opentype');
-}
-
-@font-face {
-  font-family: 'Kenzo';
-  font-style: normal;
-  font-weight: 300;
-  src: url('fonts/Kenzo.woff2') format('woff2'),
-    url('fonts/Kenzo.woff') format('woff'),
-    url('fonts/Kenzo.ttf') format('truetype'),
-    url('fonts/Kenzo.eot') format('embedded-opentype');
-}
-
-@font-face {
-  font-family: 'Myriad';
-  font-style: normal;
-  font-weight: 300;
-  src: url('fonts/MyriadPro-Regular.woff2') format('woff2'),
-    url('fonts/MyriadPro-Regular.woff') format('woff'),  
-    url('fonts/MyriadPro-Regular.ttf') format('truetype'),
-    url('fonts/MyriadPro-Regular.eot') format('embedded-opentype');
-}
-
 .bold {
   font-weight: bold;
 }
-
 
 *,
 *::before,
@@ -71,7 +20,8 @@ body {
 }
 
 body {
-  font-family: 'Acumin', Helvetica, sans-serif;
+  font-family: acumin-pro, sans-serif;
+  font-weight: 400;
 }
 
 $breakpoint-sm: 540px;

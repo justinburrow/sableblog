@@ -81,7 +81,6 @@ export default {
         margin-bottom: 80px;
       }
       .excerpt {
-          font-weight: 300;
           line-height: 1.6;
           font-size: 15px;
         }
@@ -96,7 +95,6 @@ export default {
       }
       .date {
         font-size: 12px;
-        font-weight: 300;
       }
       .post-icon {
         width: 20px;

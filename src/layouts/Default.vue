@@ -49,21 +49,20 @@ export default {
     color: white;
     text-align: center;
     h6 {
-      font-family: 'Kenzo', Helvetica, sans-serif;
+      font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;
       font-size: 50px;
       letter-spacing: 3px;
       margin: 0;
       padding: 0;
+      text-transform: uppercase;
     }
     .subtext {
-      font-weight: 300;
       margin: 0;
       padding: 0;
       font-size: 24px;
       margin-bottom: 30px;
     }
     .disclaimer {
-      font-weight: 300;
       font-size: 13px;
     }
   }

@@ -7,7 +7,7 @@
           </div>  
         </li>
     </ul>
-    <Dropdown :current-cat="this.currentCat" :current-cat-title="this.currentCatTitle" />
+    <Dropdown :current-cat="this.currentCat" :current-cat-title="this.currentCatTitle" :dropdown-state="this.dropdownState" @hideDropdown="hideDropdown()"/>
   </div>
     
 </template>
@@ -32,8 +32,6 @@ export default {
     components: {
       Dropdown
     },
-    props: {
-    },
     data () {
       return {
         currentCat: Number,
@@ -46,6 +44,9 @@ export default {
         this.currentCat = catId;
         this.currentCatTitle = catTitle;
         this.dropdownState = true;
+      },
+      hideDropdown: function() {
+        this.dropdownState = false;
       }
     }
 }

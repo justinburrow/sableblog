@@ -74,10 +74,12 @@ export default {
     font-size: 16px;
     margin: 0 0 10px 0;
     padding: 0;
-    font-weight: 300;
     letter-spacing: 1.5px;
+    font-weight: 400;
   }
   h1 {
+    font-family: acumin-pro-extra-condensed, sans-serif;
+    letter-spacing: 1px;
     text-align: center;
     text-transform: uppercase;
     font-size: 60px;
@@ -101,13 +103,11 @@ export default {
     justify-content: space-between;
     margin: 30px 0 60px 0;
     color: #B2B2B2;
-    font-weight: 300;
     .date {
       font-style: italic;
     }
   }
   .post-content {
-    font-weight: 300;
     font-size: 17px;
     line-height: 1.4;
   }

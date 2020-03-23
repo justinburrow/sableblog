@@ -128,7 +128,6 @@ export default {
       padding: 8px 0 6px 0;
       color: white;
       letter-spacing: 1px;
-      font-weight: 300;
     }
   }
 </style>
