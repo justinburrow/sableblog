@@ -4,10 +4,10 @@
         <li class="title"><h3 class="title">{{ currentCatTitle }}</h3></li>
         <li v-for="post in catPosts" class="post" :key="post.node.id">
           <div class="image">
-            <g-image :src="post.node.featuredMedia.sourceUrl"></g-image>
+            <g-image :src="post.node.featuredMedia.sourceUrl" v-on:click="hideDropdown()"></g-image>
           </div>
           <div class="post-info">
-           <h4>{{post.node.title}}</h4>
+           <g-link :to="post.node.path"><h4>{{post.node.title}}</h4></g-link>
             <g-link :to="post.node.path">Read More</g-link> 
           </div>
         </li>
@@ -44,7 +44,7 @@ export default {
         return {
           catPosts: [],
           category: this.currentCat,
-          showDropdown: this.dropdownState
+          showDropdown: false
         }
     },
     watch: {
@@ -73,7 +73,8 @@ export default {
         });
       },
       hideDropdown: function() {
-        this.$emit('hideDropdown')
+        this.$emit('hideDropdown');
+        console.log('hide');
       }
     }
   }
@@ -143,9 +144,12 @@ export default {
   .post-info {
       width: 100%;
       display: flex;
+      a {
+        text-decoration: none;
+        flex-grow: 1;
+      }
       h4 {
         font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;
-        flex-grow: 1;
         text-align: left;
         font-size: 22px;
         text-transform: uppercase;
