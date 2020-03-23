@@ -4,11 +4,11 @@
         <li class="title"><h3 class="title">{{ currentCatTitle }}</h3></li>
         <li v-for="post in catPosts" class="post" :key="post.node.id">
           <div class="image">
-            <g-image :src="post.node.featuredMedia.sourceUrl" v-on:click="hideDropdown()"></g-image>
+            <g-link :to="post.node.path"><g-image :src="post.node.featuredMedia.sourceUrl" v-on:click="hideDropdown()"></g-image></g-link>
           </div>
           <div class="post-info">
            <g-link :to="post.node.path"><h4>{{post.node.title}}</h4></g-link>
-            <g-link :to="post.node.path">Read More</g-link> 
+            <g-link :to="post.node.path" class="read-more">Read More</g-link> 
           </div>
         </li>
       </ul>
@@ -161,6 +161,10 @@ export default {
         font-size: 12px;
         text-transform: uppercase;
         flex-shrink: 0;
+        text-decoration: none;
+        &.read-more {
+          text-decoration: underline;
+        }
       }
     }  
 </style>

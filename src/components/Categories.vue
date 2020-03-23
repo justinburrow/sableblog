@@ -69,6 +69,28 @@ export default {
         cursor: pointer;
         text-transform: uppercase;
         font-size: 14px;
+        position: relative;
+        &:after {
+          content: '';
+          display: block;
+          width: 0;
+          height: 2px;
+          background: black;
+          margin-top: 3px;
+          transition: width 0.3s ease;
+          position: absolute;
+          bottom: -4px;
+        }
+        &:hover {
+          &:after {
+          content: '';
+          display: block;
+          width: 100%;
+          height: 2px;
+          background: black;
+          margin-top: 3px;
+        }
+        }
       }
   }
 </style>
