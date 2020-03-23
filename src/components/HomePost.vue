@@ -17,6 +17,7 @@
       <p class="date">{{this.formatDate(post.node.date)}}</p>
       <img src="~@/assets/images/post-icon.svg" class="post-icon" />
     </div>
+    <div class="details">Photography: {{post.node.featuredMedia.caption | removeHTML}}</div>
   </article>
 </template>
 
@@ -103,6 +104,11 @@ export default {
         right: 20px;
         z-index: 10;
       }
+    }
+    .details {
+      font-size: 11px;
+      color: #B2B2B2;
+      margin-top: 15px;
     }
   }
 </style>

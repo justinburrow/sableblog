@@ -29,6 +29,7 @@ query Home {
         featuredMedia {
           sourceUrl
           altText
+          caption
         }
       }
     }

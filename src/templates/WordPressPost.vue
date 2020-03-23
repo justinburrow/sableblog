@@ -101,7 +101,7 @@ export default {
   .post-details {
     display: flex;
     justify-content: space-between;
-    margin: 30px 0 60px 0;
+    margin: 20px 0 60px 0;
     color: #B2B2B2;
     .date {
       font-style: italic;

@@ -55,6 +55,7 @@ export default {
       margin: 0;
       padding: 0;
       text-transform: uppercase;
+      line-height: 1;
     }
     .subtext {
       margin: 0;
