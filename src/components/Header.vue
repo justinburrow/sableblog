@@ -59,7 +59,7 @@ export default {
         &::before {
             display: block;
             content: ' ';
-            height: 30px;
+            height: 40px;
             background: black;
             width: 100%;
             margin-bottom: 30px;
@@ -85,8 +85,8 @@ export default {
               justify-content: space-between;
 
               .categories {
-                width: calc(50% - 240px);
-                margin-left: 30px;
+                width: calc(50% - 140px);
+                margin-left: 80px;
                 ul {
                 display: flex;
                 justify-content: space-between;
@@ -102,7 +102,7 @@ export default {
               }
 
               .spacer {
-                width: 350px;
+                width: 250px;
               }
               
             .search {

@@ -68,6 +68,7 @@ export default {
         padding: 0;
         cursor: pointer;
         text-transform: uppercase;
+        font-size: 14px;
       }
   }
 </style>

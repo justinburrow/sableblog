@@ -85,8 +85,8 @@ export default {
     background: rgba(0, 0, 0, 0.9);
     position: absolute;
     width: 100vw;
-    left: -30px;
-    top: 40px;
+    left: -80px;
+    top: 43px;
     z-index: 100;
     &.hide {
       opacity: 0;

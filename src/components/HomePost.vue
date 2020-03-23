@@ -7,9 +7,9 @@
       <h2 v-for="(cat, i) in post.node.categories" :key="cat.id">
         <span v-if="i == 0">{{cat.title}}</span>
       </h2>
-      <h1 v-html="post.node.title" />
+      <g-link :to="post.node.path"><h1 v-html="post.node.title" /></g-link>
       <p class="excerpt">
-        <v-clamp class="excerpt" :max-lines="7">{{post.node.excerpt | removeHTML}}</v-clamp>
+        <v-clamp class="excerpt" :max-lines="8">{{post.node.excerpt | removeHTML}}</v-clamp>
         </p>
       <g-link :to="post.node.path" class="read-more">
         Read More 
@@ -67,19 +67,25 @@ export default {
     }
     .content {
       width: 40%;
-      margin: 30px 0;
+      margin: 20px 0;
       padding: 30px 60px;
       position: relative;
+      a {
+        text-decoration: none;
+      }
       h1 {
-        font-family: 'DIN Condensed', Helvetica, sans-serif;
-        font-size: 36px;
+        font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;
+        font-size: 60px;
         letter-spacing: 1px;
+        line-height: 1.2;
+        padding: 0;
+        margin: 0;
       }
       h2 {
         text-align: center;
         text-transform: uppercase;
         font-size: 14px;
-        margin-bottom: 80px;
+        margin-bottom: 20px;
       }
       .excerpt {
           line-height: 1.6;
@@ -92,6 +98,8 @@ export default {
           text-transform: uppercase;
           margin-top: 30px;
           display: block;
+          text-decoration: underline;
+          font-weight: bold;
         }
       }
       .date {
