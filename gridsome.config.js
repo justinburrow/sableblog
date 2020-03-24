@@ -36,19 +36,6 @@ module.exports = {
           },
         ],
       },
-    },
-    {
-      use: 'gridsome-plugin-flexsearch',
-      options: {
-        collections: [
-          {
-            typeName: 'Posts',
-            indexName: 'Posts',
-            fields: ['title'],
-          },
-        ],
-        searchFields: ['title'],
-      },
-    },
+    }
   ],
 }

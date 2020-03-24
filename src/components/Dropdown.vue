@@ -1,6 +1,6 @@
 <template>
     <div class="dropdown" ref="dropdown" :class="showDropdown ? 'show' : 'hide'" @mouseleave="hideDropdown()"> 
-      <ul class="items">
+      <ul class="items" v-if="this.showSearchResults == false">
         <li class="title"><h3 class="title">{{ currentCatTitle }}</h3></li>
         <li v-for="post in catPosts" class="post" :key="post.node.id">
           <div class="image">
@@ -11,6 +11,21 @@
             <g-link :to="post.node.path" class="read-more">Read More</g-link> 
           </div>
         </li>
+      </ul>
+
+      <ul class="items search" v-if="this.showSearchResults == true">
+        <div v-if="this.results > 0"></div>
+        <li class="title"><h3>Searching For: "{{this.searchingBy}}"</h3></li>
+        <li v-for="post in results" class="post" :key="post.id"> 
+          <div class="image">
+            <g-link :to="post.path"><g-image :src="post.featuredMedia.sourceUrl" v-on:click="hideDropdown()"></g-image></g-link>
+          </div>
+          <div class="post-info">
+          <g-link :to="post.path"><h4>{{post.title}}</h4></g-link>
+            <g-link :to="post.path" class="read-more">Read More</g-link> 
+          </div>
+        </li>
+        <li v-if="this.results == 0">Sorry, no posts were found</li>
       </ul>
     </div>
 </template>
@@ -39,12 +54,16 @@
 <script>
 export default {
     name: 'Dropdown',
-    props: ['currentCat', 'currentCatTitle', 'dropdownState'],
+    props: ['currentCat', 'currentCatTitle', 'dropdownState', 'searchResults', 'showSearch', 'searchTerm'],
     data() {
         return {
           catPosts: [],
           category: this.currentCat,
-          showDropdown: false
+          showDropdown: false,
+          results: [],
+          showSearchResults: this.showSearch,
+          searchingBy: this.searchTerm,
+          hasResults: false
         }
     },
     watch: {
@@ -54,6 +73,22 @@ export default {
       },
       dropdownState: function(state) {
         this.showDropdown = state
+      },
+      searchResults: function(results) {
+        this.showSearchResults = true;
+        this.results = results;
+        if (results.length > 0) {
+          this.hasResults = true;
+        }
+      },
+      showSearch(state) {
+        this.showSearchResults = state;
+      },
+      searchTerm(searchTerm) {
+        this.searchingBy = searchTerm;
+        if (searchTerm >=3) {
+          this.showSearchResults = true;
+        }
       }
     },
     methods: {
@@ -74,7 +109,6 @@ export default {
       },
       hideDropdown: function() {
         this.$emit('hideDropdown');
-        console.log('hide');
       }
     }
   }
@@ -137,6 +171,20 @@ export default {
           font-size: 26px;
           letter-spacing: 3px;
           text-transform: uppercase;
+        }
+      }
+      &.search {
+        justify-content: space-between;
+        li {
+          width: 48%;
+          h3 {
+            font-size: 16px;
+            position: relative;
+            top: auto;
+            left: auto;
+            text-align: center;
+            transform: none;
+          }
         }
       }
     }

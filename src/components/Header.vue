@@ -6,8 +6,8 @@
             </div>
 
             <div class="navigation">
-              <div class="categories">
-                <Categories />
+              <div class="categories">  
+                <Categories :search-results='searchResults' :search-term="searchTerm"/>
               </div>
 
               <div class="spacer"></div>
@@ -26,9 +26,33 @@
     </div>
 </template>
 
+<static-query>
+query {
+  allPosts: allWordPressPost {
+    edges {
+      node {
+        id
+        title
+        path
+        dateGmt
+        excerpt
+        categories {
+          title
+        }
+        featuredMedia {
+          sourceUrl
+          altText
+          caption
+        }
+      }
+    }
+  }
+}
+</static-query>
+
 <script>
 import Categories from '~/components/Categories.vue'
-import Search from 'gridsome-plugin-flexsearch'
+import Flexsearch from 'flexsearch'
 export default {
     name: 'Header',
     components: {
@@ -36,18 +60,34 @@ export default {
     },
     data() {
         return {
+          index: null,
           searchTerm: ''
         }
+    },
+    beforeMount() {
+      this.index = new Flexsearch({
+        tokenize: 'forward',
+        doc: {
+          id: 'id',
+          field: [
+            'title',
+            'excerpt'
+          ]
+        }
+      })
+      this.index.add(this.$static.allPosts.edges.map(e => e.node));
     },
     methods: {
 
     },
     computed: {
-      searchResults () {
-        const searchTerm = this.searchTerm
-        if (searchTerm.length < 3) return []
-        return this.$search.search({ query: searchTerm, limit: 5 })
-    }
+      searchResults() {
+        if (this.index === null || this.searchTerm.length < 3) return [];
+        return this.index.search({
+          query: this.searchTerm,
+          limit: 3
+       });
+      }
     }
 }
 </script>

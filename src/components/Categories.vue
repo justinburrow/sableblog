@@ -2,12 +2,12 @@
   <div class="category-holder">
     <ul class="categories">
         <li v-for="cat in $static.categories.edges" :key="cat.id">
-          <div class="header-cat" @mouseover="showDropdown(cat.node.id, cat.node.title)">
+          <div class="header-cat" @mouseover="showCatPosts(cat.node.id, cat.node.title); showDropdown()">
               <div class="title">{{cat.node.title}}</div>
           </div>  
         </li>
     </ul>
-    <Dropdown :current-cat="this.currentCat" :current-cat-title="this.currentCatTitle" :dropdown-state="this.dropdownState" @hideDropdown="hideDropdown()"/>
+    <Dropdown :current-cat="this.currentCat" :current-cat-title="this.currentCatTitle" :dropdown-state="this.dropdownState" @hideDropdown="hideDropdown()" :search-results="this.searchResultPosts" :show-search="showSearch" :search-term="query"/>
   </div>
     
 </template>
@@ -32,21 +32,49 @@ export default {
     components: {
       Dropdown
     },
+    props: ['searchResults', 'searchTerm'], 
     data () {
       return {
         currentCat: Number,
         currentCatTitle: '',
-        dropdownState: false
+        dropdownState: false,
+        searchResultPosts: [],
+        query: this.searchTerm,
+        showSearch: false
       }
     },
     methods: {
       showDropdown(catId, catTitle) {
+        this.dropdownState = true;
+      },
+      showCatPosts(catId, catTitle) {
+        this.showSearch = false;
         this.currentCat = catId;
         this.currentCatTitle = catTitle;
         this.dropdownState = true;
       },
       hideDropdown: function() {
         this.dropdownState = false;
+      }
+    },
+    watch: {
+      searchResults(results) {
+        this.searchResultPosts = results;
+        if (results.length > 0) {
+          this.showSearch = true;
+          this.showDropdown();
+        }
+      },
+     searchTerm(query) {
+       this.query = query;
+        if (query.length >= 3) {
+          this.showDropdown();
+          this.showSearch = true;
+        }
+        if (query == '') {
+          this.hideDropdown();
+          this.showSearch = false;
+        }
       }
     }
 }
