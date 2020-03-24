@@ -11,8 +11,7 @@ export default function (Vue, {head}) {
   });
 
   head.link.push({
-    rel: 'stylesheet',
-    href: 'https://use.typekit.net/qnx3vjf.css'
-
-  })
+    rel: "stylesheet",
+    href: "https://use.typekit.net/zmf6fgh.css"
+  });
 }
