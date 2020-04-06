@@ -1,5 +1,3 @@
-import '~/assets/styles.scss'
-
 import DefaultLayout from '~/layouts/Default.vue'
 
 export default function (Vue, {head}) {
@@ -14,4 +12,20 @@ export default function (Vue, {head}) {
     rel: "stylesheet",
     href: "https://use.typekit.net/zmf6fgh.css"
   });
+
+  const store = Vue.observable({
+    menuOpen: false
+  });
+
+  const actions = {
+    openMenu() {
+      store.menuOpen = true;
+    },
+    closeMenu() {
+      store.menuOpen = false;
+    }
+  }
+
+  Vue.prototype.$store = store;
+  Vue.prototype.$actions = actions;
 }

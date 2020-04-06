@@ -28,6 +28,14 @@ export default {
     Header,
     HomeFeatured,
     EmailSignup
+  },
+  methods: {
+    closeMenu(e) {
+      console.log(e);
+      if (this.$store.menuOpen == true) {
+        this.$actions.closeMenu();
+      }
+    }
   }
 }
 </script>

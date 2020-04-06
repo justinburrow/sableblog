@@ -1,27 +1,38 @@
 <template>
     <div class="header">
+      <MenuPanel />
+      
         <div class="header__content container-full">
+          <div class="menu-icon only-mobile" @click="$actions.openMenu()"> 
+            <img src="~@/assets/images/menu-icon.svg" alt="Menu" />
+          </div>
+
           <div class="logo">
-              <a href="/"><img src="~@/assets/images/sable-logo.svg" width="370" alt="S'able Labs" /></a>
+            <a href="/"><img src="~@/assets/images/sable-logo.svg" width="370" alt="S'able Labs" /></a>
+          </div>
+
+          <div class="navigation only-desktop">
+            <div class="categories">  
+              <Categories :search-results='searchResults' :search-term="searchTerm"/>
             </div>
 
-            <div class="navigation">
-              <div class="categories">  
-                <Categories :search-results='searchResults' :search-term="searchTerm"/>
-              </div>
+            <div class="spacer"></div>
 
-              <div class="spacer"></div>
-
-              <div class="search">
-                <input id="search" type="text" v-model="searchTerm" class="input" placeholder="Search">
-              </div>
-
-              <ul class="social">
-                <li><a href="#"><img src="~@/assets/images/instagram.svg" width="20" alt="S'able Labs Instagram"></a></li>
-                <li><a href="#"><img src="~@/assets/images/facebook.svg" width="10" alt="S'able Labs Facebook"></a></li>
-                <li><a href="#"><img src="~@/assets/images/twitter.svg" width="20" alt="S'able Labs Twitter"></a></li>
-              </ul>
+            <div class="search">
+              <input id="search" type="text" v-model="searchTerm" class="input" placeholder="Search">
             </div>
+
+            <ul class="social">
+              <li><a href="#"><img src="~@/assets/images/instagram.svg" width="20" alt="S'able Labs Instagram"></a></li>
+              <li><a href="#"><img src="~@/assets/images/facebook.svg" width="10" alt="S'able Labs Facebook"></a></li>
+              <li><a href="#"><img src="~@/assets/images/twitter.svg" width="20" alt="S'able Labs Twitter"></a></li>
+            </ul>
+          </div>
+
+          <div class="mobile-search-icon only-mobile">
+            <img src="~@/assets/images/search-icon.svg" alt="Search">
+          </div>
+
         </div>
     </div>
 </template>
@@ -53,10 +64,13 @@ query {
 <script>
 import Categories from '~/components/Categories.vue'
 import Flexsearch from 'flexsearch'
+import MenuPanel from '~/components/MenuPanel.vue'
+
 export default {
     name: 'Header',
     components: {
-        Categories
+        Categories,
+        MenuPanel
     },
     data() {
         return {
@@ -94,31 +108,53 @@ export default {
 
 <style lang="scss" scoped>
     .header {
-        position: relative;
         width: 100%;
         &::before {
-            display: block;
-            content: ' ';
-            height: 40px;
-            background: black;
-            width: 100%;
-            margin-bottom: 30px;
+          display: block;
+          content: ' ';
+          height: 40px;
+          background: black;
+          width: 100%;
+          margin-bottom: 30px;
+          @media screen and (max-width: $breakpoint-lg) {
+            height: 5vw;
+            margin-bottom: 3vw;
+          }
         }
         &__content {
-            background: white;
-            padding: 20px 0;
-            width: 100%;
-            .logo {
-                width: 100%;
-                text-align: center;
-                padding-bottom: 40px;
-                img {
-                  width: 350px;
-                }
-                a {
-                  border: none;
-                }
+          background: white;
+          padding: 20px 0;
+          width: 100%;
+          @media screen and (max-width: $breakpoint-lg) {
+            padding: 2vw 5vw 5vw 5vw;
+            display: flex;
+            align-items: center;
+          }
+          .menu-icon {
+            cursor: pointer;
+            img {
+              width: 8vw;
             }
+          }
+          .logo {
+              width: 100%;
+              text-align: center;
+              padding-bottom: 40px;
+              @media screen and (max-width: $breakpoint-lg) {
+                padding-bottom: 0;
+              }
+              img {
+                width: 350px;
+                @media screen and (max-width: $breakpoint-lg) {
+                  width: 45vw;
+                }
+              }
+              a {
+                border: none;
+                display: inline-block;
+              }
+            }
+
             .navigation {
               display: flex;
               width: 100%;
@@ -173,6 +209,13 @@ export default {
                 }
               }
             }
+        }
+
+        .mobile-search-icon {
+          img {
+            width: 7.5vw;
+            filter: brightness(0);
+          }
         }
       }
     }
