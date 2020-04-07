@@ -11,6 +11,7 @@
 
 <script>
 import ClickOutside from 'vue-click-outside'
+import Flexsearch from 'flexsearch'
 
 export default {
   name: 'SearchPanel',
@@ -34,9 +35,6 @@ export default {
       this.open = false;
     }
   },
-  mounted() {
-    console.log('wee');
-  },
   directives: {
     ClickOutside
   }
@@ -49,21 +47,21 @@ export default {
     top: 0;
     height: 100%;
     background: black;
+    box-shadow: -7px 0 5px 0 rgba(0,0,0,0.5);
     z-index: 100;
-    box-shadow: 7px 0 5px 0 rgba(0,0,0,0.5);
-    left: 0;
-    width: 93vw;
+    right: 0;
+    width: 95vw;
     
-    &.menu-enter-to, &.menu-leave {
-      transition: left .4s ease-in-out;
+    &.search-enter-to, &.search-leave {
+      transition: right .4s ease-in-out;
     }
 
-    &.menu-enter, &.menu-leave-to {
+    &.search-enter, &.search-leave-to {
       transition: left .4s ease-in-out;
-      left: 100vw;
+      right: -100vw;
     }
 
-    .close-menu {
+    .close-search {
       position: absolute;
       top: 10px;
       right: 10px;

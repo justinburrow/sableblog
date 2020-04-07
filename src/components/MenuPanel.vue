@@ -48,7 +48,7 @@ export default {
     z-index: 100;
     box-shadow: 7px 0 5px 0 rgba(0,0,0,0.5);
     left: 0;
-    width: 93vw;
+    width: 95vw;
     
     &.menu-enter-to, &.menu-leave {
       transition: left .4s ease-in-out;

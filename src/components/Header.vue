@@ -32,7 +32,6 @@
           <div class="mobile-search-icon only-mobile-tablet" @click="$actions.openSearch()">
             <img src="~@/assets/images/search-icon.svg" alt="Search">
           </div>
-
         </div>
     </div>
 </template>
@@ -62,16 +61,17 @@ query {
 </static-query>
 
 <script>
-import Categories from '~/components/Categories.vue'
-import Flexsearch from 'flexsearch'
-import MenuPanel from '~/components/MenuPanel.vue'
-import SearchPanel from '~/components/SearchPanel.vue'
+  import Categories from '~/components/Categories.vue'
+  import Flexsearch from 'flexsearch'
+  import MenuPanel from '~/components/MenuPanel.vue'
+  import SearchPanel from '~/components/SearchPanel.vue'
 
-export default {
+  export default {
     name: 'Header',
     components: {
         Categories,
-        MenuPanel
+        MenuPanel,
+        SearchPanel
     },
     data() {
         return {
@@ -101,10 +101,10 @@ export default {
         return this.index.search({
           query: this.searchTerm,
           limit: 3
-       });
+        });
       }
     }
-}
+  }
 </script>
 
 <style lang="scss" scoped>

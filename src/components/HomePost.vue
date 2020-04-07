@@ -116,9 +116,9 @@ export default {
           line-height: 1.6;
           font-size: 15px;
           @media screen and (max-width: $breakpoint-md) {
-          font-size: 4.5vw;
-          margin-bottom: 2vw;
-        }
+            font-size: 4.5vw;
+            margin-bottom: 2vw;
+          }
         }
 
       a {
@@ -147,6 +147,9 @@ export default {
       font-size: 11px;
       color: #B2B2B2;
       margin-top: 15px;
+      @media screen and (max-width: $breakpoint-xl) {
+        margin-top: .5vw;
+      }
       @media screen and (max-width: $breakpoint-lg) {
         margin-top: 0;
         margin-bottom: 1vw;
