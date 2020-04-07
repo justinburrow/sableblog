@@ -57,7 +57,7 @@ export default {
     }
 
     &.search-enter, &.search-leave-to {
-      transition: left .4s ease-in-out;
+      transition: right .4s ease-in-out;
       right: -100vw;
     }
 
