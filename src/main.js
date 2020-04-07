@@ -14,15 +14,24 @@ export default function (Vue, {head}) {
   });
 
   const store = Vue.observable({
-    menuOpen: false
+    menuOpen: false,
+    searchOpen: false
   });
 
   const actions = {
     openMenu() {
       store.menuOpen = true;
+      store.searchOpen = false;
     },
     closeMenu() {
       store.menuOpen = false;
+    },
+    openSearch() {
+      store.searchOpen = true;
+      store.menuOpen = false
+    },
+    closeSearch() {
+      store.searchOpen = false;
     }
   }
 

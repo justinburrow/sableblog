@@ -1,9 +1,9 @@
 <template>
     <div class="header">
       <MenuPanel />
-      
+      <SearchPanel />
         <div class="header__content container-full">
-          <div class="menu-icon only-mobile" @click="$actions.openMenu()"> 
+          <div class="menu-icon only-mobile-tablet" @click="$actions.openMenu()"> 
             <img src="~@/assets/images/menu-icon.svg" alt="Menu" />
           </div>
 
@@ -29,7 +29,7 @@
             </ul>
           </div>
 
-          <div class="mobile-search-icon only-mobile">
+          <div class="mobile-search-icon only-mobile-tablet" @click="$actions.openSearch()">
             <img src="~@/assets/images/search-icon.svg" alt="Search">
           </div>
 
@@ -65,6 +65,7 @@ query {
 import Categories from '~/components/Categories.vue'
 import Flexsearch from 'flexsearch'
 import MenuPanel from '~/components/MenuPanel.vue'
+import SearchPanel from '~/components/SearchPanel.vue'
 
 export default {
     name: 'Header',
@@ -116,37 +117,57 @@ export default {
           background: black;
           width: 100%;
           margin-bottom: 30px;
+          @media screen and (max-width: $breakpoint-xl) {
+            height: 3vw;
+            margin-bottom: 1vw;
+          }
           @media screen and (max-width: $breakpoint-lg) {
             height: 5vw;
-            margin-bottom: 3vw;
+            margin-bottom: 1vw;
           }
         }
         &__content {
           background: white;
           padding: 20px 0;
           width: 100%;
+          @media screen and (max-width: $breakpoint-xl) {
+            padding: 2vw 5vw 3vw 5vw;
+            display: flex;
+            align-items: center;
+          }
           @media screen and (max-width: $breakpoint-lg) {
-            padding: 2vw 5vw 5vw 5vw;
+            padding: 2vw 3vw 3vw;
             display: flex;
             align-items: center;
           }
           .menu-icon {
             cursor: pointer;
             img {
-              width: 8vw;
+              @media screen and (max-width: $breakpoint-xl) {
+                width: 4vw;
+              }
+              @media screen and (max-width: $breakpoint-lg) {
+                width: 5vw;
+              }
+              @media screen and (max-width: $breakpoint-md) {
+                width: 7.5vw;
+              }
             }
           }
           .logo {
               width: 100%;
               text-align: center;
               padding-bottom: 40px;
-              @media screen and (max-width: $breakpoint-lg) {
+              @media screen and (max-width: $breakpoint-xl) {
                 padding-bottom: 0;
               }
               img {
                 width: 350px;
+                @media screen and (max-width: $breakpoint-xl) {
+                  width: 25vw;
+                }
                 @media screen and (max-width: $breakpoint-lg) {
-                  width: 45vw;
+                  width: 35vw;
                 }
               }
               a {
@@ -213,8 +234,16 @@ export default {
 
         .mobile-search-icon {
           img {
-            width: 7.5vw;
             filter: brightness(0);
+            @media screen and (max-width: $breakpoint-xl) {
+              width: 4vw;
+            }
+            @media screen and (max-width: $breakpoint-lg) {
+              width: 5vw;
+            }
+            @media screen and (max-width: $breakpoint-md) {
+              width: 7.5vw;
+            }
           }
         }
       }

@@ -74,5 +74,8 @@ export default {
     .disclaimer {
       font-size: 13px;
     }
+    @media screen and (max-width: $breakpoint-lg) {
+      padding: 6vw 3vw;
+    }
   }
 </style>

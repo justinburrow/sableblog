@@ -53,7 +53,19 @@ body {
   }
 }
 
+.only-desktop-tablet {
+  @media screen and (max-width: $breakpoint-lg) {
+    display: none !important;
+  }
+}
+
 .only-mobile {
+  @media screen and (min-width: $breakpoint-lg) {
+    display: none !important;
+  }
+}
+
+.only-mobile-tablet {
   @media screen and (min-width: $breakpoint-xl) {
     display: none !important;
   }

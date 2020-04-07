@@ -1,7 +1,7 @@
 <template>
-  <transition name="menu" v-on:after-enter="openPanel" v-on:after-leave="closePanel">
-    <div class="menu-panel only-mobile-tablet" v-if="this.$store.menuOpen" v-click-outside="closeMenu">
-      <div class="close-menu" @click="$actions.closeMenu()">
+  <transition name="search" v-on:after-enter="openPanel" v-on:after-leave="closePanel">
+    <div class="search-panel only-mobile-tablet" v-if="this.$store.searchOpen" v-click-outside="closeMenu">
+      <div class="close-search" @click="$actions.closeSearch()">  
         <img src="~@/assets/images/close-icon.svg" alt="Close" />
       </div>
     </div>
@@ -11,8 +11,9 @@
 
 <script>
 import ClickOutside from 'vue-click-outside'
+
 export default {
-  name: 'MenuPanel',
+  name: 'SearchPanel',
   data() {
     return {
       open: false
@@ -21,7 +22,7 @@ export default {
   methods: {
     closeMenu: function(el) {
       if (this.open == true) {
-        this.$actions.closeMenu();
+        this.$actions.closeSearch();
       } else {
         return
       }
@@ -33,6 +34,9 @@ export default {
       this.open = false;
     }
   },
+  mounted() {
+    console.log('wee');
+  },
   directives: {
     ClickOutside
   }
@@ -40,7 +44,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .menu-panel {
+  .search-panel {
     position: absolute;
     top: 0;
     height: 100%;
@@ -56,7 +60,7 @@ export default {
 
     &.menu-enter, &.menu-leave-to {
       transition: left .4s ease-in-out;
-      left: -100vw;
+      left: 100vw;
     }
 
     .close-menu {
