@@ -1,7 +1,9 @@
 import DefaultLayout from '~/layouts/Default.vue'
+import VScrollLock from 'v-scroll-lock'
 
 export default function (Vue, {head}) {
   Vue.component('Layout', DefaultLayout);
+  Vue.use(VScrollLock)
 
   head.link.push({
     rel: 'icon',

@@ -1,6 +1,6 @@
 <template>
   <transition name="menu" v-on:after-enter="openPanel" v-on:after-leave="closePanel">
-    <div class="menu-panel only-mobile-tablet" v-if="this.$store.menuOpen" v-click-outside="closeMenu">
+    <div class="menu-panel only-mobile-tablet" v-if="$store.menuOpen" v-click-outside="closeMenu" v-scroll-lock="$store.menuOpen">
       <div class="close-menu" @click="$actions.closeMenu()">
         <img src="~@/assets/images/close-icon.svg" alt="Close" />
       </div>
@@ -11,6 +11,7 @@
 
 <script>
 import ClickOutside from 'vue-click-outside'
+
 export default {
   name: 'MenuPanel',
   data() {
@@ -61,8 +62,8 @@ export default {
 
     .close-menu {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 20px;
+      right: 20px;
       padding: 10px;
       img {
         filter: invert(1);
