@@ -6,7 +6,7 @@
       </div>
       <div class="container">
         <div class="search">
-          <input id="search" type="text" v-model="searchTerm" class="input" placeholder="Search">
+          <input id="mobile-search" type="text" v-model="searchTerm" class="input" placeholder="Search">
         </div>
 
         <ul class="post-list" v-if="this.showSearchResults == true">
