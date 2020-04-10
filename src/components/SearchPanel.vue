@@ -10,13 +10,14 @@
         </div>
 
         <ul class="post-list" v-if="this.showSearchResults == true">
+          <div class="result-count" v-if="this.resultQty != 0">{{ this.resultQty }} post<span v-if="this.resultQty > 1">s</span> found for "{{ this.searchTerm }}"</div>
           <li v-for="post in searchResultPosts" class="post" :key="post.id"> 
+            <div class="post-info">
+              <g-link :to="post.path"><h4>{{post.title}}</h4></g-link>
+              <g-link :to="post.path" class="read-more">Read More</g-link> 
+            </div>
             <div class="image">
               <g-link :to="post.path"><g-image :src="post.featuredMedia.sourceUrl"></g-image></g-link>
-            </div>
-            <div class="post-info">
-            <g-link :to="post.path"><h4>{{post.title}}</h4></g-link>
-              <g-link :to="post.path" class="read-more">Read More</g-link> 
             </div>
           </li>
           <li v-if="this.searchResultPosts == 0">Sorry, no posts were found</li>
@@ -61,7 +62,8 @@ export default {
     return {
       searchResultPosts: [],    
       searchTerm: '',
-      showSearchResults: false
+      showSearchResults: false,
+      resultQty: 0
     }
   },
   beforeMount() {
@@ -90,11 +92,13 @@ export default {
     },
     closePanel: function(el) {
       this.open = false;
+      this.searchTerm = '';
     }
   },
   watch: {
     searchResults(results) {
       this.searchResultPosts = results;
+      this.resultQty = results.length;
       if (results.length > 0) {
         this.showSearch = true;
       }
@@ -124,7 +128,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .search-panel {
     position: absolute;
     top: 0;
@@ -181,13 +185,11 @@ export default {
           width: 100%;
           background: transparent;
           line-height: 1.5;
+          padding: 1vw 0;
           color: white;
           letter-spacing: .3vw;
           @media screen and (max-width: $breakpoint-lg) {
-            font-size: 5vw;
-          }
-          @media screen and (max-width: $breakpoint-lg) {
-            font-size: 5vw;
+            font-size: 4.5vw;
           }
           @media screen and (max-width: $breakpoint-md) {
             font-size: 5vw;
@@ -195,19 +197,101 @@ export default {
         }
       }
     }
+    .result-count {
+      text-transform: uppercase;
+      font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;
+      color: white;
+      padding-bottom: 3vw;
+      border-bottom: 1px solid rgba(255,255,255,0.5);
+      margin: 3vw 0;
+      line-height: 1;
+      @media screen and (max-width: $breakpoint-lg) {
+        font-size: 4vw;
+        letter-spacing: .1vw;
+      }
+      @media screen and (max-width: $breakpoint-md) {
+        font-size: 5vw;
+      }
+    }
     .post-list {
+      margin: 0;
+      padding: 0;
       li {
-        width: 70%;
+        width: 100%;
         margin: 0 auto;
         display: block;
         color: white;
+        @media screen and (max-width: $breakpoint-lg) {
+          font-size: 3vw;
+        }
+        @media screen and (max-width: $breakpoint-md) {
+          font-size: 5vw;
+        }
+        &.post {
+          display: flex;
+          .post-info {
+            flex: 1;
+            margin: 2vw 0;
+            padding: 3vw;
+            h4 {
+              margin: 0;
+              padding: 0;
+              font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;
+              text-transform: uppercase;
+              font-size: 4vw;
+            }
+            a {
+              text-decoration: none;
+              &.read-more {
+                text-decoration: underline;
+                @media screen and (max-width: $breakpoint-lg) {
+                  font-size: 2vw;
+                }
+                @media screen and (max-width: $breakpoint-md) {
+                  font-size: 5vw;
+                }
+              }
+            }
+            &:nth-child(1n) {
+              background: #1d4a45;
+              color: white;
+              a {
+                color: white;
+              }
+            }
+            &:nth-child(2n) {
+              background: #f1f1f1;
+              color: black;
+              a {
+                color: black;
+              }
+            }
+            &:nth-child(3n) {
+              background: #4d4d4f;
+              color: white;
+              a {
+                color: white;
+              }
+            }
+            &:nth-child(4n) {
+              background: #c0bdbd;
+              color: black;
+              a {
+                color: black;
+              }
+            }
+          }
+        }
+        .image {
+          width: 40%;
+        }
         .image a {
           display: block;
           position: relative;
-          padding-top: 66%;
+          padding-top: 80%;
           width: 100%;
           img {
-            object-fit: contain;
+            object-fit: cover;
             position: absolute;
             top: 0;
             left: 0;

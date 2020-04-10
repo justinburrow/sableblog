@@ -54,7 +54,7 @@ body {
 }
 
 .only-desktop-tablet {
-  @media screen and (max-width: $breakpoint-lg) {
+  @media screen and (max-width: calc(#{$breakpoint-lg} - 1)) {
     display: none !important;
   }
 }
