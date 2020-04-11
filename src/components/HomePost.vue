@@ -1,6 +1,5 @@
 <template>
   <article class="home-post">
-    <g-link :to="post.node.path">
       <div class="details only-mobile">Photography: {{post.node.featuredMedia.caption | removeHTML}}</div>
       <div class="image">
         <img :src="post.node.featuredMedia.sourceUrl" :alt="post.node.featuredMedia.altText" />
@@ -21,7 +20,6 @@
         <img src="~@/assets/images/post-icon.svg" class="post-icon" />
       </div>
       <div class="details only-desktop">Photography: {{post.node.featuredMedia.caption | removeHTML}}</div>
-    </g-link>
   </article>
 </template>
 
