@@ -56,6 +56,9 @@ export default {
     padding: 0;
     list-style-type: none;
     width: 100%;
+    @media screen and (max-width: $breakpoint-md) {
+      margin-top: 7vw;
+    }
     li {
       margin: 0;
       padding: 0;
@@ -133,6 +136,11 @@ export default {
       padding: 8px 0 6px 0;
       color: white;
       letter-spacing: 1px;
+      @media screen and (max-width: $breakpoint-md) {
+        padding: 2vw auto 5vw;
+        line-height: 1;
+        width: 100%;
+      }
     }
   }
 </style>

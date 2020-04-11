@@ -10,8 +10,8 @@
       </h2>
       <g-link :to="post.node.path"><h1 v-html="post.node.title" /></g-link>
       <p class="excerpt">
-        <v-clamp class="excerpt only-desktop-tablet" :max-lines="8">{{post.node.excerpt | removeHTML}}</v-clamp>
-        <v-clamp class="excerpt only-mobile" :max-lines="5">{{post.node.excerpt | removeHTML}}</v-clamp>
+        <v-clamp class="excerpt only-desktop" :max-lines="8">{{post.node.excerpt | removeHTML}}</v-clamp>
+        <v-clamp class="excerpt only-mobile" :max-lines="3">{{post.node.excerpt | removeHTML}}</v-clamp>
         </p>
       <g-link :to="post.node.path" class="read-more">
         Read More 
@@ -19,7 +19,7 @@
       <p class="date">{{this.formatDate(post.node.date)}}</p>
       <img src="~@/assets/images/post-icon.svg" class="post-icon" />
     </div>
-    <div class="details only-desktop-tablet">Photography: {{post.node.featuredMedia.caption | removeHTML}}</div>
+    <div class="details only-desktop">Photography: {{post.node.featuredMedia.caption | removeHTML}}</div>
   </article>
 </template>
 
@@ -65,10 +65,15 @@ export default {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
       }
       @media screen and (max-width: $breakpoint-lg) {
         width: 100%;
         max-height: auto;
+        padding-top: 92%;
+        position: relative;
       }
     }
     .content {
@@ -79,9 +84,9 @@ export default {
       @media screen and (max-width: $breakpoint-lg) {
         width: 92%;
         text-align: center;
-        margin: -4vw auto 0 auto;
+        margin: -20vw auto 0 auto;
         padding: 3vw 6vw;
-        border: 5px solid white;
+        border: 3px solid white;
       }
 
       a {
@@ -96,7 +101,7 @@ export default {
         padding: 0;
         margin: 0;
         @media screen and (max-width: $breakpoint-md) {
-          font-size: 10vw;
+          font-size: 7vw;
           letter-spacing: .2vw;
         }
       }
@@ -107,7 +112,7 @@ export default {
         font-size: 14px;
         margin-bottom: 20px;
         @media screen and (max-width: $breakpoint-md) {
-          font-size: 4vw;
+          font-size: 3vw;
           margin-bottom: 3vw;
         }
       }
@@ -116,7 +121,7 @@ export default {
           line-height: 1.6;
           font-size: 15px;
           @media screen and (max-width: $breakpoint-md) {
-            font-size: 4.5vw;
+            font-size: 4vw;
             margin-bottom: 2vw;
           }
         }

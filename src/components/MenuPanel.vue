@@ -4,9 +4,31 @@
       <div class="close-menu" @click="$actions.closeMenu()">
         <img src="~@/assets/images/close-icon.svg" alt="Close" />
       </div>
+      <div class="categories">
+          <h2>Categories</h2>
+          <ul>
+            <li v-for="cat in this.$static.categories.edges" key="cat.id" @click="$actions.closeMenu()">
+              <g-link :to="cat.node.path">{{cat.node.title}}</g-link>
+            </li>
+          </ul>
+        </div>
     </div>
   </transition>
 </template>
+
+<static-query>
+    query {
+        categories: allWordPressCategory {
+            edges {
+                node {
+                    id
+                    title
+                    path
+                }
+            }
+        }
+    }
+</static-query>
 
 
 <script>
@@ -68,6 +90,46 @@ export default {
       img {
         filter: invert(1);
         width: 25px;
+        @media screen and (max-width: $breakpoint-lg) {
+         width: 4vw;
+        }
+        @media screen and (max-width: $breakpoint-md) {
+          width: 4vw;
+        }
+        @media screen and (max-width: $breakpoint-sm) {
+          width: 5vw;
+        }
+      }
+    }
+
+    .categories {
+      padding: 0 5vw;
+      margin-top: 18vw;
+      text-transform: uppercase;
+      h2 {
+        font-family: 'acumin-pro-extra-condensed';
+        letter-spacing: .3vw;
+        color: white;
+        font-size: 8vw;
+        line-height: 1;
+        margin: 0 0 3vw 0;
+        padding: 0 0 3vw 0;
+        border-bottom: 1px solid rgba(255,255,255,.5);
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        li {
+          margin: 0;
+          padding: 3vw 0;
+          color: white;
+          font-size: 5vw;
+          a {
+            color: white;
+            text-decoration: none;
+          }
+        }
       }
     }
   }
