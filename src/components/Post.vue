@@ -19,3 +19,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+h1 {
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+}
+</style>
+

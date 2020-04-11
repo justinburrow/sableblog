@@ -60,7 +60,7 @@ body {
 }
 
 .only-mobile {
-  @media screen and (min-width: $breakpoint-lg) {
+  @media screen and (min-width: $breakpoint-md) {
     display: none !important;
   }
 }

@@ -48,6 +48,10 @@ export default {
       border-top: 12px solid black;
       padding-top: 45px;
       width: 100%;
+      @media screen and (max-width: $breakpoint-md) {
+        padding-top: 4vw;
+        border-top: 2vw solid black;
+      }
     }
   }
 

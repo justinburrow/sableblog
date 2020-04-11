@@ -7,7 +7,7 @@
       <div class="categories">
           <h2>Categories</h2>
           <ul>
-            <li v-for="cat in this.$static.categories.edges" key="cat.id" @click="$actions.closeMenu()">
+            <li v-for="cat in this.$static.categories.edges" :key="cat.id" @click="$actions.closeMenu()">
               <g-link :to="cat.node.path">{{cat.node.title}}</g-link>
             </li>
           </ul>

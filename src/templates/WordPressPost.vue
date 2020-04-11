@@ -12,8 +12,9 @@
       </div>
       <div class="post-details">
         <span class="author">Photography: {{$page.wordPressPost.featuredMedia.caption | removeHTML}}</span>
-        <span class="date">{{formatDate($page.wordPressPost.date)}}</span>
+        <span class="date only-desktop">{{formatDate($page.wordPressPost.date)}}</span>
       </div>
+      <p class="date only-mobile-tablet">{{formatDate($page.wordPressPost.date)}}</p>
       <div class="post-content" v-html="$page.wordPressPost.content"> 
       </div>
     </div>
@@ -67,6 +68,10 @@ export default {
     padding-bottom: 120px;
     max-width: 1320px;
     margin: 0 auto;
+    @media screen and (max-width: $breakpoint-lg) {
+      padding-bottom: 10vw;
+      width: 100%;
+    }
   }
   h2 {
     text-align: center;
@@ -76,6 +81,9 @@ export default {
     padding: 0;
     letter-spacing: 1.5px;
     font-weight: 400;
+    @media screen and (max-width: $breakpoint-md) {
+      font-size: 4vw;
+    }
   }
   h1 {
     font-family: acumin-pro-extra-condensed, sans-serif;
@@ -85,10 +93,19 @@ export default {
     font-size: 60px;
     margin: 0 0 20px;
     padding: 0;
+    @media screen and (max-width: $breakpoint-md) {
+      font-size: 11vw;
+      line-height: 1.2;
+      margin: 3vw 0;
+      padding: 0;
+    }
   }
   .post-image {
     padding-bottom: 61%;
     position: relative;
+    @media screen and (max-width: $breakpoint-md) {
+      padding-bottom: 75%;
+    }
     img {
       position: absolute;
       top: 0;
@@ -105,10 +122,53 @@ export default {
     color: #B2B2B2;
     .date {
       font-style: italic;
+      @media screen and (max-width: $breakpoint-lg) {
+        font-size: 3vw;
+      }
+    }
+    @media screen and (max-width: $breakpoint-md) {
+      margin: 2vw 0 4vw 0;
     }
   }
   .post-content {
     font-size: 17px;
     line-height: 1.4;
+    h2, h3, h4, h5, h6 {
+      text-align: left;
+      margin: 0 0 20px 0;
+      padding: 0 0 20px 0;
+      @media screen and (max-width: $breakpoint-lg) {
+        margin: 0 0 2vw 0;
+        padding: 0 0 2vw 0;
+      }
+    }
+    h2 {
+      @media screen and (max-width: $breakpoint-lg) {
+        font-size: 5vw;
+        line-height: 1.2;
+      }
+      @media screen and (max-width: $breakpoint-md) {
+        font-size: 6vw;
+      }
+    }
+    h3 {
+      @media screen and (max-width: $breakpoint-lg) {
+        font-size: 4vw;
+        line-height: 1.2;
+      }
+      @media screen and (max-width: $breakpoint-md) {
+        font-size: 5vw;
+      }
+    }
+    p {
+      font-size: 14px;
+      line-height: 1.4;
+      @media screen and (max-width: $breakpoint-md) {
+        font-size: 3vw;
+      }
+      @media screen and (max-width: $breakpoint-sm) {
+        font-size: 4vw;
+      }
+    }
   }
 </style>

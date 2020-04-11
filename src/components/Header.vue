@@ -125,6 +125,9 @@ query {
             height: 5vw;
             margin-bottom: 1vw;
           }
+          @media screen and (max-width: $breakpoint-md) {
+            height: 4vw;
+          }
         }
         &__content {
           background: white;

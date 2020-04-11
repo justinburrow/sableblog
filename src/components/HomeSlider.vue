@@ -35,6 +35,10 @@ export default {
     width: 100%;
     margin-top: 50px;
     background: black;
+    @media screen and (max-width: $breakpoint-md) {
+      margin-top: 10vw;
+      height: 3vw;
+    }
   }
   .slide {
     width: 100%;

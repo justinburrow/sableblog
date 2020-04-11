@@ -50,12 +50,24 @@ export default {
     color: white;
     position: relative;
     margin-bottom: 45px;
+    @media screen and (max-width: $breakpoint-md) {
+      height: 50vh;
+    }
     .post-info {
       width: 350px;
       position: absolute;
       right: 50px;
       top: 50%;
       transform: translateY(-50%);
+      @media screen and (max-width: $breakpoint-md) {
+        position: relative;
+        transform: none;
+        width: 100%;
+        left: auto;
+        right: auto;
+        padding: 0 5vw;
+        bottom: 5vw;
+      }
       p {
         margin: 0;
         margin-bottom: 20px;
