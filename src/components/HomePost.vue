@@ -13,14 +13,14 @@
         <p class="excerpt">
           <v-clamp class="excerpt only-desktop" :max-lines="8">{{post.node.excerpt | removeHTML}}</v-clamp>
           <v-clamp class="excerpt only-mobile-tablet" :max-lines="4">{{post.node.excerpt | removeHTML}}</v-clamp>
-          </p>
+        </p>
         <g-link :to="post.node.path" class="read-more">
           Read More 
         </g-link>
         <p class="date">{{this.formatDate(post.node.date)}}</p>
         <img src="~@/assets/images/post-icon.svg" class="post-icon" />
+        <div class="details only-desktop">Photography: {{post.node.featuredMedia.caption | removeHTML}}</div>
       </div>
-      <div class="details only-desktop">Photography: {{post.node.featuredMedia.caption | removeHTML}}</div>
     </g-link>
   </article>
 </template>
