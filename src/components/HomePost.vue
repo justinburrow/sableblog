@@ -10,10 +10,12 @@
           <span v-if="i == 0">{{cat.title}}</span>
         </h2>
         <g-link :to="post.node.path"><h1 v-html="post.node.title" /></g-link>
-        <p class="excerpt">
-          <v-clamp class="excerpt only-desktop" :max-lines="8">{{post.node.excerpt | removeHTML}}</v-clamp>
-          <v-clamp class="excerpt only-mobile-tablet  " :max-lines="4">{{post.node.excerpt | removeHTML}}</v-clamp>
-          </p>
+        <p class="excerpt only-desktop">
+          <v-clamp :max-lines="8">{{post.node.excerpt | removeHTML}}</v-clamp>
+        </p>
+        <p class="only-mobile-tablet">
+          <v-clamp class="excerpt" :max-lines="4">{{post.node.excerpt | removeHTML}}</v-clamp>
+        </p>
         <g-link :to="post.node.path" class="read-more">
           Read More 
         </g-link>
