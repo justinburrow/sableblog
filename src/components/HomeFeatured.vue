@@ -60,13 +60,15 @@ export default {
       top: 50%;
       transform: translateY(-50%);
       @media screen and (max-width: $breakpoint-md) {
-        position: relative;
+        position: absolute;
         transform: none;
         width: 100%;
+        top: auto;
+        bottom: 2vw;
         left: auto;
         right: auto;
         padding: 0 5vw;
-        bottom: 5vw;
+        bottom: 2vw;
       }
       p {
         margin: 0;

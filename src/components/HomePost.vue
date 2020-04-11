@@ -12,7 +12,7 @@
         <g-link :to="post.node.path"><h1 v-html="post.node.title" /></g-link>
         <p class="excerpt">
           <v-clamp class="excerpt only-desktop" :max-lines="8">{{post.node.excerpt | removeHTML}}</v-clamp>
-          <v-clamp class="excerpt only-mobile" :max-lines="4">{{post.node.excerpt | removeHTML}}</v-clamp>
+          <v-clamp class="excerpt only-mobile-tablet  " :max-lines="4">{{post.node.excerpt | removeHTML}}</v-clamp>
           </p>
         <g-link :to="post.node.path" class="read-more">
           Read More 
@@ -86,22 +86,18 @@ export default {
       padding: 30px 60px;
       position: relative;
       @media screen and (max-width: $breakpoint-lg) {
-        width: 92%;
-        text-align: center;
-        margin: -20vw auto 0 auto;
-        padding: 3vw 6vw;
-        border: 3px solid white;
-      }
-      @media screen and (max-width: $breakpoint-lg) {
         width: 95%;
-        text-align: center;
         margin: -20vw auto 0 auto;
         padding: 3vw 5vw;
         border: 3px solid white;
       }
+      @media screen and (max-width: $breakpoint-md) {
+        text-align: center;
+      }
 
       a {
         text-decoration: none;
+        display: block;
       }
 
       h1 {
@@ -109,7 +105,7 @@ export default {
         text-transform: uppercase;
         font-size: 60px;
         letter-spacing: 1px;
-        line-height: 1.2;
+        line-height: 1;
         padding: 0;
         margin: 0;
         @media screen and (max-width: $breakpoint-md) {
