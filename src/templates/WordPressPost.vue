@@ -15,7 +15,8 @@
         <span class="date only-desktop">{{formatDate($page.wordPressPost.date)}}</span>
       </div>
       <p class="date only-mobile-tablet">{{formatDate($page.wordPressPost.date)}}</p>
-      <div class="post-content" v-html="$page.wordPressPost.content"> 
+      <div class="post-content" v-html="$page.wordPressPost.content"></div>
+      <div class="post-navigation">
       </div>
     </div>
     
@@ -23,10 +24,11 @@
 </template>
 
 <page-query>
-query WordPressPost ($id: ID!) {
+query WordPressPost ($id: ID!, $date: Date!) {
   wordPressPost(id: $id) {
     title
     content
+    date
     featuredMedia {
       sourceUrl
       altText
@@ -38,16 +40,57 @@ query WordPressPost ($id: ID!) {
       path
     }
   }
+  prevPost: allWordPressPost(filter: {date: { lt: $date}}, limit: 1) {
+      edges {
+        node {
+          title
+          link
+          path
+          date
+          featuredMedia {
+            sourceUrl
+            altText
+          }
+          categories {
+            id
+            title
+          }
+        }
+      }
+    }
+    nextPost: allWordPressPost(filter: {date: { gt: $date}}, limit: 1) {
+      edges {
+        node {
+          title
+          link
+          path
+          date
+          featuredMedia {
+            sourceUrl
+            altText
+          }
+          categories {
+            id
+            title
+          }
+        }
+      }
+    }
 }
 </page-query>
 
 <script>
 import moment from 'moment'
+
 export default {
   metaInfo () {
     return {
-      title: this.$page.wordPressPost.title
+      title: this.$page.wordPressPost.title,
+      date: this.$page.wordPressPost.date
     }
+  },
+  components: {
+
   },
   methods: {
     formatDate(postDate) {
@@ -60,6 +103,9 @@ export default {
       return val.replace(regex, "");
     }
   },
+  mounted() {
+    date: this.$page.wordPressPost.date
+  }
 }
 </script>
 
