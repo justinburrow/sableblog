@@ -19,13 +19,13 @@
       <div class="post-navigation">
         <div class="title">Related Articles</div>
         <div class="articles">
-          <article>
-            <g-link :to="$page.nextPost.edges[0].node.path">
+          <article v-if="$page.prevPost.edges.length > 0">
+            <g-link :to="$page.prevPost.edges[0].node.path" class="image">
               <div class="image">
                 <img :src="$page.prevPost.edges[0].node.featuredMedia.sourceUrl" :alt="$page.prevPost.edges[0].node.featuredMedia.altText" />
               </div>
             </g-link>
-            <g-link :to="$page.nextPost.edges[0].node.path" class="desc">
+            <g-link :to="$page.prevPost.edges[0].node.path" class="desc">
               <h5>
                 {{ $page.prevPost.edges[0].node.title }}
                 <span>Read More</span>
@@ -35,7 +35,8 @@
               <h6>{{ $page.prevPost.edges[0].node.categories[0].title }}</h6>
             </g-link>
           </article>
-          <article>
+
+          <article v-if="$page.nextPost.edges.length > 0">
             <g-link :to="$page.nextPost.edges[0].node.path" class="image">
               <div class="image">
                 <img :src="$page.nextPost.edges[0].node.featuredMedia.sourceUrl" :alt="$page.nextPost.edges[0].node.featuredMedia.altText" />
@@ -47,10 +48,45 @@
                 <span>Read More</span>
               </h5>
             </g-link>
-            <g-link :to="$page.prevPost.edges[0].node.categories[0].path">
+            <g-link :to="$page.nextPost.edges[0].node.categories[0].path">
               <h6>{{ $page.nextPost.edges[0].node.categories[0].title }}</h6>
             </g-link>
           </article>
+
+          <article v-if="$page.nextPost.edges.length == 0">
+            <g-link :to="$page.prevPost.edges[1].node.path" class="image">
+              <div class="image">
+                <img :src="$page.prevPost.edges[1].node.featuredMedia.sourceUrl" :alt="$page.prevPost.edges[1].node.featuredMedia.altText" />
+              </div>
+            </g-link>
+            <g-link :to="$page.prevPost.edges[1].node.path" class="desc">
+              <h5>
+                {{ $page.prevPost.edges[1].node.title }}
+                <span>Read More</span>
+              </h5>
+            </g-link>
+            <g-link :to="$page.prevPost.edges[1].node.categories[0].path">
+              <h6>{{ $page.prevPost.edges[1].node.categories[0].title }}</h6>
+            </g-link>
+          </article>
+
+          <article v-if="$page.prevPost.edges.length == 0">
+            <g-link :to="$page.nextPost.edges[1].node.path" class="image">
+              <div class="image">
+                <img :src="$page.nextPost.edges[1].node.featuredMedia.sourceUrl" :alt="$page.nextPost.edges[1].node.featuredMedia.altText" />
+              </div>
+            </g-link>
+            <g-link :to="$page.nextPost.edges[1].node.path" class="desc">
+              <h5>
+                {{ $page.nextPost.edges[1].node.title }}
+                <span>Read More</span>
+              </h5>
+            </g-link>
+            <g-link :to="$page.nextPost.edges[1].node.categories[0].path">
+              <h6>{{ $page.nextPost.edges[1].node.categories[0].title }}</h6>
+            </g-link>
+          </article>
+          
         </div>
       </div>
     </div>
@@ -75,7 +111,7 @@ query WordPressPost ($id: ID!, $date: Date!) {
       path
     }
   }
-  prevPost: allWordPressPost(filter: {date: { lt: $date}}, limit: 1) {
+  prevPost: allWordPressPost(filter: {date: { lt: $date}}, limit: 2) {
       edges {
         node {
           title
@@ -93,7 +129,7 @@ query WordPressPost ($id: ID!, $date: Date!) {
         }
       }
     }
-    nextPost: allWordPressPost(filter: {date: { gt: $date}}, limit: 1) {
+    nextPost: allWordPressPost(filter: {date: { gt: $date}}, limit: 2) {
       edges {
         node {
           title
@@ -308,9 +344,9 @@ export default {
           }
         }
         a.image {
+          padding: 0;
           @media screen and (max-width: $breakpoint-sm) {
-            flex-grow: 1;
-            padding: 0;
+            width: 100%;
           }
         }
         .image {

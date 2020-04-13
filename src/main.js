@@ -1,7 +1,7 @@
 import DefaultLayout from '~/layouts/Default.vue'
 import VScrollLock from 'v-scroll-lock'
 
-export default function (Vue, {head}) {
+export default function (Vue, {router, head, isClient}) {
   Vue.component('Layout', DefaultLayout);
   Vue.use(VScrollLock)
 
@@ -36,6 +36,22 @@ export default function (Vue, {head}) {
       store.searchOpen = false;
     }
   }
+
+    // overwrite the scrollBehavior function with custom one
+    router.options.scrollBehavior = function (to, from, savedPosition) {
+      if (savedPosition) {
+        return savedPosition;
+      }
+      if (to.hash) {
+        return {
+          selector: to.hash
+        };
+      }
+      return {
+        x: 0,
+        y: 0
+      }
+    }
 
   Vue.prototype.$store = store;
   Vue.prototype.$actions = actions;

@@ -11,7 +11,7 @@
 
         <ul class="post-list" v-if="this.showSearchResults == true">
           <div class="result-count" v-if="this.resultQty != 0">{{ this.resultQty }} post<span v-if="this.resultQty > 1">s</span> found for "{{ this.searchTerm }}"</div>
-          <li v-for="post in searchResultPosts" class="post" :key="post.id"> 
+          <li v-for="post in searchResultPosts" class="post" :key="post.id" @click="$actions.closeSearch()"> 
             <div class="post-info">
               <g-link :to="post.path"><h4>{{post.title}}</h4></g-link>
               <g-link :to="post.path" class="read-more">Read More</g-link> 
