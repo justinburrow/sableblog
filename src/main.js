@@ -47,10 +47,7 @@ export default function (Vue, {router, head, isClient}) {
           selector: to.hash
         };
       }
-      return {
-        x: 0,
-        y: 0
-      }
+      document.body.scrollTop = 0;
     }
 
   Vue.prototype.$store = store;
