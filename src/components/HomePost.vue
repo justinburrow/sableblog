@@ -62,7 +62,7 @@ export default {
     text-decoration: none;
     .image {
       width: 60%;
-      max-height: 575px;
+      max-height: 630px;
       overflow: hidden;
       position: relative;
       img {
@@ -103,11 +103,15 @@ export default {
       h1 {
         font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;
         text-transform: uppercase;
+        text-align: left;
         font-size: 60px;
         letter-spacing: 1px;
         line-height: 1;
         padding: 0;
         margin: 0;
+        @media screen and (max-width: $breakpoint-xl) {
+          font-size: 4vw;
+        }
         @media screen and (max-width: $breakpoint-md) {
           font-size: 7vw;
           letter-spacing: .2vw;
@@ -126,13 +130,19 @@ export default {
       }
 
       .excerpt {
-          line-height: 1.6;
-          font-size: 15px;
-          @media screen and (max-width: $breakpoint-md) {
-            font-size: 3.1vw;
-            margin-bottom: 2vw;
-          }
+        line-height: 1.6;
+        font-size: 15px;
+        @media screen and (max-width: $breakpoint-md) {
+          font-size: 3.1vw;
+          margin-bottom: 2vw;
         }
+      }
+
+      p.read-more {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
 
       a {
         color: white;

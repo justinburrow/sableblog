@@ -7,7 +7,7 @@
             <g-link :to="post.node.path"><g-image :src="post.node.featuredMedia.sourceUrl" v-on:click="hideDropdown()"></g-image></g-link>
           </div>
           <div class="post-info">
-           <g-link :to="post.node.path"><h4>{{post.node.title}}</h4></g-link>
+           <g-link :to="post.node.path" class="title"><h4>{{post.node.title}}</h4></g-link>
             <g-link :to="post.node.path" class="read-more">Read More</g-link> 
           </div>
         </li>
@@ -166,7 +166,7 @@ export default {
         h3 {
           position: absolute;
           top: 50%;
-          left: 50%;
+          left: 25%;
           transform: translate(-50%);
           font-size: 26px;
           letter-spacing: 3px;
@@ -195,6 +195,13 @@ export default {
       a {
         text-decoration: none;
         flex-grow: 1;
+        &.title {
+          width: 60%;
+        }
+        &.read-more {
+          flex-grow: 0;
+          margin-left: 10px;
+        }
       }
       h4 {
         font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;

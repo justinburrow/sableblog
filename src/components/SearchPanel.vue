@@ -168,6 +168,10 @@ export default {
       }
     }
     .container {
+      @media screen and (max-width: $breakpoint-xl) {
+        margin-top: 6vw;
+        padding: 0 4vw;
+      }
       @media screen and (max-width: $breakpoint-lg) {
         margin-top: 12vw;
         padding: 0 4vw;
@@ -188,6 +192,7 @@ export default {
           padding: 1vw 0;
           color: white;
           letter-spacing: .3vw;
+          font-size: 18px;
           @media screen and (max-width: $breakpoint-lg) {
             font-size: 4.5vw;
           }

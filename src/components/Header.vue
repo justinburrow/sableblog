@@ -212,6 +212,7 @@ query {
               padding-right: 50px;
               input {
                 width: 100%;
+                padding: 5px;
               }
             }
 
