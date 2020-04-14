@@ -2,14 +2,14 @@
   <Layout>
     <div class="page">
       <h1 v-html="$page.wordPressPage.title"/>
-      <div class="post-image">
+      <div class="post-image" v-if="$page.wordPressPage.featuredMedia">
        <img
         v-if="$page.wordPressPage.featuredMedia"
         :src="$page.wordPressPage.featuredMedia.sourceUrl"
         :alt="$page.wordPressPage.featuredMedia.altText"
       />
       </div>
-      <div class="page-details">
+      <div class="page-details" v-if="$page.wordPressPage.featuredMedia">
         <span class="author" v-if="$page.wordPressPage.featuredMedia">Photography: {{$page.wordPressPage.featuredMedia.caption | removeHTML}}</span>
       </div>
       <div class="page-content" v-html="$page.wordPressPage.content"></div>
