@@ -91,10 +91,6 @@ export default {
         padding: 3vw 5vw;
         border: 3px solid white;
       }
-      @media screen and (max-width: $breakpoint-md) {
-        text-align: center;
-      }
-
       a {
         text-decoration: none;
         display: block;
@@ -124,7 +120,7 @@ export default {
         font-size: 14px;
         margin-bottom: 20px;
         @media screen and (max-width: $breakpoint-md) {
-          font-size: 2.5vw;
+          font-size: 3vw;
           margin-bottom: 3vw;
         }
       }
@@ -135,12 +131,16 @@ export default {
         @media screen and (max-width: $breakpoint-md) {
           font-size: 3.1vw;
           margin-bottom: 2vw;
+          text-align: left;
         }
       }
 
       p.read-more {
         &:hover {
           text-decoration: underline;
+        }
+        @media screen and (max-width: $breakpoint-md) {
+          font-size: 4vw;
         }
       }
 
@@ -154,7 +154,7 @@ export default {
           text-decoration: underline;
           font-weight: bold;
           @media screen and (max-width: $breakpoint-md) {
-            font-size: 2.8vw;
+            font-size: 2.4vw;
           }
         }
       }
