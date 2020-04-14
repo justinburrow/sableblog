@@ -1,12 +1,14 @@
 <template>
   <Layout>
-    <h1>Category: {{ $page.wordPressCategory.title }} </h1>
-    <ul class="post-list">
-      <li v-for="{ node } in $page.wordPressCategory.belongsTo.edges" :key="node.id">
-        <Post :post="node" />
-      </li>
-    </ul>
-    <Pager :info="$page.wordPressCategory.belongsTo.pageInfo"/>
+    <div class="category">
+      <h1>Category: {{ $page.wordPressCategory.title }}</h1>
+      <ul class="post-list">
+        <li v-for="{ node } in $page.wordPressCategory.belongsTo.edges" :key="node.id">
+          <HomePost :post="{ node }" />
+        </li>
+      </ul>
+      <Pager :info="$page.wordPressCategory.belongsTo.pageInfo"/>
+    </div>
   </Layout>
 </template>
 
@@ -26,6 +28,11 @@ query WordPressCategory ($id: ID!, $page: Int) {
             title
             path
             excerpt
+            featuredMedia {
+              sourceUrl
+              caption
+              altText
+            }
         	}
         }
       }
@@ -36,12 +43,12 @@ query WordPressCategory ($id: ID!, $page: Int) {
 
 <script>
 import { Pager } from 'gridsome'
-import Post from '~/components/Post.vue'
+import HomePost from '~/components/HomePost.vue'
 
 export default {
   components: {
     Pager,
-    Post
+    HomePost
   },
   metaInfo () {
     return {
@@ -50,3 +57,92 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.category {
+  h1 {
+    font-family: 'acumin-pro-extra-condensed';
+    font-size: 48px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  a {
+    color: black;
+  }
+}
+.post-list {
+    margin: 60px 0 0 0;
+    padding: 0;
+    list-style-type: none;
+    width: 100%;
+    @media screen and (max-width: $breakpoint-md) {
+      margin-top: 7vw;
+    }
+    li {
+      margin: 0;
+      padding: 0;
+      margin-bottom: 80px;
+      padding-bottom: 80px;
+      border-bottom: 1px solid black;
+      @media screen and (max-width: $breakpoint-lg) {
+        margin-bottom: 7vw;
+        padding-bottom: 7vw;
+      }
+      &:nth-child(1) {
+         article {
+          .content {
+            background: #1d4a45;
+            color: white;
+            a {
+              color: white;
+            }
+            .post-icon {
+              filter: brightness(100);
+            }
+          }
+        }
+      }
+      &:nth-child(2) {
+         article {
+          .content {
+            background: #f1f1f1;
+            color: black;
+            a {
+              color: black;
+            }
+            
+          }
+        }
+      }
+      &:nth-child(3) {
+         article {
+          .content {
+            background: #4d4d4f;
+            color: white;
+            a {
+              color: white;
+            }
+            .post-icon {
+              filter: brightness(100);
+            }
+          }
+        }
+      }
+      &:nth-child(4) {
+         article {
+          .content {
+            background: #c0bdbd;
+            color: black;
+            a {
+              color: black;
+            }
+          }
+        }
+      }
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+</style>

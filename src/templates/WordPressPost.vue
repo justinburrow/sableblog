@@ -1,7 +1,9 @@
 <template>
   <Layout>
     <div class="post">
-      <h2 v-html="$page.wordPressPost.categories[0].title"></h2>
+      <g-link :to="$page.wordPressPost.categories[0].path" class="category">
+        <h2 v-html="$page.wordPressPost.categories[0].title"></h2>
+      </g-link>
       <h1 v-html="$page.wordPressPost.title"/>
       <div class="post-image">
        <img
@@ -143,6 +145,7 @@ query WordPressPost ($id: ID!, $date: Date!) {
           categories {
             id
             title
+            path
           }
         }
       }
@@ -185,6 +188,15 @@ export default {
     @media screen and (max-width: $breakpoint-lg) {
       padding-bottom: 10vw;
       width: 100%;
+    }
+    a {
+      color: black;
+      &.category {
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
   h2 {

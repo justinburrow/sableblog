@@ -1,11 +1,15 @@
 <template>
-  <div class="home-featured" :style="{ backgroundImage: `url(${this.$static.newestPost.edges[0].node.featuredMedia.sourceUrl})`}">
-    <div class="post-info">
-      <p class="category">{{this.$static.newestPost.edges[0].node.categories[0].slug}}</p>
-      <h2><g-link :to="this.$static.newestPost.edges[0].node.path">{{this.$static.newestPost.edges[0].node.title}}</g-link></h2>
-      <p class="read-more"><g-link :to="this.$static.newestPost.edges[0].node.path">Read More</g-link></p>
-    </div>  
-  </div>
+  <g-link :to="$static.newestPost.edges[0].node.path">
+      <div class="home-featured" :style="{ backgroundImage: `url(${$static.newestPost.edges[0].node.featuredMedia.sourceUrl})`}">
+        <div class="post-info">
+          <p class="category">
+            <g-link :to="$static.newestPost.edges[0].node.categories[0].path">{{$static.newestPost.edges[0].node.categories[0].slug}}</g-link>
+          </p>
+          <h2>{{$static.newestPost.edges[0].node.title}}</h2>
+          <p class="read-more">Read More</p>
+        </div>  
+    </div>
+  </g-link>
 </template>
 
 <static-query>
@@ -23,6 +27,7 @@
         categories{
           slug
           id
+          path
         }
       }
     }
@@ -52,6 +57,13 @@ export default {
     margin-bottom: 45px;
     @media screen and (max-width: $breakpoint-md) {
       height: 50vh;
+    }
+    a {
+      color: white;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
     }
     .post-info {
       width: 350px;
