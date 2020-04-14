@@ -15,6 +15,12 @@ module.exports = {
   siteDescription: "The S'able Labs Blog",
 
   templates: {
+    WordPressPage: [
+      {
+        path: '/pages/:slug',
+        component: './src/templates/WordPressPage.vue'
+      }
+    ],
     WordPressCategory: '/category/:slug', // adds route for "category" post type (Optional)
     WordPressPost: [
       {
@@ -36,17 +42,6 @@ module.exports = {
       options: {
         baseUrl: 'http://justinburrow.com/sb-blog/', // required
         typeName: 'WordPress', // GraphQL schema name (Optional)
-        customEndpoints: [
-          {
-            typeName: 'TopCategories',
-            route: '/wp/v2/categories',
-          },
-          {
-            typeName: 'Posts',
-            route: '/wp/v2/posts',
-            normalize: true,
-          },
-        ],
       },
     }
   ],

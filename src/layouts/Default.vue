@@ -12,11 +12,26 @@
       <p class="subtext">Sign up for updates</p>
       <EmailSignup />
       <p class="disclaimer">
-        By clicking "subscribe," you agree to receive emails from S’able Labs and accept our<br />web terms of use and privacy and cookie policy.
+        By clicking "subscribe," you agree to receive emails from S’able Labs and accept our<br />web terms of use and <g-link :to="$static.privacyPolicy.edges[0].node.path">privacy and cookie policy</g-link>.
       </p>
     </footer>
   </div>
 </template>
+
+<static-query>
+query {
+  privacyPolicy: allWordPressPage(filter: {slug: {eq: "privacy-policy"}}) {
+    edges {
+      node {
+        id
+        title
+        slug
+        path
+      }
+    }
+  }
+}
+</static-query>
 
 <script>
 import Header from '~/components/Header.vue'
@@ -60,6 +75,9 @@ export default {
     padding: 50px 0;
     color: white;
     text-align: center;
+    a {
+      color: white;
+    }
     h6 {
       font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;
       font-size: 50px;

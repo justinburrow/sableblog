@@ -9,6 +9,11 @@
     </section>
     <section class="instagram">
       <h3>Join the Movement</h3>
+      <div class="instagram">
+        <ClientOnly>  
+          <div id="flockler-embed-17177230bd60efd482bfb4b945f55ff2"></div>
+        </ClientOnly>
+    </div>
     </section>
   </Layout>
 </template>
@@ -126,6 +131,7 @@ export default {
     }
   }
   .instagram {
+    margin-bottom: 80px;
     h3 {
       background: #005851;
       width: 645px;

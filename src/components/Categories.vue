@@ -14,7 +14,7 @@
 
 <static-query>
     query {
-        categories: allWordPressCategory {
+        categories: allWordPressCategory(order: ASC) {
             edges {
                 node {
                     id

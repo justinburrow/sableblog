@@ -192,7 +192,6 @@ export default {
           padding: 1vw 0;
           color: white;
           letter-spacing: .3vw;
-          font-size: 18px;
           @media screen and (max-width: $breakpoint-lg) {
             font-size: 4.5vw;
           }
