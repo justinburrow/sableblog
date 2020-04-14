@@ -47,7 +47,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .home-featured {
     background-size: cover;
     background-position: center center;
@@ -63,6 +63,9 @@ export default {
       text-decoration: none;
       &:hover {
         text-decoration: underline;
+      }
+      &:visited {
+        color: white;
       }
     }
     .post-info {

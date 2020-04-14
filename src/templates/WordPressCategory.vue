@@ -58,7 +58,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .category {
   h1 {
     font-family: 'acumin-pro-extra-condensed';
