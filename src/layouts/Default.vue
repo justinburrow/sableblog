@@ -147,7 +147,7 @@ export default {
           align-self: center;
           color: white;
           img {
-            filter: brightness(100);
+            filter: brightness(100) saturate(0);
           }
         }
       }
