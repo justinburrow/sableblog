@@ -107,6 +107,7 @@ export default {
       margin-top: 18vw;
       text-transform: uppercase;
       h2 {
+        text-align: left;
         font-family: 'acumin-pro-extra-condensed';
         letter-spacing: .3vw;
         color: white;

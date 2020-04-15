@@ -12,15 +12,20 @@
         <ul class="post-list" v-if="this.showSearchResults == true">
           <div class="result-count" v-if="this.resultQty != 0">{{ this.resultQty }} post<span v-if="this.resultQty > 1">s</span> found for "{{ this.searchTerm }}"</div>
           <li v-for="post in searchResultPosts" class="post" :key="post.id" @click="$actions.closeSearch()"> 
-            <div class="post-info">
-              <g-link :to="post.path"><h4>{{post.title}}</h4></g-link>
-              <g-link :to="post.path" class="read-more">Read More</g-link> 
-            </div>
-            <div class="image">
-              <g-link :to="post.path"><g-image :src="post.featuredMedia.sourceUrl"></g-image></g-link>
-            </div>
+            <article>
+              <g-link :to="post.path" class="image">
+                <div class="image">
+                  <g-image :src="post.featuredMedia.sourceUrl" :alt="post.featuredMedia.altText"></g-image>
+                </div>
+              </g-link  >
+              <g-link :to="post.path" class="desc">
+                <h5>
+                  {{ post.title }}
+                </h5>
+              </g-link>
+            </article>
           </li>
-          <li v-if="this.searchResultPosts == 0">Sorry, no posts were found</li>
+          <li class="null" v-if="this.resultQty == 0">Sorry, no matching posts were found</li>
         </ul>
 
       </div>
@@ -217,93 +222,69 @@ export default {
         font-size: 5vw;
       }
     }
-    .post-list {
-      margin: 0;
-      padding: 0;
-      li {
-        width: 100%;
-        margin: 0 auto;
-        display: block;
+    .post-list li {
+      display: flex;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      flex-direction: row;
+      margin-bottom: 8vw;
+      &.null {
         color: white;
-        @media screen and (max-width: $breakpoint-lg) {
-          font-size: 3vw;
+        display: block;
+        margin-top: 2vw;
+        font-size: 4vw;
+        text-transform: uppercase;
+        font-family: acumin-pro-extra-condensed;
+        letter-spacing: 0.2vw;
+      }
+      article {
+        width: 100%;
+      }
+      a {
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+          color: #b6b6b6;
         }
-        @media screen and (max-width: $breakpoint-md) {
-          font-size: 5vw;
-        }
-        &.post {
-          display: flex;
-          .post-info {
-            flex: 1;
-            margin: 2vw 0;
-            padding: 3vw;
-            h4 {
-              margin: 0;
-              padding: 0;
-              font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;
-              text-transform: uppercase;
-              font-size: 4vw;
-            }
-            a {
-              text-decoration: none;
-              &.read-more {
-                text-decoration: underline;
-                @media screen and (max-width: $breakpoint-lg) {
-                  font-size: 2vw;
-                }
-                @media screen and (max-width: $breakpoint-md) {
-                  font-size: 5vw;
-                }
-              }
-            }
-            &:nth-child(1n) {
-              background: #1d4a45;
-              color: white;
-              a {
-                color: white;
-              }
-            }
-            &:nth-child(2n) {
-              background: #f1f1f1;
-              color: black;
-              a {
-                color: black;
-              }
-            }
-            &:nth-child(3n) {
-              background: #4d4d4f;
-              color: white;
-              a {
-                color: white;
-              }
-            }
-            &:nth-child(4n) {
-              background: #c0bdbd;
-              color: black;
-              a {
-                color: black;
-              }
-            }
-          }
+        a.image {
+          padding: 0;
+          width: 100%;
         }
         .image {
-          width: 40%;
-        }
-        .image a {
-          display: block;
           position: relative;
-          padding-top: 80%;
           width: 100%;
+          padding-top: 57%;
           img {
-            object-fit: cover;
             position: absolute;
             top: 0;
             left: 0;
-            height: 100%;
             width: 100%;
+            height: 100%;
+            object-fit: cover;
           }
+        }
+        a.desc {
+          flex-grow: 1; 
+        }
+        h5 {
+          margin: 0;
+          background: black;
+          color: white;
+          margin-top: 2vw;
+          font-size: 4vw;
+          text-transform: uppercase;
+          justify-content: space-between;
+          font-family: acumin-pro-extra-condensed;
+          line-height: 1.2;
+          letter-spacing: .2vw;
+          height: 100%;
+          align-items: center;
         }
       }
     }
+
+
   }
 </style>
