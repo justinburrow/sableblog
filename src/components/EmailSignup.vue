@@ -48,6 +48,7 @@ export default {
     padding: 15px;
     font-size: 20px;
     flex-grow: 1;
+    border-radius: 0;
     &::placeholder {
       color: #b3b3b3;
     }
@@ -63,6 +64,7 @@ export default {
     border: 0;
     background: linear-gradient(0deg, #18413c 50%, #224c45 50%);
     color: white;
+    border-radius: 0;
     &:hover {
       cursor: pointer;
     }
