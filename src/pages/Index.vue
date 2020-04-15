@@ -142,10 +142,12 @@ export default {
       padding: 8px 0 6px 0;
       color: white;
       letter-spacing: 1px;
+      line-height: 1; 
       @media screen and (max-width: $breakpoint-md) {
-        padding: 2vw auto 5vw;
+        padding: 2vw 1vw 3vw 1vw;
         line-height: 1;
         width: 100%;
+        margin-bottom: 2vw;
       }
     }
   }

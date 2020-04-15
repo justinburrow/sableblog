@@ -23,9 +23,15 @@
             </div>
 
             <ul class="social">
-              <li><a href="#"><img src="~@/assets/images/instagram.svg" width="20" alt="S'able Labs Instagram"></a></li>
-              <li><a href="#"><img src="~@/assets/images/facebook.svg" width="10" alt="S'able Labs Facebook"></a></li>
-              <li><a href="#"><img src="~@/assets/images/twitter.svg" width="20" alt="S'able Labs Twitter"></a></li>
+              <li>
+                <a href="https://www.instagram.com/sable.labs"><img src="~@/assets/images/instagram.svg" width="20" alt="S'able Labs Instagram"></a>
+              </li>
+              <li>
+                <a href="https://business.facebook.com/sablelabs-104616947794065/"><img src="~@/assets/images/facebook.svg" width="10" alt="S'able Labs Facebook"></a>
+              </li>
+              <li>
+                <a href="https://twitter.com/sablelabs"><img src="~@/assets/images/twitter.svg" width="20" alt="S'able Labs Twitter"></a>
+              </li>
             </ul>
           </div>
 
