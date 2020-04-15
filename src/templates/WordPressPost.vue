@@ -33,7 +33,8 @@
                 <span>Read More</span>
               </h5>
             </g-link>
-            <g-link :to="$page.prevPost.edges[0].node.categories[0].path">
+            <g-link :to="$page.prevPost.edges[0].node.categories[0].path" class="cat-direction">
+              <img src="~@/assets/images/arrow.svg" alt="arrow" />
               <h6>{{ $page.prevPost.edges[0].node.categories[0].title }}</h6>
             </g-link>
           </article>
@@ -50,7 +51,8 @@
                 <span>Read More</span>
               </h5>
             </g-link>
-            <g-link :to="$page.nextPost.edges[0].node.categories[0].path">
+            <g-link :to="$page.nextPost.edges[0].node.categories[0].path" class="cat-direction">
+              <img src="~@/assets/images/arrow.svg" alt="arrow" />
               <h6>{{ $page.nextPost.edges[0].node.categories[0].title }}</h6>
             </g-link>
           </article>
@@ -67,7 +69,8 @@
                 <span>Read More</span>
               </h5>
             </g-link>
-            <g-link :to="$page.prevPost.edges[1].node.categories[0].path">
+            <g-link :to="$page.prevPost.edges[1].node.categories[0].path" class="cat-direction">
+              <img src="~@/assets/images/arrow.svg" alt="arrow" />
               <h6>{{ $page.prevPost.edges[1].node.categories[0].title }}</h6>
             </g-link>
           </article>
@@ -84,7 +87,8 @@
                 <span>Read More</span>
               </h5>
             </g-link>
-            <g-link :to="$page.nextPost.edges[1].node.categories[0].path">
+            <g-link :to="$page.nextPost.edges[1].node.categories[0].path" class="cat-direction">
+              <img src="~@/assets/images/arrow.svg" alt="arrow" />
               <h6>{{ $page.nextPost.edges[1].node.categories[0].title }}</h6>
             </g-link>
           </article>
@@ -403,6 +407,28 @@ export default {
             letter-spacing: 0;
             @media screen and (max-width: $breakpoint-md) {
               display: none;
+            }
+          }
+        }
+        .cat-direction {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: none;
+          justify-content: space-between;
+          width: 100%;
+          @media screen and (max-width: $breakpoint-md) {
+            display: none;
+          }
+          img {
+            align-self: center;
+            margin-top: 10px;
+          }
+        }
+        &:nth-child(2) {
+          .cat-direction {
+            flex-direction: row-reverse;
+            img {
+              transform: rotate(180deg);
             }
           }
         }

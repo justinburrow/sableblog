@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="54px" height="10px" viewBox="0 0 54 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>Group 6</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="7.1752 4.5137 53.606 4.5137 53.606 5.5137 7.1752 5.5137"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-6" transform="translate(0.000000, -1.000000)">
+            <g id="Group-5">
+                <g id="Group-3" transform="translate(0.000000, 0.972660)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <line x1="53.6062" y1="5.0137" x2="7.1752" y2="5.0137" id="Stroke-1" stroke="#CBCBCB"></line>
+                    <polygon id="Fill-4" fill="#CBCBCB" points="8.6346 0.0271 -0.0004 5.0141 8.6346 10.0001"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
