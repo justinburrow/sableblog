@@ -193,6 +193,8 @@ query {
               .categories {
                 width: calc(50% - 140px);
                 margin-left: 80px;
+                position: relative;
+                top: 2px;
                 ul {
                 display: flex;
                 justify-content: space-between;
@@ -219,13 +221,16 @@ query {
               input {
                 width: 100%;
                 padding: 5px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-size: 14px;
               }
             }
 
             .social {
               display: flex;
               justify-content: flex-end;
-              align-self: flex-end;
+              align-self: center;
               margin: 0;
               padding: 0;
               height: 100%;

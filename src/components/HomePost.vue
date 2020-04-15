@@ -6,8 +6,8 @@
         <img :src="post.node.featuredMedia.sourceUrl" :alt="post.node.featuredMedia.altText" />
       </div>
       <div class="content">
-        <h2 v-for="(cat, i) in post.node.categories" :key="cat.id">
-          <span v-if="i == 0">{{cat.title}}</span>
+        <h2 v-for="(cat, i) in post.node.categories" :key="i">
+          <g-link :to="cat.path"><span v-if="i == 0">{{cat.title}}</span></g-link>
         </h2>
         <h1 v-html="post.node.title" />
         <p class="excerpt">

@@ -44,6 +44,7 @@
         }
         categories {
           id
+          path
         }
       }
     }
@@ -89,6 +90,9 @@ export default {
         if (searchTerm >=3) {
           this.showSearchResults = true;
         }
+        if (searchTerm == '') {
+          this.hideDropdown();  
+        }
       }
     },
     methods: {
@@ -122,6 +126,7 @@ export default {
     left: -80px;
     top: 43px;
     z-index: 100;
+    min-height: 450px;
     &.hide {
       opacity: 0;
       pointer-events: none;
@@ -176,7 +181,7 @@ export default {
       &.search {
         justify-content: space-between;
         li {
-          width: 48%;
+          width: 24%;
           h3 {
             font-size: 16px;
             position: relative;

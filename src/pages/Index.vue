@@ -29,7 +29,9 @@ query Home {
         date
         excerpt
         categories {
+          id
           title
+          path
         }
         featuredMedia {
           sourceUrl
