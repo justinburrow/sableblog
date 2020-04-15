@@ -1,7 +1,12 @@
 <template>
     <div class="dropdown" ref="dropdown" :class="showDropdown ? 'show' : 'hide'" @mouseleave="hideDropdown()"> 
       <ul class="items" v-if="this.showSearchResults == false">
-        <li class="title"><h3 class="title">{{ currentCatTitle }}</h3></li>
+        <li class="title">
+          <g-link :to="this.catPath" class="cat-title">
+            <h2>{{ currentCatTitle }}</h2>
+            <p>View All Posts</p>
+          </g-link>
+        </li>
         <li v-for="post in catPosts" class="post" :key="post.node.id">
           <div class="image">
             <g-link :to="post.node.path"><g-image :src="post.node.featuredMedia.sourceUrl" v-on:click="hideDropdown()"></g-image></g-link>
@@ -55,7 +60,7 @@
 <script>
 export default {
     name: 'Dropdown',
-    props: ['currentCat', 'currentCatTitle', 'dropdownState', 'searchResults', 'showSearch', 'searchTerm'],
+    props: ['currentCat', 'currentCatTitle', 'catPath', 'dropdownState', 'searchResults', 'showSearch', 'searchTerm'],
     data() {
         return {
           catPosts: [],
@@ -64,7 +69,8 @@ export default {
           results: [],
           showSearchResults: this.showSearch,
           searchingBy: this.searchTerm,
-          hasResults: false
+          hasResults: false,
+          path: this.catPath
         }
     },
     watch: {
@@ -167,6 +173,28 @@ export default {
           top: 0;
           left: 0;
           object-fit: cover;
+        }
+        a.cat-title {
+          position: absolute;
+          top: 50%;
+          left: 25%;
+          transform: translate(-50%);
+          font-size: 26px;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color: white;
+          text-decoration: none;
+          h2 {
+            margin: 0;
+            padding: 0;
+            font-size: 30 px;
+          }
+          p {
+            margin: 5px 0 0 0;
+            letter-spacing: 0;
+            font-size: 12px;
+            text-decoration: underline;
+          }
         }
         h3 {
           position: absolute;

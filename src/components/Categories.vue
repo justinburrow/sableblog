@@ -2,12 +2,12 @@
   <div class="category-holder">
     <ul class="categories">
         <li v-for="cat in $static.categories.edges" :key="cat.id">
-          <div class="header-cat" @mouseover="showCatPosts(cat.node.id, cat.node.title); showDropdown()">
+          <div class="header-cat" @mouseover="showCatPosts(cat.node.id, cat.node.title, cat.node.path); showDropdown()">
               <div class="title">{{cat.node.title}}</div>
           </div>  
         </li>
     </ul>
-    <Dropdown :current-cat="this.currentCat" :current-cat-title="this.currentCatTitle" :dropdown-state="this.dropdownState" @hideDropdown="hideDropdown()" :search-results="this.searchResultPosts" :show-search="showSearch" :search-term="query"/>
+    <Dropdown :current-cat="this.currentCat" :current-cat-title="this.currentCatTitle" :cat-path="this.catPath" :dropdown-state="this.dropdownState" @hideDropdown="hideDropdown()" :search-results="this.searchResultPosts" :show-search="showSearch" :search-term="query"/>
   </div>
     
 </template>
@@ -19,6 +19,7 @@
                 node {
                     id
                     title
+                    path
                 }
             }
         }
@@ -40,18 +41,20 @@ export default {
         dropdownState: false,
         searchResultPosts: [],
         query: this.searchTerm,
-        showSearch: false
+        showSearch: false,
+        catPath: ''
       }
     },
     methods: {
       showDropdown(catId, catTitle) {
         this.dropdownState = true;
       },
-      showCatPosts(catId, catTitle) {
+      showCatPosts(catId, catTitle, path) {
         this.showSearch = false;
         this.currentCat = catId;
         this.currentCatTitle = catTitle;
         this.dropdownState = true;
+        this.catPath = path;
       },
       hideDropdown: function() {
         this.dropdownState = false;
