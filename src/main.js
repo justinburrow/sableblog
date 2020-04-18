@@ -17,23 +17,32 @@ export default function (Vue, {router, head, isClient}) {
 
   const store = Vue.observable({
     menuOpen: false,
-    searchOpen: false
+    searchOpen: false,
+    dropdownShow: false
   });
 
   const actions = {
     openMenu() {
       store.menuOpen = true;
       store.searchOpen = false;
+      store.dropdownShow = false;
     },
     closeMenu() {
       store.menuOpen = false;
     },
     openSearch() {
       store.searchOpen = true;
-      store.menuOpen = false
+      store.menuOpen = false;
+      store.dropdownShow = false;
     },
     closeSearch() {
       store.searchOpen = false;
+    },
+    showDropdown() {
+      store.dropdownShow = true;
+    },
+    hideDropdown() {
+      store.dropdownShow = false;
     }
   }
 

@@ -2,12 +2,12 @@
   <div class="category-holder">
     <ul class="categories">
         <li v-for="cat in $static.categories.edges" :key="cat.id">
-          <div class="header-cat" @mouseover="showCatPosts(cat.node.id, cat.node.title, cat.node.path); showDropdown()">
-              <div class="title">{{cat.node.title}}</div>
+          <div class="header-cat" @mouseover="showCatPosts(cat.node.id, cat.node.title, cat.node.path)">
+              <div class="title" @click="$actions.hideDropdown()"><g-link :to="cat.node.path">{{cat.node.title}}</g-link></div>
           </div>  
         </li>
     </ul>
-    <Dropdown :current-cat="this.currentCat" :current-cat-title="this.currentCatTitle" :cat-path="this.catPath" :dropdown-state="this.dropdownState" @hideDropdown="hideDropdown()" :search-results="this.searchResultPosts" :show-search="showSearch" :search-term="query"/>
+    <Dropdown :current-cat="this.currentCat" :current-cat-title="this.currentCatTitle" :cat-path="this.catPath" :dropdown-state="$store.dropdownShow" @hideDropdown="$actions.hideDropdown()" :search-results="this.searchResultPosts" :show-search="showSearch" :search-term="query"/>
   </div>
     
 </template>
@@ -38,7 +38,6 @@ export default {
       return {
         currentCat: Number,
         currentCatTitle: '',
-        dropdownState: false,
         searchResultPosts: [],
         query: this.searchTerm,
         showSearch: false,
@@ -46,41 +45,34 @@ export default {
       }
     },
     methods: {
-      showDropdown(catId, catTitle) {
-        this.dropdownState = true;
-      },
       showCatPosts(catId, catTitle, path) {
         this.showSearch = false;
         this.currentCat = catId;
         this.currentCatTitle = catTitle;
-        this.dropdownState = true;
+        this.$actions.showDropdown();
         this.catPath = path;
-      },
-      hideDropdown: function() {
-        this.dropdownState = false;
-      }
+       } 
     },
     watch: {
       searchResults(results) {
         this.searchResultPosts = results;
         if (results.length > 0) {
           this.showSearch = true;
-          this.showDropdown();
+          this.$actions.showDropdown();
         }
       },
      searchTerm(query) {
        this.query = query;
         if (query.length >= 3) {
-          this.showDropdown();
-          this.showSearch = true;
+          this.$actions.showDropdown();
         }
         if (query == '') {
-          this.hideDropdown();
+          this.$actions.hideDropdown();
           this.showSearch = false;
         }
       }
     }
-}
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -101,6 +93,10 @@ export default {
         text-transform: uppercase;
         font-size: 14px;
         position: relative;
+        a {
+          color: black;
+          text-decoration: none;
+        }
         &:after {
           content: '';
           display: block;
