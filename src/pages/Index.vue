@@ -53,9 +53,15 @@ export default {
   },
   metaInfo: {
     title: 'S\'able Labs'
+  },
+  mounted() {
+    let flockler = document.createElement('script');
+    flockler.setAttribute('src', 'https://flockler.embed.codes/KAn5xj');
+    flockler.setAttribute('async', true);
+    document.head.appendChild(flockler);
   }
 }
-</script>
+</script>s
 
 <style lang="scss">
   .post-list {

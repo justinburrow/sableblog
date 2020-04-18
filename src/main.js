@@ -15,11 +15,6 @@ export default function (Vue, {router, head, isClient}) {
     href: "https://use.typekit.net/zmf6fgh.css"
   });
 
-  head.script.push({
-    async: true,
-    src: "https://flockler.embed.codes/KAn5xj"
-  });
-
   const store = Vue.observable({
     menuOpen: false,
     searchOpen: false
