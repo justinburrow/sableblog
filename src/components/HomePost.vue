@@ -52,7 +52,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .home-post a {
+  .home-post {
     display: flex;
     flex-wrap: wrap;
     flex-shrink: 0;
