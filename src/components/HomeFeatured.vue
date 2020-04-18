@@ -1,15 +1,13 @@
 <template>
-  <g-link :to="$static.newestPost.edges[0].node.path">
-      <div class="home-featured" :style="{ backgroundImage: `url(${$static.newestPost.edges[0].node.featuredMedia.sourceUrl})`}">
-        <div class="post-info">
-          <p class="category">
-            <g-link :to="$static.newestPost.edges[0].node.categories[0].path">{{$static.newestPost.edges[0].node.categories[0].slug}}</g-link>
-          </p>
-          <h2>{{$static.newestPost.edges[0].node.title}}</h2>
-          <p class="read-more">Read More</p>
-        </div>  
-    </div>
-  </g-link>
+    <div class="home-featured" :style="{ backgroundImage: `url(${$static.newestPost.edges[0].node.featuredMedia.sourceUrl})`}">
+      <div class="post-info">
+        <p class="category">
+          <g-link :to="$static.newestPost.edges[0].node.categories[0].path">{{$static.newestPost.edges[0].node.categories[0].slug}}</g-link>
+        </p>
+        <g-link :to="$static.newestPost.edges[0].node.path"><h2>{{$static.newestPost.edges[0].node.title}}</h2></g-link>
+        <g-link :to="$static.newestPost.edges[0].node.path"><p class="read-more">Read More</p></g-link>
+      </div>  
+  </div>
 </template>
 
 <static-query>
