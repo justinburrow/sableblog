@@ -1,27 +1,25 @@
 <template>
   <article class="home-post">
-    <g-link :to="post.node.path">
       <div class="details only-mobile">Photography: {{post.node.featuredMedia.caption | removeHTML}}</div>
       <div class="image">
-        <img :src="post.node.featuredMedia.sourceUrl" :alt="post.node.featuredMedia.altText" />
+        <g-link :to="post.node.path"><img :src="post.node.featuredMedia.sourceUrl" :alt="post.node.featuredMedia.altText" /></g-link>
       </div>
       <div class="content">
         <h2 v-for="(cat, i) in post.node.categories" :key="i">
           <g-link :to="cat.path"><span v-if="i == 0">{{cat.title}}</span></g-link>
         </h2>
-        <h1 v-html="post.node.title" />
+        <h1><g-link :to="post.node.path">{{post.node.title}}</g-link></h1>
         <p class="excerpt">
-          <v-clamp class="excerpt only-desktop" :max-lines="8">{{post.node.excerpt | removeHTML}}</v-clamp>
-          <v-clamp class="excerpt only-mobile-tablet" :max-lines="4">{{post.node.excerpt | removeHTML}}</v-clamp>
+          <g-link :to="post.node.path"><v-clamp class="excerpt only-desktop" :max-lines="8">{{post.node.excerpt | removeHTML}}</v-clamp></g-link>
+          <g-link :to="post.node.path"><v-clamp class="excerpt only-mobile-tablet" :max-lines="4">{{post.node.excerpt | removeHTML}}</v-clamp></g-link>
           </p>
         <p class="read-more">
-          Read More 
+          <g-link :to="post.node.path">Read More </g-link>
         </p>
         <p class="date">{{this.formatDate(post.node.date)}}</p>
         <img src="~@/assets/images/post-icon.svg" class="post-icon" />
       </div>
       <div class="details only-desktop">Photography: {{post.node.featuredMedia.caption | removeHTML}}</div>
-    </g-link>
   </article>
 </template>
 
