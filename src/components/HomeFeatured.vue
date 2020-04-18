@@ -4,9 +4,9 @@
         <p class="category">
           <g-link :to="$static.newestPost.edges[0].node.categories[0].path">{{$static.newestPost.edges[0].node.categories[0].slug}}</g-link>
         </p>
-        <g-link :to="$static.newestPost.edges[0].node.path"><h2>{{$static.newestPost.edges[0].node.title}}</h2></g-link>
-        <g-link :to="$static.newestPost.edges[0].node.path"><p class="read-more">Read More</p></g-link>
-      </div>  
+        <h2><g-link :to="$static.newestPost.edges[0].node.path">{{$static.newestPost.edges[0].node.title}}</g-link></h2>
+        <p class="read-more"><g-link :to="$static.newestPost.edges[0].node.path">Read More</g-link></p>
+      </div>
   </div>
 </template>
 
