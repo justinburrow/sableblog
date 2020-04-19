@@ -267,6 +267,7 @@ export default {
       text-align: left;
       margin: 0 0 20px 0;
       padding: 0 0 0 0;
+      font-weight: 400;
       @media screen and (max-width: $breakpoint-lg) {
         margin: 0 0 2vw 0;
         padding: 0;
@@ -275,6 +276,7 @@ export default {
     h2 {
       font-size: 24px;
       margin-bottom: 40px;
+      font-weight: 400;
       @media screen and (max-width: $breakpoint-lg) {
         font-size: 3vw;
         line-height: 1.2;

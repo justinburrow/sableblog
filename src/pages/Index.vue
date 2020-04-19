@@ -147,10 +147,10 @@ export default {
       text-transform: uppercase;
       font-size: 15px;
       text-align: center;
-      padding: 8px 0 6px 0;
+      padding: 8px 0;
       color: white;
       letter-spacing: 1px;
-      line-height: 1; 
+      line-height: 1.2; 
       @media screen and (max-width: $breakpoint-md) {
         padding: 2vw 1vw 3vw 1vw;
         line-height: 1;

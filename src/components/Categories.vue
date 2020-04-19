@@ -92,6 +92,7 @@ export default {
         cursor: pointer;
         text-transform: uppercase;
         font-size: 14px;
+        font-weight: 400;
         position: relative;
         a {
           color: black;

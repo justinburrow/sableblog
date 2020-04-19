@@ -12,7 +12,7 @@
       <p class="subtext">Sign up for updates</p>
       <EmailSignup />
       <p class="disclaimer">
-        By clicking "subscribe," you agree to receive emails from S’able Labs and accept our<br />web terms of use and <g-link :to="$static.privacyPolicy.edges[0].node.path">privacy and cookie policy</g-link>.
+        By clicking "subscribe," you agree to receive emails from S’able Labs and accept our<br /><g-link to="/pages/terms-of-use">web terms of use</g-link> and <g-link :to="$static.privacyPolicy.edges[0].node.path">privacy and cookie policy</g-link>.
       </p>
       <div class="stay-in-touch">
         <h6>Stay In Touch</h6>
@@ -23,8 +23,8 @@
         </div>
         <p>&copy;{{ this.currentYear }} S’able Labs. All Rights Reserved.</p>
         <p class="links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Cookie Policy</a>
+          <g-link to="/pages/privacy-policy">Privacy Policy</g-link>
+          <g-link to="/pages/cookie-policy">Cookie Policy</g-link>
         </p>
       </div>
     </footer>

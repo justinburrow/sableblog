@@ -2,7 +2,7 @@
   <Layout>
     <div class="page">
       <h1 v-html="$page.wordPressPage.title"/>
-      <div class="post-image" v-if="$page.wordPressPage.featuredMedia">
+      <div class="page-image" v-if="$page.wordPressPage.featuredMedia">
        <img
         v-if="$page.wordPressPage.featuredMedia"
         :src="$page.wordPressPage.featuredMedia.sourceUrl"
@@ -13,7 +13,7 @@
         <span class="author" v-if="$page.wordPressPage.featuredMedia">Photography: {{$page.wordPressPage.featuredMedia.caption | removeHTML}}</span>
       </div>
       <div class="page-content" v-html="$page.wordPressPage.content"></div>
-      <div class="post-navigation" v-if="$route.fullPath !== '/pages/privacy-policy/'">
+      <div class="post-navigation" v-if="$page.wordPressPage.acf.pageType != 'Legal'">
         <div class="title">Related Articles</div>
         <div class="articles">
           <article v-if="$page.prevPost.edges.length > 0">
@@ -28,7 +28,8 @@
                 <span>Read More</span>
               </h5>
             </g-link>
-            <g-link :to="$page.prevPost.edges[0].node.categories[0].path">
+            <g-link :to="$page.prevPost.edges[0].node.categories[0].path" class="cat-direction">
+              <img src="~@/assets/images/arrow.svg" alt="arrow" />
               <h6>{{ $page.prevPost.edges[0].node.categories[0].title }}</h6>
             </g-link>
           </article>
@@ -45,7 +46,8 @@
                 <span>Read More</span>
               </h5>
             </g-link>
-            <g-link :to="$page.nextPost.edges[0].node.categories[0].path">
+            <g-link :to="$page.nextPost.edges[0].node.categories[0].path" class="cat-direction">
+              <img src="~@/assets/images/arrow.svg" alt="arrow" />
               <h6>{{ $page.nextPost.edges[0].node.categories[0].title }}</h6>
             </g-link>
           </article>
@@ -62,7 +64,8 @@
                 <span>Read More</span>
               </h5>
             </g-link>
-            <g-link :to="$page.prevPost.edges[1].node.categories[0].path">
+            <g-link :to="$page.prevPost.edges[1].node.categories[0].path" class="cat-direction">
+              <img src="~@/assets/images/arrow.svg" alt="arrow" />
               <h6>{{ $page.prevPost.edges[1].node.categories[0].title }}</h6>
             </g-link>
           </article>
@@ -79,7 +82,8 @@
                 <span>Read More</span>
               </h5>
             </g-link>
-            <g-link :to="$page.nextPost.edges[1].node.categories[0].path">
+            <g-link :to="$page.nextPost.edges[1].node.categories[0].path" class="cat-direction">
+              <img src="~@/assets/images/arrow.svg" alt="arrow" />
               <h6>{{ $page.nextPost.edges[1].node.categories[0].title }}</h6>
             </g-link>
           </article>
@@ -101,6 +105,9 @@ query WordPressPage ($id: ID!, $date: Date!) {
       sourceUrl
       altText
       caption
+    }
+    acf {
+      pageType
     }
   }
   prevPost: allWordPressPost(filter: {date: { lt: $date}}, limit: 2) {
@@ -244,6 +251,7 @@ export default {
     }
     h2 {
       font-size: 24px;
+      font-weight: 400;
       margin-bottom: 40px;
       @media screen and (max-width: $breakpoint-lg) {
         font-size: 3vw;
@@ -380,6 +388,28 @@ export default {
             }
           }
         }
+        .cat-direction {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: none;
+          justify-content: space-between;
+          width: 100%;
+          @media screen and (max-width: $breakpoint-md) {
+            display: none;
+          }
+          img {
+            align-self: center;
+            margin-top: 10px;
+          }
+        }
+        &:nth-child(2) {
+          .cat-direction {
+            flex-direction: row-reverse;
+            img {
+              transform: rotate(180deg);
+            }
+          }
+        }
         h6 {
           margin: 10px 0 0 0;
           padding: 0;
@@ -393,7 +423,7 @@ export default {
             display: none;
           }
         }
-      }
+      } 
     }
   }
 </style>
