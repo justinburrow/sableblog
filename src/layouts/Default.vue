@@ -17,9 +17,9 @@
       <div class="stay-in-touch">
         <h6>Stay In Touch</h6>
         <div class="social">
-          <a href="https://www.instagram.com/sable.labs"><img src="~@/assets/images/instagram.svg" width="30" alt="S'able Labs Instagram"></a>
-          <a href="https://business.facebook.com/sablelabs-104616947794065/"><img src="~@/assets/images/facebook.svg" width="15" alt="S'able Labs Facebook"></a>
-          <a href="https://twitter.com/sablelabs"><img src="~@/assets/images/twitter.svg" width="30" alt="S'able Labs Twitter"></a>
+          <a href="https://www.instagram.com/sable.labs" target="_blank" rel="noopener"><img src="~@/assets/images/instagram.svg" width="30" alt="S'able Labs Instagram"></a>
+          <a href="https://business.facebook.com/sablelabs-104616947794065/" target="_blank" rel="noopener"><img src="~@/assets/images/facebook.svg" width="15" alt="S'able Labs Facebook"></a>
+          <a href="https://twitter.com/sablelabs" target="_blank" rel="noopener"><img src="~@/assets/images/twitter.svg" width="30" alt="S'able Labs Twitter"></a>
         </div>
         <p>&copy;2020 S’able Labs. All Rights Reserved.</p>
         <p class="links">
