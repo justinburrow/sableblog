@@ -21,7 +21,7 @@
           <a href="https://business.facebook.com/sablelabs-104616947794065/" target="_blank" rel="noopener"><img src="~@/assets/images/facebook.svg" width="15" alt="S'able Labs Facebook"></a>
           <a href="https://twitter.com/sablelabs" target="_blank" rel="noopener"><img src="~@/assets/images/twitter.svg" width="30" alt="S'able Labs Twitter"></a>
         </div>
-        <p>&copy;2020 S’able Labs. All Rights Reserved.</p>
+        <p>&copy;{{ this.currentYear }} S’able Labs. All Rights Reserved.</p>
         <p class="links">
           <a href="#">Privacy Policy</a>
           <a href="#">Cookie Policy</a>
@@ -57,6 +57,11 @@ export default {
     HomeFeatured,
     EmailSignup
   },
+  data() {
+    return {
+      currentYear: Number
+    }
+  },
   methods: {
     closeMenu(e) {
       console.log(e);
@@ -64,6 +69,9 @@ export default {
         this.$actions.closeMenu();
       }
     }
+  },
+  mounted() {
+    this.currentYear = new Date().getFullYear();
   }
 }
 </script>
