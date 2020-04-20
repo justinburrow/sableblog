@@ -1,9 +1,11 @@
 <template>
   <Layout>
     <div class="post">
-      <g-link :to="$page.wordPressPost.categories[0].path" class="category">
-        <h2 v-html="$page.wordPressPost.categories[0].title"></h2>
-      </g-link>
+      <div class="category">
+        <g-link :to="$page.wordPressPost.categories[0].path" class="category">
+          <h2 v-html="$page.wordPressPost.categories[0].title"></h2>
+        </g-link>
+      </div>
       <h1 v-html="$page.wordPressPost.title"/>
       <div class="post-image">
        <img
@@ -203,16 +205,22 @@ export default {
       }
     }
   }
-  h2 {
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 20px;
-    margin: 0 0 10px 0;
-    padding: 0;
-    letter-spacing: 1.5px;
-    font-weight: 400;
-    @media screen and (max-width: $breakpoint-md) {
-      font-size: 3.5vw;
+  .category {
+    a {
+      color: #b2b2b2;
+    }
+    h2 {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 20px;
+      margin: 0 0 10px 0;
+      padding: 0;
+      letter-spacing: 1.5px;
+      font-weight: 400;
+      color: #B2B2B2;
+      @media screen and (max-width: $breakpoint-md) {
+        font-size: 3.5vw;
+      }
     }
   }
   h1 {
@@ -263,10 +271,14 @@ export default {
   .post-content { 
     font-size: 17px;
     line-height: 1.4;
+    padding: 0 7%;
+    @media screen and (max-width: $breakpoint-lg) {
+      padding: 0;  
+    }
     h2, h3, h4, h5, h6 {
       text-align: left;
       margin: 0 0 20px 0;
-      padding: 0 0 0 0;
+      padding: 0;
       font-weight: 400;
       @media screen and (max-width: $breakpoint-lg) {
         margin: 0 0 2vw 0;
