@@ -218,12 +218,26 @@ query {
               flex: 1;
               align-self: flex-end;
               padding-right: 50px;
+              position: relative;
+              &::after {
+                  background: url('~@/assets/images/search-icon.svg') left center no-repeat;
+                  background-size: 17px;
+                  content: ' ';
+                  width: 17px;
+                  height: 17px;
+                  position: absolute;
+                  z-index: 10;
+                  top: 7px;
+                  left: 8px;
+                }
+
               input {
                 width: 100%;
-                padding: 5px;
+                padding: 5px 5px 5px 32px;
                 text-transform: uppercase;
                 letter-spacing: 1px;
                 font-size: 14px;
+                position: relative;
               }
             }
 

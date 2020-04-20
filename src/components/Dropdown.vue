@@ -248,10 +248,10 @@ export default {
         color: white;
         font-size: 12px;
         text-transform: uppercase;
-        flex-shrink: 0;
         text-decoration: none;
         &.read-more {
           text-decoration: underline;
+          flex-shrink: 0;
         }
       }
     }  
