@@ -16,9 +16,9 @@
         <p class="read-more">
           <g-link :to="post.node.path">Read More </g-link>
         </p>
-        <p class="date">{{this.formatDate(post.node.date)}}</p>
+        <p class="date">Posted {{this.formatDate(post.node.date)}}</p>
         <img src="~@/assets/images/post-icon.svg" class="post-icon" />
-      </div>
+      </div>  
       <div class="details only-desktop">Photography: {{post.node.featuredMedia.caption | removeHTML}}</div>
   </article>
 </template>
@@ -134,28 +134,25 @@ export default {
       }
 
       p.read-more {
-        &:hover {
-          text-decoration: underline;
-        }
-        @media screen and (max-width: $breakpoint-md) {
-          font-size: 4vw;
-        }
-      }
-
-      a {
-        color: white;
-        &.read-more {
-          font-size: 14px;
-          text-transform: uppercase;
-          margin-top: 30px;
-          display: block;
-          text-decoration: underline;
+        a {
+          background: rgba(0,0,0,0.2);
+          padding: 7px 15px;
           font-weight: bold;
+          text-transform: uppercase;
+          display: inline-block;
+          font-size: 13px;
+          letter-spacing: .5px;
+          border: 2px solid black;
+          transition: all 0.3s ease-in-out;
           @media screen and (max-width: $breakpoint-md) {
-            font-size: 2.4vw;
+            font-size: 4vw;
+            background: black;
+            color: white;
+            padding: 2vw 4vw;
           }
         }
       }
+
       .date {
         font-size: 12px;
       }

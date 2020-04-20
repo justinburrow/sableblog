@@ -2,7 +2,8 @@
   <Layout>
     <section class="home-posts">
         <ul class="post-list">
-          <li v-for="node in $page.allWordPressPost.edges" :key="node.id">
+          <li v-for="node in $page.allWordPressPost.edges" :key="node.node.id" :class="node.node.categories[0].title | lowercase">
+            {{ node.id }}
             <HomePost :post="node" />
           </li>
         </ul>
@@ -54,6 +55,11 @@ export default {
   metaInfo: {
     title: 'S\'able Labs'
   },
+  filters: {
+    lowercase: function (val) {
+      return val.toLowerCase();
+    }
+  },
   mounted() {
     let flockler = document.createElement('script');
     flockler.setAttribute('src', 'https://flockler.embed.codes/KAn5xj');
@@ -82,7 +88,10 @@ export default {
         margin-bottom: 7vw;
         padding-bottom: 7vw;
       }
-      &:nth-child(1) {
+      .read-more a {
+        color: white;
+      }
+      &.lifestyle {
          article {
           .content {
             background: #1d4a45;
@@ -90,13 +99,20 @@ export default {
             a {
               color: white;
             }
+            .read-more a {
+              border: 2px solid white;
+              &:hover {
+                background: white;
+                color: black;
+              }
+            }
             .post-icon {
-              filter: brightness(100);
+              filter: contrast(100) grayscale(100%) invert(1);
             }
           }
         }
       }
-      &:nth-child(2) {
+      &.culture {
          article {
           .content {
             background: #f1f1f1;
@@ -104,11 +120,16 @@ export default {
             a {
               color: black;
             }
-            
+            .read-more a {
+              &:hover {
+                background: black;
+                color: white;
+              }
+            }
           }
         }
       }
-      &:nth-child(3) {
+      &.coupledom {
          article {
           .content {
             background: #4d4d4f;
@@ -116,19 +137,34 @@ export default {
             a {
               color: white;
             }
+            .read-more a {
+              border: 2px solid white;
+              &:hover {
+                background: black;
+                color: white;
+                border-color: black;
+              }
+            }
             .post-icon {
-              filter: brightness(100);
+              filter: contrast(100) grayscale(100%) invert(1);
             }
           }
         }
       }
-      &:nth-child(4) {
+      &.community {
          article {
           .content {
             background: #c0bdbd;
             color: black;
             a {
               color: black;
+            }
+            .read-more a {
+              border: 2px solid white;
+              &:hover {
+                background: white;
+                color: black;
+              }
             }
           }
         }
