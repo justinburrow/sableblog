@@ -2,8 +2,8 @@
   <div class="layout">
     <header>
       <Header />
-      <HomeFeatured v-if="$route.fullPath == '/'"/>
     </header>
+    <HomeFeatured v-if="$route.fullPath == '/'"/>
     <div class="container">
       <slot/>
     </div>
@@ -59,7 +59,7 @@ export default {
   },
   data() {
     return {
-      currentYear: Number
+      currentYear: Number,
     }
   },
   methods: {
@@ -77,12 +77,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .layout {
+  }
   header {
+    position: relative;
     &:after {
       content: '';
       display: block;
-      border-top: 12px solid black;
-      padding-top: 45px;
       width: 100%;
       @media screen and (max-width: $breakpoint-md) {
         padding-top: 4vw;
@@ -161,7 +162,7 @@ export default {
       }
       p {
         font-size: 12px;
-        &.links { 
+        &.links {
           display: flex;
           justify-content: space-between;
           max-width: 200px;

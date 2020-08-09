@@ -4,12 +4,12 @@
         <li v-for="cat in $static.categories.edges" :key="cat.id">
           <div class="header-cat" @mouseover="showCatPosts(cat.node.id, cat.node.title, cat.node.path)">
               <div class="title" @click="$actions.hideDropdown()"><g-link :to="cat.node.path">{{cat.node.title}}</g-link></div>
-          </div>  
+          </div>
         </li>
     </ul>
     <Dropdown :current-cat="this.currentCat" :current-cat-title="this.currentCatTitle" :cat-path="this.catPath" :dropdown-state="$store.dropdownShow" @hideDropdown="$actions.hideDropdown()" :search-results="this.searchResultPosts" :show-search="showSearch" :search-term="query"/>
   </div>
-    
+
 </template>
 
 <static-query>
@@ -33,15 +33,12 @@ export default {
     components: {
       Dropdown
     },
-    props: ['searchResults', 'searchTerm'], 
+    props: ['searchResults', 'searchTerm'],
     data () {
       return {
-        currentCat: Number,
-        currentCatTitle: '',
         searchResultPosts: [],
         query: this.searchTerm,
-        showSearch: false,
-        catPath: ''
+        showSearch: false
       }
     },
     methods: {
@@ -51,7 +48,7 @@ export default {
         this.currentCatTitle = catTitle;
         this.$actions.showDropdown();
         this.catPath = path;
-       } 
+       }
     },
     watch: {
       searchResults(results) {
@@ -84,7 +81,7 @@ export default {
     padding: 0;
     list-style-type: none;
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
       li {
         list-style-type: none;
         margin: 0;

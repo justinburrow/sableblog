@@ -18,7 +18,7 @@ export default function (Vue, {router, head, isClient}) {
   const store = Vue.observable({
     menuOpen: false,
     searchOpen: false,
-    dropdownShow: false
+    dropdownShow: true
   });
 
   const actions = {

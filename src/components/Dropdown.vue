@@ -1,6 +1,6 @@
 <template>
-    <div class="dropdown" ref="dropdown" :class="showDropdown ? 'show' : 'hide'" @mouseleave="hideDropdown()"> 
-      <ul class="items" v-if="this.showSearchResults == false">
+    <div class="dropdown" ref="dropdown" :class="showDropdown ? 'show' : 'hide'">
+      <!--<ul class="items" v-if="this.showSearchResults == false">
         <li class="title">
           <g-link :to="this.catPath" class="cat-title">
             <h2>{{ currentCatTitle }}</h2>
@@ -13,21 +13,21 @@
           </div>
           <div class="post-info">
            <g-link :to="post.node.path" class="title"><h4>{{post.node.title}}</h4></g-link>
-            <g-link :to="post.node.path" class="read-more">Read More</g-link> 
+            <g-link :to="post.node.path" class="read-more">Read More</g-link>
           </div>
         </li>
-      </ul>
+      </ul>-->
 
       <ul class="items search" v-if="this.showSearchResults == true">
         <div v-if="this.results > 0"></div>
         <li class="title"><h3>Searching For: "{{this.searchingBy}}"</h3></li>
-        <li v-for="post in results" class="post" :key="post.id"> 
+        <li v-for="post in results" class="post" :key="post.id">
           <div class="image">
             <g-link :to="post.path"><g-image :src="post.featuredMedia.sourceUrl" v-on:click="hideDropdown()"></g-image></g-link>
           </div>
           <div class="post-info">
           <g-link :to="post.path"><h4>{{post.title}}</h4></g-link>
-            <g-link :to="post.path" class="read-more">Read More</g-link> 
+            <g-link :to="post.path" class="read-more">Read More</g-link>
           </div>
         </li>
         <li v-if="this.results == 0">Sorry, no posts were found</li>
@@ -35,7 +35,7 @@
     </div>
 </template>
 
-<static-query>
+<!--<static-query>
   query {
   catPosts: allWordPressPost(sortBy: "date") {
     edges {
@@ -55,29 +55,22 @@
     }
   }
 }
-</static-query>
+</static-query>-->
 
 <script>
 export default {
     name: 'Dropdown',
-    props: ['currentCat', 'currentCatTitle', 'catPath', 'dropdownState', 'searchResults', 'showSearch', 'searchTerm'],
+    props: ['dropdownState', 'searchResults', 'showSearch', 'searchTerm'],
     data() {
         return {
-          catPosts: [],
-          category: this.currentCat,
-          showDropdown: false,
+          showDropdown: true,
           results: [],
           showSearchResults: this.showSearch,
           searchingBy: this.searchTerm,
-          hasResults: false,
-          path: this.catPath
+          hasResults: false
         }
     },
     watch: {
-      currentCat: function(id) {
-        this.category = id;
-        this.filterPosts();
-      },
       dropdownState: function(state) {
         this.showDropdown = state
       },
@@ -95,27 +88,16 @@ export default {
         this.searchingBy = searchTerm;
         if (searchTerm >=3) {
           this.showSearchResults = true;
+          console.log('show search');
         }
         if (searchTerm == '') {
-          this.hideDropdown();  
+          this.hideDropdown();
         }
       }
     },
     methods: {
       filterPosts() {
-        this.catPosts = [];
-        this.$static.catPosts.edges.forEach((post) => {
-          const postCats = [];
-          post.node.categories.forEach((cat) => {
-            postCats.push(cat.id)
-          });
-          if (postCats.indexOf(this.category) > -1) {
-            this.catPosts.push(post);
-          }
-          if (this.catPosts.length > 3) {
-            this.catPosts = this.catPosts.slice(0, 3);
-          }
-        });
+        console.log('wee');
       },
       hideDropdown: function() {
         this.$emit('hideDropdown');
@@ -126,13 +108,18 @@ export default {
 
 <style lang="scss" scoped>
   .dropdown {
-    background: rgba(0, 0, 0, 0.9);
-    position: absolute;
-    width: 100vw;
-    left: -80px;
-    top: 43px;
+    background: black;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
     z-index: 100;
     min-height: 450px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+    margin: 0;
     &.hide {
       opacity: 0;
       pointer-events: none;
@@ -221,7 +208,7 @@ export default {
         }
       }
     }
-  } 
+  }
   .post-info {
       width: 100%;
       display: flex;
@@ -254,5 +241,5 @@ export default {
           flex-shrink: 0;
         }
       }
-    }  
+    }
 </style>
