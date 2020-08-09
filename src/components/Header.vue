@@ -3,35 +3,30 @@
       <MenuPanel />
       <SearchPanel />
         <div class="header__content container-full">
-          <div class="menu-icon only-mobile-tablet" @click="$actions.openMenu()"> 
+          <div class="menu-icon only-mobile-tablet" @click="$actions.openMenu()">
             <img src="~@/assets/images/menu-icon.svg" alt="Menu" />
           </div>
 
-          <div class="logo">
+          <div class="logo only-mobile-tablet">
             <a href="/"><img src="~@/assets/images/sable-logo.svg" width="370" alt="S'able Labs" /></a>
           </div>
 
           <div class="navigation only-desktop">
-            <div class="categories">  
-              <Categories :search-results='searchResults' :search-term="searchTerm"/>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Our Commitment</a></li>
+              <li><a href="#">About</a></li>
+            </ul>
+            <div class="logo">
+                <a href="/"><img src="~@/assets/images/sable-logo.svg" width="370" alt="S'able Labs" /></a>
             </div>
-
-            <div class="spacer"></div>
-
-            <div class="search">
-              <input id="search" type="text" v-model="searchTerm" class="input" placeholder="Search">
-            </div>
-
-            <ul class="social">
-              <li>
-                <a href="https://www.instagram.com/sable.labs" target="_blank" rel="noopener"><img src="~@/assets/images/instagram.svg" width="20" alt="S'able Labs Instagram"></a>
+            <ul>
+              <li><a href="#">Subscribe</a></li>
+              <li class="search">
+                <img src="~@/assets/images/search-icon.svg" alt="Search">
+                <input id="search" type="text" v-model="searchTerm" class="input" placeholder="Search">
               </li>
-              <li>
-                <a href="https://business.facebook.com/sablelabs-104616947794065/" target="_blank" rel="noopener"><img src="~@/assets/images/facebook.svg" width="10" alt="S'able Labs Facebook"></a>
-              </li>
-              <li>
-                <a href="https://twitter.com/sablelabs" target="_blank" rel="noopener"><img src="~@/assets/images/twitter.svg" width="20" alt="S'able Labs Twitter"></a>
-              </li>
+              <li></li>
             </ul>
           </div>
 
@@ -186,58 +181,66 @@ query {
             }
 
             .navigation {
+              width: 90%;
               display: flex;
-              width: 100%;
-              justify-content: space-between;
-
-              .categories {
-                width: calc(50% - 140px);
-                margin-left: 80px;
+              margin: 0 auto;
+              ul {
+                justify-content: center;
+                font-family: 'acumin-pro-condensed', 'Helvetica Neue', sans-serif;
+                font-weight: 600;
+                font-style: normal;
+                width: 100%;
                 position: relative;
-                top: 2px;
-                ul {
                 display: flex;
                 justify-content: space-between;
                 margin: 0;
-                padding: 0 50px 0 0;
+                padding: 0;
+                list-style-type: none;
+                font-size: 1.3rem;
+                letter-spacing: .05rem;
                   li {
+                    display: flex;
+                    align-items: center;
                     margin: 0;
                     padding: 0;
                     text-transform: uppercase;
-
+                    a {
+                      color: black;
+                      text-decoration: none;
+                    }
                   }
                 }
-              }
 
-              .spacer {
-                width: 250px;
-              }
-              
+            .logo {
+              margin: 0 4%;
+              padding-bottom: 0;
+            }
+
             .search {
-              margin-left: 50px;
-              flex: 1;
-              align-self: flex-end;
-              padding-right: 50px;
               position: relative;
-              &::after {
-                  background: url('~@/assets/images/search-icon.svg') left center no-repeat;
-                  background-size: 17px;
-                  content: ' ';
-                  width: 17px;
-                  height: 17px;
-                  position: absolute;
-                  z-index: 10;
-                  top: 7px;
-                  left: 8px;
-                }
+              display: flex;
+
+              img {
+                margin-right: 10px;
+                width: 25px;
+                fill: black;
+                filter: brightness(0);
+              }
 
               input {
-                width: 100%;
-                padding: 5px 5px 5px 32px;
+                font-family: 'acumin-pro-condensed', 'Helvetica Neue', sans-serif;
+                font-weight: 600;
+                font-style: normal;
+                font-size: 1.3rem;
+                letter-spacing: .05rem;
+                flex: 1;
                 text-transform: uppercase;
                 letter-spacing: 1px;
-                font-size: 14px;
                 position: relative;
+                border: none;
+                border-bottom: 2px solid black;
+                padding-bottom: 3px;
+                &:focus::-webkit-input-placeholder { color:transparent; }
               }
             }
 
