@@ -1,9 +1,10 @@
 import DefaultLayout from '~/layouts/Default.vue'
 import VScrollLock from 'v-scroll-lock'
 
+
 export default function (Vue, {router, head, isClient}) {
   Vue.component('Layout', DefaultLayout);
-  Vue.use(VScrollLock)
+  Vue.use(VScrollLock);
 
   head.link.push({
     rel: 'icon',
@@ -18,7 +19,7 @@ export default function (Vue, {router, head, isClient}) {
   const store = Vue.observable({
     menuOpen: false,
     searchOpen: false,
-    dropdownShow: true
+    dropdownShow: false
   });
 
   const actions = {
@@ -38,8 +39,8 @@ export default function (Vue, {router, head, isClient}) {
     closeSearch() {
       store.searchOpen = false;
     },
-    showDropdown() {
-      store.dropdownShow = true;
+    toggleDropdown() {
+      store.dropdownShow = !store.dropdownShow;
     },
     hideDropdown() {
       store.dropdownShow = false;

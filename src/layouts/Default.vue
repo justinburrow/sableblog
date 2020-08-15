@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
     <header>
-      <Header />
+      <Header :dropdown-state="$store.dropdownShow" @hideDropdown="$actions.hideDropdown()" />
     </header>
     <HomeFeatured v-if="$route.fullPath == '/'"/>
     <div class="container">
@@ -59,7 +59,7 @@ export default {
   },
   data() {
     return {
-      currentYear: Number,
+      currentYear: Number
     }
   },
   methods: {
@@ -81,6 +81,7 @@ export default {
   }
   header {
     position: relative;
+    z-index: 5;
     &:after {
       content: '';
       display: block;

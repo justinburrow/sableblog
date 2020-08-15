@@ -10,21 +10,18 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+html {
   height: 100%;
   width: 100%;
-  margin: 0;
-  padding: 0;
-  left: 0;
-  top: 0;
-  font-size: 100%;
-  overflow-x: hidden;
+  display: table;
 }
 
 body {
   font-family: acumin-pro, sans-serif;
   font-weight: 300;
+  width: 100%;
+  display: table-cell;
+  height: 100%;
 }
 
 .layout {

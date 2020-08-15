@@ -1,24 +1,15 @@
 <template>
-    <div class="dropdown" ref="dropdown" :class="showDropdown ? 'show' : 'hide'">
-      <!--<ul class="items" v-if="this.showSearchResults == false">
-        <li class="title">
-          <g-link :to="this.catPath" class="cat-title">
-            <h2>{{ currentCatTitle }}</h2>
-            <p>View All Posts</p>
-          </g-link>
-        </li>
-        <li v-for="post in catPosts" class="post" :key="post.node.id">
+    <div class="dropdown" ref="dropdown">
+      <ul class="categories" v-if="this.showSearchResults == false">
+        <li v-for="cat in $static.allWordPressCategory.edges" class="cat" :key="cat.node.id">
           <div class="image">
-            <g-link :to="post.node.path"><g-image :src="post.node.featuredMedia.sourceUrl" v-on:click="hideDropdown()"></g-image></g-link>
+            <g-link :to="cat.node.path"><g-image :src="filterCatImage(cat.node.id)" v-on:click="hideDropdown()"></g-image></g-link>
           </div>
-          <div class="post-info">
-           <g-link :to="post.node.path" class="title"><h4>{{post.node.title}}</h4></g-link>
-            <g-link :to="post.node.path" class="read-more">Read More</g-link>
-          </div>
+           <g-link :to="cat.node.path" class="title"><h2>{{cat.node.title}}</h2></g-link>
         </li>
-      </ul>-->
+      </ul>
 
-      <ul class="items search" v-if="this.showSearchResults == true">
+      <!--<ul class="items search" v-if="this.showSearchResults == true">
         <div v-if="this.results > 0"></div>
         <li class="title"><h3>Searching For: "{{this.searchingBy}}"</h3></li>
         <li v-for="post in results" class="post" :key="post.id">
@@ -31,31 +22,34 @@
           </div>
         </li>
         <li v-if="this.results == 0">Sorry, no posts were found</li>
-      </ul>
+      </ul>-->
     </div>
 </template>
 
-<!--<static-query>
+<static-query>
   query {
-  catPosts: allWordPressPost(sortBy: "date") {
-    edges {
-      node {
-        title
-        link
-        path
-        featuredMedia {
-          sourceUrl
-          altText
-        }
-        categories {
+    allCategoryImages {
+      edges {
+        node {
           id
+          acf {
+            categoryImage
+          }
+        }
+      }
+    }
+
+    allWordPressCategory(order: ASC ) {
+      edges {
+        node {
+          id
+          title
           path
         }
       }
     }
   }
-}
-</static-query>-->
+</static-query>
 
 <script>
 export default {
@@ -63,32 +57,28 @@ export default {
     props: ['dropdownState', 'searchResults', 'showSearch', 'searchTerm'],
     data() {
         return {
-          showDropdown: true,
+          showDropdown: false,
           results: [],
           showSearchResults: this.showSearch,
           searchingBy: this.searchTerm,
-          hasResults: false
+          hasResults: false,
         }
     },
     watch: {
-      dropdownState: function(state) {
-        this.showDropdown = state
-      },
       searchResults: function(results) {
-        this.showSearchResults = true;
+        //this.showSearchResults = true;
         this.results = results;
         if (results.length > 0) {
           this.hasResults = true;
         }
       },
       showSearch(state) {
-        this.showSearchResults = state;
+        //this.showSearchResults = state;
       },
       searchTerm(searchTerm) {
         this.searchingBy = searchTerm;
         if (searchTerm >=3) {
           this.showSearchResults = true;
-          console.log('show search');
         }
         if (searchTerm == '') {
           this.hideDropdown();
@@ -96,8 +86,12 @@ export default {
       }
     },
     methods: {
-      filterPosts() {
-        console.log('wee');
+      filterCatImage(id) {
+        this.catImages = this.$static.allCategoryImages.edges;
+        const matchedImage = this.catImages.filter(obj => {
+          return obj.node.id == id;
+        });
+        return matchedImage[0].node.acf.categoryImage;
       },
       hideDropdown: function() {
         this.$emit('hideDropdown');
@@ -112,41 +106,47 @@ export default {
     width: 100%;
     max-width: 1600px;
     margin: 0 auto;
-    z-index: 100;
-    min-height: 450px;
-    position: absolute;
+    z-index: 1;
+    height: 100%;
+    position: relative;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
     padding: 0;
     margin: 0;
+    transition: opacity 0.3s ease;
     &.hide {
       opacity: 0;
-      pointer-events: none;
+      height: 0;
     }
     &.show {
-      z-index: 100;
-      transition: opacity 0.6s ease;
       opacity: 1;
-      pointer-events: default;
+      height: 100%;
     }
-    ul.items {
+    ul.categories {
       display: flex;
       justify-content: space-between;
       align-content: center;
       height: 100%;
       list-style-type: none;
       margin: 0;
-      padding: 45px 150px;
+      padding: 45px 20px;
       li {
         list-style-type: none;
-        margin: 0;
+        margin: 0 10px;
         padding: 0;
         width: 24%;
         color: white;
         text-align: center;
         position: relative;
         align-content: center;
+        height: 100%;
+        &:hover {
+          h2 {
+            border-bottom: 1px solid white;
+            padding-bottom: 1px;
+          }
+        }
         .image {
           overflow: hidden;
           padding-bottom: 100%;
@@ -161,20 +161,21 @@ export default {
           left: 0;
           object-fit: cover;
         }
-        a.cat-title {
-          position: absolute;
-          top: 50%;
-          left: 25%;
-          transform: translate(-50%);
-          font-size: 26px;
-          letter-spacing: 3px;
+        a.title {
+          font-size: 20px;
+          letter-spacing: 1px;
           text-transform: uppercase;
           color: white;
           text-decoration: none;
+          font-family: 'acumin-pro-extra-condensed', 'Helvetica Neue', sans-serif;
+          font-weight: 600;
+          font-style: normal;
+          text-align: center;
           h2 {
             margin: 0;
             padding: 0;
-            font-size: 30 px;
+            font-size: 20px;
+            display: inline;
           }
           p {
             margin: 5px 0 0 0;

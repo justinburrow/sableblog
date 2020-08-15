@@ -40,8 +40,15 @@ module.exports = {
     {
       use: '@gridsome/source-wordpress',
       options: {
-        baseUrl: 'https://justinburrow.com/sb-blog/', // required
-        typeName: 'WordPress', // GraphQL schema name (Optional)
+        baseUrl: 'http://sableblog.local/', // required
+        typeName: 'WordPress', // GraphQL schema name (Optional),
+        customEndpoints: [
+          {
+            typeName: "CategoryImages",
+            route: "/acf/v3/categories/",
+            normalize: true,
+          }
+        ]
       },
     }
   ],
