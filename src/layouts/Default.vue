@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
     <header>
-      <Header :dropdown-state="$store.dropdownShow" @hideDropdown="$actions.hideDropdown()" />
+      <Header :dropdown-state="$store.dropdownShow" @hideDropdown="$actions.hideDropdown()" :show-search-bar="$store.searchOpen" />
     </header>
     <HomeFeatured v-if="$route.fullPath == '/'"/>
     <div class="container">
@@ -64,7 +64,6 @@ export default {
   },
   methods: {
     closeMenu(e) {
-      console.log(e);
       if (this.$store.menuOpen == true) {
         this.$actions.closeMenu();
       }

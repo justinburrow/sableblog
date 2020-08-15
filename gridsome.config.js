@@ -27,7 +27,7 @@ module.exports = {
         path: '/:year/:month/:day/:slug',
         component: './src/templates/WordPressPost.vue', //adds route for "post" post type (Optional)
       },
-    ],
+    ]
   },
 
   configureWebpack: {

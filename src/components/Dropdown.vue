@@ -1,6 +1,6 @@
 <template>
     <div class="dropdown" ref="dropdown">
-      <ul class="categories" v-if="this.showSearchResults == false">
+      <ul class="categories" v-if="this.showSearch == false && this.showDropdown == true">
         <li v-for="cat in $static.allWordPressCategory.edges" class="cat" :key="cat.node.id">
           <div class="image">
             <g-link :to="cat.node.path"><g-image :src="filterCatImage(cat.node.id)" v-on:click="hideDropdown()"></g-image></g-link>
@@ -9,20 +9,13 @@
         </li>
       </ul>
 
-      <!--<ul class="items search" v-if="this.showSearchResults == true">
-        <div v-if="this.results > 0"></div>
-        <li class="title"><h3>Searching For: "{{this.searchingBy}}"</h3></li>
-        <li v-for="post in results" class="post" :key="post.id">
-          <div class="image">
-            <g-link :to="post.path"><g-image :src="post.featuredMedia.sourceUrl" v-on:click="hideDropdown()"></g-image></g-link>
-          </div>
-          <div class="post-info">
-          <g-link :to="post.path"><h4>{{post.title}}</h4></g-link>
-            <g-link :to="post.path" class="read-more">Read More</g-link>
-          </div>
-        </li>
-        <li v-if="this.results == 0">Sorry, no posts were found</li>
-      </ul>-->
+      <div class="search-container" v-if="this.showSearchBar == true">
+        <span>Search</span>
+        <input id="search" type="text" v-model="searchingBy" class="input">
+        <div class="search-button">
+          <g-link to="/search/"><button>Submit</button></g-link>
+        </div>
+      </div>
     </div>
 </template>
 
@@ -54,35 +47,24 @@
 <script>
 export default {
     name: 'Dropdown',
-    props: ['dropdownState', 'searchResults', 'showSearch', 'searchTerm'],
+    props: ['dropdownState', 'searchResults', 'showSearch'],
     data() {
         return {
           showDropdown: false,
           results: [],
-          showSearchResults: this.showSearch,
-          searchingBy: this.searchTerm,
-          hasResults: false,
+          showSearchBar: this.showSearch,
+          searchingBy: ''
         }
     },
     watch: {
-      searchResults: function(results) {
-        //this.showSearchResults = true;
-        this.results = results;
-        if (results.length > 0) {
-          this.hasResults = true;
-        }
+      dropdownState: function(state) {
+        this.showDropdown = state;
       },
       showSearch(state) {
-        //this.showSearchResults = state;
+        this.showSearchBar = state;
       },
-      searchTerm(searchTerm) {
-        this.searchingBy = searchTerm;
-        if (searchTerm >=3) {
-          this.showSearchResults = true;
-        }
-        if (searchTerm == '') {
-          this.hideDropdown();
-        }
+      searchingBy() {
+        this.$store.searchQuery = this.searchingBy;
       }
     },
     methods: {
@@ -93,7 +75,7 @@ export default {
         });
         return matchedImage[0].node.acf.categoryImage;
       },
-      hideDropdown: function() {
+      hideDropdown() {
         this.$emit('hideDropdown');
       }
     }
@@ -209,6 +191,52 @@ export default {
         }
       }
     }
+    .search-container {
+      padding: 45px 0 20px 0;
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+
+      span {
+        color: white;
+        font-family: 'acumin-pro-condensed', 'Helvetica Neue', sans-serif;
+        font-weight: 600;
+        font-style: normal;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        margin-right: 10px;
+      }
+      input {
+        flex-grow: 1;
+        padding: 5px 40px 5px 5px;
+        font-family: acumin-pro, sans-serif;
+        font-weight: 300;
+        font-size: 1rem;
+        background: url('~@/assets/images/search-icon.svg') right 10px center no-repeat;
+        background-color: white;
+        background-size: 17px;
+      }
+      .search-button {
+        flex-basis: 100%;
+        text-align: right;
+        button {
+          font-family: 'acumin-pro-condensed', 'Helvetica Neue', sans-serif;
+          font-weight: 600;
+          background: linear-gradient(0deg, #18413c 50%, #224c45 50%);
+          color: white;
+          border-radius: 0;
+          border: none;
+          text-transform: uppercase;
+          font-size: 1.3rem;
+          padding: 3px 40px;
+          margin-top: 5px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
   }
   .post-info {
       width: 100%;
@@ -225,7 +253,7 @@ export default {
         }
       }
       h4 {
-        font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;
+        font-family: 'acumin-pro-extra-condensed', Helvetica, sans-serif;
         text-align: left;
         font-size: 22px;
         text-transform: uppercase;

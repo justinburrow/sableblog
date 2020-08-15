@@ -1,7 +1,7 @@
 <template>
   <transition name="search" v-on:after-enter="openPanel" v-on:after-leave="closePanel">
-    <div class="search-panel only-mobile-tablet" v-if="$store.searchOpen" v-click-outside="closeMenu" v-scroll-lock="$store.searchOpen">
-      <div class="close-search" @click="$actions.closeSearch()">  
+    <!--<div class="search-panel only-mobile-tablet" v-if="$store.searchOpen" v-click-outside="closeMenu" v-scroll-lock="$store.searchOpen">
+      <div class="close-search" @click="$actions.closeSearch()">
         <img src="~@/assets/images/close-icon.svg" alt="Close" />
       </div>
       <div class="container">
@@ -11,7 +11,7 @@
 
         <ul class="post-list" v-if="this.showSearchResults == true">
           <div class="result-count" v-if="this.resultQty != 0">{{ this.resultQty }} post<span v-if="this.resultQty > 1">s</span> found for "{{ this.searchTerm }}"</div>
-          <li v-for="post in searchResultPosts" class="post" :key="post.id" @click="$actions.closeSearch()"> 
+          <li v-for="post in searchResultPosts" class="post" :key="post.id" @click="$actions.closeSearch()">
             <article>
               <g-link :to="post.path" class="image">
                 <div class="image">
@@ -29,7 +29,7 @@
         </ul>
 
       </div>
-    </div>
+    </div>-->
   </transition>
 </template>
 
@@ -65,7 +65,7 @@ export default {
   name: 'SearchPanel',
   data() {
     return {
-      searchResultPosts: [],    
+      searchResultPosts: [],
       searchTerm: '',
       showSearchResults: false,
       resultQty: 0
@@ -143,7 +143,7 @@ export default {
     z-index: 100;
     right: 0;
     width: 95vw;
-    
+
     &.search-enter-to, &.search-leave {
       transition: right .4s ease-in-out;
     }
@@ -266,7 +266,7 @@ export default {
           }
         }
         a.desc {
-          flex-grow: 1; 
+          flex-grow: 1;
         }
         h5 {
           margin: 0;

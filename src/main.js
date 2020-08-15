@@ -19,14 +19,15 @@ export default function (Vue, {router, head, isClient}) {
   const store = Vue.observable({
     menuOpen: false,
     searchOpen: false,
-    dropdownShow: false
+    dropdownShow: false,
+    searchQuery: ''
   });
 
   const actions = {
     openMenu() {
       store.menuOpen = true;
-      store.searchOpen = false;
-      store.dropdownShow = false;
+      //store.searchOpen = false;
+      //store.dropdownShow = false;
     },
     closeMenu() {
       store.menuOpen = false;
@@ -34,7 +35,7 @@ export default function (Vue, {router, head, isClient}) {
     openSearch() {
       store.searchOpen = true;
       store.menuOpen = false;
-      store.dropdownShow = false;
+      this.toggleDropdown();
     },
     closeSearch() {
       store.searchOpen = false;
@@ -58,6 +59,7 @@ export default function (Vue, {router, head, isClient}) {
         };
       }
       document.body.scrollTop = 0;
+      actions.hideDropdown();
     }
 
   Vue.prototype.$store = store;

@@ -21,10 +21,9 @@
               <a href="/"><img src="~@/assets/images/sable-logo.svg" width="277" alt="S'able Labs" /></a>
           </div>
           <ul>
-            <li><a href="#">Subscribe</a></li>
+            <li><button>Subscribe</button></li>
             <li class="search">
-              <img src="~@/assets/images/search-icon.svg" alt="Search">
-              <input id="search" type="text" v-model="searchTerm" class="input" placeholder="Search">
+              <button @click="$actions.openSearch()"><img src="~@/assets/images/search-icon.svg" alt="Search"></button>
             </li>
           </ul>
         </div>
@@ -34,7 +33,7 @@
         </div>
       </div>
       <div class="dropdown-container" :class="showDropdown ? 'show' : 'hide'">
-        <Dropdown :search-results="this.searchResultPosts" :show-search="showSearch" :search-term="query"/>
+        <Dropdown :search-results="this.searchResultPosts" :show-search="showSearchBar" :dropdown-state="showDropdown" />
       </div>
   </div>
 </template>
@@ -76,7 +75,7 @@ query {
         SearchPanel,
         Dropdown
     },
-    props: ['dropdownState'],
+    props: ['dropdownState', 'showSearchBar'],
     data() {
         return {
           index: null,
@@ -105,6 +104,7 @@ query {
     methods: {
       openBlogDropdown() {
         this.$actions.toggleDropdown();
+        this.$actions.closeSearch();
       },
       getDropdownPosition() {
         this.headerHeight = document.querySelector('.header').offsetHeight;
@@ -136,14 +136,10 @@ query {
       dropdownState: function(state) {
         this.showDropdown = state;
       },
-      searchResults(results) {
-        this.searchResultPosts = results;
-        if (results.length > 0) {
-          this.showSearch = true;
-          this.$actions.showDropdown();
-        }
+      showSearchBar(state) {
+        this.showSearch = state;
       },
-     searchTerm(query) {
+     /*searchTerm(query) {
        this.query = query;
         if (query.length >= 3) {
           this.$actions.showDropdown();
@@ -152,7 +148,7 @@ query {
           this.$actions.hideDropdown();
           this.showSearch = false;
         }
-      }
+      }*/
     }
   }
 </script>
@@ -262,6 +258,18 @@ query {
                     position: relative;
                     cursor: pointer;
                   }
+                  button {
+                    border: none;
+                    background: none;
+                    font-family: 'acumin-pro-condensed', 'Helvetica Neue', sans-serif;
+                    font-weight: 600;
+                    font-style: normal;
+                    list-style-type: none;
+                    font-size: 1.3rem;
+                    letter-spacing: .05rem;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                  }
                 }
               }
 
@@ -277,7 +285,7 @@ query {
 
 
             img {
-              margin-right: 10px;
+              margin-top: 10px;
               width: 25px;
               fill: black;
               filter: brightness(0);
