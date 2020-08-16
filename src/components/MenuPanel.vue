@@ -66,13 +66,13 @@ export default {
   .menu-panel {
     position: absolute;
     top: 0;
-    height: 100%;
+    height: 100vh;
     background: black;
     z-index: 100;
     box-shadow: 7px 0 5px 0 rgba(0,0,0,0.5);
     left: 0;
     width: 95vw;
-    
+
     &.menu-enter-to, &.menu-leave {
       transition: left .4s ease-in-out;
     }

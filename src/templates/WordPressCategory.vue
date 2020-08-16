@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <div class="category">
-      <h1>Category: {{ $page.wordPressCategory.title }}</h1>
+      <h1>{{ $page.wordPressCategory.title }}</h1>
       <ul class="post-list">
         <li v-for="{ node } in $page.wordPressCategory.belongsTo.edges" :key="node.id" :class="$page.wordPressCategory.title | lowercase">
           <HomePost :post="{ node }" />
@@ -66,11 +66,14 @@ export default {
 <style lang="scss">
 .category {
   h1 {
+    margin-top: 30px;
     font-family: 'acumin-pro-extra-condensed';
-    font-size: 48px;
+    font-size: 1.8rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-align: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
   }
   a {
     color: black;
@@ -81,99 +84,20 @@ export default {
     padding: 0;
     list-style-type: none;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     @media screen and (max-width: $breakpoint-md) {
       margin-top: 7vw;
     }
     li {
       margin: 0;
       padding: 0;
-      margin-bottom: 80px;
-      padding-bottom: 80px;
-      border-bottom: 1px solid black;
+      width: calc(33% - 13px);
+      margin-bottom: 50px;
       @media screen and (max-width: $breakpoint-lg) {
         margin-bottom: 7vw;
         padding-bottom: 7vw;
-      }
-      &.lifestyle {
-         article {
-          .content {
-            background: #1d4a45;
-            color: white;
-            a {
-              color: white;
-            }
-            .read-more a {
-              border: 2px solid white;
-              &:hover {
-                background: white;
-                color: black;
-              }
-            }
-            .post-icon {
-              filter: contrast(100) grayscale(100%) invert(1);
-            }
-          }
-        }
-      }
-      &.culture {
-         article {
-          .content {
-            background: #f1f1f1;
-            color: black;
-            a {
-              color: black;
-            }
-            .read-more a {
-              &:hover {
-                background: black;
-                color: white;
-              }
-            }
-          }
-        }
-      }
-      &.coupledom {
-         article {
-          .content {
-            background: #4d4d4f;
-            color: white;
-            a {
-              color: white;
-            }
-            .read-more a {
-              border: 2px solid white;
-              &:hover {
-                background: black;
-                color: white;
-                border-color: black;
-              }
-            }
-            .post-icon {
-              filter: contrast(100) grayscale(100%) invert(1);
-            }
-          }
-        }
-      }
-      &.community {
-         article {
-          .content {
-            background: #c0bdbd;
-            color: black;
-            a {
-              color: black;
-            }
-            .read-more a {
-              border: 2px solid white;
-              &:hover {
-                background: white;
-                color: black;
-              }
-            }
-          }
-        }
-      }
-      &:last-child {
-        border: none;
       }
     }
   }

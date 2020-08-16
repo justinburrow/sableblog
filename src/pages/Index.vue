@@ -1,6 +1,7 @@
 <template>
   <Layout>
-    <section class="home-posts">
+    <section class="featured-posts">
+      <h3>Features</h3>
         <ul class="post-list">
           <li v-for="node in $page.allWordPressPost.edges" :key="node.node.id" :class="node.node.categories[0].title | lowercase">
             {{ node.id }}
@@ -8,20 +9,12 @@
           </li>
         </ul>
     </section>
-    <section class="instagram">
-      <h3>Join the Movement</h3>
-      <div class="instagram">
-        <ClientOnly>  
-          <div id="flockler-embed-17177230bd60efd482bfb4b945f55ff2"></div>
-        </ClientOnly>
-    </div>
-    </section>
   </Layout>
 </template>
 
 <page-query>
 query Home {
-  allWordPressPost(limit: 4, sortBy: "date", order: DESC, skip: 1) {
+  allWordPressPost(sortBy: "date", order: DESC) {
     edges {
       node {
         id
@@ -70,128 +63,37 @@ export default {
 </script>s
 
 <style lang="scss">
-  .post-list {
+  .featured-posts {
     margin: 60px 0 0 0;
+    border-bottom: 8px solid #f2f2f2;
+    h3 {
+      text-align: center;
+      text-transform: uppercase;
+      font-family: 'acumin-pro-extra-condensed', 'Helvetica Neue', sans-serif;
+      font-weight: 600;
+      font-style: normal;
+      font-size: 4rem;
+      letter-spacing: 1px;
+    }
+  }
+  .post-list {
     padding: 0;
     list-style-type: none;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     @media screen and (max-width: $breakpoint-md) {
       margin-top: 7vw;
     }
     li {
-      margin: 0;
-      padding: 0;
-      margin-bottom: 80px;
-      padding-bottom: 80px;
-      border-bottom: 1px solid black;
+      width: calc(33% - 13px);
+      margin-bottom: 50px;
       @media screen and (max-width: $breakpoint-lg) {
-        margin-bottom: 7vw;
-        padding-bottom: 7vw;
+        width: calc(50% - 15px);
       }
-      .read-more a {
-        color: white;
-      }
-      &.lifestyle {
-         article {
-          .content {
-            background: #1d4a45;
-            color: white;
-            a {
-              color: white;
-            }
-            .read-more a {
-              border: 2px solid white;
-              &:hover {
-                background: white;
-                color: black;
-              }
-            }
-            .post-icon {
-              filter: contrast(100) grayscale(100%) invert(1);
-            }
-          }
-        }
-      }
-      &.culture {
-         article {
-          .content {
-            background: #f1f1f1;
-            color: black;
-            a {
-              color: black;
-            }
-            .read-more a {
-              &:hover {
-                background: black;
-                color: white;
-              }
-            }
-          }
-        }
-      }
-      &.coupledom {
-         article {
-          .content {
-            background: #4d4d4f;
-            color: white;
-            a {
-              color: white;
-            }
-            .read-more a {
-              border: 2px solid white;
-              &:hover {
-                background: black;
-                color: white;
-                border-color: black;
-              }
-            }
-            .post-icon {
-              filter: contrast(100) grayscale(100%) invert(1);
-            }
-          }
-        }
-      }
-      &.community {
-         article {
-          .content {
-            background: #c0bdbd;
-            color: black;
-            a {
-              color: black;
-            }
-            .read-more a {
-              border: 2px solid white;
-              &:hover {
-                background: white;
-                color: black;
-              }
-            }
-          }
-        }
-      }
-      &:last-child {
-        border: none;
-      }
-    }
-  }
-  .instagram {
-    margin-bottom: 80px;
-    h3 {
-      background: #005851;
-      width: 645px;
-      margin: 80px auto 20px auto;
-      text-transform: uppercase;
-      font-size: 15px;
-      text-align: center;
-      padding: 8px 0;
-      color: white;
-      letter-spacing: 1px;
-      line-height: 1.2; 
       @media screen and (max-width: $breakpoint-md) {
-        padding: 2vw 1vw 3vw 1vw;
-        line-height: 1;
-        width: 100%;
-        margin-bottom: 2vw;
+        width: calc(100%);
       }
     }
   }

@@ -20,85 +20,8 @@
       </div>
       <p class="date only-mobile-tablet">{{formatDate($page.wordPressPost.date)}}</p>
       <div class="post-content" v-html="$page.wordPressPost.content"></div>
-      <div class="post-navigation">
-        <div class="title">Related Articles</div>
-        <div class="articles">
-          <article v-if="$page.prevPost.edges.length > 0">
-            <g-link :to="$page.prevPost.edges[0].node.path" class="image">
-              <div class="image">
-                <img :src="$page.prevPost.edges[0].node.featuredMedia.sourceUrl" :alt="$page.prevPost.edges[0].node.featuredMedia.altText" />
-              </div>
-            </g-link>
-            <g-link :to="$page.prevPost.edges[0].node.path" class="desc">
-              <h5>
-                {{ $page.prevPost.edges[0].node.title }}
-                <span>Read More</span>
-              </h5>
-            </g-link>
-            <g-link :to="$page.prevPost.edges[0].node.categories[0].path" class="cat-direction">
-              <img src="~@/assets/images/arrow.svg" alt="arrow" />
-              <h6>{{ $page.prevPost.edges[0].node.categories[0].title }}</h6>
-            </g-link>
-          </article>
-
-          <article v-if="$page.nextPost.edges.length > 0">
-            <g-link :to="$page.nextPost.edges[0].node.path" class="image">
-              <div class="image">
-                <img :src="$page.nextPost.edges[0].node.featuredMedia.sourceUrl" :alt="$page.nextPost.edges[0].node.featuredMedia.altText" />
-              </div>
-            </g-link>
-            <g-link :to="$page.nextPost.edges[0].node.path" class="desc">
-              <h5>
-                {{ $page.nextPost.edges[0].node.title }}
-                <span>Read More</span>
-              </h5>
-            </g-link>
-            <g-link :to="$page.nextPost.edges[0].node.categories[0].path" class="cat-direction">
-              <img src="~@/assets/images/arrow.svg" alt="arrow" />
-              <h6>{{ $page.nextPost.edges[0].node.categories[0].title }}</h6>
-            </g-link>
-          </article>
-
-          <article v-if="$page.nextPost.edges.length == 0">
-            <g-link :to="$page.prevPost.edges[1].node.path" class="image">
-              <div class="image">
-                <img :src="$page.prevPost.edges[1].node.featuredMedia.sourceUrl" :alt="$page.prevPost.edges[1].node.featuredMedia.altText" />
-              </div>
-            </g-link>
-            <g-link :to="$page.prevPost.edges[1].node.path" class="desc">
-              <h5>
-                {{ $page.prevPost.edges[1].node.title }}
-                <span>Read More</span>
-              </h5>
-            </g-link>
-            <g-link :to="$page.prevPost.edges[1].node.categories[0].path" class="cat-direction">
-              <img src="~@/assets/images/arrow.svg" alt="arrow" />
-              <h6>{{ $page.prevPost.edges[1].node.categories[0].title }}</h6>
-            </g-link>
-          </article>
-
-          <article v-if="$page.prevPost.edges.length == 0">
-            <g-link :to="$page.nextPost.edges[1].node.path" class="image">
-              <div class="image">
-                <img :src="$page.nextPost.edges[1].node.featuredMedia.sourceUrl" :alt="$page.nextPost.edges[1].node.featuredMedia.altText" />
-              </div>
-            </g-link>
-            <g-link :to="$page.nextPost.edges[1].node.path" class="desc">
-              <h5>
-                {{ $page.nextPost.edges[1].node.title }}
-                <span>Read More</span>
-              </h5>
-            </g-link>
-            <g-link :to="$page.nextPost.edges[1].node.categories[0].path" class="cat-direction">
-              <img src="~@/assets/images/arrow.svg" alt="arrow" />
-              <h6>{{ $page.nextPost.edges[1].node.categories[0].title }}</h6>
-            </g-link>
-          </article>
-          
-        </div>
-      </div>
     </div>
-    
+
   </Layout>
 </template>
 
@@ -210,14 +133,16 @@ export default {
       color: #b2b2b2;
     }
     h2 {
-      text-align: center;
+      margin-top: 30px;
+      font-family: 'acumin-pro-extra-condensed';
+      font-size: 1.8rem;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      font-size: 20px;
-      margin: 0 0 10px 0;
-      padding: 0;
-      letter-spacing: 1.5px;
-      font-weight: 400;
-      color: #B2B2B2;
+      text-align: center;
+      border-bottom: 1px solid black;
+      padding-bottom: 5px;
+      margin-bottom: 30px;
+      color: black;
       @media screen and (max-width: $breakpoint-md) {
         font-size: 3.5vw;
       }
@@ -268,12 +193,12 @@ export default {
       margin: 2vw 0 4vw 0;
     }
   }
-  .post-content { 
+  .post-content {
     font-size: 17px;
     line-height: 1.4;
     padding: 0 7%;
     @media screen and (max-width: $breakpoint-lg) {
-      padding: 0;  
+      padding: 0;
     }
     h2, h3, h4, h5, h6 {
       text-align: left;
@@ -393,7 +318,7 @@ export default {
           }
         }
         a.desc {
-          flex-grow: 1; 
+          flex-grow: 1;
         }
         h5 {
           margin: 0;

@@ -1,10 +1,12 @@
 import DefaultLayout from '~/layouts/Default.vue'
 import VScrollLock from 'v-scroll-lock'
+import VueAgile from 'vue-agile'
 
 
 export default function (Vue, {router, head, isClient}) {
   Vue.component('Layout', DefaultLayout);
   Vue.use(VScrollLock);
+  Vue.use(VueAgile);
 
   head.link.push({
     rel: 'icon',
@@ -20,28 +22,40 @@ export default function (Vue, {router, head, isClient}) {
     menuOpen: false,
     searchOpen: false,
     dropdownShow: false,
+    categoriesOpen: false,
     searchQuery: ''
   });
 
   const actions = {
     openMenu() {
       store.menuOpen = true;
-      //store.searchOpen = false;
-      //store.dropdownShow = false;
     },
     closeMenu() {
       store.menuOpen = false;
     },
     openSearch() {
-      store.searchOpen = true;
-      store.menuOpen = false;
-      this.toggleDropdown();
+      if (store.dropdownShow == true && store.categoriesOpen == true) {
+        store.searchOpen = true;
+        store.categoriesOpen = false;
+      } else if (store.dropdownShow == true && store.categoriesOpen == false) {
+        store.searchOpen = true;
+        this.hideDropdown();
+      } else {
+        store.searchOpen = true;
+        this.showDropdown();
+      }
     },
     closeSearch() {
       store.searchOpen = false;
     },
+    showCategories() {
+      store.categoriesOpen = !store.categoriesOpen;
+    },
     toggleDropdown() {
       store.dropdownShow = !store.dropdownShow;
+    },
+    showDropdown() {
+      store.dropdownShow = true;
     },
     hideDropdown() {
       store.dropdownShow = false;

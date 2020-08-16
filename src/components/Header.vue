@@ -13,18 +13,19 @@
 
         <div class="navigation only-desktop">
           <ul>
-            <li><a @click="openBlogDropdown()">Blog</a></li>
-            <li><a href="#">Our Commitment</a></li>
-            <li><a href="#">About</a></li>
+            <li class="blog"><a @click="openBlogDropdown()">Blog</a></li>
+            <li class="commitment"><a href="#">Our Commitment</a></li>
+            <li class="about"><a href="#">About</a></li>
           </ul>
           <div class="logo">
               <a href="/"><img src="~@/assets/images/sable-logo.svg" width="277" alt="S'able Labs" /></a>
           </div>
           <ul>
-            <li><button>Subscribe</button></li>
+            <li class="subscribe"><button>Subscribe</button></li>
             <li class="search">
               <button @click="$actions.openSearch()"><img src="~@/assets/images/search-icon.svg" alt="Search"></button>
             </li>
+            <li class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</li>
           </ul>
         </div>
 
@@ -33,33 +34,33 @@
         </div>
       </div>
       <div class="dropdown-container" :class="showDropdown ? 'show' : 'hide'">
-        <Dropdown :search-results="this.searchResultPosts" :show-search="showSearchBar" :dropdown-state="showDropdown" />
+        <Dropdown :show-search="showSearchBar" :dropdown-state="showDropdown" />
       </div>
   </div>
 </template>
 
 <static-query>
-query {
-  allPosts: allWordPressPost {
-    edges {
-      node {
-        id
-        title
-        path
-        dateGmt
-        excerpt
-        categories {
+  query {
+    allPosts: allWordPressPost {
+      edges {
+        node {
+          id
           title
-        }
-        featuredMedia {
-          sourceUrl
-          altText
-          caption
+          path
+          dateGmt
+          excerpt
+          categories {
+            title
+          }
+          featuredMedia {
+            sourceUrl
+            altText
+            caption
+          }
         }
       }
     }
   }
-}
 </static-query>
 
 <script>
@@ -75,35 +76,24 @@ query {
         SearchPanel,
         Dropdown
     },
-    props: ['dropdownState', 'showSearchBar'],
+    props: ['dropdownState', 'showSearchBar', 'showCategories'],
     data() {
-        return {
-          index: null,
-          searchTerm: '',
-          searchResultPosts: [],
-          query: this.searchTerm,
-          showSearch: false,
-          showDropdown: false,
-          headerHeight: 0,
-          fixedHeader: false
-        }
-    },
-    beforeMount() {
-      this.index = new Flexsearch({
-        tokenize: 'forward',
-        doc: {
-          id: 'id',
-          field: [
-            'title',
-            'excerpt'
-          ]
-        }
-      })
-      this.index.add(this.$static.allPosts.edges.map(e => e.node));
+      return {
+        showSearch: false,
+        showDropdown: false,
+        categoryOpen: false,
+        headerHeight: 0,
+        fixedHeader: false
+      }
     },
     methods: {
       openBlogDropdown() {
-        this.$actions.toggleDropdown();
+        if (this.showDropdown == true && this.categoryOpen == true) {
+          this.$actions.toggleDropdown();
+        } else {
+          this.$actions.showDropdown();
+          this.$actions.showCategories();
+        }
         this.$actions.closeSearch();
       },
       getDropdownPosition() {
@@ -122,33 +112,30 @@ query {
     mounted() {
       this.getDropdownPosition();
       document.addEventListener('scroll', this.stickyHeader);
-    },
-    computed: {
-      searchResults() {
-        if (this.index === null || this.searchTerm.length < 3) return [];
-        return this.index.search({
-          query: this.searchTerm,
-          limit: 3
+      const headerLinks = document.querySelectorAll('.navigation.only-desktop li');
+      headerLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+          headerLinks.forEach((link) => {
+            link.classList.remove('active');
+          });
+          if ((link.classList.contains('blog') && this.showDropdown == false) || (link.classList.contains('search') && this.showDropdown == false)) {
+            link.classList.remove('active')
+          } else {
+            link.classList.add('active');
+          }
         });
-      }
+      });
     },
     watch: {
-      dropdownState: function(state) {
+      dropdownState(state) {
         this.showDropdown = state;
       },
       showSearchBar(state) {
         this.showSearch = state;
       },
-     /*searchTerm(query) {
-       this.query = query;
-        if (query.length >= 3) {
-          this.$actions.showDropdown();
-        }
-        if (query == '') {
-          this.$actions.hideDropdown();
-          this.showSearch = false;
-        }
-      }*/
+      showCategories(state) {
+        this.categoryOpen = state
+      }
     }
   }
 </script>
@@ -156,7 +143,7 @@ query {
 <style lang="scss" scoped>
   .header {
       width: 100%;
-      box-shadow: 0px 10px 14px 0px rgba(0,0,0,0.4);
+      box-shadow: 0px 10px 14px 0px rgba(0,0,0,0.3);
       position: relative;
       background: white;
       z-index: 5;
@@ -233,7 +220,7 @@ query {
               list-style-type: none;
               font-size: 1.3rem;
               letter-spacing: .05rem;
-              margin-top: -50px;
+              margin-top: -32px;
                 li {
                   display: flex;
                   align-items: center;
@@ -245,12 +232,17 @@ query {
                   &.active:after {
                     content: ' ';
                     display: block;
-                    background-color: black;
-                    height: 3px;
+                    background-color: #164734;
+                    height: 8px;
                     position: absolute;
                     width: 100%;
                     bottom: 0;
                     left: 0;
+                  }
+                  .spacer {
+                    &.active.after {
+                      height: 0;
+                    }
                   }
                   a {
                     color: black;
@@ -274,40 +266,17 @@ query {
               }
 
           .logo {
-            margin: 0 6%;
+            margin: 10px 6% 0;
             padding-bottom: 0;
           }
 
           .search {
             position: relative;
-            display: flex;
-            width: 65%;
-
-
             img {
               margin-top: 10px;
               width: 25px;
               fill: black;
               filter: brightness(0);
-            }
-
-            input {
-              font-family: 'acumin-pro-condensed', 'Helvetica Neue', sans-serif;
-              font-weight: 600;
-              font-style: normal;
-              font-size: 1.3rem;
-              letter-spacing: .05rem;
-              flex: 1;
-              text-transform: uppercase;
-              letter-spacing: 1px;
-              position: relative;
-              border: none;
-              border-bottom: 2px solid black;
-              padding-bottom: 3px;
-              &:focus::-webkit-input-placeholder { color:transparent; }
-              &::placeholder {
-                color: rgba(0,0,0,0.3);
-              }
             }
           }
 

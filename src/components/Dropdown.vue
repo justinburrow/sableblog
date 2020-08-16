@@ -197,6 +197,9 @@ export default {
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
+      @media screen and (max-width: $breakpoint-md) {
+        padding: 45px 20px;
+      }
 
       span {
         color: white;
@@ -230,7 +233,7 @@ export default {
           text-transform: uppercase;
           font-size: 1.3rem;
           padding: 3px 40px;
-          margin-top: 5px;
+          margin-top: 10px;
           &:hover {
             cursor: pointer;
           }
