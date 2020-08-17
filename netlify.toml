@@ -1,13 +1,7 @@
-    
+
 [build]
   publish = "dist"
   command = "gridsome build"
-  
+
 [template.environment]
   WORDPRESS_URL = "http://justinburrow.com/sb-blog/"
-
-  [[plugins]]
-package = "@netlify/plugin-sitemap"
-
-  [plugins.inputs]
-  buildDir = "dist"
