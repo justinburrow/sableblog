@@ -1,7 +1,7 @@
 <template>
     <div class="dropdown" ref="dropdown">
       <ul class="categories" v-if="this.showSearch == false && this.showDropdown == true">
-        <li v-for="cat in $static.allWordPressCategory.edges" class="cat" :key="cat.node.id">
+        <li v-for="cat in $static.allWordPressCategory.edges" class="cat" :key="cat.node.id" v-if="cat.node.count > 0">
           <div class="image">
             <g-link :to="cat.node.path"><g-image :src="filterCatImage(cat.node.id)" v-on:click="hideDropdown()"></g-image></g-link>
           </div>
@@ -27,6 +27,7 @@
           id
           acf {
             categoryImage
+            categoryParent
           }
         }
       }
@@ -38,6 +39,7 @@
           id
           title
           path
+          count
         }
       }
     }
@@ -66,11 +68,21 @@ export default {
     },
     methods: {
       filterCatImage(id) {
-        this.catImages = this.$static.allCategoryImages.edges;
-        const matchedImage = this.catImages.filter(obj => {
-          return obj.node.id == id;
+        const catImages = this.$static.allCategoryImages.edges;
+        let newArr = [];
+        catImages.forEach(({node}) => {
+          newArr.push({
+            id: node.acf.categoryParent,
+            imageUrl: node.acf.categoryImage
+          })
         });
-        return matchedImage[0].node.acf.categoryImage;
+        let catImage = null;
+        newArr.filter((cat) => {
+          if (cat.id == id) {
+            catImage = cat.imageUrl
+          }
+        });
+        return catImage;
       },
       hideDropdown() {
         this.$emit('hideDropdown');
