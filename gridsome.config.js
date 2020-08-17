@@ -40,7 +40,7 @@ module.exports = {
     {
       use: '@gridsome/source-wordpress',
       options: {
-        baseUrl: 'http://sableblog.local/', // required
+        baseUrl: 'https://justinburrow.com/sb-blog', // required
         typeName: 'WordPress', // GraphQL schema name (Optional),
         customEndpoints: [
           {

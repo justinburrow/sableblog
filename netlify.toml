@@ -4,4 +4,4 @@
   command = "gridsome build"
 
 [template.environment]
-  WORDPRESS_URL = "https://justinburrow.com/sb-blog/"
+  WORDPRESS_URL = "https://www.justinburrow.com/sb-blog/"
