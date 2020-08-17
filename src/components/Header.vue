@@ -39,32 +39,7 @@
   </div>
 </template>
 
-<static-query>
-  query {
-    allPosts: allWordPressPost {
-      edges {
-        node {
-          id
-          title
-          path
-          dateGmt
-          excerpt
-          categories {
-            title
-          }
-          featuredMedia {
-            sourceUrl
-            altText
-            caption
-          }
-        }
-      }
-    }
-  }
-</static-query>
-
 <script>
-  import Flexsearch from 'flexsearch'
   import MenuPanel from '~/components/MenuPanel.vue'
   import SearchPanel from '~/components/SearchPanel.vue'
   import Dropdown from '~/components/Dropdown.vue'

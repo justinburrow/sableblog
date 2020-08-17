@@ -2,7 +2,7 @@
   <Layout>
     <section class="search-results">
 
-      <ul class="items search">
+      <!--<ul class="items search">
         <li class="title"><h3>Searching For: "{{this.searchingBy}}"</h3></li>
         <li v-for="post in searchResults" class="post" :key="post.id">
           <div class="image">
@@ -14,7 +14,7 @@
           </div>
         </li>
         <li v-if="this.searchResults == 0">Sorry, no posts were found</li>
-      </ul>
+      </ul>-->
 
     </section>
   </Layout>
@@ -46,12 +46,12 @@ query {
 
 <script>
 import HomePost from '~/components/HomePost.vue'
-import Flexsearch from 'flexsearch'
 
 export default {
   data() {
     return {
-      searchingBy: this.$store.searchQuery
+      searchingBy: this.$store.searchQuery,
+      index: null,
     }
   },
   components: {
@@ -66,28 +66,22 @@ export default {
     }
   },
   beforeMount() {
-    this.index = new Flexsearch({
-      tokenize: 'forward',
-      doc: {
-        id: 'id',
-        field: [
-          'title',
-          'excerpt'
-        ]
-      }
-    })
-    this.index.add(this.$page.allPosts.edges.map(e => e.node));
-  },
-  mounted() {
 
   },
-  computed: {
-    searchResults() {
-      return this.index.search({
-        query: this.searchingBy,
-      });
-    }
+  beforeRouteUpdate(to, from, next) {
+
   },
+  mounted() {
+    console.log('wee');
+    this.$page.allPosts.edges.forEach((post) => {
+      if ((post.node.title.includes(this.searchingBy)) || (post.node.excerpt.includes(this.searchingBy))) {
+        console.log(post.node.title);
+      }
+    })
+  },
+  computed: {
+
+  }
 }
 </script>s
 

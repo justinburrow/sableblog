@@ -59,7 +59,7 @@ query {
 
 <script>
 import ClickOutside from 'vue-click-outside'
-import Flexsearch from 'flexsearch'
+//import Flexsearch from 'flexsearch'
 
 export default {
   name: 'SearchPanel',
@@ -72,7 +72,7 @@ export default {
     }
   },
   beforeMount() {
-    this.index = new Flexsearch({
+    /*this.index = new Flexsearch({
       tokenize: 'forward',
       doc: {
         id: 'id',
@@ -82,7 +82,7 @@ export default {
         ]
       }
     })
-    this.index.add(this.$static.allPosts.edges.map(e => e.node));
+    this.index.add(this.$static.allPosts.edges.map(e => e.node));*/
   },
   methods: {
     closeMenu: function(el) {

@@ -1,7 +1,9 @@
 <template>
   <div class="layout">
     <header>
-      <Announcements />
+      <ClientOnly>
+        <Announcements />
+      </ClientOnly>
       <Header :dropdown-state="$store.dropdownShow" @hideDropdown="$actions.hideDropdown()" :show-search-bar="$store.searchOpen" :show-categories="$store.categoriesOpen"/>
     </header>
 

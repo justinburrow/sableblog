@@ -13,7 +13,7 @@
         <span>Search</span>
         <input id="search" type="text" v-model="searchingBy" class="input">
         <div class="search-button">
-          <g-link to="/search/"><button>Submit</button></g-link>
+          <button @click="search">Submit</button>
         </div>
       </div>
     </div>
@@ -62,9 +62,6 @@ export default {
       },
       showSearch(state) {
         this.showSearchBar = state;
-      },
-      searchingBy() {
-        this.$store.searchQuery = this.searchingBy;
       }
     },
     methods: {
@@ -77,6 +74,14 @@ export default {
       },
       hideDropdown() {
         this.$emit('hideDropdown');
+      },
+      search() {
+        this.$store.searchQuery = this.searchingBy;
+        if (this.$route.fullPath == '/search') {
+          this.$router.go();
+        } else {
+          this.$router.push({path: '/search'});
+        }
       }
     }
   }

@@ -35,10 +35,9 @@ export default {
     }
   },
   created() {
-    let parser = new DOMParser();
-    let slideHtml = parser.parseFromString(this.$static.announcements.edges[0].node.content, 'text/html')
+    let frag = document.createRange().createContextualFragment(this.$static.announcements.edges[0].node.content);
 
-    slideHtml.querySelectorAll('li').forEach((slide, i) => {
+    frag.querySelectorAll('li').forEach((slide, i) => {
       this.announcementContent.push(slide.innerHTML);
     });
   }
