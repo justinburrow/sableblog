@@ -14,7 +14,7 @@
 
 <static-query>
     query {
-        categories: allWordPressCategory(order: ASC) {
+        categories: allWordPressCategory(order: ASC, filter: { slug: { ne: "homepage-hero-banners"}}) {
             edges {
                 node {
                     id

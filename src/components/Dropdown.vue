@@ -27,13 +27,12 @@
           id
           acf {
             categoryImage
-            categoryParent
           }
         }
       }
     }
 
-    allWordPressCategory(order: ASC ) {
+    allWordPressCategory(order: ASC, filter: { slug: { ne: "homepage-hero-banners"}} ) {
       edges {
         node {
           id
@@ -72,7 +71,7 @@ export default {
         let newArr = [];
         catImages.forEach(({node}) => {
           newArr.push({
-            id: node.acf.categoryParent,
+            id: node.id,
             imageUrl: node.acf.categoryImage
           })
         });

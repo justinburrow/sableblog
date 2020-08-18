@@ -1,29 +1,68 @@
 <template>
-  <div class="home-features">
-    <div class="content">
-      <div class="video">
-        <video poster="~@/assets/images/video-poster.jpg" controls playsinline><source src="https://www.sablelabs.co/documents/Sable-Labs-Coupledom-Launch_021420.mp4" type="video/mp4" /></video>
-      </div>
-      <div class="coupledom">
-        <div class="coupledom-content">
-          <h3>Coupledom Movement</h3>
-          <h4>Coupledom / (‘Kapaldam)</h4>
-          <p>The realm of shared experiences between two partners in life or business, creating extraordinary outcomes.</p>
-          <g-link to="/coupledom"><a href="#">Read More</a></g-link>
+  <div>
+    <div class="hero-banners">
+      <agile :autoplay="true" :nav-buttons="false" :speed="500" :autoplay-speed="8000" :dots="true">
+        <div v-for="(banner, index) in $static.allWordPressCategory.edges[0].node.belongsTo.edges">
+          <a :href="banner.node.acf.bannerLink" v-if="banner.node.acf.bannerLink"><img :src="banner.node.acf.bannerImage" /></a>
+          <img v-else :src="banner.node.acf.bannerImage" />
+        </div>
+      </agile>
+    </div>
+    <div class="home-features">
+      <div class="content">
+        <div class="video">
+          <video poster="~@/assets/images/video-poster.jpg" controls playsinline><source src="https://www.sablelabs.co/documents/Sable-Labs-Coupledom-Launch_021420.mp4" type="video/mp4" /></video>
+        </div>
+        <div class="coupledom">
+          <div class="coupledom-content">
+            <h3>Coupledom Movement</h3>
+            <h4>Coupledom / (‘Kapaldam)</h4>
+            <p>The realm of shared experiences between two partners in life or business, creating extraordinary outcomes.</p>
+            <g-link to="/coupledom"><a href="#">Read More</a></g-link>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="titles only-desktop">
-      <h4>Video</h4>
-      <h4>Couples</h4>
+      <div class="titles only-desktop">
+        <h4>Video</h4>
+        <h4>Couples</h4>
+      </div>
     </div>
   </div>
 </template>
 
+<static-query>
+  query {
+    allWordPressCategory(order: ASC, filter: {slug: {eq: "homepage-hero-banners"}}) {
+      edges {
+        node {
+          title
+          belongsTo {
+            edges {
+              node {
+                ... on WordPressPost {
+                  acf {
+                    bannerImage
+                    bannerLink
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+</static-query>
+
 
 <script>
+import { VueAgile } from 'vue-agile'
+
 export default {
   name: 'HomeFeatures',
+  components: {
+    agile: VueAgile
+  },
   data() {
     return {
 
@@ -32,7 +71,38 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+  .hero-banners {
+    margin-bottom: 30px;
+    img {
+      width: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+  }
+  .agile__dots {
+    li:first-child {
+      margin-right: 10px;
+    }
+    button {
+      border-radius: 50%;
+      height: 15px;
+      width: 15px;
+      line-height: 15px;
+      border: none;
+      background: rgba(0,0,0,0.2);
+      @media screen and (max-width: $breakpoint-sm) {
+        height: 2.5vw;
+        width: 2.5vw;
+        line-height: 2.5vw;
+      }
+    }
+    .agile__dot--current {
+      button {
+        background: rgba(0,0,0,0.7);
+      }
+    }
+  }
   .home-features {
     background-color: #f2f2f2;
     padding: 30px 0;

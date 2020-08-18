@@ -34,11 +34,12 @@ query Home {
     }
   }
 
-  allWordPressCategory(order: ASC ) {
+  allWordPressCategory(order: ASC, filter: { slug: { ne: "homepage-hero-banners"}} ) {
     edges {
       node {
         id
         count
+        slug
       }
     }
   }
