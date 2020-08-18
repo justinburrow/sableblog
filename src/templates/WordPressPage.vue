@@ -175,7 +175,7 @@ export default {
   .page {
     padding-bottom: 120px;
     max-width: 1320px;
-    margin: 0 auto;
+    margin: 30px auto 0 auto;
     @media screen and (max-width: $breakpoint-lg) {
       padding-bottom: 10vw;
       width: 100%;
