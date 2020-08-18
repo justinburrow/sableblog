@@ -15,7 +15,7 @@
       />
       </div>
       <div class="post-details">
-        <span class="author" v-if="$page.wordPressPost.featuredMedia.caption">Photography: {{$page.wordPressPost.featuredMedia.caption | removeHTML}}</span>
+        <span class="author" v-if="!$page.wordPressPost.featuredMedia == null">Photography: {{$page.wordPressPost.featuredMedia.caption | removeHTML}}</span>
         <span class="date only-desktop">{{formatDate($page.wordPressPost.date)}}</span>
       </div>
       <p class="date only-mobile-tablet">{{formatDate($page.wordPressPost.date)}}</p>

@@ -1,25 +1,26 @@
 <template>
   <Layout>
-    <div class="page">
+    <div class="page" v-if="$page.wordPressPage.acf.pageType != 'Site Settings'">
       <h1 v-html="$page.wordPressPage.title"/>
-      <div class="page-image" v-if="$page.wordPressPage.featuredMedia">
+      <div class="page-image" v-if="$page.wordPressPage.featuredMedia != null || $page.wordPressPage.acf.pageType != 'Legal'">
        <img
-        v-if="$page.wordPressPage.featuredMedia"
+        v-if="$page.wordPressPage.featuredMedia != null"
         :src="$page.wordPressPage.featuredMedia.sourceUrl"
         :alt="$page.wordPressPage.featuredMedia.altText"
       />
       </div>
-      <div class="page-details" v-if="$page.wordPressPage.featuredMedia">
-        <span class="author" v-if="$page.wordPressPage.featuredMedia">Photography: {{$page.wordPressPage.featuredMedia.caption | removeHTML}}</span>
+      <div class="page-details" v-if="$page.wordPressPage.featuredMedia != null || $page.wordPressPage.acf.pageType != 'Legal'">
+        <span class="author" v-if="$page.wordPressPage.featuredMedia != null">Photography: {{$page.wordPressPage.featuredMedia.caption | removeHTML}}</span>
       </div>
       <div class="page-content" v-html="$page.wordPressPage.content"></div>
-      <div class="post-navigation" v-if="$page.wordPressPage.acf.pageType != 'Legal'">
+
+      <!--<div class="post-navigation" v-if="$page.wordPressPage.acf.pageType != 'Legal' || $page.wordPressPage.acf.pageType != 'Site Settings'">
         <div class="title">Related Articles</div>
-        <div class="articles">
+        <div class="articles" v-if="$page.wordPressPage.acf.pageType != 'Legal'">
           <article v-if="$page.prevPost.edges.length > 0">
             <g-link :to="$page.prevPost.edges[0].node.path" class="image">
               <div class="image">
-                <img :src="$page.prevPost.edges[0].node.featuredMedia.sourceUrl" :alt="$page.prevPost.edges[0].node.featuredMedia.altText" />
+                <img :src="$page.prevPost.edges[0].node.featuredMedia.sourceUrl" :alt="$page.prevPost.edges[0].node.featuredMedia.altText" v-if="$page.wordPressPage.featuredMedia != null"/>
               </div>
             </g-link>
             <g-link :to="$page.prevPost.edges[0].node.path" class="desc">
@@ -34,10 +35,10 @@
             </g-link>
           </article>
 
-          <article v-if="$page.nextPost.edges.length > 0">
+          <article v-if="$page.nextPost.edges.length > 0 || $page.wordPressPage.acf.pageType != 'Legal'">
             <g-link :to="$page.nextPost.edges[0].node.path" class="image">
               <div class="image">
-                <img :src="$page.nextPost.edges[0].node.featuredMedia.sourceUrl" :alt="$page.nextPost.edges[0].node.featuredMedia.altText" />
+                <img :src="$page.nextPost.edges[0].node.featuredMedia.sourceUrl" :alt="$page.nextPost.edges[0].node.featuredMedia.altText" v-if="$page.wordPressPage.featuredMedia != null"/>
               </div>
             </g-link>
             <g-link :to="$page.nextPost.edges[0].node.path" class="desc">
@@ -52,10 +53,10 @@
             </g-link>
           </article>
 
-          <article v-if="$page.nextPost.edges.length == 0">
+          <article v-if="$page.nextPost.edges.length == 0 || $page.wordPressPage.acf.pageType != 'Legal'">
             <g-link :to="$page.prevPost.edges[1].node.path" class="image">
               <div class="image">
-                <img :src="$page.prevPost.edges[1].node.featuredMedia.sourceUrl" :alt="$page.prevPost.edges[1].node.featuredMedia.altText" />
+                <img :src="$page.prevPost.edges[1].node.featuredMedia.sourceUrl" :alt="$page.prevPost.edges[1].node.featuredMedia.altText" v-if="$page.wordPressPage.featuredMedia != null"/>
               </div>
             </g-link>
             <g-link :to="$page.prevPost.edges[1].node.path" class="desc">
@@ -70,10 +71,10 @@
             </g-link>
           </article>
 
-          <article v-if="$page.prevPost.edges.length == 0">
+          <article v-if="$page.prevPost.edges.length == 0 || $page.wordPressPage.acf.pageType != 'Legal'">
             <g-link :to="$page.nextPost.edges[1].node.path" class="image">
               <div class="image">
-                <img :src="$page.nextPost.edges[1].node.featuredMedia.sourceUrl" :alt="$page.nextPost.edges[1].node.featuredMedia.altText" />
+                <img :src="$page.nextPost.edges[1].node.featuredMedia.sourceUrl" :alt="$page.nextPost.edges[1].node.featuredMedia.altText" v-if="$page.wordPressPage.featuredMedia != null"/>
               </div>
             </g-link>
             <g-link :to="$page.nextPost.edges[1].node.path" class="desc">
@@ -87,11 +88,11 @@
               <h6>{{ $page.nextPost.edges[1].node.categories[0].title }}</h6>
             </g-link>
           </article>
-          
+
         </div>
-      </div>
+      </div>-->
     </div>
-    
+
   </Layout>
 </template>
 
@@ -237,7 +238,7 @@ export default {
       margin: 2vw 0 4vw 0;
     }
   }
-  .page-content { 
+  .page-content {
     font-size: 17px;
     line-height: 1.4;
     h2, h3, h4, h5, h6 {
@@ -357,7 +358,7 @@ export default {
           }
         }
         a.desc {
-          flex-grow: 1; 
+          flex-grow: 1;
         }
         h5 {
           margin: 0;
@@ -423,7 +424,7 @@ export default {
             display: none;
           }
         }
-      } 
+      }
     }
   }
 </style>

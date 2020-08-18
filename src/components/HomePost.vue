@@ -1,7 +1,7 @@
 <template>
   <article class="home-post">
       <div class="image">
-        <g-link :to="post.node.path"><img :src="post.node.featuredMedia.sourceUrl" :alt="post.node.featuredMedia.altText" /></g-link>
+        <g-link :to="post.node.path" v-if="!post.node.featuredMedia == null"><img :src="post.node.featuredMedia.sourceUrl" :alt="post.node.featuredMedia.altText" /></g-link>
       </div>
       <h4 v-for="(cat, i) in post.node.categories" :key="i">
         <g-link :to="cat.path"><span v-if="i == 0">{{cat.title}}</span></g-link>
