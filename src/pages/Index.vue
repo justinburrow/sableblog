@@ -3,9 +3,8 @@
     <section class="featured-posts">
       <h3>Features</h3>
         <ul class="post-list">
-          <li v-for="node in $page.allWordPressPost.edges" :key="node.node.id" :class="node.node.categories[0].title | lowercase">
-            {{ node.id }}
-            <HomePost :post="node" />
+          <li v-for="cat in $page.allWordPressCategory.edges" :key="cat.node.id" v-if="cat.node.count > 0">
+            <HomePost :post="newestPost(cat.node.id)" />
           </li>
         </ul>
     </section>
@@ -25,13 +24,21 @@ query Home {
         categories {
           id
           title
-          path
         }
         featuredMedia {
           sourceUrl
           altText
           caption
         }
+      }
+    }
+  }
+
+  allWordPressCategory(order: ASC ) {
+    edges {
+      node {
+        id
+        count
       }
     }
   }
@@ -48,16 +55,21 @@ export default {
   metaInfo: {
     title: 'S\'able Labs'
   },
-  filters: {
-    lowercase: function (val) {
-      return val.toLowerCase();
-    }
-  },
   mounted() {
     let flockler = document.createElement('script');
     flockler.setAttribute('src', 'https://flockler.embed.codes/KAn5xj');
     flockler.setAttribute('async', true);
     document.head.appendChild(flockler);
+  },
+  methods: {
+    newestPost(id) {
+      const posts = this.$page.allWordPressPost.edges;
+      let postArr = [];
+      let newestPostContent = posts.find((post) => {
+        return post.node.categories[0].id == id;
+      });
+      return newestPostContent;
+    }
   }
 }
 </script>s
