@@ -92,7 +92,7 @@ export default {
       letter-spacing: 1px;
       line-height: 1;
       padding: 0;
-      margin: 0;
+      margin: 10px 0 0 0;
       @media screen and (max-width: $breakpoint-xl) {
         font-size: 4vw;
       }

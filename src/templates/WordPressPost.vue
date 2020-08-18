@@ -114,6 +114,7 @@ export default {
     padding-bottom: 120px;
     max-width: 1320px;
     margin: 0 auto;
+    max-width: 1000px;
     @media screen and (max-width: $breakpoint-lg) {
       padding-bottom: 10vw;
       width: 100%;
@@ -154,8 +155,9 @@ export default {
     text-align: center;
     text-transform: uppercase;
     font-size: 60px;
-    margin: 0 0 20px;
+    margin: 0 0 30px;
     padding: 0;
+    line-height: 1;
     @media screen and (max-width: $breakpoint-md) {
       font-size: 9vw;
       line-height: 1.2;
@@ -194,9 +196,11 @@ export default {
     }
   }
   .post-content {
+    font-family: 'acumin-pro', sans-serif;
     font-size: 17px;
     line-height: 1.4;
     padding: 0 7%;
+    margin-left: 200px;
     @media screen and (max-width: $breakpoint-lg) {
       padding: 0;
     }
@@ -211,8 +215,10 @@ export default {
       }
     }
     h2 {
-      font-size: 24px;
-      margin-bottom: 40px;
+      font-family: 'acumin-pro-condensed', sans-serif;
+      text-transform: uppercase;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
       font-weight: 400;
       @media screen and (max-width: $breakpoint-lg) {
         font-size: 3vw;
@@ -244,6 +250,11 @@ export default {
       @media screen and (max-width: $breakpoint-sm) {
         font-size: 4vw;
       }
+    }
+    ol {
+      margin: 0;
+      padding: 0;
+      list-style-position: inside;
     }
   }
   .post-navigation {
