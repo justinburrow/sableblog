@@ -8,14 +8,14 @@
         </div>
 
         <div class="logo only-mobile-tablet">
-          <a href="/"><img src="~@/assets/images/sable-logo.svg" width="370" alt="S'able Labs" /></a>
+          <g-link to:="/"><img src="~@/assets/images/sable-logo.svg" width="370" alt="S'able Labs" /></g-link>
         </div>
 
         <div class="navigation only-desktop">
           <ul>
             <li class="blog"><a @click="openBlogDropdown()">Blog</a></li>
             <li class="commitment"><a href="#">Our Commitment</a></li>
-            <li class="about"><a href="#">About</a></li>
+            <li class="about"><g-link to="/pages/about/">About</g-link></li>
           </ul>
           <div class="logo">
               <a href="/"><img src="~@/assets/images/sable-logo.svg" width="277" alt="S'able Labs" /></a>

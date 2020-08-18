@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <div class="post">
-      <div class="category">
+      <div class="post-category">
         <g-link :to="$page.wordPressPost.categories[0].path" class="category">
           <h2 v-html="$page.wordPressPost.categories[0].title"></h2>
         </g-link>
@@ -128,7 +128,7 @@ export default {
       }
     }
   }
-  .category {
+  .post-category {
     a {
       color: #b2b2b2;
     }

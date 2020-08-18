@@ -64,16 +64,16 @@ export default function (Vue, {router, head, isClient}) {
 
     // overwrite the scrollBehavior function with custom one
     router.options.scrollBehavior = function (to, from, savedPosition) {
+      actions.hideDropdown();
       if (savedPosition) {
         return savedPosition;
-      }
-      if (to.hash) {
+      } else if (to.hash) {
         return {
           selector: to.hash
-        };
+        }
+      } else {
+        return { x: 0, y: 0 }
       }
-      document.body.scrollTop = 0;
-      actions.hideDropdown();
     }
 
   Vue.prototype.$store = store;
