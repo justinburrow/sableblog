@@ -13,6 +13,12 @@ export default function (Vue, {router, head, isClient}) {
     href: 'data:,'
   });
 
+  head.script.push({
+    src: "https://flockler.embed.codes/KAn5xj",
+    body: true,
+    async: true
+  })
+
   head.link.push({
     rel: "stylesheet",
     href: "https://use.typekit.net/zmf6fgh.css"
