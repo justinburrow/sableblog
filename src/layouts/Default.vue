@@ -43,7 +43,7 @@
       }
     },
     created() {
-      
+      this.$flockler;
     }
   }
 </script>
