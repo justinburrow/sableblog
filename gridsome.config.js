@@ -50,6 +50,12 @@ module.exports = {
           }
         ]
       },
+    },
+    {
+      use: '@gridsome/plugin-google-analytics',
+      options: {
+        id: 'UA-175916340-1'
+      }
     }
   ],
   chainWebpack(config) {
