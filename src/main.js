@@ -78,7 +78,9 @@ export default function (Vue, {router, head, isClient}) {
         }
       } else {
         if (window.flcklr) {
-          document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML = '';
+          if (document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML != '') {
+            document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML = '';
+          }
           const embed = window.flcklr.Embeds.create(
             window.flcklr.EmbedConfigs['17177230bd60efd482bfb4b945f55ff2']
           )
