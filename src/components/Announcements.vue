@@ -1,10 +1,10 @@
 <template>
   <div class="announcements">
-    <agile :key="announcementContent.length" :autoplay="true" :nav-buttons="false" :speed="500" :autoplay-speed="5000" :dots="false">
-      <div v-for="(slide, index) in announcementContent">
-        {{ slide }}
-      </div>
-    </agile>
+      <agile :key="announcementContent.length" :autoplay="true" :nav-buttons="false" :speed="500" :autoplay-speed="5000" :dots="false">
+        <div v-for="(slide, index) in announcementContent">
+          {{ slide }}
+        </div>
+      </agile>
   </div>
 </template>
 

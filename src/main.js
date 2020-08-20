@@ -7,30 +7,6 @@ export default function (Vue, {router, head, isClient}) {
   Vue.use(VScrollLock);
   Vue.use(VueAgile);
 
-  const scriptLoader = {
-    loaded: [],
-    load (src) {
-      if (this.loaded.indexOf(src) !== -1) {
-          return
-      }
-
-      this.loaded.push(src)
-
-      if (document) {
-          const script = document.createElement('script')
-          script.setAttribute('src', src)
-          script.setAttribute('async', true)
-          document.head.appendChild(script)
-      }
-    }
-  }
-
-Vue.use({
-    install () {
-        Vue.prototype.$scriptLoader = scriptLoader
-    }
-})
-
   head.link.push({
     rel: 'icon',
     href: 'data:,'
@@ -40,6 +16,12 @@ Vue.use({
     rel: "stylesheet",
     href: "https://use.typekit.net/zmf6fgh.css"
   });
+
+  head.script.push({
+    src: "https://flockler.embed.codes/KAn5xj",
+    body: true,
+    async: true
+  })
 
   const store = Vue.observable({
     menuOpen: false,
