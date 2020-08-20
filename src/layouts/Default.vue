@@ -1,9 +1,7 @@
 <template>
   <div class="layout">
     <header>
-      <ClientOnly>
-        <Announcements />
-      </ClientOnly>
+      <Announcements />
       <Header :dropdown-state="$store.dropdownShow" @hideDropdown="$actions.hideDropdown()" :show-search-bar="$store.searchOpen" :show-categories="$store.categoriesOpen"/>
     </header>
 
@@ -41,6 +39,9 @@
           this.$actions.closeMenu();
         }
       }
+    },
+    created() {
+      this.$scriptLoader.load('https://flockler.embed.codes/KAn5xj');
     }
   }
 </script>

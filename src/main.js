@@ -2,22 +2,39 @@ import DefaultLayout from '~/layouts/Default.vue'
 import VScrollLock from 'v-scroll-lock'
 import VueAgile from 'vue-agile'
 
-
 export default function (Vue, {router, head, isClient}) {
   Vue.component('Layout', DefaultLayout);
   Vue.use(VScrollLock);
   Vue.use(VueAgile);
 
+  const scriptLoader = {
+    loaded: [],
+    load (src) {
+      if (this.loaded.indexOf(src) !== -1) {
+          return
+      }
+
+      this.loaded.push(src)
+
+      if (document) {
+          const script = document.createElement('script')
+          script.setAttribute('src', src)
+          script.setAttribute('async', true)
+          document.head.appendChild(script)
+      }
+    }
+  }
+
+Vue.use({
+    install () {
+        Vue.prototype.$scriptLoader = scriptLoader
+    }
+})
+
   head.link.push({
     rel: 'icon',
     href: 'data:,'
   });
-
-  head.script.push({
-    src: "https://flockler.embed.codes/KAn5xj",
-    body: true,
-    async: true
-  })
 
   head.link.push({
     rel: "stylesheet",
@@ -78,6 +95,13 @@ export default function (Vue, {router, head, isClient}) {
           selector: to.hash
         }
       } else {
+        if (window.flcklr) {
+          document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML = '';
+          const embed = window.flcklr.Embeds.create(
+            window.flcklr.EmbedConfigs['17177230bd60efd482bfb4b945f55ff2']
+          )
+          embed;
+        }
         return { x: 0, y: 0 }
       }
     }
