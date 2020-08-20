@@ -46,6 +46,7 @@ export default {
 
 <style lang="scss" scoped>
   .announcements {
+    min-height: 43px;
     font-family: acumin-pro, sans-serif;
     font-weight: 300;
     text-transform: uppercase;
