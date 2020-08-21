@@ -21,7 +21,7 @@ export default function (Vue, {router, head, isClient}) {
     src: "https://flockler.embed.codes/KAn5xj",
     body: true,
     async: true
-  })
+  });
 
   const store = Vue.observable({
     menuOpen: false,

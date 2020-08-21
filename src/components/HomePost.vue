@@ -2,6 +2,9 @@
   <article class="home-post">
       <div class="image">
         <g-link :to="post.node.path" v-if="post.node.featuredMedia != null"><img :src="post.node.featuredMedia.sourceUrl" :alt="post.node.featuredMedia.altText" /></g-link>
+        <div class="overlay">
+        </div>
+        <span>Read More</span>
       </div>
       <h4 v-for="(cat, i) in post.node.categories" :key="i">
         <g-link :to="cat.path"><span v-if="i == 0">{{cat.title}}</span></g-link>
@@ -64,6 +67,43 @@ export default {
         position: absolute;
         top: 0;
         left: 0;
+      }
+      &:hover {
+        .overlay {
+          opacity: 1;
+        }
+        span {
+          opacity: 1;
+        }
+      }
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(18,71,52,1);
+        mix-blend-mode: multiply;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.3s ease;
+        opacity: 0;
+        pointer-events: none;
+      }
+      span {
+        color: white;
+        text-decoration: underline;
+        text-transform: uppercase;
+        position: absolute;
+        z-index: 100;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        font-weight: bold;
       }
       @media screen and (max-width: $breakpoint-lg) {
         width: 100%;
