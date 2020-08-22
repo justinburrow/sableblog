@@ -19,7 +19,7 @@
         <span class="date only-desktop">{{formatDate($page.wordPressPost.date)}}</span>
       </div>
       <p class="date only-mobile-tablet">{{formatDate($page.wordPressPost.date)}}</p>
-      <div class="post-content" v-html="$page.wordPressPost.content"></div>
+      <div ref="postContent" class="post-content" v-html="$page.wordPressPost.content"></div>
     </div>
 
   </Layout>
@@ -99,6 +99,17 @@ export default {
     formatDate(postDate) {
       return moment(postDate).format('MMM Do, YYYY')
     }
+  },
+  mounted() {
+    let pCount = this.$refs.postContent.getElementsByTagName('p').length;
+    pCount = Math.floor(pCount/2);
+    const articleAd = document.createElement('div');
+    const contentHolder = document.createElement('div');
+    contentHolder.setAttribute('class', 'content');
+    articleAd.appendChild(contentHolder);
+    articleAd.setAttribute('id', 'article-ad');
+    this.$refs.postContent.getElementsByTagName('p')[pCount].after(articleAd);
+
   },
   filters: {
     removeHTML: function (val) {
@@ -255,6 +266,22 @@ export default {
       margin: 0;
       padding: 0;
       list-style-position: inside;
+      li {
+        margin-bottom: 20px;
+      }
+    }
+    #article-ad {
+      background: #f2f2f2;
+      padding: 20px;
+      width: 100vw;
+      position: relative;
+      left: calc(50% - 100px);
+      margin: 60px 0 60px -50vw;
+      .content {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
     }
   }
   .post-navigation {
