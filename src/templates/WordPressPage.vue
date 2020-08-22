@@ -1,7 +1,8 @@
 <template>
   <Layout>
-    <div class="page" v-if="$page.wordPressPage.acf.pageType != 'Site Settings'">
-      <h1 v-html="$page.wordPressPage.title"/>
+    <div class="page">
+      <p class="page-heading">{{pageHeading}}</p>
+      <h1 v-html="$page.wordPressPage.title" />
       <div class="page-image" v-if="$page.wordPressPage.featuredMedia != null || $page.wordPressPage.acf.pageType != 'Legal'">
        <img
         v-if="$page.wordPressPage.featuredMedia != null"
@@ -13,95 +14,18 @@
         <span class="author" v-if="$page.wordPressPage.featuredMedia != null">Photography: {{$page.wordPressPage.featuredMedia.caption | removeHTML}}</span>
       </div>
       <div class="page-content" v-html="$page.wordPressPage.content"></div>
-
-      <!--<div class="post-navigation" v-if="$page.wordPressPage.acf.pageType != 'Legal' || $page.wordPressPage.acf.pageType != 'Site Settings'">
-        <div class="title">Related Articles</div>
-        <div class="articles" v-if="$page.wordPressPage.acf.pageType != 'Legal'">
-          <article v-if="$page.prevPost.edges.length > 0">
-            <g-link :to="$page.prevPost.edges[0].node.path" class="image">
-              <div class="image">
-                <img :src="$page.prevPost.edges[0].node.featuredMedia.sourceUrl" :alt="$page.prevPost.edges[0].node.featuredMedia.altText" v-if="$page.wordPressPage.featuredMedia != null"/>
-              </div>
-            </g-link>
-            <g-link :to="$page.prevPost.edges[0].node.path" class="desc">
-              <h5>
-                {{ $page.prevPost.edges[0].node.title }}
-                <span>Read More</span>
-              </h5>
-            </g-link>
-            <g-link :to="$page.prevPost.edges[0].node.categories[0].path" class="cat-direction">
-              <img src="~@/assets/images/arrow.svg" alt="arrow" />
-              <h6>{{ $page.prevPost.edges[0].node.categories[0].title }}</h6>
-            </g-link>
-          </article>
-
-          <article v-if="$page.nextPost.edges.length > 0 || $page.wordPressPage.acf.pageType != 'Legal'">
-            <g-link :to="$page.nextPost.edges[0].node.path" class="image">
-              <div class="image">
-                <img :src="$page.nextPost.edges[0].node.featuredMedia.sourceUrl" :alt="$page.nextPost.edges[0].node.featuredMedia.altText" v-if="$page.wordPressPage.featuredMedia != null"/>
-              </div>
-            </g-link>
-            <g-link :to="$page.nextPost.edges[0].node.path" class="desc">
-              <h5>
-                {{ $page.nextPost.edges[0].node.title }}
-                <span>Read More</span>
-              </h5>
-            </g-link>
-            <g-link :to="$page.nextPost.edges[0].node.categories[0].path" class="cat-direction">
-              <img src="~@/assets/images/arrow.svg" alt="arrow" />
-              <h6>{{ $page.nextPost.edges[0].node.categories[0].title }}</h6>
-            </g-link>
-          </article>
-
-          <article v-if="$page.nextPost.edges.length == 0 || $page.wordPressPage.acf.pageType != 'Legal'">
-            <g-link :to="$page.prevPost.edges[1].node.path" class="image">
-              <div class="image">
-                <img :src="$page.prevPost.edges[1].node.featuredMedia.sourceUrl" :alt="$page.prevPost.edges[1].node.featuredMedia.altText" v-if="$page.wordPressPage.featuredMedia != null"/>
-              </div>
-            </g-link>
-            <g-link :to="$page.prevPost.edges[1].node.path" class="desc">
-              <h5>
-                {{ $page.prevPost.edges[1].node.title }}
-                <span>Read More</span>
-              </h5>
-            </g-link>
-            <g-link :to="$page.prevPost.edges[1].node.categories[0].path" class="cat-direction">
-              <img src="~@/assets/images/arrow.svg" alt="arrow" />
-              <h6>{{ $page.prevPost.edges[1].node.categories[0].title }}</h6>
-            </g-link>
-          </article>
-
-          <article v-if="$page.prevPost.edges.length == 0 || $page.wordPressPage.acf.pageType != 'Legal'">
-            <g-link :to="$page.nextPost.edges[1].node.path" class="image">
-              <div class="image">
-                <img :src="$page.nextPost.edges[1].node.featuredMedia.sourceUrl" :alt="$page.nextPost.edges[1].node.featuredMedia.altText" v-if="$page.wordPressPage.featuredMedia != null"/>
-              </div>
-            </g-link>
-            <g-link :to="$page.nextPost.edges[1].node.path" class="desc">
-              <h5>
-                {{ $page.nextPost.edges[1].node.title }}
-                <span>Read More</span>
-              </h5>
-            </g-link>
-            <g-link :to="$page.nextPost.edges[1].node.categories[0].path" class="cat-direction">
-              <img src="~@/assets/images/arrow.svg" alt="arrow" />
-              <h6>{{ $page.nextPost.edges[1].node.categories[0].title }}</h6>
-            </g-link>
-          </article>
-
-        </div>
-      </div>-->
     </div>
 
   </Layout>
 </template>
 
 <page-query>
-query WordPressPage ($id: ID!, $date: Date!) {
+query WordPressPage ($id: ID!) {
   wordPressPage(id: $id) {
     title
     content
     date
+    slug
     featuredMedia {
       sourceUrl
       altText
@@ -111,56 +35,31 @@ query WordPressPage ($id: ID!, $date: Date!) {
       pageType
     }
   }
-  prevPost: allWordPressPost(filter: {date: { lt: $date}}, limit: 2) {
-      edges {
-        node {
-          title
-          link
-          path
-          date
-          featuredMedia {
-            sourceUrl
-            altText
-          }
-          categories {
-            id
-            title
-          }
-        }
-      }
-    }
-    nextPost: allWordPressPost(filter: {date: { gt: $date}}, limit: 2) {
-      edges {
-        node {
-          title
-          link
-          path
-          date
-          featuredMedia {
-            sourceUrl
-            altText
-          }
-          categories {
-            id
-            title
-          }
-        }
-      }
-    }
 }
 </page-query>
 
 <script>
 
 export default {
+  data() {
+    return {
+      pageHeading: null
+    }
+  },
   metaInfo () {
     return {
       title: this.$page.wordPressPage.title,
       date: this.$page.wordPressPage.date
     }
   },
-  components: {
-
+  methods: {
+    headingFilter(slug) {
+      slug = slug.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
+      return slug.replace(/-/g, ' ')
+    }
+  },
+  mounted() {
+    this.pageHeading = this.headingFilter(this.$page.wordPressPage.slug);
   },
   filters: {
     removeHTML: function (val) {
@@ -180,6 +79,14 @@ export default {
       padding-bottom: 10vw;
       width: 100%;
     }
+  }
+  .page-heading {
+    font-size: 14px;
+    border-bottom: 1px solid black;
+    margin: 0 0 30px 0;
+    padding: 0 0 30px 0;
+    text-transform: uppercase;
+    text-align: center;
   }
   h2 {
     text-align: center;
@@ -278,6 +185,7 @@ export default {
     p, li {
       font-size: 16px;
       line-height: 1.4;
+      margin-bottom: 20px;
       @media screen and (max-width: $breakpoint-md) {
         font-size: 3vw;
       }
