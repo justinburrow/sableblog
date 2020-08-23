@@ -3,7 +3,7 @@
       <ul class="categories" v-if="this.showSearchBar == false">
         <li v-for="cat in $static.allWordPressCategory.edges" class="cat" :key="cat.node.id" v-if="cat.node.count > 0">
           <div class="image">
-            <g-link :to="cat.node.path"><g-image :src="filterCatImage(cat.node.id)"></g-image></g-link>
+            <g-link :to="cat.node.path"><g-image :src="filterCatImage(cat.node.id)" alt="cat.node.title"></g-image></g-link>
           </div>
            <g-link :to="cat.node.path" class="title"><h2>{{cat.node.title}}</h2></g-link>
         </li>
