@@ -20,7 +20,7 @@ export default function (Vue, {router, head, isClient}) {
   head.script.push({
     src: "https://flockler.embed.codes/KAn5xj",
     body: true,
-    async: true
+    async: false
   });
 
   head.script.push({
@@ -30,9 +30,6 @@ export default function (Vue, {router, head, isClient}) {
 
   const store = Vue.observable({
     menuOpen: false,
-    searchOpen: false,
-    dropdownShow: false,
-    categoriesOpen: false,
     searchQuery: ''
   });
 
@@ -42,39 +39,11 @@ export default function (Vue, {router, head, isClient}) {
     },
     closeMenu() {
       store.menuOpen = false;
-    },
-    openSearch() {
-      if (store.dropdownShow == true && store.categoriesOpen == true) {
-        store.searchOpen = true;
-        store.categoriesOpen = false;
-      } else if (store.dropdownShow == true && store.categoriesOpen == false) {
-        store.searchOpen = true;
-        this.hideDropdown();
-      } else {
-        store.searchOpen = true;
-        this.showDropdown();
-      }
-    },
-    closeSearch() {
-      store.searchOpen = false;
-    },
-    showCategories() {
-      store.categoriesOpen = !store.categoriesOpen;
-    },
-    toggleDropdown() {
-      store.dropdownShow = !store.dropdownShow;
-    },
-    showDropdown() {
-      store.dropdownShow = true;
-    },
-    hideDropdown() {
-      store.dropdownShow = false;
     }
   }
 
     // overwrite the scrollBehavior function with custom one
     router.options.scrollBehavior = function (to, from, savedPosition) {
-      actions.hideDropdown();
       if (savedPosition) {
         return savedPosition;
       } else if (to.hash) {
@@ -89,7 +58,9 @@ export default function (Vue, {router, head, isClient}) {
           Vue.prototype.$flockler = window.flcklr.Embeds.create(
             window.flcklr.EmbedConfigs['17177230bd60efd482bfb4b945f55ff2']
           )
-          this.flockler;
+          setTimeout(() => {
+            this.$flockler;
+          }, 1000)
         }
         return { x: 0, y: 0 }
       }

@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <div class="page">
-      <p class="page-heading">{{pageHeading}}</p>
+      <p v-if="$page.wordPressPage.acf.pageType != 'Legal'" class="page-heading">{{pageHeading}}</p>
       <h1 v-html="$page.wordPressPage.title" />
       <div class="page-image" v-if="$page.wordPressPage.featuredMedia != null || $page.wordPressPage.acf.pageType != 'Legal'">
        <img

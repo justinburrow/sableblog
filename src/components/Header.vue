@@ -13,17 +13,17 @@
 
         <div class="navigation only-desktop">
           <ul>
-            <li class="blog"><a @click="openBlogDropdown()">Blog</a></li>
-            <li class="commitment"><a href="#">Our Commitment</a></li>
-            <li class="about"><g-link to="/pages/about/">About</g-link></li>
+            <li class="blog" :class="blogHover ? 'active':''" @mouseenter="openBlogDropdown(), bloghover = true, searchHover = false" @click="openBlogDropdown(), bloghover = true, searchHover = false"><a>Blog</a></li>
+            <li class="commitment" @mouseenter="showDropdown = false, bloghover = false; searchHover = false;" @click="setActive('commitment')" :class="{active: isActive('commitment')}"><a href="#">Our Commitment</a></li>
+            <li class="about" @mouseenter="showDropdown = false, bloghover = false; searchHover = false;" @click="setActive('about')" :class="{active: isActive('about')}"><g-link to="/pages/about-us/">About</g-link></li>
           </ul>
-          <div class="logo">
+          <div class="logo" @mouseenter="bloghover = false; searchHover = false;">
               <a href="/"><img src="~@/assets/images/sable-logo.svg" width="277" alt="S'able Labs" /></a>
           </div>
           <ul>
-            <li class="subscribe"><button>Subscribe</button></li>
-            <li class="search">
-              <button @click="$actions.openSearch()"><img src="~@/assets/images/search-icon.svg" alt="Search"></button>
+            <li class="subscribe" @mouseenter="showDropdown = false, bloghover = false, searchHover = false"><button>Subscribe</button></li>
+            <li class="search" :class="searchHover ? 'active' : ''"  @mouseenter="openSearchDropdown(), blogHover = false, searchHover = true" @click="openSearchDropdown(), searchHover = true;">
+              <button><img src="~@/assets/images/search-icon.svg" alt="Search"></button>
             </li>
             <li class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</li>
           </ul>
@@ -33,8 +33,8 @@
           <img src="~@/assets/images/search-icon.svg" alt="Search">
         </div>
       </div>
-      <div class="dropdown-container" :class="showDropdown ? 'show' : 'hide'">
-        <Dropdown :show-search="showSearchBar" :dropdown-state="showDropdown" />
+      <div class="dropdown-container" :class="showDropdown ? 'show' : 'hide'" ref="dropdownContainer" @mouseenter="focusLine()" @mouseleave="showDropdown = false, blogHover = false, searchHover = false">
+        <Dropdown :show-search="showSearch" :dropdown-state="showDropdown" />
       </div>
   </div>
 </template>
@@ -58,18 +58,20 @@
         showDropdown: false,
         categoryOpen: false,
         headerHeight: 0,
-        fixedHeader: false
+        fixedHeader: false,
+        blogHover: false,
+        searchHover: false,
+        activeItem: null
       }
     },
     methods: {
       openBlogDropdown() {
-        if (this.showDropdown == true && this.categoryOpen == true) {
-          this.$actions.toggleDropdown();
-        } else {
-          this.$actions.showDropdown();
-          this.$actions.showCategories();
-        }
-        this.$actions.closeSearch();
+        this.showDropdown = !this.showDropdown;
+        this.showSearch = false;
+      },
+      openSearchDropdown() {
+        this.showDropdown = !this.showDropdown;
+        this.showSearch = true;
       },
       getDropdownPosition() {
         this.headerHeight = document.querySelector('.header').offsetHeight;
@@ -78,28 +80,30 @@
       stickyHeader() {
         this.fixedHeader = document.documentElement.scrollTop > this.headerHeight;
         if (this.fixedHeader) {
-          document.querySelector('body').style.paddingTop = this.headerHeight + "px";
+          document.querySelector('.container').style.paddingTop = this.headerHeight + "px";
         } else {
-          document.querySelector('body').style.paddingTop = 0;
+          document.querySelector('.container').style.paddingTop = 0;
         }
+      },
+      focusLine() {
+        if (!this.showSearch) {
+          this.blogHover = true;
+          this.searchHover = false;
+        } else {
+          this.blogHover = false;
+          this.searchHover = true;
+        }
+      },
+      isActive(menuItem) {
+        return this.activeItem === menuItem
+      },
+      setActive(menuItem) {
+        this.activeItem = menuItem
       }
     },
     mounted() {
       this.getDropdownPosition();
       document.addEventListener('scroll', this.stickyHeader);
-      const headerLinks = document.querySelectorAll('.navigation.only-desktop li');
-      headerLinks.forEach((link) => {
-        link.addEventListener('click', (e) => {
-          headerLinks.forEach((link) => {
-            link.classList.remove('active');
-          });
-          if ((link.classList.contains('blog') && this.showDropdown == false) || (link.classList.contains('search') && this.showDropdown == false)) {
-            link.classList.remove('active')
-          } else {
-            link.classList.add('active');
-          }
-        });
-      });
     },
     watch: {
       dropdownState(state) {
@@ -204,15 +208,17 @@
                   text-transform: uppercase;
                   position: relative;
                   padding: 0 10px;
-                  &.active:after {
-                    content: ' ';
-                    display: block;
-                    background-color: #164734;
-                    height: 8px;
-                    position: absolute;
-                    width: 100%;
-                    bottom: 0;
-                    left: 0;
+                  &.active, &:hover {
+                    &:after {
+                      content: ' ';
+                      display: block;
+                      background-color: #164734;
+                      height: 8px;
+                      position: absolute;
+                      width: 100%;
+                      bottom: 0;
+                      left: 0;
+                    }
                   }
                   .spacer {
                     &.active.after {
@@ -254,25 +260,6 @@
               filter: brightness(0);
             }
           }
-
-          .social {
-            display: flex;
-            justify-content: flex-end;
-            align-self: center;
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            li {
-              list-style-type: none;
-              margin-right: 30px;
-              &:first-child {
-                margin-left: 0;
-              }
-              img {
-                vertical-align: middle;
-              }
-            }
-          }
       }
 
       .mobile-search-icon {
@@ -296,12 +283,14 @@
       width: 100%;
       top: 0;
       z-index: 3;
-      transition: transform 0.3s ease;
+      transition: all .5s ease;
       &.hide {
         transform: translateY(-100%);
+        opacity: 0;
       }
       &.show {
         transform: translateY(0);
+        opacity: 1;
       }
     }
 

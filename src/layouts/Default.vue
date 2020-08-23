@@ -4,7 +4,7 @@
       <ClientOnly>
         <Announcements />
       </ClientOnly>
-      <Header :dropdown-state="$store.dropdownShow" @hideDropdown="$actions.hideDropdown()" :show-search-bar="$store.searchOpen" :show-categories="$store.categoriesOpen"/>
+      <Header />
     </header>
 
     <HomeFeatures v-if="$route.fullPath == '/'" />
@@ -43,7 +43,9 @@
       }
     },
     created() {
-      this.$flockler;
+      setTimeout(() => {
+        this.$flockler;
+      }, 1000);
     }
   }
 </script>

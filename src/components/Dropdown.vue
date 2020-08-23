@@ -1,9 +1,9 @@
 <template>
-    <div class="dropdown" ref="dropdown">
-      <ul class="categories" v-if="this.showSearch == false && this.showDropdown == true">
+    <div class="dropdown" ref="dropdown" @mouseleave="!showDropdown">
+      <ul class="categories" v-if="this.showSearchBar == false">
         <li v-for="cat in $static.allWordPressCategory.edges" class="cat" :key="cat.node.id" v-if="cat.node.count > 0">
           <div class="image">
-            <g-link :to="cat.node.path"><g-image :src="filterCatImage(cat.node.id)" v-on:click="hideDropdown()"></g-image></g-link>
+            <g-link :to="cat.node.path"><g-image :src="filterCatImage(cat.node.id)"></g-image></g-link>
           </div>
            <g-link :to="cat.node.path" class="title"><h2>{{cat.node.title}}</h2></g-link>
         </li>
@@ -83,9 +83,6 @@ export default {
         });
         return catImage;
       },
-      hideDropdown() {
-        this.$emit('hideDropdown');
-      },
       search() {
         this.$store.searchQuery = this.searchingBy;
         if (this.$route.fullPath == '/search') {
@@ -100,7 +97,7 @@ export default {
 
 <style lang="scss" scoped>
   .dropdown {
-    background: rgba(0,0,0,0.85);
+    background: rgba(0,0,0,0.87);
     width: 100%;
     max-width: 1600px;
     margin: 0 auto;
@@ -112,15 +109,6 @@ export default {
     transform: translateX(-50%);
     padding: 0;
     margin: 0;
-    transition: opacity 0.3s ease;
-    &.hide {
-      opacity: 0;
-      height: 0;
-    }
-    &.show {
-      opacity: 1;
-      height: 100%;
-    }
     ul.categories {
       display: flex;
       justify-content: space-between;
