@@ -3,10 +3,10 @@
     <section class="search-results">
       <h1>Searching For: "{{this.searchingBy}}"</h1>
       <ul class="post-list">
-        <li v-for="post in results" class="post" :key="post.id" v-if="results.length > 0">
-          <HomePost :post="post" />
+        <li v-for="post in searchResults" class="post" :key="post.id" v-if="searchResults.length > 0">
+          <SearchPost :post="post" />
         </li>
-        <li v-if="results.length == 0">Sorry, no posts were found</li>
+        <li v-if="searchResults.length == 0">Sorry, no posts were found</li>
       </ul>
 
     </section>
@@ -15,13 +15,12 @@
 
 <page-query>
 query {
-  allPosts: allWordPressPost {
+  allWordPressPost {
     edges {
       node {
         id
         title
         path
-        dateGmt
         excerpt
         categories {
           title
@@ -30,7 +29,6 @@ query {
         featuredMedia {
           sourceUrl
           altText
-          caption
         }
       }
     }
@@ -39,41 +37,49 @@ query {
 </page-query>
 
 <script>
-import HomePost from '~/components/HomePost.vue'
+import SearchPost from '~/components/SearchPost.vue'
+import Flexsearch from 'flexsearch'
 
 export default {
   data() {
     return {
-      searchingBy: this.$store.searchQuery,
-      results: []
+      index: null,
+      searchingBy: ''
     }
   },
   components: {
-    HomePost
+    SearchPost
   },
   metaInfo: {
     title: 'S\'able Labs'
   },
-  filters: {
-    lowercase: function (val) {
-      return val.toLowerCase();
-    }
-  },
-  beforeMount() {
-
-  },
   beforeRouteUpdate(to, from, next) {
-
+    this.searchingBy = to.query.s;
+    next();
   },
   mounted() {
-    this.$page.allPosts.edges.forEach((post) => {
-      if (((post.node.title.includes(this.searchingBy)) || (post.node.excerpt.includes(this.searchingBy))) && !post.node.categories[0].slug.includes('homepage-hero-banners')) {
-        this.results.push(post);
+    this.searchingBy = this.$route.query.s;
+    this.index = new Flexsearch({
+      tokenize: "forward",
+      doc: {
+        id: "id",
+        field: [
+          "title",
+          "excerpt"
+        ]
       }
-    })
+    });
+    this.index.add(this.$page.allWordPressPost.edges.map(e => e.node));
   },
   computed: {
-
+    searchResults() {
+      console.log(this.searchingBy);
+      if (this.index === null || this.searchingBy.length < 3) return [];
+      return this.index.search({
+        query: this.searchingBy,
+        limit: 15
+      })
+    }
   }
 }
 </script>

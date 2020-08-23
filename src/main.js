@@ -42,6 +42,16 @@ export default function (Vue, {router, head, isClient}) {
     }
   }
 
+  if (window.flcklr) {
+    if (document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML != '') {
+      document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML = '';
+    }
+    Vue.prototype.$flockler = window.flcklr.Embeds.create(window.flcklr.EmbedConfigs['17177230bd60efd482bfb4b945f55ff2']);
+  };
+
+
+
+
     // overwrite the scrollBehavior function with custom one
     router.options.scrollBehavior = function (to, from, savedPosition) {
       if (savedPosition) {
@@ -51,17 +61,6 @@ export default function (Vue, {router, head, isClient}) {
           selector: to.hash
         }
       } else {
-        setTimeout(() => {
-          if (window.flcklr) {
-            if (document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML != '') {
-              document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML = '';
-            }
-            Vue.prototype.$flockler = window.flcklr.Embeds.create(
-              window.flcklr.EmbedConfigs['17177230bd60efd482bfb4b945f55ff2']
-            );
-            this.$flockler;
-          }
-        }, 1000)
         return { x: 0, y: 0 }
       }
     }

@@ -84,12 +84,19 @@ export default {
         return catImage;
       },
       search() {
+        this.$emit('updateViewKey');
         this.$store.searchQuery = this.searchingBy;
-        if (this.$route.fullPath == '/search') {
+        this.$router.push({
+          path: '/search/',
+          query: { s: this.searchingBy }
+        });
+        //window.localStorage.setItem('search', this.searchingBy);
+        this.searchingBy = '';
+        /*if (this.$route.fullPath == '/search') {
           this.$router.go();
         } else {
           this.$router.push({path: '/search'});
-        }
+        }*/
       }
     }
   }
