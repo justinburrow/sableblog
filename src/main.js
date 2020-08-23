@@ -20,7 +20,7 @@ export default function (Vue, {router, head, isClient}) {
   head.script.push({
     src: "https://flockler.embed.codes/KAn5xj",
     body: true,
-    async: false
+    async: true
   });
 
   head.script.push({
