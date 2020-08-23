@@ -6,7 +6,7 @@
         <li v-for="post in searchResults" class="post" :key="post.id" v-if="searchResults.length > 0">
           <SearchPost :post="post" />
         </li>
-        <li v-if="searchResults.length == 0">Sorry, no posts were found</li>
+        <li class="no-results" v-if="searchResults.length == 0">Sorry, no posts were found</li>
       </ul>
 
     </section>
@@ -73,7 +73,6 @@ export default {
   },
   computed: {
     searchResults() {
-      console.log(this.searchingBy);
       if (this.index === null || this.searchingBy.length < 3) return [];
       return this.index.search({
         query: this.searchingBy,
@@ -97,7 +96,7 @@ export default {
     padding-bottom: 5px;
   }
   .post-list {
-    margin: 60px 0 0 0;
+    margin: 60px 0 150px 0;
     padding: 0;
     list-style-type: none;
     width: 100%;
@@ -111,6 +110,10 @@ export default {
       margin: 0;
       padding: 0;
       width: calc(33% - 15px);
+      &.no-results {
+        width: 100%;
+        text-align: center;
+      }
       .image {
         position: relative;
         padding-top: 40%;
