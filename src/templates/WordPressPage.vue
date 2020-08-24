@@ -3,14 +3,14 @@
     <div class="page">
       <p v-if="$page.wordPressPage.acf.pageType != 'Legal'" class="page-heading">{{pageHeading}}</p>
       <h1 v-html="$page.wordPressPage.title" />
-      <div class="page-image" v-if="$page.wordPressPage.featuredMedia != null || $page.wordPressPage.acf.pageType != 'Legal'">
+      <div class="page-image" v-if="$page.wordPressPage.featuredMedia != null">
        <img
         v-if="$page.wordPressPage.featuredMedia != null"
         :src="$page.wordPressPage.featuredMedia.sourceUrl"
         :alt="$page.wordPressPage.featuredMedia.altText"
       />
       </div>
-      <div class="page-details" v-if="$page.wordPressPage.featuredMedia != null || $page.wordPressPage.acf.pageType != 'Legal'">
+      <div class="page-details" v-if="$page.wordPressPage.featuredMedia != null">
         <span class="author" v-if="$page.wordPressPage.featuredMedia != null">Photography: {{$page.wordPressPage.featuredMedia.caption | removeHTML}}</span>
       </div>
       <div class="page-content" v-html="$page.wordPressPage.content"></div>
@@ -73,7 +73,7 @@ export default {
 <style lang="scss">
   .page {
     padding-bottom: 120px;
-    max-width: 1320px;
+    max-width: 950px;
     margin: 30px auto 0 auto;
     @media screen and (max-width: $breakpoint-lg) {
       padding-bottom: 10vw;
@@ -183,8 +183,8 @@ export default {
       }
     }
     p, li {
-      font-size: 16px;
-      line-height: 1.4;
+      font-size: 18px;
+      line-height: 1.5;
       margin-bottom: 20px;
       @media screen and (max-width: $breakpoint-md) {
         font-size: 3vw;

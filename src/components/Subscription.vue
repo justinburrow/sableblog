@@ -33,7 +33,6 @@ export default {
     setTimeout(function() {
       that.isActive = true;
     }, 5000);
-    console.log('wee');
   }
 }
 </script>

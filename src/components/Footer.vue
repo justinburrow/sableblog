@@ -93,7 +93,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
   .instagram {
+    border-top: 3px solid #f2f2f2;
+    max-width: 1600px;
+    margin: 0 auto;
 
     h4 {
       text-align: center;
