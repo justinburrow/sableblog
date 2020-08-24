@@ -9,10 +9,10 @@
     <template v-slot="{ subscribe, setEmail, error, success, loading }">
       <div class="email-form">
         <form @submit.prevent="subscribe">
-          <input type="email" @input="setEmail($event.target.value)" placeholder="Email Address" />
-          <button type="submit">Subscribe</button>
-          <div v-if="error">{{ error }}</div>
-          <div v-if="success">Thank you for subscribing.</div>
+          <input type="email" v-if="!error & !success" @input="setEmail($event.target.value)" placeholder="Email Address" />
+          <button type="submit" v-if="!error & !success">Subscribe</button>
+          <div v-if="error" class="message" v-html="error"></div>
+          <div v-if="success" class="message">Thank you for subscribing.</div>
           <div v-if="loading">Loading…</div>
       </form>
       </div>
@@ -34,7 +34,7 @@ export default {
     onSuccess() {
       // handle success
     },
-  },
+  }
 }
 </script>
 
@@ -44,21 +44,23 @@ export default {
   margin: 0 auto;
   form {
   display: flex;
+  flex-wrap: wrap;
   input {
     padding: 15px;
     font-size: 20px;
-    flex-grow: 1;
+    width: 100%;
     border-radius: 0;
     &::placeholder {
-      color: #b3b3b3;
+      color: rgba(0,0,0,0.5);
     }
   }
   button {
-    flex-basis: auto;
+    margin-top: 5px;
+    margin-left: auto;
     font-family: acumin-pro-extra-condensed, sans-serif;
     font-size: 24px;
     text-transform: uppercase;
-    padding: 0 20px;
+    padding: 15px 20px;
     line-height: .9;
     letter-spacing: .5px;
     border: 0;
@@ -69,8 +71,16 @@ export default {
       cursor: pointer;
     }
   }
+  .message {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    a {
+      display: block;
+    }
+  }
 }
 }
 
-  
+
 </style>

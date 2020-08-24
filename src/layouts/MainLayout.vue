@@ -14,6 +14,7 @@
     </div>
 
     <Footer />
+    <Subscription />
   </div>
 </template>
 
@@ -22,13 +23,15 @@
   import Header from '~/components/Header.vue'
   import HomeFeatures from '~/components/HomeFeatures.vue'
   import Footer from '~/components/Footer.vue'
+  import Subscription from '~/components/Subscription.vue'
 
   export default {
     components: {
       Announcements,
       Header,
       HomeFeatures,
-      Footer
+      Footer,
+      Subscription
     },
     data() {
       return {
