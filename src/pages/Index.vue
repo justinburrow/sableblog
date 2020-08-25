@@ -78,7 +78,6 @@ export default {
 <style lang="scss" scoped>
   .featured-posts {
     margin: 60px 0 0 0;
-    border-bottom: 8px solid #f2f2f2;
     h3 {
       text-align: center;
       text-transform: uppercase;

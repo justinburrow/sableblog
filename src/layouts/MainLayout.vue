@@ -7,7 +7,10 @@
       <Header />
     </header>
 
-    <HomeFeatures v-if="$route.fullPath == '/'" />
+    <div class="container full">
+      <HomeFeatures v-if="$route.fullPath == '/'" />
+    </div>
+
 
     <div class="container">
       <slot />
@@ -55,8 +58,6 @@
 </script>
 
 <style lang="scss" scoped>
-  .layout {
-  }
   header {
     position: relative;
     z-index: 5;
@@ -65,5 +66,12 @@
       display: block;
       width: 100%;
     }
+  }
+
+  .container.full {
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+
   }
 </style>
