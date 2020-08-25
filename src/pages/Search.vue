@@ -1,15 +1,16 @@
 <template>
   <Layout>
-    <section class="search-results">
-      <h1>Searching For: "{{this.searchingBy}}"</h1>
-      <ul class="post-list">
-        <li v-for="post in searchResults" class="post" :key="post.id" v-if="searchResults.length > 0">
-          <SearchPost :post="post" />
-        </li>
-        <li class="no-results" v-if="searchResults.length == 0">Sorry, no posts were found</li>
-      </ul>
-
-    </section>
+    <div class="interior">
+      <section class="search-results">
+        <h1>Searching For: "{{this.searchingBy}}"</h1>
+        <ul class="post-list">
+          <li v-for="post in searchResults" class="post" :key="post.id" v-if="searchResults.length > 0">
+            <SearchPost :post="post" />
+          </li>
+          <li class="no-results" v-if="searchResults.length == 0">Sorry, no posts were found</li>
+        </ul>
+      </section>
+    </div>
   </Layout>
 </template>
 
@@ -96,43 +97,19 @@ export default {
     padding-bottom: 5px;
   }
   .post-list {
-    margin: 60px 0 150px 0;
-    padding: 0;
-    list-style-type: none;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    @media screen and (max-width: $breakpoint-md) {
-      margin-top: 7vw;
-    }
+    
     li {
-      margin: 0;
-      padding: 0;
-      width: calc(33% - 15px);
       &.no-results {
-        width: 100%;
         text-align: center;
       }
-      .image {
-        position: relative;
-        padding-top: 40%;
-        img {
-          width: 100%;
-          max-width: 100%;
-          position: absolute;
-          top: 0;
-          left: 0;
-        }
-      }
+    }
 
-      @media screen and (max-width: $breakpoint-lg) {
-        margin-bottom: 7vw;
-        padding-bottom: 7vw;
-      }
-      .read-more a {
-        color: white;
-      }
+    @media screen and (max-width: $breakpoint-lg) {
+      margin-bottom: 7vw;
+      padding-bottom: 7vw;
+    }
+    .read-more a {
+      color: white;
     }
   }
 }

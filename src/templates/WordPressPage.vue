@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <div class="page">
+    <div class="page interior">
       <p v-if="$page.wordPressPage.acf.pageType != 'Legal'" class="page-heading">{{pageHeading}}</p>
       <h1 v-html="$page.wordPressPage.title" />
       <div class="page-image" v-if="$page.wordPressPage.featuredMedia != null">
@@ -72,8 +72,9 @@ export default {
 
 <style lang="scss">
   .page {
+    padding-top: 60px !important;
     padding-bottom: 120px;
-    max-width: 950px;
+    max-width: 950px !important;
     margin: 30px auto 0 auto;
     @media screen and (max-width: $breakpoint-lg) {
       padding-bottom: 10vw;

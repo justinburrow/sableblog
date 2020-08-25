@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <div class="category">
+    <div class="category interior">
       <h1>{{ $page.wordPressCategory.title }}</h1>
       <ul class="post-list">
         <li v-for="{ node } in $page.wordPressCategory.belongsTo.edges" :key="node.id" :class="$page.wordPressCategory.title | lowercase">
@@ -84,16 +84,21 @@ export default {
     padding: 0;
     list-style-type: none;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
     @media screen and (max-width: $breakpoint-md) {
       margin-top: 7vw;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (max-width: $breakpoint-sm) {
+      margin-top: 7vw;
+      grid-template-columns: repeat(1, 1fr);
     }
     li {
       margin: 0;
       padding: 0;
-      width: calc(33% - 13px);
+      width: 100%;
       margin-bottom: 50px;
       @media screen and (max-width: $breakpoint-lg) {
         margin-bottom: 7vw;

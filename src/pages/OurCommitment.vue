@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <div class="page our-commitment">
+    <div class="page our-commitment interior">
       <p class="page-heading">{{$page.allWordPressPage.edges[0].node.title}}</p>
       <div class="image-container">
         <img src="~@/assets/images/conservation-international.jpg" alt="Conservation International">

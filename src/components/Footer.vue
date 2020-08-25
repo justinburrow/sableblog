@@ -93,6 +93,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .bottom-section {
+    margin-top: 85px;
+  }
   .instagram {
     border-top: 8px solid #f2f2f2;
     max-width: 1600px;

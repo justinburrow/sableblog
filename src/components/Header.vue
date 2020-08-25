@@ -134,6 +134,7 @@
         max-width: 1600px;
         position: relative;
         z-index: 5;
+        margin: 0 auto;
         @media screen and (max-width: $breakpoint-xl) {
           padding: 2vw 5vw 3vw 5vw;
           display: flex;

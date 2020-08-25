@@ -1,13 +1,15 @@
 <template>
   <Layout>
-    <section class="featured-posts">
-      <h3>Features</h3>
-        <ul class="post-list">
-          <li v-for="cat in $page.allWordPressCategory.edges" :key="cat.node.id" v-if="cat.node.count > 0">
-            <HomePost :post="newestPost(cat.node.id)" />
-          </li>
-        </ul>
-    </section>
+    <div class="interior">
+      <section class="featured-posts">
+        <h3>Features</h3>
+          <ul class="post-list">
+            <li v-for="cat in $page.allWordPressCategory.edges" :key="cat.node.id" v-if="cat.node.count > 0">
+              <HomePost :post="newestPost(cat.node.id)" />
+            </li>
+          </ul>
+      </section>
+    </div>
   </Layout>
 </template>
 
@@ -86,27 +88,6 @@ export default {
       font-style: normal;
       font-size: 4rem;
       letter-spacing: 1px;
-    }
-  }
-  .post-list {
-    padding: 0;
-    list-style-type: none;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    @media screen and (max-width: $breakpoint-md) {
-      margin-top: 7vw;
-    }
-    li {
-      width: calc(33% - 13px);
-      margin-bottom: 50px;
-      @media screen and (max-width: $breakpoint-lg) {
-        width: calc(50% - 15px);
-      }
-      @media screen and (max-width: $breakpoint-md) {
-        width: calc(100%);
-      }
     }
   }
 </style>

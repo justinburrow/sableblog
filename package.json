@@ -13,6 +13,7 @@
     "flexsearch": "^0.6.32",
     "g": "^2.0.1",
     "gridsome": "^0.7.19",
+    "hooper": "^0.3.4",
     "jquery": "^3.5.1",
     "moment": "^2.24.0",
     "owl.carousel2": "^2.2.1",

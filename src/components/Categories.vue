@@ -1,5 +1,5 @@
 <template>
-  <div class="category-holder">
+  <div class="category-holder interior">
     <ul class="categories">
         <li v-for="cat in $static.categories.edges" :key="cat.id">
           <div class="header-cat" @mouseover="showCatPosts(cat.node.id, cat.node.title, cat.node.path)">

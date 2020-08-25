@@ -7,12 +7,8 @@
       <Header />
     </header>
 
-    <div class="container full">
-      <HomeFeatures v-if="$route.fullPath == '/'" />
-    </div>
-
-
     <div class="container">
+      <HomeFeatures v-if="$route.fullPath == '/'"/>
       <slot />
     </div>
 
@@ -66,12 +62,5 @@
       display: block;
       width: 100%;
     }
-  }
-
-  .container.full {
-    padding: 0;
-    width: 100%;
-    max-width: 100%;
-
   }
 </style>

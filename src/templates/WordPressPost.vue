@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <div class="post">
+    <div class="post interior">
       <div class="post-category">
         <g-link :to="$page.wordPressPost.categories[0].path" class="category">
           <h2 v-html="$page.wordPressPost.categories[0].title"></h2>

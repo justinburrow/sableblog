@@ -26,16 +26,11 @@ html, body {
 
 .container {
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 30px;
-}
-
-.container-full {
-  width: 100%;
-  max-width: 2000px;
-  margin: 0 auto;
-  padding: 0 30px;
+  .interior {
+    max-width: 1660px;
+    margin: 0 auto;
+    padding: 0 30px;
+  }
 }
 
 .only-desktop {
