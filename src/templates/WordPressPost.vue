@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <div class="post interior">
+    <div id="single-post" class="post interior">
       <div class="post-category">
         <g-link :to="$page.wordPressPost.categories[0].path" class="category">
           <h2 v-html="$page.wordPressPost.categories[0].title"></h2>
@@ -121,9 +121,8 @@ export default {
 </script>
 
 <style lang="scss">
-  .post {
+  #single-post {
     padding-bottom: 120px;
-    max-width: 1320px;
     margin: 0 auto;
     max-width: 1000px;
     @media screen and (max-width: $breakpoint-lg) {
