@@ -45,7 +45,8 @@ export default {
     .image-container {
       padding: 0 30px 30px;
       border-bottom: 1px solid black;
-      margin-bottom: 30px;
+      border-top: 1px solid black;
+      margin: 30px 0;
       img {
         width: 100%;
         max-width: 100%;
