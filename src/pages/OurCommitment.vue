@@ -46,7 +46,8 @@ export default {
       padding: 0 30px 30px;
       border-bottom: 1px solid black;
       border-top: 1px solid black;
-      margin: 30px 0;
+      margin-bottom: 30px;
+      padding-top: 30px;
       img {
         width: 100%;
         max-width: 100%;
