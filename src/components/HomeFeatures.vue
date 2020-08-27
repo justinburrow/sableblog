@@ -11,7 +11,7 @@
     <div class="home-features">
       <div class="content">
         <div class="video">
-          <video poster="~@/assets/images/video-poster.jpg" controls playsinline><source src="https://www.sablelabs.co/documents/Sable-Labs-Coupledom-Launch_021420.mp4" type="video/mp4" /></video>
+          <video poster="~@/assets/images/video-poster.jpg" controls playsinline><source src="~@/assets/video/sable-labs-home-video.mp4" type="video/mp4" /></video>
         </div>
         <div class="coupledom">
           <div class="coupledom-content">
