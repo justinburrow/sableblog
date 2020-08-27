@@ -207,12 +207,11 @@ export default {
   }
   .post-content {
     font-family: 'acumin-pro', sans-serif;
-    font-size: 17px;
-    line-height: 1.4;
     padding: 0 7%;
     margin-left: 200px;
     @media screen and (max-width: $breakpoint-lg) {
       padding: 0;
+      margin-left: 0;
     }
     h2, h3, h4, h5, h6 {
       text-align: left;
@@ -227,9 +226,10 @@ export default {
     h2 {
       font-family: 'acumin-pro-condensed', sans-serif;
       text-transform: uppercase;
-      font-size: 1.8rem;
+      font-size: 2rem;
       margin-bottom: 30px;
       font-weight: 400;
+      line-height: 1.2;
       @media screen and (max-width: $breakpoint-lg) {
         font-size: 3vw;
         line-height: 1.2;
@@ -248,10 +248,10 @@ export default {
         margin-top: 2vw;
       }
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 4.5vw;
+        font-size: 3.5vw;
       }
     }
-    p, li {
+    li {
       font-size: 16px;
       line-height: 1.4;
       @media screen and (max-width: $breakpoint-md) {

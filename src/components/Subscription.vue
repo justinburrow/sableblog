@@ -1,7 +1,7 @@
 <template>
   <div class="subscription" :class="{active : isActive}" v-scroll-lock="isActive">
     <div class="signup-box">
-      <button type="button" name="close-email" @click="isActive = false">X</button>
+      <button type="button" name="close-email" @click="isActive = false, setCookie()">X</button>
       <div class="content">
         <p class="title">We're Better Together</p>
         <p class="subtitle">Sign Up to Stay Connected</p>
@@ -26,12 +26,17 @@ export default {
     }
   },
   methods: {
-
+    setCookie() {
+      this.$cookies.set('popup', true, '30d');
+    }
   },
   mounted() {
     var that = this;
     setTimeout(function() {
-      that.isActive = true;
+      const cookieStatus = that.$cookies.get('popup');
+      if (cookieStatus != 'true') {
+        that.isActive = true;
+      }
     }, 5000);
   }
 }
@@ -42,7 +47,7 @@ export default {
     background: rgba(0, 0, 0, 0.8);
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;

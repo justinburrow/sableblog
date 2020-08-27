@@ -1,11 +1,13 @@
 import DefaultLayout from '~/layouts/Default.vue'
 import VScrollLock from 'v-scroll-lock'
 import VueAgile from 'vue-agile'
+import VueCookies from 'vue-cookies'
 
 export default function (Vue, {router, head, isClient}) {
   Vue.component('Layout', DefaultLayout);
   Vue.use(VScrollLock);
   Vue.use(VueAgile);
+  Vue.use(VueCookies);
 
   head.link.push({
     rel: 'icon',

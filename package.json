@@ -24,6 +24,7 @@
     "vue-carousel": "^0.18.0",
     "vue-clamp": "^0.2.2",
     "vue-click-outside": "^1.0.7",
+    "vue-cookies": "^1.7.3",
     "vue-goodshare": "^1.5.1",
     "vue-mailchimp-subscribe": "^1.1.0",
     "vue-owl-carousel": "^2.0.3",
