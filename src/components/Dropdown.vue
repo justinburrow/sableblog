@@ -1,4 +1,5 @@
 <template>
+  <div >
     <div class="dropdown" ref="dropdown" @mouseleave="!showDropdown">
       <ul class="categories" v-if="this.showSearchBar == false">
         <li v-for="cat in $static.allWordPressCategory.edges" class="cat" :key="cat.node.id" v-if="cat.node.count > 0">
@@ -17,6 +18,8 @@
         </div>
       </div>
     </div>
+    <div class="spacer"></div>
+  </div>
 </template>
 
 <static-query>
@@ -251,6 +254,11 @@ export default {
         }
       }
     }
+  }
+  .spacer {
+    height: 100px;
+    width: 100%;
+    background: transparent;
   }
   .post-info {
       width: 100%;
