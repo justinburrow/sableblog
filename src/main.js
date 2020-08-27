@@ -32,7 +32,8 @@ export default function (Vue, {router, head, isClient}) {
 
   const store = Vue.observable({
     menuOpen: false,
-    searchQuery: ''
+    searchQuery: '',
+    showPopup: false
   });
 
   const actions = {

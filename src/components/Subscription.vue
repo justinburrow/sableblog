@@ -1,7 +1,7 @@
 <template>
-  <div class="subscription" :class="{active : isActive}" v-scroll-lock="isActive">
+  <div class="subscription" :class="{active : this.$store.showPopup}" v-scroll-lock="isActive">
     <div class="signup-box">
-      <button type="button" name="close-email" @click="isActive = false, setCookie()">X</button>
+      <button type="button" name="close-email" @click="$store.showPopup = false, setCookie()">X</button>
       <div class="content">
         <p class="title">We're Better Together</p>
         <p class="subtitle">Sign Up to Stay Connected</p>
@@ -22,7 +22,7 @@ export default {
   },
   data() {
     return {
-      isActive: false
+      isActive: this.$store.showPopup
     }
   },
   methods: {
@@ -35,7 +35,7 @@ export default {
     setTimeout(function() {
       const cookieStatus = that.$cookies.get('popup');
       if (cookieStatus != 'true') {
-        that.isActive = true;
+        that.$store.showPopup = true;
       }
     }, 5000);
   }

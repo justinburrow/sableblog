@@ -71,7 +71,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .hero-banners {
     margin-bottom: 30px;
     img {
