@@ -1,11 +1,13 @@
 <template>
   <Layout>
-    <div class="page our-commitment interior">
-      <p class="page-heading">{{$page.allWordPressPage.edges[0].node.title}}</p>
-      <div class="image-container">
-        <img src="~@/assets/images/conservation-international.jpg" alt="Conservation International">
-      </div>
-      <div class="page-content" v-html="$page.allWordPressPage.edges[0].node.content">
+    <div class="page our-commitment">
+      <div class="interior">
+        <div class="image-container">
+          <img src="~@/assets/images/conservation-international.jpg" alt="Conservation International">
+        </div>
+        <h1>{{$page.allWordPressPage.edges[0].node.title}}</h1>
+        <div class="page-content" v-html="$page.allWordPressPage.edges[0].node.content">
+        </div>
       </div>
     </div>
   </Layout>

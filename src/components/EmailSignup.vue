@@ -32,7 +32,7 @@ export default {
       // handle error
     },
     onSuccess() {
-      this.$cookies.set('popup', true, Infinity)
+      this.$cookies.set('showPopup', true, Infinity)
     },
   }
 }

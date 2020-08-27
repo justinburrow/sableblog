@@ -1,19 +1,20 @@
 <template>
   <Layout>
-    <div class="page interior">
-      <p v-if="$page.wordPressPage.acf.pageType != 'Legal'" class="page-heading">{{pageHeading}}</p>
-      <h1 v-html="$page.wordPressPage.title" />
-      <div class="page-image" v-if="$page.wordPressPage.featuredMedia != null">
-       <img
-        v-if="$page.wordPressPage.featuredMedia != null"
-        :src="$page.wordPressPage.featuredMedia.sourceUrl"
-        :alt="$page.wordPressPage.featuredMedia.altText"
-      />
+    <div class="page">
+      <div class="interior">
+        <h1 v-html="$page.wordPressPage.title" />
+        <div class="page-image" v-if="$page.wordPressPage.featuredMedia != null">
+         <img
+          v-if="$page.wordPressPage.featuredMedia != null"
+          :src="$page.wordPressPage.featuredMedia.sourceUrl"
+          :alt="$page.wordPressPage.featuredMedia.altText"
+        />
+        </div>
+        <div class="page-details" v-if="$page.wordPressPage.featuredMedia != null">
+          <span class="author" v-if="$page.wordPressPage.featuredMedia != null">Photography: {{$page.wordPressPage.featuredMedia.caption | removeHTML}}</span>
+        </div>
+        <div class="page-content" v-html="$page.wordPressPage.content"></div>
       </div>
-      <div class="page-details" v-if="$page.wordPressPage.featuredMedia != null">
-        <span class="author" v-if="$page.wordPressPage.featuredMedia != null">Photography: {{$page.wordPressPage.featuredMedia.caption | removeHTML}}</span>
-      </div>
-      <div class="page-content" v-html="$page.wordPressPage.content"></div>
     </div>
 
   </Layout>
@@ -25,7 +26,6 @@ query WordPressPage ($id: ID!) {
     title
     content
     date
-    slug
     featuredMedia {
       sourceUrl
       altText
@@ -41,11 +41,6 @@ query WordPressPage ($id: ID!) {
 <script>
 
 export default {
-  data() {
-    return {
-      pageHeading: null
-    }
-  },
   metaInfo () {
     return {
       title: this.$page.wordPressPage.title,
@@ -57,9 +52,6 @@ export default {
       slug = slug.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
       return slug.replace(/-/g, ' ')
     }
-  },
-  mounted() {
-    this.pageHeading = this.headingFilter(this.$page.wordPressPage.slug);
   },
   filters: {
     removeHTML: function (val) {
@@ -183,157 +175,6 @@ export default {
         font-size: 4.5vw;
       }
     }
-    p, li {
-      font-size: 18px;
-      line-height: 1.5;
-      margin-bottom: 20px;
-      @media screen and (max-width: $breakpoint-md) {
-        font-size: 3vw;
-      }
-      @media screen and (max-width: $breakpoint-sm) {
-        font-size: 4vw;
-      }
-    }
   }
-  .post-navigation {
-    margin-top: 100px;
-    border-top: 1px solid #235751;
-    width: 100%;
-    margin-bottom: 50px;
-    @media screen and (max-width: $breakpoint-md) {
-      margin-bottom: 5vw;
-    }
-    .title {
-      margin: 0 auto;
-      background: #235751;
-      padding: 10px 0;
-      width: 645px;
-      text-align: center;
-      color: white;
-      text-transform: uppercase;
-      position: relative;
-      top: -18px;
-      line-height: 1;
-      letter-spacing: 1px;
-      @media screen and (max-width: $breakpoint-md) {
-        width: 100%;
-      }
-    }
-    .articles {
-      display: flex;
-      width: 100%;
-      justify-content: space-between;
-      margin-top: 30px;
-      @media screen and (max-width: $breakpoint-md) {
-        margin-top: 3vw;
-      }
-      @media screen and (max-width: $breakpoint-sm) {
-        flex-wrap: wrap;
-      }
-      article {
-        width: 48%;
-        display: flex;
-        flex-direction: column;
-        @media screen and (max-width: $breakpoint-sm) {
-          flex-wrap: wrap;
-          width: 100%;
-          flex-direction: row;
-          margin-bottom: 7vw;
-        }
-        a {
-          text-decoration: none;
-          &:hover {
-            text-decoration: underline;
-            color: #b6b6b6;
-          }
-        }
-        a.image {
-          padding: 0;
-          @media screen and (max-width: $breakpoint-sm) {
-            width: 100%;
-          }
-        }
-        .image {
-          position: relative;
-          width: 100%;
-          padding-top: 57%;
-          img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-        }
-        a.desc {
-          flex-grow: 1;
-        }
-        h5 {
-          margin: 0;
-          background: black;
-          color: white;
-          padding: 15px;
-          display: flex;
-          text-transform: uppercase;
-          justify-content: space-between;
-          font-family: acumin-pro-extra-condensed;
-          font-size: 24px;
-          letter-spacing: 1px;
-          line-height: 1;
-          height: 100%;
-          align-items: center;
-          span {
-            margin-left: 50px;
-            display: block;
-            width: 140px;
-            text-align: right;
-            flex-grow: 1;
-            font-family: 'acumin', helvetica, sans-serif;
-            font-size: 12px;
-            text-decoration: underline;
-            letter-spacing: 0;
-            @media screen and (max-width: $breakpoint-md) {
-              display: none;
-            }
-          }
-        }
-        .cat-direction {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: none;
-          justify-content: space-between;
-          width: 100%;
-          @media screen and (max-width: $breakpoint-md) {
-            display: none;
-          }
-          img {
-            align-self: center;
-            margin-top: 10px;
-          }
-        }
-        &:nth-child(2) {
-          .cat-direction {
-            flex-direction: row-reverse;
-            img {
-              transform: rotate(180deg);
-            }
-          }
-        }
-        h6 {
-          margin: 10px 0 0 0;
-          padding: 0;
-          text-align: right;
-          font-size: 13px;
-          letter-spacing: 1px;
-          color: #b6b6b6;
-          text-transform: uppercase;
-          font-weight: normal;
-          @media screen and (max-width: $breakpoint-md) {
-            display: none;
-          }
-        }
-      }
-    }
-  }
+
 </style>
