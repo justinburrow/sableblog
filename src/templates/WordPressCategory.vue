@@ -79,31 +79,4 @@ export default {
     color: black;
   }
 }
-.post-list {
-    margin: 60px 0 0 0;
-    padding: 0;
-    list-style-type: none;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 50px;
-    @media screen and (max-width: $breakpoint-md) {
-      margin-top: 7vw;
-      grid-template-columns: repeat(2, 1fr);
-    }
-    @media screen and (max-width: $breakpoint-sm) {
-      margin-top: 7vw;
-      grid-template-columns: repeat(1, 1fr);
-    }
-    li {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      margin-bottom: 50px;
-      @media screen and (max-width: $breakpoint-lg) {
-        margin-bottom: 7vw;
-        padding-bottom: 7vw;
-      }
-    }
-  }
 </style>

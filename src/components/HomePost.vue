@@ -11,8 +11,8 @@
       </h4>
       <h2><g-link :to="post.node.path">{{post.node.title}}</g-link></h2>
       <p class="excerpt">
-        <g-link :to="post.node.path"><v-clamp class="excerpt only-desktop" :max-lines="2">{{post.node.excerpt | removeHTML}}</v-clamp></g-link>
-        <g-link :to="post.node.path"><v-clamp class="excerpt only-mobile-tablet" :max-lines="2">{{post.node.excerpt | removeHTML}}</v-clamp></g-link>
+        <g-link :to="post.node.path"><v-clamp autoresize class="excerpt only-desktop" :max-lines="2">{{post.node.excerpt | removeHTML}}</v-clamp></g-link>
+        <g-link :to="post.node.path"><v-clamp autoresize class="excerpt only-mobile-tablet" :max-lines="2" v-html>{{post.node.excerpt | removeHTML}}</v-clamp></g-link>
         </p>
   </article>
 </template>
@@ -34,7 +34,10 @@ export default {
   filters: {
     removeHTML: function (val) {
       let regex = /(<([^>]+)>)/ig;
-      return val.replace(regex, "");
+      val = val.replace(regex, "");
+      return val.replace(/(&#(\d+);)/g, function(match, capture, charCode) {
+        return String.fromCharCode(charCode);
+      });
     }
   },
   methods: {
@@ -139,17 +142,6 @@ export default {
       @media screen and (max-width: $breakpoint-md) {
         font-size: 7vw;
         letter-spacing: .2vw;
-      }
-    }
-
-    .excerpt {
-      line-height: 1.2;
-      font-size: 15px;
-      color: black;
-      @media screen and (max-width: $breakpoint-md) {
-        font-size: 3.1vw;
-        margin-bottom: 2vw;
-        text-align: left;
       }
     }
   }

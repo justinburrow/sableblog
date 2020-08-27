@@ -1,5 +1,5 @@
 <template>
-  <div class="subscription" :class="{active : isActive}">
+  <div class="subscription" :class="{active : isActive}" v-scroll-lock="isActive">
     <div class="signup-box">
       <button type="button" name="close-email" @click="isActive = false">X</button>
       <div class="content">
