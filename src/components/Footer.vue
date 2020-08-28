@@ -95,6 +95,9 @@ export default {
 <style lang="scss" scoped>
   .bottom-section {
     margin-top: 85px;
+    @media screen and (max-width: $breakpoint-md) {
+      margin-top: 3vw;
+    }
   }
   .instagram {
     border-top: 8px solid #f2f2f2;
@@ -156,20 +159,28 @@ export default {
       padding: 0;
       @media screen and (max-width: $breakpoint-md) {
         padding: 0 20px;
+        justify-content: space-between;
       }
 
       > ul {
         margin-right: 50px;
         margin-bottom: 30px;
         @media screen and (max-width: $breakpoint-md) {
-          width: 50%;
+          width: 30%;
           margin-right: 0;
         }
         ul li {
           font-size: 1rem;
           margin-bottom: 5px;
+          @media screen and (max-width: 768px) {
+            margin-bottom: 4vw;
+            font-size: 3.5vw;
+          }
           a {
             color: #616161;
+            @media screen and (max-width: 1024px) {
+              color: white;
+            }
             &:hover {
               color: white;
               text-decoration: underline;
@@ -186,6 +197,9 @@ export default {
 
       .subscribe {
         margin-left: auto;
+        @media screen and (max-width: $breakpoint-md) {
+          width: 100%;
+        }
       }
     }
 
@@ -203,7 +217,9 @@ export default {
       text-transform: uppercase;
       line-height: 1;
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 5vw;
+        font-size: 4.6vw;
+        letter-spacing: .2vw;
+        margin: 0 0 4vw 0;
       }
     }
 

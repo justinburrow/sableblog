@@ -1,6 +1,6 @@
 <template>
   <div class="subscription" :class="{active : this.$store.showPopup}" v-scroll-lock="isActive">
-    <div class="signup-box">
+    <div class="signup-box" v-if="$store.showPopup == true">
       <button type="button" name="close-email" @click="$store.showPopup = false, setCookie()">X</button>
       <div class="content">
         <p class="title">We're Better Together</p>
@@ -64,10 +64,11 @@ export default {
     }
     .signup-box {
       background: #DEDFDF url('~@/assets/images/email-background.jpg');
-      background-position: center middle;
+      background-position: center center;
       background-size: contain;
       width: 600px;
       height: 600px;
+      max-width: 100%;
       position: absolute;
       top: 100px;
       transform: translate(-50%, -100%);
@@ -103,6 +104,9 @@ export default {
           font-family: 'acumin-pro-extra-condensed', sans-serif;
           font-size: 48px;
           line-height: 1;
+          @media screen and (max-width: $breakpoint-md) {
+            font-size: 10vw;
+          }
         }
         .subtitle {
           font-family: 'acumin-pro-condensed', sans-serif;

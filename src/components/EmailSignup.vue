@@ -50,6 +50,9 @@ export default {
     font-size: 20px;
     width: 100%;
     border-radius: 0;
+    @media screen and (max-width: $breakpoint-md) {
+      font-size: 3.5vw;
+    }
     &::placeholder {
       color: rgba(0,0,0,0.5);
     }
@@ -67,6 +70,9 @@ export default {
     background: linear-gradient(0deg, #18413c 50%, #224c45 50%);
     color: white;
     border-radius: 0;
+    @media screen and (max-width: $breakpoint-md) {
+      font-size: 5vw;
+    }
     &:hover {
       cursor: pointer;
     }

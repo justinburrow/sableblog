@@ -80,6 +80,9 @@ export default {
 <style lang="scss" scoped>
   .featured-posts {
     margin: 60px 0 0 0;
+    @media screen and (max-width: $breakpoint-md) {
+      margin: 5vw 0 0 0;
+    }
     h3 {
       text-align: center;
       text-transform: uppercase;
@@ -88,6 +91,9 @@ export default {
       font-style: normal;
       font-size: 4rem;
       letter-spacing: 1px;
+      @media screen and (max-width: $breakpoint-md) {
+        font-size: 10vw;
+      }
     }
   }
 </style>

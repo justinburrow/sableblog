@@ -155,7 +155,8 @@ export default {
       margin-bottom: 30px;
       color: black;
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 3.5vw;
+        font-size: 5vw;
+        margin-bottom: 5vw;
       }
     }
   }

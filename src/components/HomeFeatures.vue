@@ -74,6 +74,9 @@ export default {
 <style lang="scss">
   .hero-banners {
     margin-bottom: 30px;
+    @media screen and (max-width: $breakpoint-md) {
+      margin-bottom: 2vw;
+    }
     img {
       width: 100%;
       max-width: 100%;
@@ -91,10 +94,10 @@ export default {
       line-height: 15px;
       border: none;
       background: rgba(0,0,0,0.2);
-      @media screen and (max-width: $breakpoint-sm) {
-        height: 2.5vw;
-        width: 2.5vw;
-        line-height: 2.5vw;
+      @media screen and (max-width: $breakpoint-md) {
+        height: 3vw;
+        width: 3vw;
+        line-height: 3vw;
       }
     }
     .agile__dot--current {

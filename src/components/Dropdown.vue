@@ -1,7 +1,7 @@
 <template>
   <div >
     <div class="dropdown" ref="dropdown" @mouseleave="!showDropdown">
-      <ul class="categories" v-if="this.showSearchBar == false">
+      <ul class="categories" v-if="this.showSearchBar == false && this.showCategories == false">
         <li v-for="cat in $static.allWordPressCategory.edges" class="cat" :key="cat.node.id" v-if="cat.node.count > 0">
           <div class="image">
             <g-link :to="cat.node.path"><g-image :src="filterCatImage(cat.node.id)" alt="cat.node.title"></g-image></g-link>
@@ -16,6 +16,14 @@
         <div class="search-button">
           <button @click="search">Submit</button>
         </div>
+      </div>
+
+      <div class="mobile-categories" v-if="this.showCategories == true">
+        <ul>
+          <li v-for="cat in $static.allWordPressCategory">
+            <g-link :to="cat.path">{{title}}</g-link>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="spacer"></div>
@@ -51,13 +59,14 @@
 <script>
 export default {
     name: 'Dropdown',
-    props: ['dropdownState', 'searchResults', 'showSearch'],
+    props: ['dropdownState', 'searchResults', 'showSearch', 'mobileCatTrigger'],
     data() {
         return {
           showDropdown: false,
           results: [],
           showSearchBar: this.showSearch,
-          searchingBy: ''
+          searchingBy: '',
+          showCategories: this.mobileCatTrigger
         }
     },
     watch: {
@@ -93,13 +102,7 @@ export default {
           path: '/search/',
           query: { s: this.searchingBy }
         });
-        //window.localStorage.setItem('search', this.searchingBy);
         this.searchingBy = '';
-        /*if (this.$route.fullPath == '/search') {
-          this.$router.go();
-        } else {
-          this.$router.push({path: '/search'});
-        }*/
       }
     }
   }

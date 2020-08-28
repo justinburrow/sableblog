@@ -3,12 +3,12 @@
     <MenuPanel />
     <SearchPanel />
       <div class="header__content container-full">
-        <div class="menu-icon only-mobile-tablet" @click="$actions.openMenu()">
+        <div class="menu-icon only-mobile-tablet" @click="openMobileCat()">
           <img src="~@/assets/images/menu-icon.svg" alt="Menu" />
         </div>
 
         <div class="logo only-mobile-tablet">
-          <g-link to:="/"><img src="~@/assets/images/sable-logo.svg" width="370" alt="S'able Labs" /></g-link>
+          <a href="/"><img src="~@/assets/images/sable-logo.svg" width="370" alt="S'able Labs" /></a>
         </div>
 
         <div class="navigation only-desktop">
@@ -29,12 +29,12 @@
           </ul>
         </div>
 
-        <div class="mobile-search-icon only-mobile-tablet" @click="$actions.openSearch()">
+        <div class="mobile-search-icon only-mobile-tablet" @click="openSearchDropdown()">
           <img src="~@/assets/images/search-icon.svg" alt="Search">
         </div>
       </div>
       <div class="dropdown-container" :class="showDropdown ? 'show' : 'hide'" ref="dropdownContainer" @mouseenter="focusLine()" @mouseleave="showDropdown = false, blogHover = false, searchHover = false">
-        <Dropdown :show-search="showSearch" :dropdown-state="showDropdown" />
+        <Dropdown :show-search="showSearch" :dropdown-state="showDropdown" :mobile-cat-trigger="mobileCat" />
       </div>
   </div>
 </template>
@@ -51,7 +51,7 @@
         SearchPanel,
         Dropdown
     },
-    props: ['dropdownState', 'showSearchBar', 'showCategories'],
+    props: ['dropdownState', 'showSearchBar', 'showCategories', 'mobileCatTrigger'],
     data() {
       return {
         showSearch: false,
@@ -61,7 +61,8 @@
         fixedHeader: false,
         blogHover: false,
         searchHover: false,
-        activeItem: null
+        activeItem: null,
+        mobileCat: false
       }
     },
     methods: {
@@ -73,8 +74,12 @@
         this.showDropdown = !this.showDropdown;
         this.showSearch = true;
       },
+      openMobileCat() {
+        this.showDropdown = !this.showDropdown;
+        this.mobileCat = true;
+      },
       getDropdownPosition() {
-        this.headerHeight = document.querySelector('.header').offsetHeight;
+        this.headerHeight = document.querySelector('header').offsetHeight;
         document.querySelector('.dropdown-container').style.top = this.headerHeight + "px";
       },
       stickyHeader() {
@@ -292,6 +297,9 @@
       &.show {
         transform: translateY(0);
         opacity: 1;
+      }
+      @media screen and (max-width: $breakpoint-md) {
+        margin-top: -20px;
       }
     }
 
