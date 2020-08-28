@@ -10,7 +10,7 @@
         <g-link :to="cat.path"><span v-if="i == 0">{{cat.title}}</span></g-link>
       </h4>
       <h2><g-link :to="post.node.path">{{post.node.title}}</g-link></h2>
-      <p class="excerpt">
+      <p class="excerpt" v-if="post.node.excerpt">
         <g-link :to="post.node.path"><v-clamp autoresize class="excerpt only-desktop" :max-lines="2">{{post.node.excerpt | removeHTML}}</v-clamp></g-link>
         <g-link :to="post.node.path"><v-clamp autoresize class="excerpt only-mobile-tablet" :max-lines="2" v-html>{{post.node.excerpt | removeHTML}}</v-clamp></g-link>
         </p>

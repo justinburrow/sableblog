@@ -1,89 +1,90 @@
 <template>
   <Layout>
-    <div id="single-post" class="post interior">
-      <div class="post-category">
-        <g-link :to="$page.wordPressPost.categories[0].path" class="category">
-          <h2 v-html="$page.wordPressPost.categories[0].title"></h2>
-        </g-link>
+    <div>
+      <div id="single-post" class="post interior">
+
+        <div class="post-category">
+          <g-link :to="$page.wordPressPost.categories[0].path" class="category">
+            <h2 v-html="$page.wordPressPost.categories[0].title"></h2>
+          </g-link>
+        </div>
+        <h1 v-html="$page.wordPressPost.title"/>
+
+        <div class="post-image">
+         <img
+          v-if="$page.wordPressPost.featuredMedia"
+          :src="$page.wordPressPost.featuredMedia.sourceUrl"
+          :alt="$page.wordPressPost.featuredMedia.altText"
+        />
+        </div>
+
+        <div class="post-details">
+          <span class="author" v-if="!$page.wordPressPost.featuredMedia == null">Photography: {{$page.wordPressPost.featuredMedia.caption | removeHTML}}</span>
+          <span class="date only-desktop">{{formatDate($page.wordPressPost.date)}}</span>
+        </div>
+        <p class="date only-mobile-tablet">{{formatDate($page.wordPressPost.date)}}</p>
+        <div ref="postContent" class="post-content" v-html="$page.wordPressPost.content"></div>
       </div>
-      <h1 v-html="$page.wordPressPost.title"/>
-      <div class="post-image">
-       <img
-        v-if="$page.wordPressPost.featuredMedia"
-        :src="$page.wordPressPost.featuredMedia.sourceUrl"
-        :alt="$page.wordPressPost.featuredMedia.altText"
-      />
+
+      <div class="you-may-also-like">
+        <div class="title">
+          <div class="background"></div>
+          <div class="content">
+            You May Also Like
+          </div>
+        </div>
+
+        <div v-for="node in $page.wordPressPost.categories[0].belongsTo.edges">
+          <HomePost :post="node" />
+        </div>
+
       </div>
-      <div class="post-details">
-        <span class="author" v-if="!$page.wordPressPost.featuredMedia == null">Photography: {{$page.wordPressPost.featuredMedia.caption | removeHTML}}</span>
-        <span class="date only-desktop">{{formatDate($page.wordPressPost.date)}}</span>
-      </div>
-      <p class="date only-mobile-tablet">{{formatDate($page.wordPressPost.date)}}</p>
-      <div ref="postContent" class="post-content" v-html="$page.wordPressPost.content"></div>
+
     </div>
+
 
   </Layout>
 </template>
 
 <page-query>
-query WordPressPost ($id: ID!, $date: Date!) {
-  wordPressPost(id: $id) {
-    title
-    content
-    date
-    featuredMedia {
-      sourceUrl
-      altText
-      caption
-    }
-    categories {
-      id
+  query WordPressPost ($id: ID!) {
+    wordPressPost(id: $id) {
       title
-      path
+      content
+      date
+      featuredMedia {
+        sourceUrl
+        altText
+        caption
+      }
+      categories {
+        id
+        title
+        path
+        belongsTo(sortBy: "dateGmt", limit: 3, filter: { id: { ne: $id } }) {
+        	edges {
+            node {
+              ...on WordPressPost {
+              	title
+                dateGmt
+                path
+                excerpt
+                featuredMedia {
+                  sourceUrl
+                  altText
+                }
+            	}
+            }
+          }
+      	}
+      }
     }
   }
-  prevPost: allWordPressPost(filter: {date: { lt: $date}}, limit: 2) {
-      edges {
-        node {
-          title
-          link
-          path
-          date
-          featuredMedia {
-            sourceUrl
-            altText
-          }
-          categories {
-            id
-            title
-          }
-        }
-      }
-    }
-    nextPost: allWordPressPost(filter: {date: { gt: $date}}, limit: 2) {
-      edges {
-        node {
-          title
-          link
-          path
-          date
-          featuredMedia {
-            sourceUrl
-            altText
-          }
-          categories {
-            id
-            title
-            path
-          }
-        }
-      }
-    }
-}
 </page-query>
 
 <script>
 import moment from 'moment'
+import HomePost from '~/components/HomePost.vue'
 
 export default {
   metaInfo () {
@@ -93,7 +94,7 @@ export default {
     }
   },
   components: {
-
+    HomePost
   },
   methods: {
     formatDate(postDate) {
@@ -138,7 +139,6 @@ export default {
         }
       }
     }
-  }
   .post-category {
     a {
       color: #b2b2b2;
@@ -283,145 +283,75 @@ export default {
       }
     }
   }
-  .post-navigation {
-    margin-top: 100px;
-    border-top: 1px solid #235751;
+}
+.you-may-also-like {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  background: black;
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+  padding: 20px 0;
+  a {
+    color: white;
+  }
+  > div {
     width: 100%;
-    margin-bottom: 50px;
-    @media screen and (max-width: $breakpoint-md) {
-      margin-bottom: 5vw;
+    padding: 20px;
+    &:nth-child(2) {
+      margin-left: 0;
     }
-    .title {
-      margin: 0 auto;
-      background: #235751;
-      padding: 10px 0;
-      width: 645px;
-      text-align: center;
-      color: white;
-      text-transform: uppercase;
-      position: relative;
-      top: -18px;
-      line-height: 1;
-      letter-spacing: 1px;
-      @media screen and (max-width: $breakpoint-md) {
-        width: 100%;
+    @media screen and (min-width: 768px) {
+      width: 30%;
+      margin-left: 30px;
+      padding: 20px 0;
+      &:nth-child(4) {
+        display: none;
       }
     }
-    .articles {
-      display: flex;
+    @media screen and (min-width: 1200px) {
+      width: 20%;
+      margin-left: 30px;
+      padding: 20px 0;
+      &:nth-child(4) {
+        display: block;
+      }
+    }
+
+  }
+  .title {
+    margin-left: 0;
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    @media screen and (min-width: 768px) {
+      width: 30%;
+      padding-top: 0;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 30%;
+    }
+    .background {
+      background: url('~@/assets/images/sable-s.svg') center center no-repeat;
+      background-size: 43%;
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      justify-content: space-between;
-      margin-top: 30px;
-      @media screen and (max-width: $breakpoint-md) {
-        margin-top: 3vw;
-      }
-      @media screen and (max-width: $breakpoint-sm) {
-        flex-wrap: wrap;
-      }
-      article {
-        width: 48%;
-        display: flex;
-        flex-direction: column;
-        @media screen and (max-width: $breakpoint-sm) {
-          flex-wrap: wrap;
-          width: 100%;
-          flex-direction: row;
-          margin-bottom: 7vw;
-        }
-        a {
-          text-decoration: none;
-          &:hover {
-            text-decoration: underline;
-            color: #b6b6b6;
-          }
-        }
-        a.image {
-          padding: 0;
-          @media screen and (max-width: $breakpoint-sm) {
-            width: 100%;
-          }
-        }
-        .image {
-          position: relative;
-          width: 100%;
-          padding-top: 57%;
-          img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-        }
-        a.desc {
-          flex-grow: 1;
-        }
-        h5 {
-          margin: 0;
-          background: black;
-          color: white;
-          padding: 15px;
-          display: flex;
-          text-transform: uppercase;
-          justify-content: space-between;
-          font-family: acumin-pro-extra-condensed;
-          font-size: 24px;
-          letter-spacing: 1px;
-          line-height: 1;
-          height: 100%;
-          align-items: center;
-          span {
-            margin-left: 50px;
-            display: block;
-            width: 140px;
-            text-align: right;
-            flex-grow: 1;
-            font-family: 'acumin', helvetica, sans-serif;
-            font-size: 12px;
-            text-decoration: underline;
-            letter-spacing: 0;
-            @media screen and (max-width: $breakpoint-md) {
-              display: none;
-            }
-          }
-        }
-        .cat-direction {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: none;
-          justify-content: space-between;
-          width: 100%;
-          @media screen and (max-width: $breakpoint-md) {
-            display: none;
-          }
-          img {
-            align-self: center;
-            margin-top: 10px;
-          }
-        }
-        &:nth-child(2) {
-          .cat-direction {
-            flex-direction: row-reverse;
-            img {
-              transform: rotate(180deg);
-            }
-          }
-        }
-        h6 {
-          margin: 10px 0 0 0;
-          padding: 0;
-          text-align: right;
-          font-size: 13px;
-          letter-spacing: 1px;
-          color: #b6b6b6;
-          text-transform: uppercase;
-          font-weight: normal;
-          @media screen and (max-width: $breakpoint-md) {
-            display: none;
-          }
-        }
-      }
+      height: 100%;
+      opacity: 0.3;
+    }
+    .content {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+      font-size: 21px;
+      font-weight: bold;
+      z-index: 2;
+      text-align: center;
     }
   }
+}
 </style>
