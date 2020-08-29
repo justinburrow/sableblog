@@ -31,7 +31,7 @@
 export default {
   metaInfo() {
     return {
-      title: $page.allWordPressPage.edges[0].node.title,
+      title: this.$page.allWordPressPage.edges[0].node.title,
       meta: [
         {
           name: 'og:type',
@@ -41,22 +41,12 @@ export default {
         {
           key: 'og:title',
           property: 'og:title',
-          content: $page.allWordPressPage.edges[0].node + ' | S\'able Labs'
+          content: this.$page.allWordPressPage.edges[0].node + ' | S\'able Labs'
         },
         {
           key: 'twitter:title',
           property: 'twitter:title',
-          content: $page.allWordPressPage.edges[0].node + ' | S\'able Labs'
-        },
-        {
-          key: 'og:description',
-          property: 'og:description',
-          content: $page.allWordPressPage.edges[0].node.excerpt
-        },
-        {
-          key: 'twitter:description',
-          property: 'twitter:description',
-          content: $page.allWordPressPage.edges[0].node.excerpt
+          content: this.$page.allWordPressPage.edges[0].node + ' | S\'able Labs'
         }
       ]
     }

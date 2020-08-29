@@ -74,12 +74,12 @@ export default {
         {
           key: 'og:title',
           property: 'og:title',
-          content: 'Coupledom | ' + this.siteName
+          content: 'Coupledom | S\'able Labs'
         },
         {
           key: 'twitter:title',
           property: 'twitter:title',
-          content: 'Coupledom | ' + this.siteName
+          content: 'Coupledom | S\'able Labs'
         },
         {
           key: 'og:description',
