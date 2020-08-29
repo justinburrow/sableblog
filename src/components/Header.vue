@@ -17,11 +17,11 @@
             <li class="commitment" @mouseenter="showDropdown = false, bloghover = false; searchHover = false;" @click="setActive('commitment')" :class="{active: isActive('commitment')}"><a href="/our-commitment/">Our Commitment</a></li>
             <li class="about" @mouseenter="showDropdown = false, bloghover = false; searchHover = false;" @click="setActive('about')" :class="{active: isActive('about')}"><a href="/pages/about-us/">About</a></li>
           </ul>
-          <div class="logo" @mouseenter="bloghover = false; searchHover = false;">
+          <div class="logo" @mouseenter="bloghover = false; searchHover = false;" @click="setActive('')">
               <a href="/"><img src="~@/assets/images/sable-logo.svg" width="277" alt="S'able Labs" /></a>
           </div>
           <ul>
-            <li class="subscribe" @click="$store.showPopup = true"><button>Subscribe</button></li>
+            <li class="subscribe" @click="$store.showPopup = true, setActive('subscribe')"><button>Subscribe</button></li>
             <li class="search" :class="searchHover ? 'active' : ''"  @mouseenter="openSearchDropdown(), blogHover = false, searchHover = true" @click="openSearchDropdown(), searchHover = true;">
               <button><img src="~@/assets/images/search-icon.svg" alt="Search"></button>
             </li>
@@ -226,8 +226,9 @@
                       left: 0;
                     }
                   }
-                  .spacer {
-                    &.active.after {
+                  &.spacer {
+                    pointer-events: none;
+                    &.active:after {
                       height: 0;
                     }
                   }
