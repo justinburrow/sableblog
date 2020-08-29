@@ -19,10 +19,11 @@
         </div>
 
         <div class="post-details">
-          <span class="author" v-if="!$page.wordPressPost.featuredMedia == null">Photography: {{$page.wordPressPost.featuredMedia.caption | removeHTML}}</span>
-          <span class="date only-desktop">{{formatDate($page.wordPressPost.date)}}</span>
+          <div class="social-share">
+            <div class="s9-widget-wrapper"></div>
+          </div>
+          <span class="author" v-if="!$page.wordPressPost.featuredMedia == null"> {{$page.wordPressPost.featuredMedia.caption | removeHTML}}</span>
         </div>
-        <p class="date only-mobile-tablet">{{formatDate($page.wordPressPost.date)}}</p>
         <div ref="postContent" class="post-content" v-html="$page.wordPressPost.content"></div>
       </div>
 
@@ -147,7 +148,6 @@ export default {
     articleAd.appendChild(contentHolder);
     articleAd.setAttribute('id', 'article-ad');
     this.$refs.postContent.getElementsByTagName('p')[pCount].after(articleAd);
-
   },
   filters: {
     removeHTML: function (val) {
