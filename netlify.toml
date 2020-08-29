@@ -2,6 +2,3 @@
 [build]
   publish = "dist"
   command = "gridsome build"
-
-[template.environment]
-  WORDPRESS_URL = "https://www.justinburrow.com/sb-blog/"

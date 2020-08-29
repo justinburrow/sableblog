@@ -90,7 +90,44 @@ export default {
   metaInfo () {
     return {
       title: this.$page.wordPressPost.title,
-      date: this.$page.wordPressPost.date
+      date: this.$page.wordPressPost.date,
+      meta: [
+        {
+          name: 'og:type',
+          property: 'og:type',
+          content: 'article'
+        },
+        {
+          key: 'og:title',
+          property: 'og:title',
+          content: this.$page.wordPressPost.title + ' | ' + this.siteName
+        },
+        {
+          key: 'twitter:title',
+          property: 'twitter:title',
+          content: this.$page.wordPressPost.title + ' | ' + this.siteName
+        },
+        {
+          key: 'og:description',
+          property: 'og:description',
+          content: this.$page.wordPressPost.excerpt
+        },
+        {
+          key: 'twitter:description',
+          property: 'twitter:description',
+          content: this.$page.wordPressPost.excerpt
+        },
+        {
+          key: 'og:image',
+          property: 'og:image',
+          content: this.$page.wordPressPost.featuredMedia.sourceUrl
+        },
+        {
+          key: 'twitter:image',
+          property: 'twitter:image',
+          content: this.$page.wordPressPost.featuredMedia.sourceUrl
+        }
+      ]
     }
   },
   components: {

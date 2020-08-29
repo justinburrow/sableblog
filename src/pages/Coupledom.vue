@@ -62,8 +62,47 @@ import { Hooper, Slide, Pagination as HooperPagination } from 'hooper';
 import 'hooper/dist/hooper.css';
 
 export default {
-  metaInfo: {
-    title: 'S\'able Labs | Coupledom'
+  metaInfo() {
+    return {
+      title: 'Coupledom',
+      meta: [
+        {
+          name: 'og:type',
+          property: 'og:type',
+          content: 'article'
+        },
+        {
+          key: 'og:title',
+          property: 'og:title',
+          content: 'Coupledom | ' + this.siteName
+        },
+        {
+          key: 'twitter:title',
+          property: 'twitter:title',
+          content: 'Coupledom | ' + this.siteName
+        },
+        {
+          key: 'og:description',
+          property: 'og:description',
+          content: `We want to tell the world our story through the voice of the people, because our story isn't just about us. It's about a shared dream and making it real through the power of coupledom.`
+        },
+        {
+          key: 'twitter:description',
+          property: 'twitter:description',
+          content: `We want to tell the world our story through the voice of the people, because our story isn't just about us. It's about a shared dream and making it real through the power of coupledom.`
+        },
+        {
+          key: 'og:image',
+          property: 'og:image',
+          content: '~@/assets/images/coupledom-hero-background.jpg'
+        },
+        {
+          key: 'twitter:image',
+          property: 'twitter:image',
+          content: '~@/assets/images/coupledom-hero-background.jpg'
+        }
+      ]
+    }
   },
   components: {
     Hooper,

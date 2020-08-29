@@ -28,6 +28,7 @@
     "vue-goodshare": "^1.5.1",
     "vue-mailchimp-subscribe": "^1.1.0",
     "vue-owl-carousel": "^2.0.3",
+    "vue-social-sharing": "^3.0.0-beta.11",
     "vue-template-compiler": "^2.6.11"
   },
   "devDependencies": {

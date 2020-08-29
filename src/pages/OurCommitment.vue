@@ -29,8 +29,37 @@
 <script>
 
 export default {
-  metaInfo: {
-    title: 'S\'able Labs | Our Commitment'
+  metaInfo() {
+    return {
+      title: $page.allWordPressPage.edges[0].node.title,
+      meta: [
+        {
+          name: 'og:type',
+          property: 'og:type',
+          content: 'article'
+        },
+        {
+          key: 'og:title',
+          property: 'og:title',
+          content: $page.allWordPressPage.edges[0].node + ' | ' + this.siteName
+        },
+        {
+          key: 'twitter:title',
+          property: 'twitter:title',
+          content: $page.allWordPressPage.edges[0].node + ' | ' + this.siteName
+        },
+        {
+          key: 'og:description',
+          property: 'og:description',
+          content: $page.allWordPressPage.edges[0].node.excerpt
+        },
+        {
+          key: 'twitter:description',
+          property: 'twitter:description',
+          content: $page.allWordPressPage.edges[0].node.excerpt
+        }
+      ]
+    }
   },
   mounted() {
   }

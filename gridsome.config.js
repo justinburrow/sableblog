@@ -12,7 +12,8 @@ function addStyleResource(rule) {
 
 module.exports = {
   siteName: "S'able Labs",
-  siteDescription: "The S'able Labs Blog",
+  siteDescription: "A community for Coupledom",
+  icon: './src/favicon.ico'
 
   templates: {
     WordPressPage: [

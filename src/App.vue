@@ -17,20 +17,6 @@ query {
 import MainLayout from '~/layouts/MainLayout.vue'
 
 export default {
-  components: {
-    MainLayout
-  },
-  data() {
-    return {
-      viewKey: 1
-    }
-  },
-  methods: {
-    viewKeyUpdate() {
-      console.log('update');
-      this.viewKey++;
-    }
-  },
   metaInfo() {
     return {
       title: this.$static.metadata.siteName,
@@ -41,6 +27,19 @@ export default {
           content: this.$static.metadata.siteDescription
         }
       ]
+    }
+  },
+  components: {
+    MainLayout
+  },
+  data() {
+    return {
+      viewKey: 1
+    }
+  },
+  methods: {
+    viewKeyUpdate() {
+      this.viewKey++;
     }
   }
 }
