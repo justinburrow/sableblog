@@ -12,7 +12,7 @@
 
       <div class="search-container" v-if="this.showSearchBar == true">
         <span>Search</span>
-        <input id="search" type="text" v-model="searchingBy" class="input">
+        <input id="search" type="text" v-model="searchingBy" class="input" @keyup.enter="search">
         <div class="search-button">
           <button @click="search">Submit</button>
         </div>
