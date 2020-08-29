@@ -211,7 +211,7 @@ export default {
     h6 {
       font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;
       font-size: 1.5rem;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       margin: 0 0 20px 0;
       padding: 0;
       text-transform: uppercase;
