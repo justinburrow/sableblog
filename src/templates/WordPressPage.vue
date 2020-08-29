@@ -54,12 +54,12 @@ export default {
         {
           key: 'og:title',
           property: 'og:title',
-          content: this.$page.wordPressPost.title + ' | ' + this.siteName
+          content: this.$page.wordPressPost.title + ' | S\'able Labs'
         },
         {
           key: 'twitter:title',
           property: 'twitter:title',
-          content: this.$page.wordPressPost.title + ' | ' + this.siteName
+          content: this.$page.wordPressPost.title + ' | S\'able Labs'
         },
         {
           key: 'og:description',

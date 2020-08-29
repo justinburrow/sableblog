@@ -101,12 +101,12 @@ export default {
         {
           key: 'og:title',
           property: 'og:title',
-          content: this.$page.wordPressPost.title + ' | ' + this.siteName
+          content: this.$page.wordPressPost.title + ' | S\'able Labs'
         },
         {
           key: 'twitter:title',
           property: 'twitter:title',
-          content: this.$page.wordPressPost.title + ' | ' + this.siteName
+          content: this.$page.wordPressPost.title + ' | S\'able Labs'
         },
         {
           key: 'og:description',
@@ -121,18 +121,23 @@ export default {
         {
           key: 'og:image',
           property: 'og:image',
-          content: this.$page.wordPressPost.featuredMedia.sourceUrl
+          content: this.image
         },
         {
           key: 'twitter:image',
           property: 'twitter:image',
-          content: this.$page.wordPressPost.featuredMedia.sourceUrl
+          content: this.image
         }
       ]
     }
   },
   components: {
     HomePost
+  },
+  data() {
+    return {
+      image: ''
+    }
   },
   methods: {
     formatDate(postDate) {
@@ -148,6 +153,10 @@ export default {
     articleAd.appendChild(contentHolder);
     articleAd.setAttribute('id', 'article-ad');
     this.$refs.postContent.getElementsByTagName('p')[pCount].after(articleAd);
+
+    if (this.$page.wordPressPost.featuredMedia) {
+      this.image = this.$page.wordPressPost.featuredMedia.sourceUrl;
+    }
   },
   filters: {
     removeHTML: function (val) {

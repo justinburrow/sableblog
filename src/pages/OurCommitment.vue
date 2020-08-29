@@ -41,12 +41,12 @@ export default {
         {
           key: 'og:title',
           property: 'og:title',
-          content: $page.allWordPressPage.edges[0].node + ' | ' + this.siteName
+          content: $page.allWordPressPage.edges[0].node + ' | S\'able Labs'
         },
         {
           key: 'twitter:title',
           property: 'twitter:title',
-          content: $page.allWordPressPage.edges[0].node + ' | ' + this.siteName
+          content: $page.allWordPressPage.edges[0].node + ' | S\'able Labs'
         },
         {
           key: 'og:description',
