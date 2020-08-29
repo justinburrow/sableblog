@@ -57,12 +57,14 @@ export default function (Vue, {router, head, isClient}) {
           selector: to.hash
         }
       } else {
-        if (window.flcklr) {
-          if (document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML != '') {
-            document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML = '';
+        document.addEventListener("DOMContentLoaded", function(){
+          if (window.flcklr) {
+            if (document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML != '') {
+              document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML = '';
+            }
+            Vue.prototype.$flockler = window.flcklr.Embeds.create(window.flcklr.EmbedConfigs['17177230bd60efd482bfb4b945f55ff2']);
           }
-          Vue.prototype.$flockler = window.flcklr.Embeds.create(window.flcklr.EmbedConfigs['17177230bd60efd482bfb4b945f55ff2']);
-        };
+        });
         return { x: 0, y: 0 }
       }
     }
