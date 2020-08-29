@@ -54,32 +54,12 @@ export default {
         {
           key: 'og:title',
           property: 'og:title',
-          content: this.$page.wordPressPost.title + ' | S\'able Labs'
+          content: this.$page.wordPressPage.title + ' | S\'able Labs'
         },
         {
           key: 'twitter:title',
           property: 'twitter:title',
-          content: this.$page.wordPressPost.title + ' | S\'able Labs'
-        },
-        {
-          key: 'og:description',
-          property: 'og:description',
-          content: this.$page.wordPressPost.excerpt
-        },
-        {
-          key: 'twitter:description',
-          property: 'twitter:description',
-          content: this.$page.wordPressPost.excerpt
-        },
-        {
-          key: 'og:image',
-          property: 'og:image',
-          content: this.$page.wordPressPost.featuredMedia.sourceUrl
-        },
-        {
-          key: 'twitter:image',
-          property: 'twitter:image',
-          content: this.$page.wordPressPost.featuredMedia.sourceUrl
+          content: this.$page.wordPressPage.title + ' | S\'able Labs'
         }
       ]
     }
