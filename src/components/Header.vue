@@ -34,7 +34,7 @@
         </div>
       </div>
       <div class="dropdown-container" :class="showDropdown ? 'show' : 'hide'" ref="dropdownContainer" @mouseenter="focusLine()" @mouseleave="showDropdown = false, blogHover = false, searchHover = false">
-        <Dropdown :show-search="showSearch" :dropdown-state="showDropdown" :mobile-cat-trigger="mobileCat" />
+        <Dropdown :show-search="showSearch" :dropdown-state="showDropdown" :mobile-cat-trigger="mobileCat" @hideDropdown="showDropdown = false"/>
       </div>
   </div>
 </template>

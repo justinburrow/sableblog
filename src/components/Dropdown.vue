@@ -2,7 +2,7 @@
   <div >
     <div class="dropdown" ref="dropdown" @mouseleave="!showDropdown">
       <ul class="categories" v-if="this.showSearchBar == false && this.showCategories == false">
-        <li v-for="cat in $static.allWordPressCategory.edges" class="cat" :key="cat.node.id" v-if="cat.node.count > 0">
+        <li v-for="cat in $static.allWordPressCategory.edges" class="cat" :key="cat.node.id" v-if="cat.node.count > 0" @click="hideDropdown()">
           <div class="image">
             <g-link :to="cat.node.path"><g-image :src="filterCatImage(cat.node.id)" alt="cat.node.title"></g-image></g-link>
           </div>
@@ -95,8 +95,12 @@ export default {
         });
         return catImage;
       },
+      hideDropdown() {
+        this.$emit('hideDropdown')
+      },
       search() {
         this.$emit('updateViewKey');
+        this.$emit('hideDropdown');
         this.$store.searchQuery = this.searchingBy;
         this.$router.push({
           path: '/search/',
