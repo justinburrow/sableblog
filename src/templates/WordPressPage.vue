@@ -48,7 +48,7 @@ export default {
       meta: [
         {
           name: 'og:type',
-          property: 'og:type',
+          name: 'og:type',
           content: 'article'
         },
         {

@@ -48,7 +48,7 @@ export default function (Vue, {router, head, isClient}) {
     },
     {
       key: 'og:type',
-      property: 'og:type',
+      name: 'og:type',
       content: `website`
     },
     {
