@@ -22,7 +22,7 @@
           <div class="social-share">
             <div class="s9-widget-wrapper" ref="socialWidget"></div>
           </div>
-          <span class="author" v-if="!$page.wordPressPost.featuredMedia == null"> {{$page.wordPressPost.featuredMedia.caption | removeHTML}}</span>
+          <span class="author" v-if="$page.wordPressPost.featuredMedia"> {{$page.wordPressPost.featuredMedia.caption | removeHTML}}</span>
         </div>
         <div ref="postContent" class="post-content" v-html="$page.wordPressPost.content"></div>
       </div>
@@ -257,7 +257,7 @@ export default {
       }
     }
     @media screen and (max-width: $breakpoint-md) {
-      margin: 2vw 0 4vw 0;
+      margin: 2vw 0 8vw 0;
     }
   }
   .post-content {

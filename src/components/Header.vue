@@ -157,10 +157,10 @@
               width: 4vw;
             }
             @media screen and (max-width: $breakpoint-lg) {
-              width: 5vw;
+              width: 4vw;
             }
             @media screen and (max-width: $breakpoint-md) {
-              width: 7.5vw;
+              width: 6vw;
             }
           }
         }
@@ -203,7 +203,7 @@
               margin: 0;
               padding: 0;
               list-style-type: none;
-              font-size: 1.3rem;
+              font-size: 1.5rem;
               letter-spacing: .05rem;
               margin-top: -32px;
                 li {
@@ -214,6 +214,7 @@
                   text-transform: uppercase;
                   position: relative;
                   padding: 0 10px;
+                  font-size: 1.3rem;
                   &.active, &:hover {
                     &:after {
                       content: ' ';
@@ -276,10 +277,10 @@
             width: 4vw;
           }
           @media screen and (max-width: $breakpoint-lg) {
-            width: 5vw;
+            width: 4vw;
           }
           @media screen and (max-width: $breakpoint-md) {
-            width: 7.5vw;
+            width: 6vw;
           }
         }
       }
