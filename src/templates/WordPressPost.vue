@@ -130,12 +130,12 @@ export default {
         {
           key: 'og:image',
           property: 'og:image',
-          content: image ? this.$page.metadata.siteUrl + image.sourceUrl : ''
+          content: image ? image.sourceUrl : ''
         },
         {
           key: 'twitter:image',
           property: 'twitter:image',
-          content: image ? this.$page.metadata.siteUrl + image.sourceUrl : ''
+          content: image ? image.sourceUrl : ''
         },
         {
           key: 'og:description',
