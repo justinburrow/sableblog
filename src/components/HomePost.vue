@@ -110,6 +110,9 @@ export default {
         transition: opacity 0.3s ease;
         pointer-events: none;
         font-weight: bold;
+        @media screen and (max-width: $breakpoint-md) {
+          display: none;
+        }
       }
       @media screen and (max-width: $breakpoint-lg) {
         width: 100%;
