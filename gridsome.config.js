@@ -13,6 +13,7 @@ function addStyleResource(rule) {
 module.exports = {
   siteName: "S'able Labs",
   siteDescription: "A community for Coupledom",
+  siteUrl: process.env.GRIDSOME_BASE_URL,
   icon: './src/favicon.png',
 
   templates: {

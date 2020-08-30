@@ -49,6 +49,9 @@
 
 <page-query>
   query WordPressPost ($id: ID!) {
+    metadata {
+      siteUrl
+    }
     wordPressPost(id: $id) {
       title
       content
@@ -112,7 +115,7 @@ export default {
         {
           key: 'og:url',
           property: 'og:url',
-          content: this.$page.wordPressPost.link
+          content: this.$page.wordPressPost.metaData.siteUrl + this.$page.wordPressPost.path
         },
         {
           key: 'og:title',
@@ -127,12 +130,12 @@ export default {
         {
           key: 'og:image',
           property: 'og:image',
-          content: image ? image.link : ''
+          content: image ? this.$page.wordPressPost.metaData.siteUrl + image.sourceUrl : ''
         },
         {
           key: 'twitter:image',
           property: 'twitter:image',
-          content: image ? image.link : ''
+          content: image ? this.$page.wordPressPost.metaData.siteUrl + image.sourceUrl : ''
         },
         {
           key: 'og:description',
