@@ -92,16 +92,7 @@ import HomePost from '~/components/HomePost.vue'
 export default {
   metaInfo () {
     let image = this.$page.wordPressPost.featuredMedia;
-    let siteHost = '//' + this.$store.hostName;
-    let imageUrl;
-    if (image) {
-      let imageUrl = siteHost + image.sourceUrl;
-    }
-    let pagePath = siteHost + this.$page.wordPressPost.path;
-    let excerpt;
-    if (this.$page.wordPressPost.excerpt) {
-      excerpt = this.removeHTML(this.$page.wordPressPost.excerpt);
-    }
+
     return {
       title: this.$page.wordPressPost.title,
       date: this.$page.wordPressPost.date,
@@ -109,7 +100,7 @@ export default {
         {
           key: 'description',
           name: 'description',
-          content: excerpt
+          content: this.$page.wordPressPost.excerpt
         },
         {
           key: 'og:type',
@@ -119,7 +110,7 @@ export default {
         {
           key: 'og:url',
           property: 'og:url',
-          content: pagePath
+          content: this.$page.wordPressPost.link
         },
         {
           key: 'og:title',
@@ -134,22 +125,22 @@ export default {
         {
           key: 'og:image',
           property: 'og:image',
-          content: image ? image.sourceUrl : ''
+          content: image ? image.link : ''
         },
         {
           key: 'twitter:image',
           property: 'twitter:image',
-          content: image ? image.sourceUrl : ''
+          content: image ? image.link : ''
         },
         {
           key: 'og:description',
           property: 'og:description',
-          content: excerpt || ''
+          content: this.$page.wordPressPost.excerpt || ''
         },
         {
           key: 'twitter:description',
           property: 'twitter:description',
-          content: excerpt || ''
+          content: this.$page.wordPressPost.excerpt || ''
         }
       ]
     }

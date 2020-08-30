@@ -90,8 +90,7 @@ export default function (Vue, {router, head, isClient}) {
     menuOpen: false,
     searchQuery: '',
     showPopup: false,
-    isMobile: false,
-    hostName: null
+    isMobile: false
   });
 
   const actions = {
@@ -111,8 +110,6 @@ export default function (Vue, {router, head, isClient}) {
   }
 
   if (typeof window !== "undefined") {
-    store.hostName = window.location.hostname;
-    
     document.addEventListener('DOMContentLoaded', function() {
       actions.mobileDetect();
 
