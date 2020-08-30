@@ -9,7 +9,7 @@
       <div class="introduction">
         <div class="content interior">
           <div class="video">
-            <video poster="~@/assets/images/video-poster.jpg" controls playsinline><source src="https://www.sablelabs.co/documents/Sable-Labs-Coupledom-Launch_021420.mp4" type="video/mp4" /></video>
+            <video poster="~@/assets/images/coupledom-video-poster.jpg" controls playsinline><source src="~@/assets/video/Sable-Labs-Coupledom-Launch_021420.mp4" type="video/mp4" /></video>
           </div>
           <div class="copy">
             <h2>
@@ -214,12 +214,18 @@ export default {
           width: 100%;
           margin-right: 0;
         }
+        @media screen and (max-width: $breakpoint-md) {
+          margin-top: 2vw;
+        }
         h2 {
           font-family: 'acumin-pro-extra-condensed', sans-serif;
           font-size: 26px;
           line-height: 1.2;
           text-transform: uppercase;
           letter-spacing: .7px;
+          @media screen and (max-width: $breakpoint-md) {
+            font-size: 5.8vw;
+          }
         }
 
         p {

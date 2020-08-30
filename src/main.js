@@ -130,13 +130,15 @@ export default function (Vue, {router, head, isClient}) {
   // overwrite the scrollBehavior function with custom one
   router.options.scrollBehavior = function (to, from, savedPosition) {
     if (savedPosition) {
+      console.log('saved position');
       return savedPosition;
     } else if (to.hash) {
       return {
         selector: to.hash
       }
     } else {
-      return { x: 0, y: 0 }
+      window.scrollTo(0, 0);
+      console.log('to top');
     }
   }
 
