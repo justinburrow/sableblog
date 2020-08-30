@@ -25,6 +25,11 @@ export default function (Vue, {router, head, isClient}) {
     async: true
   });
 
+  head.meta.push({
+    name: "viewport",
+    content: "width=device-width, initial-scale=1+"
+  });
+
   head.meta.push(
     {
       key: 'og:site_name',
@@ -91,9 +96,8 @@ export default function (Vue, {router, head, isClient}) {
       store.menuOpen = false;
     },
     mobileDetect() {
-      if (document.documentElement.clientWidth < 768) {
+      if (window.screen.width < 768) {
         store.isMobile = true;
-        console.log(store.isMobile);
       } else {
         store.isMobile = false;
       }
