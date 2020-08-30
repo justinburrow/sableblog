@@ -117,19 +117,19 @@ export default function (Vue, {router, head, isClient}) {
     next()
   });
 
-  document.addEventListener("DOMContentLoaded", () => {
+  if (process.isClient) {
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.flcklr) {
+        if (document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML != '') {
+          document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML = '';
+        }
 
-    if (window.flcklr) {
-
-      if (document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML != '') {
-        document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML = '';
+        Vue.prototype.$flockler = window.flcklr.Embeds.create(window.flcklr.EmbedConfigs['17177230bd60efd482bfb4b945f55ff2']);
       }
 
-      Vue.prototype.$flockler = window.flcklr.Embeds.create(window.flcklr.EmbedConfigs['17177230bd60efd482bfb4b945f55ff2']);
-    }
-
-    mobileDetect();
-  });
+      mobileDetect();
+    });
+  }
 
   // overwrite the scrollBehavior function with custom one
   router.options.scrollBehavior = function (to, from, savedPosition) {
