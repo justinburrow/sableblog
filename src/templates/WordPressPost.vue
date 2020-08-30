@@ -92,7 +92,7 @@ import HomePost from '~/components/HomePost.vue'
 export default {
   metaInfo () {
     let image = this.$page.wordPressPost.featuredMedia;
-    let siteHost = '//' + window.location.hostname
+    let siteHost = '//' + this.$store.hostName
     let imageUrl = siteHost + image.sourceUrl;
     let pagePath = siteHost + this.$page.wordPressPost.path;
     let excerpt = this.removeHTML(this.$page.wordPressPost.excerpt);
@@ -100,6 +100,11 @@ export default {
       title: this.$page.wordPressPost.title,
       date: this.$page.wordPressPost.date,
       meta: [
+        {
+          key: 'description',
+          name: 'description',
+          content: excerpt
+        },
         {
           key: 'og:type',
           name: 'og:type',

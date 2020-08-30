@@ -90,7 +90,8 @@ export default function (Vue, {router, head, isClient}) {
     menuOpen: false,
     searchQuery: '',
     showPopup: false,
-    isMobile: false
+    isMobile: false,
+    hostName: window.location.hostname
   });
 
   const actions = {
