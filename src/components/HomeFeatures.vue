@@ -117,6 +117,8 @@ export default {
       line-height: 15px;
       border: none;
       background: rgba(0,0,0,0.2);
+      margin: 0;
+      padding: 0;
       @media screen and (max-width: $breakpoint-md) {
         height: 2.6vw;
         width: 2.6vw;
