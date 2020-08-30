@@ -108,7 +108,7 @@ export default function (Vue, {router, head, isClient}) {
     }
   }
 
-  if (process.client) {
+  if (typeof window !== "undefined") {
     document.addEventListener('DOMContentLoaded', function() {
       actions.mobileDetect();
 
