@@ -18,11 +18,13 @@
         </div>
       </div>
 
-      <div class="mobile-categories" v-if="this.showCategories == true" v-srcoll-lock="this.showCategories == true">
+      <div class="mobile-categories" v-if="this.showCategories == true">
         <ul>
-          <li v-for="cat in $static.allWordPressCategory.edges">
-            <g-link :to="cat.path">{{cat.title}}</g-link>
+          <li v-for="cat in $static.allWordPressCategory.edges" @click="hideDropdown()">
+            <g-link :to="cat.node.path">{{cat.node.title}}</g-link>
           </li>
+          <li @click="hideDropdown()"><g-link to="/pages/about-us/">About</g-link></li>
+          <li><a href="#" @click="$store.showPopup = true">Subscribe</a></li>
         </ul>
       </div>
     </div>
@@ -262,6 +264,32 @@ export default {
             cursor: pointer;
           }
         }
+      }
+    }
+    .mobile-categories {
+      padding: 5vw 0;
+      background: black;
+      width: 100%;
+      ul {
+        margin: 0 auto;
+        padding: 0;
+        width: 90vw;
+      }
+      li {
+        font-family: 'acumin-pro-condensed';
+        font-size: 5vw;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: .3vw;
+        border-bottom: 1px solid #666;
+        margin-bottom: 3vw;
+        padding-bottom: 3vw;
+      }
+      a {
+        color: white;
+        text-decoration: none;
+        padding: 2px 0;
+        display: block;
       }
     }
   }
