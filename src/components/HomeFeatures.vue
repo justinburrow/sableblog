@@ -12,7 +12,7 @@
         </agile>
       </div>
 
-      <div v-if="isMobile == true">
+      <div v-else>
         <!-- mobile banners -->
         <agile :autoplay="true" :nav-buttons="false" :speed="500" :autoplay-speed="8000" :dots="true">
           <div v-for="(banner, index) in $static.allWordPressCategory.edges[0].node.belongsTo.edges" v-if="isMobile">
