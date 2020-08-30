@@ -54,6 +54,7 @@
       content
       date
       excerpt
+      path
       featuredMedia {
         sourceUrl
         altText
@@ -90,6 +91,7 @@ import HomePost from '~/components/HomePost.vue'
 
 export default {
   metaInfo () {
+    let image = this.$page.wordPressPost.featuredMedia;
     return {
       title: this.$page.wordPressPost.title,
       date: this.$page.wordPressPost.date,
@@ -98,6 +100,11 @@ export default {
           name: 'og:type',
           property: 'og:type',
           content: 'article'
+        },
+        {
+          name: 'og:url',
+          property: 'og:url',
+          content: this.$page.wordPressPost.path
         },
         {
           key: 'og:title',
@@ -110,6 +117,16 @@ export default {
           content: this.$page.wordPressPost.title + ' | S\'able Labs'
         },
         {
+          key: 'og:image',
+          property: 'og:image',
+          content: image ? image.sourceUrl : ''
+        },
+        {
+          key: 'twitter:image',
+          property: 'twitter:image',
+          content: image ? image.sourceUrl : ''
+        },
+        {
           key: 'og:description',
           property: 'og:description',
           content: this.removeHTML(this.$page.wordPressPost.excerpt) || ''
@@ -118,27 +135,12 @@ export default {
           key: 'twitter:description',
           property: 'twitter:description',
           content: this.removeHTML(this.$page.wordPressPost.excerpt) || ''
-        },
-        {
-          key: 'og:image',
-          property: 'og:image',
-          content: this.image
-        },
-        {
-          key: 'twitter:image',
-          property: 'twitter:image',
-          content: this.image
         }
       ]
     }
   },
   components: {
     HomePost
-  },
-  data() {
-    return {
-      image: ''
-    }
   },
   methods: {
     formatDate(postDate) {
@@ -166,10 +168,6 @@ export default {
     articleAd.appendChild(contentHolder);
     articleAd.setAttribute('id', 'article-ad');
     this.$refs.postContent.getElementsByTagName('p')[pCount].after(articleAd);
-
-    if (this.$page.wordPressPost.featuredMedia.sourceUrl) {
-      this.image = this.$page.wordPressPost.featuredMedia.sourceUrl
-    }
   },
   filters: {
     removeHTML: function (val) {

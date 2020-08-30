@@ -52,6 +52,11 @@ export default function (Vue, {router, head, isClient}) {
       content: `website`
     },
     {
+      key: 'og:url',
+      property: 'og:url',
+      content: `https://sablelabs.co`
+    },
+    {
       key: 'og:image',
       property: 'og:image',
       content: '~/assets/images/coupledom-banner.jpg'
