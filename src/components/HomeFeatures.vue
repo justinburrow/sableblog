@@ -1,10 +1,19 @@
 <template>
   <div>
     <div class="hero-banners">
-      <agile :autoplay="true" :nav-buttons="false" :speed="500" :autoplay-speed="8000" :dots="true">
+              <!-- desktop banners -->
+      <agile :autoplay="true" :nav-buttons="false" :speed="500" :autoplay-speed="8000" :dots="true" v-if="!isMobile">
         <div v-for="(banner, index) in $static.allWordPressCategory.edges[0].node.belongsTo.edges">
-          <a :href="banner.node.acf.bannerLink" v-if="banner.node.acf.bannerLink"><img :src="banner.node.acf.bannerImage" /></a>
-          <img v-else :src="banner.node.acf.bannerImage" />
+          <a :href="banner.node.acf.bannerLink" v-if="banner.node.acf.bannerLink"><img :src="banner.node.acf.dtBannerImage" /></a>
+          <img v-else :src="banner.node.acf.dtBannerImage" />
+        </div>
+      </agile>
+
+        <!-- mobile banners -->
+      <agile :autoplay="true" :nav-buttons="false" :speed="500" :autoplay-speed="8000" :dots="true" v-if="isMobile">
+        <div v-for="(banner, index) in $static.allWordPressCategory.edges[0].node.belongsTo.edges" v-if="isMobile">
+          <a :href="banner.node.acf.bannerLink" v-if="banner.node.acf.bannerLink"><img :src="banner.node.acf.mobBannerImage" /></a>
+          <img v-else :src="banner.node.acf.mobBannerImage" />
         </div>
       </agile>
     </div>
@@ -41,7 +50,8 @@
               node {
                 ... on WordPressPost {
                   acf {
-                    bannerImage
+                    dtBannerImage
+                    mobBannerImage
                     bannerLink
                   }
                 }
@@ -65,7 +75,7 @@ export default {
   },
   data() {
     return {
-
+      isMobile: this.$store.isMobile
     }
   }
 }
@@ -84,8 +94,15 @@ export default {
     }
   }
   .agile__dots {
-    li:first-child {
-      margin-right: 10px;
+    @media screen and (max-width: $breakpoint-md) {
+      margin: 2vw 0;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 0;
+      &:first-child {
+        margin-right: 10px;
+      }
     }
     button {
       border-radius: 50%;
@@ -95,9 +112,8 @@ export default {
       border: none;
       background: rgba(0,0,0,0.2);
       @media screen and (max-width: $breakpoint-md) {
-        height: 3vw;
-        width: 3vw;
-        line-height: 3vw;
+        height: 2.6vw;
+        width: 2.6vw;
       }
     }
     .agile__dot--current {
