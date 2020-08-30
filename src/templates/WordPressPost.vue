@@ -55,10 +55,12 @@
       date
       excerpt
       path
+      link
       featuredMedia {
         sourceUrl
         altText
         caption
+        link
       }
       categories {
         id
@@ -165,6 +167,8 @@ export default {
     socialShare.setAttribute('defer', 'true');
     socialShare.setAttribute('async', 'true');
     document.head.appendChild(socialShare);
+
+    console.log(this.$page.wordPressPost.featuredMedia.link);
 
     let pCount = this.$refs.postContent.getElementsByTagName('p').length;
     pCount = Math.floor(pCount/2);
