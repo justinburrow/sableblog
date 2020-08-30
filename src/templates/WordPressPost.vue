@@ -122,18 +122,23 @@ export default {
         {
           key: 'og:image',
           property: 'og:image',
-          content: this.$page.wordPressPost.featuredMedia.sourceUrl || ''
+          content: this.image
         },
         {
           key: 'twitter:image',
           property: 'twitter:image',
-          content: this.$page.wordPressPost.featuredMedia.sourceUrl || ''
+          content: this.image
         }
       ]
     }
   },
   components: {
     HomePost
+  },
+  data() {
+    return {
+      image: ''
+    }
   },
   methods: {
     formatDate(postDate) {
@@ -161,6 +166,10 @@ export default {
     articleAd.appendChild(contentHolder);
     articleAd.setAttribute('id', 'article-ad');
     this.$refs.postContent.getElementsByTagName('p')[pCount].after(articleAd);
+
+    if (this.$page.wordPressPost.featuredMedia.sourceUrl) {
+      this.image = this.$page.wordPressPost.featuredMedia.sourceUrl
+    }
   },
   filters: {
     removeHTML: function (val) {
