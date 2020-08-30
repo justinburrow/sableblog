@@ -13,7 +13,7 @@
     </div>
 
     <Footer />
-    <Subscription />
+    <Subscription :show-sub="$store.showPopup"/>
   </div>
 </template>
 

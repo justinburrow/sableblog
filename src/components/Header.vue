@@ -73,10 +73,12 @@
       openSearchDropdown() {
         this.showDropdown = !this.showDropdown;
         this.showSearch = true;
+        this.mobileCat = false;
       },
       openMobileCat() {
         this.showDropdown = !this.showDropdown;
         this.mobileCat = true;
+        this.showSearch = false;
       },
       getDropdownPosition() {
         this.headerHeight = document.querySelector('header').offsetHeight;

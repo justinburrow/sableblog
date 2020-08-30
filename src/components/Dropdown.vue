@@ -10,7 +10,7 @@
         </li>
       </ul>
 
-      <div class="search-container" v-if="this.showSearchBar == true">
+      <div class="search-container" v-if="this.showSearchBar == true && this.showCategories == false">
         <span>Search</span>
         <input id="search" type="text" v-model="searchingBy" class="input" @keyup.enter="search">
         <div class="search-button">
@@ -18,10 +18,10 @@
         </div>
       </div>
 
-      <div class="mobile-categories" v-if="this.showCategories == true">
+      <div class="mobile-categories" v-if="this.showCategories == true" v-srcoll-lock="this.showCategories == true">
         <ul>
-          <li v-for="cat in $static.allWordPressCategory">
-            <g-link :to="cat.path">{{title}}</g-link>
+          <li v-for="cat in $static.allWordPressCategory.edges">
+            <g-link :to="cat.path">{{cat.title}}</g-link>
           </li>
         </ul>
       </div>
@@ -75,6 +75,9 @@ export default {
       },
       showSearch(state) {
         this.showSearchBar = state;
+      },
+      mobileCatTrigger(state) {
+        this.showCategories = state;
       }
     },
     methods: {

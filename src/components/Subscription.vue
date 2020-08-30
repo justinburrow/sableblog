@@ -20,9 +20,10 @@ export default {
   components: {
     EmailSignup
   },
+  props: ['showSub'],
   data() {
     return {
-      isActive: this.$store.showPopup
+      isActive: this.showSub
     }
   },
   methods: {
@@ -38,6 +39,11 @@ export default {
         that.$store.showPopup = true;
       }
     }, 5000);
+  },
+  watch: {
+    showSub() {
+      this.isActive = this.showSub;
+    }
   }
 }
 </script>
