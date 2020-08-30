@@ -101,7 +101,7 @@ export default function (Vue, {router, head, isClient}) {
   }
 
   function mobileDetect() {
-    if (document.documentElement.clientWidth < 768) {
+    if (window.innerWidth < 768) {
       store.isMobile = true;
     } else {
       store.isMobile = false;
@@ -117,20 +117,6 @@ export default function (Vue, {router, head, isClient}) {
     next()
   });
 
-  if (process.isClient) {
-    document.addEventListener("DOMContentLoaded", () => {
-      if (window.flcklr) {
-        if (document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML != '') {
-          document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML = '';
-        }
-
-        Vue.prototype.$flockler = window.flcklr.Embeds.create(window.flcklr.EmbedConfigs['17177230bd60efd482bfb4b945f55ff2']);
-      }
-
-      mobileDetect();
-    });
-  }
-
   // overwrite the scrollBehavior function with custom one
   router.options.scrollBehavior = function (to, from, savedPosition) {
     if (savedPosition) {
@@ -140,6 +126,17 @@ export default function (Vue, {router, head, isClient}) {
         selector: to.hash
       }
     } else {
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.flcklr) {
+          if (document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML != '') {
+            document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML = '';
+          }
+
+          Vue.prototype.$flockler = window.flcklr.Embeds.create(window.flcklr.EmbedConfigs['17177230bd60efd482bfb4b945f55ff2']);
+        }
+
+        mobileDetect();
+      });
       return { x: 0, y: 0 }
     }
   }
