@@ -101,7 +101,7 @@ export default function (Vue, {router, head, isClient}) {
   }
 
   function mobileDetect() {
-    if (window.innerWidth < 768) {
+    if (document.documentElement.clientWidth < 768) {
       store.isMobile = true;
     } else {
       store.isMobile = false;

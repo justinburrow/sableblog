@@ -1,21 +1,23 @@
 <template>
   <div>
     <div class="hero-banners">
-              <!-- desktop banners -->
-      <agile :autoplay="true" :nav-buttons="false" :speed="500" :autoplay-speed="8000" :dots="true" v-if="!isMobile">
-        <div v-for="(banner, index) in $static.allWordPressCategory.edges[0].node.belongsTo.edges">
-          <a :href="banner.node.acf.bannerLink" v-if="banner.node.acf.bannerLink"><img :src="banner.node.acf.dtBannerImage" /></a>
-          <img v-else :src="banner.node.acf.dtBannerImage" />
-        </div>
-      </agile>
+      <ClientOnly>
+      <!-- desktop banners -->
+        <agile :autoplay="true" :nav-buttons="false" :speed="500" :autoplay-speed="8000" :dots="true" v-if="!isMobile">
+          <div v-for="(banner, index) in $static.allWordPressCategory.edges[0].node.belongsTo.edges">
+            <a :href="banner.node.acf.bannerLink" v-if="banner.node.acf.bannerLink"><img :src="banner.node.acf.dtBannerImage" /></a>
+            <img v-else :src="banner.node.acf.dtBannerImage" />
+          </div>
+        </agile>
 
-        <!-- mobile banners -->
-      <agile :autoplay="true" :nav-buttons="false" :speed="500" :autoplay-speed="8000" :dots="true" v-if="isMobile">
-        <div v-for="(banner, index) in $static.allWordPressCategory.edges[0].node.belongsTo.edges" v-if="isMobile">
-          <a :href="banner.node.acf.bannerLink" v-if="banner.node.acf.bannerLink"><img :src="banner.node.acf.mobBannerImage" /></a>
-          <img v-else :src="banner.node.acf.mobBannerImage" />
-        </div>
-      </agile>
+          <!-- mobile banners -->
+        <agile :autoplay="true" :nav-buttons="false" :speed="500" :autoplay-speed="8000" :dots="true" v-if="isMobile">
+          <div v-for="(banner, index) in $static.allWordPressCategory.edges[0].node.belongsTo.edges" v-if="isMobile">
+            <a :href="banner.node.acf.bannerLink" v-if="banner.node.acf.bannerLink"><img :src="banner.node.acf.mobBannerImage" /></a>
+            <img v-else :src="banner.node.acf.mobBannerImage" />
+          </div>
+        </agile>
+      </ClientOnly>
     </div>
     <div class="home-features">
       <div class="content">
