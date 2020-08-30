@@ -20,7 +20,7 @@
 
         <div class="post-details">
           <div class="social-share">
-            <div class="s9-widget-wrapper"></div>
+            <div class="s9-widget-wrapper" ref="socialWidget"></div>
           </div>
           <span class="author" v-if="!$page.wordPressPost.featuredMedia == null"> {{$page.wordPressPost.featuredMedia.caption | removeHTML}}</span>
         </div>
@@ -36,7 +36,7 @@
         </div>
 
         <div v-for="node in $page.wordPressPost.categories[0].belongsTo.edges">
-          <HomePost :post="node" />
+          <g-link :to="node.path"><HomePost :post="node" /></g-link>
         </div>
 
       </div>
@@ -53,6 +53,7 @@
       title
       content
       date
+      excerpt
       featuredMedia {
         sourceUrl
         altText
@@ -111,22 +112,22 @@ export default {
         {
           key: 'og:description',
           property: 'og:description',
-          content: this.$page.wordPressPost.excerpt
+          content: this.removeHTML(this.$page.wordPressPost.excerpt) || ''
         },
         {
           key: 'twitter:description',
           property: 'twitter:description',
-          content: this.$page.wordPressPost.excerpt
+          content: this.removeHTML(this.$page.wordPressPost.excerpt) || ''
         },
         {
           key: 'og:image',
           property: 'og:image',
-          content: this.image
+          content: this.$page.wordPressPost.featuredMedia.sourceUrl || ''
         },
         {
           key: 'twitter:image',
           property: 'twitter:image',
-          content: this.image
+          content: this.$page.wordPressPost.featuredMedia.sourceUrl || ''
         }
       ]
     }
@@ -134,17 +135,24 @@ export default {
   components: {
     HomePost
   },
-  data() {
-    return {
-      image: ''
-    }
-  },
   methods: {
     formatDate(postDate) {
       return moment(postDate).format('MMM Do, YYYY')
+    },
+    removeHTML: function (val) {
+      let regex = /(<([^>]+)>)/ig;
+      return val.replace(regex, "");
     }
   },
   mounted() {
+    let socialShare = document.createElement('script');
+    socialShare.setAttribute('src', '//cdn.social9.com/js/socialshare.min.js');
+    socialShare.setAttribute('content', '4266dc65e04e4349a4e7e982e355b153');
+    socialShare.setAttribute('id', 's9-sdk');
+    socialShare.setAttribute('defer', 'true');
+    socialShare.setAttribute('async', 'true');
+    document.head.appendChild(socialShare);
+
     let pCount = this.$refs.postContent.getElementsByTagName('p').length;
     pCount = Math.floor(pCount/2);
     const articleAd = document.createElement('div');
@@ -153,16 +161,16 @@ export default {
     articleAd.appendChild(contentHolder);
     articleAd.setAttribute('id', 'article-ad');
     this.$refs.postContent.getElementsByTagName('p')[pCount].after(articleAd);
-
-    if (this.$page.wordPressPost.featuredMedia) {
-      this.image = this.$page.wordPressPost.featuredMedia.sourceUrl;
-    }
   },
   filters: {
     removeHTML: function (val) {
       let regex = /(<([^>]+)>)/ig;
       return val.replace(regex, "");
     }
+  },
+  beforeRouteUpdate (to, from, next) {
+    this.$refs.socialWidget.innerHTML = '';
+    next();
   }
 }
 </script>
@@ -342,6 +350,7 @@ export default {
   padding: 20px 0;
   a {
     color: white;
+    text-decoration: none;
   }
   > div {
     width: 100%;

@@ -21,14 +21,6 @@ export default function (Vue, {router, head, isClient}) {
   });
 
   head.script.push({
-    id: "s9-sdk",
-    content: "4266dc65e04e4349a4e7e982e355b153",
-    src: '//cdn.social9.com/js/socialshare.min.js',
-    defer: true,
-    async: true
-  });
-
-  head.script.push({
     src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
     async: true
   });
