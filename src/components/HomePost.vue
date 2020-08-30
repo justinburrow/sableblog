@@ -93,6 +93,9 @@ export default {
         transition: opacity 0.3s ease;
         opacity: 0;
         pointer-events: none;
+        @media screen and (max-width: $breakpoint-md) {
+          display: none;
+        }
       }
       span {
         color: white;
