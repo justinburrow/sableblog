@@ -134,7 +134,7 @@ export default function (Vue, {router, head, isClient}) {
 
           Vue.prototype.$flockler = window.flcklr.Embeds.create(window.flcklr.EmbedConfigs['17177230bd60efd482bfb4b945f55ff2']);
         }
-
+        window.addEventListener('resize', mobileDetect());
         mobileDetect();
       });
       return { x: 0, y: 0 }
