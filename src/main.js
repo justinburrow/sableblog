@@ -110,6 +110,7 @@ export default function (Vue, {router, head, isClient}) {
   }
 
   if (typeof window !== "undefined") {
+    Vue.prototype.$scrollToTop = () => window.scrollTo(0,0);
     document.addEventListener('DOMContentLoaded', function() {
       actions.mobileDetect();
 

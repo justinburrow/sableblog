@@ -21,11 +21,15 @@
 
           </div>
           <div class="title">
-            <h1>Contact Us</h1>
+            <div>
+              <h1>Contact Us</h1>
+              <p v-if="success">Thanks for sending us a message!  We'll be in touch shortly.</p>
+              <p class="error" v-if="error">We weren't able to send your message - please try again.</p>
+            </div>
           </div>
           <div class="form-message-holder input-holder">
             <label for="message">Message<span class="required">*</span></label>
-            <textarea name="message" required></textarea>
+            <textarea name="message" required v-model="message"></textarea>
           </div>
           <div class="required-text">
             Required<span class="required">*</span>
@@ -65,13 +69,15 @@ export default {
       description: "Send us your feedback, questions, or comments - or email us directly for press or partnership inquiries."
     }
   },
-  props: ['name', 'email', 'phone', 'message'],
   data() {
     return {
-      formName: this.name,
-      formEmail: this.email,
-      formPhone: this.phone,
-      formMessage: this.message
+      name: '',
+      email: '',
+      phone: '',
+      message: '',
+      compiledMessage: '',
+      success: false,
+      error: false
     }
   },
   mounted() {
@@ -83,16 +89,22 @@ export default {
   },
   methods: {
     submitForm() {
+      this.compiledMessage = "Name: " + this.name + ", Email: " + this.email + ", Phone:" + this.phone + ", Message: " + this.message;
+      const that = this;
       axios
         .post("https://submit-form.com/4qh0crbl6F3kj6Yg7DuKY", {
-          message: this.message,
+          message: this.compiledMessage,
           "g-recaptcha-response": grecaptcha.getResponse(),
         })
         .then( function (response) {
           console.log(response);
+          that.success = true;
+          that.$scrollToTop();
         })
         .catch(function (response) {
           console.error(response);
+          that.error = true;
+          that.$scrollToTop();
         });
     }
   }
@@ -175,11 +187,22 @@ export default {
           order: 1;
         }
 
-        h1 {
+        div {
           position: absolute;
           left: 50%;
           top: 50%;
           transform: translate(-50%, -50%);
+          text-align: center;
+
+          p {
+            font-size: 24px;
+            &.error {
+              color: red;
+            }
+            @media screen and (max-width: $breakpoint-lg) {
+              font-size: 5vw;
+            }
+          }
           @media screen and (max-width: $breakpoint-lg) {
             position: relative;
             transform: none;
@@ -200,6 +223,9 @@ export default {
           width: 100%;
           min-height: 250px;
           padding: 15px;
+          font-size: 18px;
+          line-height: 1.4;
+          font-family: 'acumin', sans-serif;
           @media screen and (max-width: $breakpoint-lg) {
             margin-bottom: 5vw;
           }

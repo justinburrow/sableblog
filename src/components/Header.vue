@@ -21,7 +21,7 @@
               <a href="/"><img src="~@/assets/images/sable-logo.svg" width="277" alt="S'able Labs" /></a>
           </div>
           <ul>
-            <li class="subscribe" @click="$store.showPopup = true, setActive('subscribe')"><button>Subscribe</button></li>
+            <li class="subscribe" @click="$store.showPopup = true, setActive('subscribe')"><a href="#">Subscribe</a></li>
             <li class="search" :class="searchHover ? 'active' : ''"  @mouseenter="openSearchDropdown(), blogHover = false, searchHover = true" @click="openSearchDropdown(), searchHover = true;">
               <button><img src="~@/assets/images/search-icon.svg" alt="Search"></button>
             </li>
@@ -251,6 +251,7 @@
                     font-size: 1.3rem;
                     letter-spacing: .05rem;
                     text-transform: uppercase;
+                    margin-top: 0;
                     cursor: pointer;
                   }
                 }
