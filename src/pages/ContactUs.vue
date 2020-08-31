@@ -197,6 +197,7 @@ export default {
         textarea {
           width: 100%;
           min-height: 250px;
+          padding: 15px;
           @media screen and (max-width: $breakpoint-lg) {
             margin-bottom: 5vw;
           }
