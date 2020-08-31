@@ -56,6 +56,8 @@
 </page-query>
 
 <script>
+import axios from 'axios';
+
 export default {
   metaInfo() {
     return {

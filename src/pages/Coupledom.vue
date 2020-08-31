@@ -57,7 +57,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import { Hooper, Slide, Pagination as HooperPagination } from 'hooper';
 import 'hooper/dist/hooper.css';
 
