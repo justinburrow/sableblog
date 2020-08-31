@@ -18,7 +18,7 @@
             <h6>S'able Labs</h6>
             <ul>
               <li>
-                <g-link to="/contact-us/">Contact Us</g-link>
+                <a href="/contact-us/">Contact Us</a>
               </li>
               <li>
                 <g-link to="/">Press</g-link>
