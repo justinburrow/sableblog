@@ -74,6 +74,27 @@ figure {
   margin: 40px 0 0 0;
 }
 
+button {
+  margin-top: 10px;
+  margin-left: auto;
+  font-family: acumin-pro-extra-condensed, sans-serif;
+  font-size: 24px;
+  text-transform: uppercase;
+  padding: 15px 20px;
+  line-height: .9;
+  letter-spacing: 1px;
+  border: 0;
+  background: linear-gradient(0deg, #18413c 50%, #224c45 50%);
+  color: white;
+  border-radius: 0;
+  @media screen and (max-width: $breakpoint-md) {
+    font-size: 5vw;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .post-list {
     margin: 60px 0 0 0;
     padding: 0;
@@ -121,3 +142,104 @@ figure {
       margin-bottom: 2.5vw;
     }
   }
+
+  .page {
+    padding-bottom: 120px;
+    max-width: 950px;
+    margin: 30px auto 0 auto;
+    .image-container {
+      padding: 0 30px 30px;
+      border-bottom: 1px solid black;
+      border-top: 1px solid black;
+      margin-bottom: 30px;
+      padding-top: 30px;
+      img {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+    @media screen and (max-width: $breakpoint-lg) {
+      padding-bottom: 10vw;
+      width: 100%;
+    }
+  .page-heading {
+    font-size: 14px;
+    border-bottom: 1px solid black;
+    margin: 0 0 30px 0;
+    padding: 0 0 30px 0;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  h1 {
+    font-family: acumin-pro-extra-condensed, sans-serif;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 60px;
+    margin: 0 0 30px;
+    padding: 0;
+    line-height: 1.1;
+    @media screen and (max-width: $breakpoint-md) {
+      font-size: 9vw;
+      line-height: 1.2;
+      margin: 3vw 0;
+      padding: 0;
+    }
+  }
+  h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin: 0 0 10px 0;
+    padding: 0;
+    letter-spacing: 1.5px;
+    font-weight: 400;
+    @media screen and (max-width: $breakpoint-md) {
+      font-size: 3.5vw;
+    }
+  }
+  .page-content {
+    font-size: 18px;
+    line-height: 1.5;
+    h2, h3, h4, h5, h6 {
+      text-align: left;
+      margin: 0 0 20px 0;
+      padding: 0 0 0 0;
+      @media screen and (max-width: $breakpoint-lg) {
+        margin: 0 0 2vw 0;
+        padding: 0;
+      }
+    }
+    hr {
+      margin: 40px 0;
+      height: 1px;
+      border: none;
+      background: black;
+    }
+    h2 {
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 40px;
+      @media screen and (max-width: $breakpoint-lg) {
+        font-size: 3vw;
+        line-height: 1.2;
+        margin-bottom: 2vw;
+      }
+      @media screen and (max-width: $breakpoint-md) {
+        font-size: 5vw;
+        margin-bottom: 6vw;
+      }
+    }
+    h3 {
+      margin-top: 30px;
+      @media screen and (max-width: $breakpoint-lg) {
+        font-size: 2vw;
+        line-height: 1.2;
+        margin-top: 2vw;
+      }
+      @media screen and (max-width: $breakpoint-md) {
+        font-size: 4.5vw;
+      }
+    }
+  }
+}

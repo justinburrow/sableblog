@@ -18,13 +18,13 @@
             <h6>S'able Labs</h6>
             <ul>
               <li>
-                <g-link to="/pages/contact-us/">Contact Us</g-link>
+                <g-link to="/contact-us/">Contact Us</g-link>
               </li>
               <li>
-                <g-link to="/pages/press/">Press</g-link>
+                <g-link to="/">Press</g-link>
               </li>
               <li>
-                <g-link to="/pages/partnerships/">Partnerships</g-link>
+                <g-link to="/">Partnerships</g-link>
               </li>
             </ul>
           </li>

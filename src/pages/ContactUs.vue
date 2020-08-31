@@ -1,0 +1,278 @@
+<template>
+  <Layout>
+    <div class="page contact-us">
+      <div class="interior">
+        <form action="" method="post">
+          <div class="form-fields">
+            <div class="input-holder">
+              <label for="name">Name<span class="required">*</span></label>
+              <input type="text" name="name" required value="" placeholder="First and Last" v-model="name">
+            </div>
+
+            <div class="input-holder">
+              <label for="email">Email<span class="required">*</span></label>
+              <input type="email" name="email" required value="" placeholder="Email" v-model="email">
+            </div>
+
+            <div class="input-holder">
+              <label for="telephone">Telephone</label>
+              <input type="tel" name="telephone" value="" placeholder="Telephone" v-model="phone">
+            </div>
+
+          </div>
+          <div class="title">
+            <h1>Contact Us</h1>
+          </div>
+          <div class="form-message-holder input-holder">
+            <label for="message">Message<span class="required">*</span></label>
+            <textarea name="message" required></textarea>
+          </div>
+          <div class="required-text">
+            Required<span class="required">*</span>
+          </div>
+          <div class="submit">
+            <div class="g-recaptcha" data-sitekey="6LdZg8UZAAAAADnfcKzRB_OcRcBUVchvn-CuSRVD"></div>
+            <div class="">
+              <button type="button" name="button" @click="submitForm()">Submit</button>
+            </div>
+          </div>
+        </form>
+        <div class="contact-info" v-html="$page.allWordPressPage.edges[0].node.content"></div>
+      </div>
+    </div>
+  </Layout>
+</template>
+
+<page-query>
+  query {
+    allWordPressPage(filter: { slug: { eq: "contact-us" }}) {
+      edges {
+        node {
+          content
+        }
+      }
+    }
+  }
+</page-query>
+
+<script>
+export default {
+  metaInfo() {
+    return {
+      title: `Contact Us - S'able Labs`,
+      description: "Send us your feedback, questions, or comments - or email us directly for press or partnership inquiries."
+    }
+  },
+  props: ['name', 'email', 'phone', 'message'],
+  data() {
+    return {
+      formName: this.name,
+      formEmail: this.email,
+      formPhone: this.phone,
+      formMessage: this.message
+    }
+  },
+  mounted() {
+    let script = document.createElement('script');
+    script.setAttribute("src", "https://www.google.com/recaptcha/api.js");
+    script.setAttribute("defer", true);
+    script.setAttribute("async", true);
+    document.head.appendChild(script);
+  },
+  methods: {
+    submitForm() {
+      axios
+        .post("https://submit-form.com/4qh0crbl6F3kj6Yg7DuKY", {
+          message: this.message,
+          "g-recaptcha-response": grecaptcha.getResponse(),
+        })
+        .then( function (response) {
+          console.log(response);
+        })
+        .catch(function (response) {
+          console.error(response);
+        });
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+.contact-us {
+  width: 100%;
+  max-width: none !important;
+
+  .interior {
+    margin-top: 100px;
+    width: 100%;
+    max-width: 1600px;
+    @media screen and (max-width: $breakpoint-lg) {
+      margin-top: 10vw;
+    }
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 18px;
+    line-height: 1.4;
+    @media screen and (max-width: $breakpoint-lg) {
+      font-size: 3.5vw;
+    }
+
+    .form-fields {
+      @media screen and (max-width: $breakpoint-lg) {
+        order: 2
+      }
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 15px;
+      @media screen and (max-width: $breakpoint-lg) {
+        margin-bottom: 2vw;
+      }
+    }
+
+    .input-holder {
+      margin-bottom: 35px;
+      @media screen and (max-width: $breakpoint-lg) {
+        margin-bottom: 4vw;
+      }
+    }
+
+    input {
+      font-size: 18px;
+      line-height: 1.4;
+      width: 100%;
+      padding: 25px;
+      border-bottom: 2px solid black;
+
+      &::placeholder {
+        color: #A7A9AC;
+      }
+
+      &:placeholder-shown {
+        border: none;
+        border-bottom: 1px solid transparent;
+        background: #F9F9F9;
+      }
+    }
+
+    > div {
+      width: 50%;
+      @media screen and (max-width: $breakpoint-lg) {
+        width: 100%;
+      }
+
+      &.title {
+        position: relative;
+        @media screen and (max-width: $breakpoint-lg) {
+          order: 1;
+        }
+
+        h1 {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          @media screen and (max-width: $breakpoint-lg) {
+            position: relative;
+            transform: none;
+            left: auto;
+            top: auto;
+          }
+        }
+      }
+
+      &.form-message-holder {
+        width: 100%;
+        margin-bottom: 15px;
+        @media screen and (max-width: $breakpoint-lg) {
+          order: 3
+        }
+
+        textarea {
+          width: 100%;
+          min-height: 250px;
+          @media screen and (max-width: $breakpoint-lg) {
+            margin-bottom: 5vw;
+          }
+        }
+      }
+    }
+
+    .required {
+      color: #FF0000;
+      margin-left: 3px;
+      @media screen and (max-width: $breakpoint-lg) {
+        order: 4
+      }
+    }
+
+    .required-text {
+      width: 100%;
+      text-align: right;
+      font-size: 14px;
+      @media screen and (max-width: $breakpoint-lg) {
+        font-size: 2.5vw;
+      }
+    }
+
+    .submit {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 80px;
+      @media screen and (max-width: $breakpoint-lg) {
+        order: 5
+      }
+
+      div {
+        @media screen and (max-width: $breakpoint-lg) {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+      }
+
+      button {
+        letter-spacing: 1px;
+        padding: 15px 50px;
+        margin-left: 30px;
+      }
+    }
+  }
+
+  .contact-info {
+    text-align: center;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      li {
+        font-weight: bold;
+        @media screen and (max-width: $breakpoint-lg) {
+          margin-bottom: 4vw;
+        }
+      }
+    }
+
+    a {
+      color: black;
+      font-weight: normal;
+      &:hover {
+        text-decoration: underline;
+      }
+      @media screen and (max-width: $breakpoint-lg) {
+        display: block;
+      }
+    }
+  }
+
+}
+</style>
