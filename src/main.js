@@ -3,6 +3,7 @@ import VScrollLock from 'v-scroll-lock'
 import VueAgile from 'vue-agile'
 import VueCookies from 'vue-cookies'
 
+
 export default function (Vue, {router, head, isClient}) {
   Vue.component('Layout', DefaultLayout);
   Vue.use(VScrollLock);
@@ -22,12 +23,13 @@ export default function (Vue, {router, head, isClient}) {
 
   head.script.push({
     src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
-    async: true
-  });
+    async: true,
+    "data-ad-client": "ca-pub-2302445914551399"
+  })
 
   head.meta.push({
     name: "viewport",
-    content: "width=device-width, initial-scale=1+"
+    content: "width=device-width, initial-scale=1"
   });
 
   head.meta.push(
