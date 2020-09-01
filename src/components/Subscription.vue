@@ -92,6 +92,9 @@ export default {
         border-radius: 0;
         cursor: pointer;
         font-size: 16px;
+        margin-top: 0;
+        color: black;
+        font-family: 'acumin', sans-serif;
       }
       .content {
         position: absolute;
