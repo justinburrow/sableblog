@@ -348,13 +348,18 @@ export default {
       background: #f2f2f2;
       padding: 20px;
       width: 100vw;
-      position: relative;
       left: calc(50% - 100px);
+      position: relative;
       margin: 60px 0 60px -50vw;
+      @media screen and (max-width: $breakpoint-md) {
+        margin: 7vw 0 7vw -30px;
+      }
       .content {
         width: 100%;
         max-width: 1000px;
-        margin: 0 auto;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
   }
