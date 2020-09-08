@@ -137,7 +137,6 @@ export default {
       font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;
       text-transform: uppercase;
       text-align: left;
-      font-size: 1.8rem;
       letter-spacing: 1px;
       line-height: 1;
       padding: 0;

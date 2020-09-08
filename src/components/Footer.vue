@@ -48,17 +48,49 @@
         <ul>
           <li>
             <h6>Stay In Touch</h6>
-            <ul class="social">
-              <li>
-                <a href="https://www.instagram.com/sable.labs" target="_blank" rel="noopener"><img src="~@/assets/images/instagram.svg" width="15" alt="S'able Labs Instagram">Instagram</a>
-              </li>
-              <li>
-                <a href="https://business.facebook.com/sablelabs-104616947794065/" target="_blank" rel="noopener"><img src="~@/assets/images/facebook.svg" width="9" alt="S'able Labs Facebook">Facebook</a>
-              </li>
-              <li>
-                <a href="https://twitter.com/sablelabs" target="_blank" rel="noopener"><img src="~@/assets/images/twitter.svg" width="15" alt="S'able Labs Twitter">Twitter</a>
-              </li>
-            </ul>
+
+            <table class="social">
+              <tr>
+                <td>
+                  <a href="#" @click="$store.showPopup = true"><img src="~@/assets/images/newsletter.svg" width="17" alt="S'able Labs Newsletter"></a>
+                </td>
+                <td><a href="#" @click="$store.showPopup = true">Newsletter</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="https://www.instagram.com/sable.labs" target="_blank" rel="noopener"><img src="~@/assets/images/instagram.svg" width="15" alt="S'able Labs Instagram"></a>
+                </td>
+                <td>
+                  <a href="https://www.instagram.com/sable.labs" target="_blank" rel="noopener">Instagram</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="https://business.facebook.com/sablelabs-104616947794065/" target="_blank" rel="noopener"><img src="~@/assets/images/facebook.svg" width="12" alt="S'able Labs Facebook"></a>
+                </td>
+                <td>
+                  <a href="https://business.facebook.com/sablelabs-104616947794065/" target="_blank" rel="noopener">Facebook</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="https://twitter.com/sablelabs" target="_blank" rel="noopener"><img src="~@/assets/images/twitter.svg" width="17" alt="S'able Labs Twitter"></a>
+                </td>
+                <td>
+                  <a href="https://twitter.com/sablelabs" target="_blank" rel="noopener">Twitter</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="https://www.youtube.com/channel/UCfraKhLpIm5MbXmOeyybf7g" target="_blank" rel="noopener"><img src="~@/assets/images/youtube.svg" width="17" alt="S'able Labs YouTube"></a>
+                </td>
+                <td>
+                  <a href="https://www.youtube.com/channel/UCfraKhLpIm5MbXmOeyybf7g" target="_blank" rel="noopener">YouTube</a>
+                </td>
+              </tr>
+            </table>
+
           </li>
         </ul>
         <ul class="subscribe">
@@ -169,7 +201,7 @@ export default {
           width: 30%;
           margin-right: 0;
         }
-        ul li {
+        ul li, table {
           font-size: 1rem;
           margin-bottom: 5px;
           @media screen and (max-width: 768px) {
@@ -192,6 +224,7 @@ export default {
       .social {
         img {
           margin-right: 7px;
+          filter: invert(25%) sepia(93%) saturate(289%) hue-rotate(126deg) brightness(92%) contrast(95%);
         }
       }
 
@@ -210,9 +243,10 @@ export default {
 
     h6 {
       font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;
-      font-size: 1.5rem;
+      font-weight: 600;
+      font-size: 1.4rem;
       letter-spacing: 2px;
-      margin: 0 0 20px 0;
+      margin: 0 0 15px 0;
       padding: 0;
       text-transform: uppercase;
       line-height: 1;

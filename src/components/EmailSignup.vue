@@ -53,7 +53,8 @@ export default {
   h6 {
     font-family: 'acumin-pro-extra-condensed';
     text-transform: uppercase;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
     margin: 0 0 10px 0;
     padding: 0;
     letter-spacing: 2px;
@@ -76,26 +77,6 @@ export default {
     }
     &::placeholder {
       color: rgba(0,0,0,0.5);
-    }
-  }
-  button {
-    margin-top: 10px;
-    margin-left: auto;
-    font-family: acumin-pro-extra-condensed, sans-serif;
-    font-size: 24px;
-    text-transform: uppercase;
-    padding: 15px 20px;
-    line-height: .9;
-    letter-spacing: .5px;
-    border: 0;
-    background: linear-gradient(0deg, #18413c 50%, #224c45 50%);
-    color: white;
-    border-radius: 0;
-    @media screen and (max-width: $breakpoint-md) {
-      font-size: 5vw;
-    }
-    &:hover {
-      cursor: pointer;
     }
   }
   .sable-s {

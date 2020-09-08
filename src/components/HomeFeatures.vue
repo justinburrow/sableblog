@@ -89,7 +89,9 @@ export default {
 
 <style lang="scss">
   .hero-banners {
-    margin-bottom: 30px;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto 30px auto;
     @media screen and (max-width: $breakpoint-md) {
       margin-bottom: 2vw;
     }
