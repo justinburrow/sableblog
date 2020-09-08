@@ -122,6 +122,10 @@ export default {
       }
     }
 
+    .excerpt {
+      margin-top: 5px;
+    }
+
     h4 {
       margin: 0;
       padding: 0;
@@ -135,6 +139,7 @@ export default {
 
     h2 {
       font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;
+      font-weight: 700;
       text-transform: uppercase;
       text-align: left;
       letter-spacing: 1px;

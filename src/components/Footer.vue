@@ -143,17 +143,17 @@ export default {
       font-family: 'acumin-pro-extra-condensed', 'Helvetica Neue', sans-serif;
       font-weight: 600;
       font-style: normal;
-      font-size: 4rem;
+      font-size: 55px;
       letter-spacing: 1px;
       padding: 0;
       margin: 30px 0 5px 0;
       line-height: 1;
       @media screen and (max-width: $breakpoint-md) {
-        padding: 2vw 1vw 3vw 1vw;
+        padding: 2vw 1vw;
         line-height: 1;
         width: 100%;
-        margin-bottom: 2vw;
-        font-size: 8vw;
+        margin-bottom: 0;
+        font-size: 9vw;
       }
     }
 

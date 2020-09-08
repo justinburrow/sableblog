@@ -96,7 +96,8 @@ export default {
       margin-bottom: 2vw;
     }
     img {
-      width: 100%;
+      width: 100vw;
+      height: 100%;
       max-width: 100%;
       object-fit: contain;
     }

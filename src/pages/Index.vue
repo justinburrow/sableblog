@@ -86,10 +86,10 @@ export default {
       font-family: 'acumin-pro-extra-condensed', 'Helvetica Neue', sans-serif;
       font-weight: 600;
       font-style: normal;
-      font-size: 4rem;
+      font-size: 55px;
       letter-spacing: 1px;
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 10vw;
+        font-size: 9vw;
       }
     }
   }
