@@ -117,6 +117,7 @@ export default {
         centerMode: false,
         infiniteScroll: true,
         autoPlay: false,
+        mouseDrag: false,
         breakpoints: {
           500: {
             itemsToSlide: 2,
@@ -257,6 +258,8 @@ export default {
     }
 
     .shared-dreams {
+      overflow: hidden;
+      
       h3 {
         text-align: center;
         text-transform: uppercase;
