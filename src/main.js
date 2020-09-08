@@ -21,6 +21,32 @@ export default function (Vue, {router, head, isClient}) {
     async: true
   });
 
+  head.link.push({
+    rel: "preconnect",
+    href: "https://www.youtube.com"
+  });
+
+  head.link.push({
+    rel: "preconnect",
+    href: "https://fonts.gstatic.com",
+    crossorigin: true
+  });
+
+  head.link.push({
+    rel: "preconnect",
+    href: "https://i.ytimg.com"
+  });
+
+  head.link.push({
+    rel: "preconnect",
+    href: "https://i9.ytimg.com"
+  });
+
+  head.link.push({
+    rel: "preconnect",
+    href: "https://s.ytimg.comm"
+  });
+
   head.script.push({
     src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
     async: true,
