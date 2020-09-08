@@ -24,6 +24,7 @@
             <g-link :to="cat.node.path">{{cat.node.title}}</g-link>
           </li>
           <li @click="hideDropdown()"><g-link to="/pages/about-us/">About</g-link></li>
+          <li @click="hideDropdown()"><g-link to="/our-commitment/">Our Commitment</g-link></li>
           <li><a href="#" @click="$store.showPopup = true">Subscribe</a></li>
         </ul>
       </div>
@@ -249,21 +250,6 @@ export default {
       .search-button {
         flex-basis: 100%;
         text-align: right;
-        button {
-          font-family: 'acumin-pro-condensed', 'Helvetica Neue', sans-serif;
-          font-weight: 600;
-          background: linear-gradient(0deg, #18413c 50%, #224c45 50%);
-          color: white;
-          border-radius: 0;
-          border: none;
-          text-transform: uppercase;
-          font-size: 1.3rem;
-          padding: 3px 40px;
-          margin-top: 10px;
-          &:hover {
-            cursor: pointer;
-          }
-        }
       }
     }
     .mobile-categories {

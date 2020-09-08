@@ -7,15 +7,14 @@
     @success="onSuccess"
   >
     <template v-slot="{ subscribe, setEmail, error, success, loading }">
-      <div class="email-form">
-        <h6>Sign up for S'able updates</h6>
+      <div class="email-form" :class="{showSLogo: showSLogo}">
         <form @submit.prevent="subscribe">
           <input type="email" v-if="!error & !success" @input="setEmail($event.target.value)" placeholder="Email Address" />
-          <div class="sable-s">
+          <div class="sable-s" v-if="showSLogo">
             <img src="~@/assets/images/sable-s.svg" alt="S'able Labs">
           </div>
           <div class="break"></div>
-          <button type="submit" v-if="!error & !success">Subscribe</button>
+          <button type="submit" v-if="!error & !success" :class="{shift: showSLogo}">Subscribe</button>
           <div v-if="error" class="message" v-html="error"></div>
           <div v-if="success" class="message">Thank you for subscribing.</div>
           <div v-if="loading">Loading…</div>
@@ -29,8 +28,16 @@
 import MailchimpSubscribe from 'vue-mailchimp-subscribe'
 
 export default {
+  props: {
+    showS: Boolean
+  },
   components: {
     MailchimpSubscribe,
+  },
+  data() {
+    return {
+      showSLogo: this.showS
+    }
   },
   methods: {
     onError() {
@@ -69,14 +76,16 @@ export default {
   }
   input {
     padding: 10px;
+    font-weight: bold;
     font-size: 14px;
     flex-grow: 1;
     border-radius: 0;
+    border: none;
     @media screen and (max-width: $breakpoint-md) {
       font-size: 3.5vw;
     }
     &::placeholder {
-      color: rgba(0,0,0,0.5);
+      color: rgba(0,0,0,1);
     }
   }
   .sable-s {
@@ -91,12 +100,28 @@ export default {
       transform: translateY(-50%);
     }
   }
+  button {
+    &.shift {
+      margin-right: 35px;
+    }
+    @media screen and (max-width: $breakpoint-md) {
+      margin-top: 3vw;
+    }
+  }
   .message {
     width: 100%;
     max-width: 100%;
     text-align: center;
     a {
       display: block;
+    }
+  }
+}
+&.showSLogo {
+  input {
+    font-weight: normal;
+    &::placeholder {
+      color: rgba(0,0,0,0.6);
     }
   }
 }

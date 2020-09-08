@@ -43,7 +43,7 @@ query WordPressPage ($id: ID!) {
 export default {
   metaInfo () {
     return {
-      title: this.$page.wordPressPage.title,
+      title: this.$page.wordPressPage.title.replace(/&#8217;/, "'"),
       date: this.$page.wordPressPage.date,
       meta: [
         {
@@ -54,12 +54,12 @@ export default {
         {
           key: 'og:title',
           property: 'og:title',
-          content: this.$page.wordPressPage.title + ' | S\'able Labs'
+          content: this.$page.wordPressPage.title.replace(/&#8217;/, "'") + ' | S\'able Labs'
         },
         {
           key: 'twitter:title',
           property: 'twitter:title',
-          content: this.$page.wordPressPage.title + ' | S\'able Labs'
+          content: this.$page.wordPressPage.title.replace(/&#8217;/, "'") + ' | S\'able Labs'
         }
       ]
     }
@@ -82,9 +82,7 @@ export default {
 <style lang="scss">
   .page {
     padding-top: 60px !important;
-    padding-bottom: 120px;
     max-width: 950px !important;
-    margin: 30px auto 0 auto;
     @media screen and (max-width: $breakpoint-lg) {
       padding-bottom: 10vw;
       width: 100%;

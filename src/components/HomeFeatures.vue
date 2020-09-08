@@ -192,23 +192,27 @@ export default {
             font-size: 3.5rem;
             letter-spacing: 1px;
             @media screen and (max-width: $breakpoint-md) {
-              font-size: 8vw;
+              font-size: 7vw;
             }
           }
           h4 {
             font-family: 'acumin-pro', 'Helvetica Neue', sans-serif;
             width: 100%;
             font-size: 1rem;
-            font-weight: bold;
+            font-weight: 300;
             text-transform: none;
             letter-spacing: .5px;
             margin-bottom: 10px;
+            @media screen and (max-width: $breakpoint-md) {
+              font-size: 3vw;
+            }
           }
           p {
             max-width: 400px;
             margin: 0 auto 60px auto;
             @media screen and (max-width: $breakpoint-md) {
-              margin-bottom: 20px;
+              margin-bottom: 3vw;
+              font-size: 3vw;
             }
           }
           a {
@@ -223,6 +227,10 @@ export default {
             text-transform: uppercase;
             font-size: 1.3rem;
             padding: 3px 20px;
+            @media screen and (max-width: $breakpoint-md) {
+              font-size: 3vw;
+              padding: 1vw 5vw;
+            }
           }
         }
       }

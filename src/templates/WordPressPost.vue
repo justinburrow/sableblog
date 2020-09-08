@@ -220,6 +220,7 @@ export default {
     h2 {
       margin-top: 30px;
       font-family: 'acumin-pro-extra-condensed';
+      font-weight: 500;
       font-size: 1.8rem;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -244,7 +245,7 @@ export default {
     padding: 0;
     line-height: 1;
     @media screen and (max-width: $breakpoint-md) {
-      font-size: 9vw;
+      font-size: 9.5vw;
       line-height: 1.2;
       margin: 3vw 0;
       padding: 0;
@@ -270,14 +271,27 @@ export default {
     justify-content: space-between;
     margin: 20px 0 40px 0;
     color: #B2B2B2;
-    .date {
-      font-style: italic;
-      @media screen and (max-width: $breakpoint-lg) {
+    .author {
+      font-size: 18px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      @media screen and (max-width: $breakpoint-md) {
         font-size: 3vw;
+        margin-bottom: 2vw;
+        margin-top: 2vw;
+      }
+      @media screen and (max-width: $breakpoint-sm) {
+        font-size: 3.5vw;
+        margin-bottom: 2.5vw;
       }
     }
-    @media screen and (max-width: $breakpoint-md) {
-      margin: 2vw 0 8vw 0;
+    .social-share {
+      opacity: .5;
+      @media screen and (max-width: $breakpoint-md) {
+        a {
+          margin-right: 0;
+        }
+      }
     }
   }
   .post-content {
@@ -323,7 +337,7 @@ export default {
         margin-top: 2vw;
       }
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 3.5vw;
+        font-size: 4vw;
       }
     }
     li {

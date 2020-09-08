@@ -102,7 +102,7 @@ export default {
         left: 50%;
         transform: translate(-50%, -50%);
         margin: 0;
-        padding: 0 30px;
+        padding: 0 60px;
         width: 100%;
         p {
           margin: 0;
@@ -113,14 +113,20 @@ export default {
           font-family: 'acumin-pro-extra-condensed', sans-serif;
           font-size: 48px;
           line-height: 1;
+          letter-spacing: .5px;
           @media screen and (max-width: $breakpoint-md) {
             font-size: 10vw;
           }
         }
         .subtitle {
           font-family: 'acumin-pro-condensed', sans-serif;
-          font-size: 22px;
-          margin-bottom: 30px;
+          font-weight: 500;
+          font-size: 23px;
+          margin-bottom: 20px;
+          line-height: 1;
+        }
+        .email-form {
+          width: 100%;
         }
       }
       .disclaimer {

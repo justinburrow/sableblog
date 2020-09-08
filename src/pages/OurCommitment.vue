@@ -58,9 +58,6 @@ export default {
 
 <style lang="scss">
   .page {
-    padding-bottom: 120px;
-    max-width: 950px;
-    margin: 30px auto 0 auto;
     .image-container {
       padding: 0 30px 30px;
       border-bottom: 1px solid black;
@@ -154,17 +151,6 @@ export default {
       }
       @media screen and (max-width: $breakpoint-md) {
         font-size: 4.5vw;
-      }
-    }
-    p, li {
-      font-size: 18px;
-      line-height: 1.4;
-      margin-bottom: 20px;
-      @media screen and (max-width: $breakpoint-md) {
-        font-size: 3vw;
-      }
-      @media screen and (max-width: $breakpoint-sm) {
-        font-size: 4vw;
       }
     }
   }

@@ -95,7 +95,8 @@
         </ul>
         <ul class="subscribe">
           <li>
-            <EmailSignup />
+            <h6>Sign up for S'able updates</h6>
+            <EmailSignup v-bind:show-s="true"/>
           </li>
         </ul>
         <p class="copyright">&copy;{{ this.currentYear }} S’able Labs. All Rights Reserved.</p>
@@ -205,14 +206,15 @@ export default {
           font-size: 1rem;
           margin-bottom: 5px;
           @media screen and (max-width: 768px) {
-            margin-bottom: 4vw;
+            margin-bottom: 1.5vw;
             font-size: 3.5vw;
+            td a {
+              display: block;
+              margin-bottom: 1.5vw;
+            }
           }
           a {
             color: #616161;
-            @media screen and (max-width: 1024px) {
-              color: white;
-            }
             &:hover {
               color: white;
               text-decoration: underline;
