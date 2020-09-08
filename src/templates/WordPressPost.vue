@@ -171,8 +171,6 @@ export default {
     socialShare.setAttribute('async', 'true');
     document.head.appendChild(socialShare);
 
-    console.log(this.$page.wordPressPost.featuredMedia.link);
-
     let pCount = this.$refs.postContent.getElementsByTagName('p').length;
     pCount = Math.floor(pCount/2);
     const articleAd = document.createElement('div');

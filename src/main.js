@@ -137,18 +137,21 @@ export default function (Vue, {router, head, isClient}) {
     }
   }
 
+
+
   if (typeof window !== "undefined") {
     Vue.prototype.$scrollToTop = () => window.scrollTo(0,0);
     document.addEventListener('DOMContentLoaded', function() {
       actions.mobileDetect();
 
-      if (window.flcklr) {
-        if (document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML != '') {
-          document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2').innerHTML = '';
+      const flocklerContainer = document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2');
+      setTimeout(function loadFlockler() {
+        if (document.body.contains(flocklerContainer)) {
+          Vue.prototype.$flockler = window.flcklr.Embeds.create(window.flcklr.EmbedConfigs['17177230bd60efd482bfb4b945f55ff2']);
+        } else {
+          setTimeout(loadFlockler, 50);
         }
-
-        Vue.prototype.$flockler = window.flcklr.Embeds.create(window.flcklr.EmbedConfigs['17177230bd60efd482bfb4b945f55ff2']);
-      }
+      });
     });
   }
 
