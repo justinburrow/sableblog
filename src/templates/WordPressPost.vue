@@ -27,7 +27,7 @@
         <div ref="postContent" class="post-content" v-html="$page.wordPressPost.content"></div>
       </div>
 
-      <div class="you-may-also-like">
+      <div class="you-may-also-like" v-if="$page.wordPressPost.categories[0].belongsTo.edges.length > 0">
         <div class="title">
           <div class="background"></div>
           <div class="content">
