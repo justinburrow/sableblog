@@ -173,12 +173,12 @@ export default {
 
     let pCount = this.$refs.postContent.getElementsByTagName('p').length;
     pCount = Math.floor(pCount/2);
-    const articleAd = document.createElement('div');
-    const contentHolder = document.createElement('div');
-    contentHolder.setAttribute('class', 'content');
-    articleAd.appendChild(contentHolder);
-    articleAd.setAttribute('id', 'article-ad');
-    this.$refs.postContent.getElementsByTagName('p')[pCount].after(articleAd);
+    //const articleAd = document.createElement('div');
+    //const contentHolder = document.createElement('div');
+    //contentHolder.setAttribute('class', 'content');
+    //articleAd.appendChild(contentHolder);
+    //articleAd.setAttribute('id', 'article-ad');
+    //this.$refs.postContent.getElementsByTagName('p')[pCount].after(articleAd);
   },
   filters: {
     removeHTML: function (val) {
