@@ -111,7 +111,7 @@ export default {
         }
         .title {
           font-family: 'acumin-pro-extra-condensed', sans-serif;
-          font-size: 48px;
+          font-size: 40px;
           line-height: 1;
           letter-spacing: .5px;
           @media screen and (max-width: $breakpoint-md) {
@@ -121,8 +121,8 @@ export default {
         .subtitle {
           font-family: 'acumin-pro-condensed', sans-serif;
           font-weight: 500;
-          font-size: 23px;
-          margin-bottom: 20px;
+          font-size: 20px;
+          margin-bottom: 17px;
           line-height: 1;
         }
         .email-form {
@@ -133,12 +133,12 @@ export default {
         position: absolute;
         bottom: 20px;
         width: 100%;
-        padding: 0 30px;
+        padding: 0 25px;
         max-width: 400px;
         left: 50%;
         transform: translateX(-50%);
         text-align: center;
-        line-height: 1.6;
+        line-height: 1.5;
         font-size: 12px;
       }
     }

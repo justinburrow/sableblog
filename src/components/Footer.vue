@@ -127,14 +127,14 @@ export default {
 
 <style lang="scss" scoped>
   .bottom-section {
-    margin-top: 85px;
+    margin-top: 65px;
     @media screen and (max-width: $breakpoint-md) {
       margin-top: 3vw;
     }
   }
   .instagram {
-    border-top: 8px solid #f2f2f2;
-    max-width: 1600px;
+    border-top: 5px solid #f2f2f2;
+    max-width: 1200px;
     margin: 0 auto;
 
     h4 {
@@ -143,10 +143,10 @@ export default {
       font-family: 'acumin-pro-extra-condensed', 'Helvetica Neue', sans-serif;
       font-weight: 600;
       font-style: normal;
-      font-size: 55px;
+      font-size: 42px;
       letter-spacing: 1px;
       padding: 0;
-      margin: 30px 0 5px 0;
+      margin: 25px 0 5px 0;
       line-height: 1;
       @media screen and (max-width: $breakpoint-md) {
         padding: 2vw 1vw;
@@ -158,13 +158,13 @@ export default {
     }
 
     h5 {
-      font-size: 1.3rem;
+      font-size: 14px;
       font-weight: 300;
       text-align: center;
       padding: 0;
       margin: 0;
       line-height: 1;
-      margin-bottom: 20px;
+      margin-bottom: 17px;
     }
 
     .instagram-feed {
@@ -174,7 +174,7 @@ export default {
 
   footer {
     background-color: black;
-    padding: 50px 0;
+    padding: 37px 0;
     color: white;
     text-align: center;
     font-family: 'acumin-pro', sans-serif;
@@ -185,7 +185,7 @@ export default {
 
     .footer-content {
       width: 100%;
-      max-width: 1600px;
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;

@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout class="interior">
     <div>
       <div id="single-post" class="post interior">
 
@@ -20,7 +20,7 @@
 
         <div class="post-details">
           <div class="social-share">
-            <div class="s9-widget-wrapper" ref="socialWidget"></div>
+            <div id="s9-widget-wrapper" ref="socialWidget"></div>
           </div>
           <span class="author" v-if="$page.wordPressPost.featuredMedia"> {{$page.wordPressPost.featuredMedia.caption | removeHTML}}</span>
         </div>
@@ -40,7 +40,6 @@
         </div>
 
       </div>
-
     </div>
 
 
@@ -99,6 +98,15 @@ export default {
     let image = this.$page.wordPressPost.featuredMedia;
 
     return {
+      script: [
+        {
+          src: "//cdn.social9.com/js/socialshare.min.js",
+          id: "s9-sdk",
+          content: "4266dc65e04e4349a4e7e982e355b153",
+          async: "true",
+          defer: "true",
+        }
+      ],
       title: this.$page.wordPressPost.title,
       date: this.$page.wordPressPost.date,
       meta: [
@@ -163,14 +171,6 @@ export default {
     }
   },
   mounted() {
-    let socialShare = document.createElement('script');
-    socialShare.setAttribute('src', '//cdn.social9.com/js/socialshare.min.js');
-    socialShare.setAttribute('content', '4266dc65e04e4349a4e7e982e355b153');
-    socialShare.setAttribute('id', 's9-sdk');
-    socialShare.setAttribute('defer', 'true');
-    socialShare.setAttribute('async', 'true');
-    document.head.appendChild(socialShare);
-
     let pCount = this.$refs.postContent.getElementsByTagName('p').length;
     pCount = Math.floor(pCount/2);
     //const articleAd = document.createElement('div');
@@ -187,6 +187,7 @@ export default {
     }
   },
   beforeRouteUpdate (to, from, next) {
+    console.log(this.$refs.socialWidget);
     this.$refs.socialWidget.innerHTML = '';
     next();
   }
@@ -195,11 +196,10 @@ export default {
 
 <style lang="scss">
   #single-post {
-    padding-bottom: 120px;
+    padding-bottom: 90px;
     margin: 0 auto;
-    max-width: 1000px;
     @media screen and (max-width: $breakpoint-lg) {
-      padding-bottom: 10vw;
+      padding-bottom: 7.5vw;
       width: 100%;
     }
     a {
@@ -216,7 +216,7 @@ export default {
       color: #b2b2b2;
     }
     h2 {
-      margin-top: 30px;
+      margin-top: 24px;
       font-family: 'acumin-pro-extra-condensed';
       font-weight: 500;
       font-size: 1.8rem;
@@ -238,14 +238,14 @@ export default {
     letter-spacing: 1px;
     text-align: center;
     text-transform: uppercase;
-    font-size: 60px;
-    margin: 0 0 30px;
+    font-size: 45px;
+    margin: 0 0 23px;
     padding: 0;
     line-height: 1;
     @media screen and (max-width: $breakpoint-md) {
-      font-size: 9.5vw;
+      font-size: 7vw;
       line-height: 1.2;
-      margin: 3vw 0;
+      margin: 2.5vw 0;
       padding: 0;
     }
   }
@@ -267,20 +267,20 @@ export default {
   .post-details {
     display: flex;
     justify-content: space-between;
-    margin: 20px 0 40px 0;
+    margin: 17px 0 32px 0;
     color: #B2B2B2;
     .author {
-      font-size: 18px;
+      font-size: 14px;
       line-height: 1.5;
-      margin-bottom: 20px;
+      margin-bottom: 17px;
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 3vw;
+        font-size: 2vw;
         margin-bottom: 2vw;
-        margin-top: 2vw;
+        margin-top: 1vw;
       }
       @media screen and (max-width: $breakpoint-sm) {
-        font-size: 3.5vw;
-        margin-bottom: 2.5vw;
+        font-size: 3vw;
+        margin-bottom: 2vw;
       }
     }
     .social-share {
@@ -294,53 +294,54 @@ export default {
   }
   .post-content {
     font-family: 'acumin-pro', sans-serif;
-    padding: 0 7%;
-    margin-left: 200px;
+    padding: 0 5%;
+    margin-left: 150px;
     @media screen and (max-width: $breakpoint-lg) {
       padding: 0;
       margin-left: 0;
     }
     h2, h3, h4, h5, h6 {
       text-align: left;
-      margin: 0 0 20px 0;
+      margin: 0 0 17px 0;
       padding: 0;
       font-weight: 400;
       @media screen and (max-width: $breakpoint-lg) {
-        margin: 0 0 2vw 0;
+        margin: 0 0 1.7vw 0;
         padding: 0;
       }
     }
     h2 {
       font-family: 'acumin-pro-condensed', sans-serif;
       text-transform: uppercase;
-      font-size: 2rem;
+      font-size: 24px;
       margin-bottom: 30px;
       font-weight: 400;
       line-height: 1.2;
       @media screen and (max-width: $breakpoint-lg) {
-        font-size: 3vw;
+        font-size: 2.7vw;
         line-height: 1.2;
         margin-bottom: 2vw;
       }
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 5vw;
+        font-size: 4.5vw;
         margin-bottom: 6vw;
       }
     }
     h3 {
-      margin-top: 30px;
+      margin-top: 23px;
+      font-size: 18px;
       @media screen and (max-width: $breakpoint-lg) {
         font-size: 2vw;
         line-height: 1.2;
         margin-top: 2vw;
       }
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 4vw;
+        font-size: 3.5vw;
       }
     }
     li {
       font-size: 16px;
-      line-height: 1.4;
+      line-height: 1.5;
       @media screen and (max-width: $breakpoint-md) {
         font-size: 3vw;
       }
@@ -378,20 +379,20 @@ export default {
 }
 .you-may-also-like {
   width: 100%;
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 0 auto;
   background: black;
   display: flex;
   flex-wrap: wrap;
   color: white;
-  padding: 20px 0;
+  padding: 17px 0;
   a {
     color: white;
     text-decoration: none;
   }
   > div {
     width: 100%;
-    padding: 20px;
+    padding: 17px;
     &:nth-child(2) {
       margin-left: 0;
     }
@@ -440,7 +441,7 @@ export default {
       transform: translate(-50%, -50%);
       left: 50%;
       top: 50%;
-      font-size: 21px;
+      font-size: 18px;
       font-weight: bold;
       z-index: 2;
       text-align: center;

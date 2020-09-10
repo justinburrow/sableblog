@@ -47,12 +47,6 @@ export default function (Vue, {router, head, isClient}) {
     href: "https://s.ytimg.comm"
   });
 
-  head.script.push({
-    src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
-    async: true,
-    "data-ad-client": "ca-pub-2302445914551399"
-  })
-
   head.meta.push({
     name: "viewport",
     content: "width=device-width, initial-scale=1"
@@ -152,6 +146,15 @@ export default function (Vue, {router, head, isClient}) {
           setTimeout(loadFlockler, 50);
         }
       });
+
+      if (!window.adsbygoogle) {
+        console.log('no google');
+        head.script.push({
+          src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
+          async: true,
+          "data-ad-client": "ca-pub-2302445914551399"
+        })
+      }
     });
   }
 

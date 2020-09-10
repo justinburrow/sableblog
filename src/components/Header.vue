@@ -1,7 +1,7 @@
 <template>
   <div :class="[fixedHeader ? 'fixed' : '', 'header']">
     <MenuPanel />
-    <SearchPanel />
+      <div class="header__fill"></div>
       <div class="header__content container-full">
         <div class="menu-icon only-mobile-tablet" @click="openMobileCat()">
           <img src="~@/assets/images/menu-icon.svg" alt="Menu" />
@@ -41,14 +41,12 @@
 
 <script>
   import MenuPanel from '~/components/MenuPanel.vue'
-  import SearchPanel from '~/components/SearchPanel.vue'
   import Dropdown from '~/components/Dropdown.vue'
 
   export default {
     name: 'Header',
     components: {
         MenuPanel,
-        SearchPanel,
         Dropdown
     },
     props: ['dropdownState', 'showSearchBar', 'showCategories', 'mobileCatTrigger'],
@@ -81,8 +79,8 @@
         this.showSearch = false;
       },
       getDropdownPosition() {
-        this.headerHeight = document.querySelector('header').offsetHeight;
-        document.querySelector('.dropdown-container').style.top = this.headerHeight + "px";
+        this.headerHeight = document.querySelector('.header').offsetHeight;
+        document.documentElement.style.setProperty('--header-offset', this.headerHeight + "px");
       },
       stickyHeader() {
         this.fixedHeader = document.documentElement.scrollTop > this.headerHeight;
@@ -127,18 +125,32 @@
 </script>
 
 <style lang="scss" scoped>
+  :root {
+    --header-offset: 0px;
+  }
+
   .header {
       width: 100%;
-      box-shadow: 0px 10px 14px 0px rgba(0,0,0,0.3);
+      box-shadow: 0px 7px 14px 0px rgba(0,0,0,0.3);
       position: relative;
       background: white;
-      z-index: 5;
+      z-index: 10;
+
+      &__fill {
+        background: white;
+        z-index: 5;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
 
       &__content {
         background: white;
-        padding: 20px 0 0;
+        padding: 15px 0 0;
         width: 100%;
-        max-width: 1600px;
+        max-width: 1200px;
         position: relative;
         z-index: 5;
         margin: 0 auto;
@@ -156,10 +168,10 @@
           cursor: pointer;
           img {
             @media screen and (max-width: $breakpoint-xl) {
-              width: 4vw;
+              width: 3vw;
             }
             @media screen and (max-width: $breakpoint-lg) {
-              width: 4vw;
+              width: 3vw;
             }
             @media screen and (max-width: $breakpoint-md) {
               width: 6vw;
@@ -169,16 +181,19 @@
         .logo {
             width: 100%;
             text-align: center;
-            padding-bottom: 40px;
+            padding-bottom: 30px;
             @media screen and (max-width: $breakpoint-xl) {
               padding-bottom: 0;
             }
             img {
-              width: 277px;
+              width: 208px;
               @media screen and (max-width: $breakpoint-xl) {
-                width: 25vw;
+                width: 20vw;
               }
               @media screen and (max-width: $breakpoint-lg) {
+                width: 25vw;
+              }
+              @media screen and (max-width: $breakpoint-md) {
                 width: 35vw;
               }
             }
@@ -192,7 +207,7 @@
             width: 98%;
             display: flex;
             margin: 0 auto;
-            height: 100px;
+            height: 75px;
             ul {
               justify-content: center;
               font-family: 'acumin-pro-condensed', 'Helvetica Neue', sans-serif;
@@ -205,9 +220,9 @@
               margin: 0;
               padding: 0;
               list-style-type: none;
-              font-size: 1.5rem;
-              letter-spacing: .05rem;
-              margin-top: -32px;
+              font-size: 16px;
+              letter-spacing: .5px;
+              margin-top: -20px;
                 li {
                   display: flex;
                   align-items: center;
@@ -216,7 +231,7 @@
                   text-transform: uppercase;
                   position: relative;
                   padding: 0 10px;
-                  font-size: 1.3rem;
+                  font-size: 16px;
                   &.active, &:hover {
                     &:after {
                       content: ' ';
@@ -265,8 +280,8 @@
           .search {
             position: relative;
             img {
-              margin-top: 10px;
-              width: 25px;
+              margin-top: 5px;
+              width: 19px;
               fill: black;
               filter: brightness(0);
             }
@@ -277,7 +292,7 @@
         img {
           filter: brightness(0);
           @media screen and (max-width: $breakpoint-xl) {
-            width: 4vw;
+            width: 3vw;
           }
           @media screen and (max-width: $breakpoint-lg) {
             width: 4vw;
@@ -293,15 +308,16 @@
       position: absolute;
       width: 100%;
       top: 0;
-      z-index: 3;
+      z-index: 1;
       transition: all .5s ease;
       &.hide {
         transform: translateY(-100%);
-        opacity: 0;
+        opacity: 1;
       }
       &.show {
         transform: translateY(0);
         opacity: 1;
+        top: var(--header-offset);
       }
       @media screen and (max-width: $breakpoint-md) {
         margin-top: -20px;

@@ -233,7 +233,7 @@ export default {
         font-family: 'acumin-pro-condensed', 'Helvetica Neue', sans-serif;
         font-weight: 600;
         font-style: normal;
-        font-size: 1.5rem;
+        font-size: 20px;
         text-transform: uppercase;
         margin-right: 10px;
       }
@@ -242,7 +242,7 @@ export default {
         padding: 5px 40px 5px 5px;
         font-family: acumin-pro, sans-serif;
         font-weight: 300;
-        font-size: 1rem;
+        font-size: 14px;
         background: url('~@/assets/images/search-icon.svg') right 10px center no-repeat;
         background-color: white;
         background-size: 17px;

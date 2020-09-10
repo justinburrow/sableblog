@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout class="interior">
     <div class="category interior">
       <h1>{{ $page.wordPressCategory.title }}</h1>
       <ul class="post-list">
@@ -66,14 +66,21 @@ export default {
 <style lang="scss">
 .category {
   h1 {
-    margin-top: 30px;
+    margin-top: 24px;
     font-family: 'acumin-pro-extra-condensed';
+    font-weight: 500;
     font-size: 1.8rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-align: center;
     border-bottom: 1px solid black;
     padding-bottom: 5px;
+    margin-bottom: 30px;
+    color: black;
+    @media screen and (max-width: $breakpoint-md) {
+      font-size: 5vw;
+      margin-bottom: 5vw;
+    }
   }
   a {
     color: black;

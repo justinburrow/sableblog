@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout class="interior">
     <h1>Tag: {{ $page.wordPressPostTag.title }} </h1>
     <ul class="post-list">
       <li v-for="{ node } in $page.wordPressPostTag.belongsTo.edges" :key="node.id">

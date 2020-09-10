@@ -77,7 +77,7 @@ export default {
   input {
     padding: 10px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 12px;
     flex-grow: 1;
     border-radius: 0;
     border: none;

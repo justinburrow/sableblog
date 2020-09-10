@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout class="interior">
     <div class="interior">
       <section class="search-results">
         <h1>Searching For: "{{this.searchingBy}}"</h1>

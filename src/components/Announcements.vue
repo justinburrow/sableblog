@@ -55,6 +55,6 @@ export default {
     text-align: center;
     padding: 10px;
     position: relative;
-    z-index: 10;
+    z-index: 20;
   }
 </style>

@@ -147,10 +147,10 @@ export default {
       padding: 0;
       margin: 10px 0 0 0;
       @media screen and (max-width: $breakpoint-xl) {
-        font-size: 4vw;
+        font-size: 2.5vw;
       }
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 5vw;
+        font-size: 3.5vw;
         letter-spacing: .2vw;
       }
     }

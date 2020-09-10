@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout class="interior">
     <div class="page contact-us">
       <div class="interior">
         <form action="" method="post">
@@ -117,9 +117,8 @@ export default {
   max-width: none !important;
 
   .interior {
-    margin-top: 100px;
+    margin-top: 70px;
     width: 100%;
-    max-width: 1600px;
     @media screen and (max-width: $breakpoint-lg) {
       margin-top: 10vw;
     }
@@ -129,8 +128,8 @@ export default {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    font-size: 18px;
-    line-height: 1.4;
+    font-size: 14px;
+    line-height: 1.5;
     @media screen and (max-width: $breakpoint-lg) {
       font-size: 3.5vw;
     }
@@ -151,21 +150,22 @@ export default {
     }
 
     .input-holder {
-      margin-bottom: 35px;
+      margin-bottom: 28px;
       @media screen and (max-width: $breakpoint-lg) {
         margin-bottom: 4vw;
       }
     }
 
     input {
-      font-size: 18px;
-      line-height: 1.4;
+      font-size: 14px;
+      line-height: 1.5;
       width: 100%;
       padding: 25px;
       border-bottom: 2px solid black;
 
       &::placeholder {
-        color: #A7A9AC;
+        color: #000;
+        font-weight: bold;
       }
 
       &:placeholder-shown {
@@ -224,7 +224,7 @@ export default {
           min-height: 250px;
           padding: 15px;
           font-size: 18px;
-          line-height: 1.4;
+          line-height: 1.5;
           font-family: 'acumin', sans-serif;
           @media screen and (max-width: $breakpoint-lg) {
             margin-bottom: 5vw;

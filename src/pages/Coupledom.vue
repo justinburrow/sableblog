@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout class="interior">
     <div class="container coupledom">
 
       <div class="hero">
@@ -220,7 +220,7 @@ export default {
         }
         h2 {
           font-family: 'acumin-pro-extra-condensed', sans-serif;
-          font-size: 26px;
+          font-size: 19px;
           line-height: 1.2;
           text-transform: uppercase;
           letter-spacing: .7px;
@@ -230,7 +230,7 @@ export default {
         }
 
         p {
-          font-size: 15px;
+          font-size: 13px;
           &.disclaimer {
             margin-top: 30px;
             font-size: 12px;
@@ -259,14 +259,14 @@ export default {
 
     .shared-dreams {
       overflow: hidden;
-      
+
       h3 {
         text-align: center;
         text-transform: uppercase;
         font-family: 'acumin-pro-extra-condensed', 'Helvetica Neue', sans-serif;
         font-weight: 600;
         font-style: normal;
-        font-size: 4rem;
+        font-size: 45px;
         letter-spacing: 1px;
       }
 

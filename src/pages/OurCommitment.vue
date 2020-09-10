@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout class="interior">
     <div class="page our-commitment">
       <div class="interior">
         <div class="image-container">
@@ -99,14 +99,14 @@ export default {
     letter-spacing: 1px;
     text-align: center;
     text-transform: uppercase;
-    font-size: 60px;
-    margin: 0 0 30px;
+    font-size: 45px;
+    margin: 0 0 23px;
     padding: 0;
     line-height: 1.1;
     @media screen and (max-width: $breakpoint-md) {
-      font-size: 9vw;
+      font-size: 6vw;
       line-height: 1.2;
-      margin: 3vw 0;
+      margin: 2.5vw 0;
       padding: 0;
     }
   }

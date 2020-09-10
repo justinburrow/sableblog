@@ -90,8 +90,8 @@ export default {
 <style lang="scss">
   .hero-banners {
     width: 100%;
-    max-width: 1600px;
-    margin: 0 auto 30px auto;
+    max-width: 1200px;
+    margin: 0 auto 22px auto;
     @media screen and (max-width: $breakpoint-md) {
       margin-bottom: 2vw;
     }
@@ -110,14 +110,14 @@ export default {
     li {
       margin-bottom: 0;
       &:first-child {
-        margin-right: 10px;
+        margin-right: 7px;
       }
     }
     button {
       border-radius: 50%;
-      height: 15px;
-      width: 15px;
-      line-height: 15px;
+      height: 12px;
+      width: 12px;
+      line-height: 12px;
       border: none;
       background: rgba(0,0,0,0.2);
       margin: 0;
@@ -135,17 +135,17 @@ export default {
   }
   .home-features {
     background-color: #f2f2f2;
-    padding: 30px 0;
+    padding: 22px 0;
     box-shadow: 0px 10px 14px 0px rgba(0,0,0,0.3);
     .content, .titles {
       display: flex;
       width: 100%;
-      max-width: 1600px;
+      max-width: 1200px;
       margin: 0 auto;
       justify-content: space-between;
       flex-wrap: wrap;
-      @media screen and (max-width: 1600px) {
-        padding: 0 20px;
+      @media screen and (max-width: 1599px) {
+        padding: 0 18px;
       }
       div, h4 {
         width: calc(50% - 15px);
@@ -167,7 +167,7 @@ export default {
         background-size: cover;
         position: relative;
         @media screen and (max-width: $breakpoint-xl) {
-          margin-top: 30px;
+          margin-top: 22px;
           padding-top: 56%;
         }
         .coupledom-content {
@@ -175,7 +175,7 @@ export default {
           font-weight: 300;
           font-style: normal;
           text-align: center;
-          padding: 0 20px;
+          padding: 0 18px;
           width: 100%;
           color: white;
           position: absolute;
@@ -190,7 +190,7 @@ export default {
             font-weight: 600;
             font-style: normal;
             text-transform: uppercase;
-            font-size: 3.5rem;
+            font-size: 40px;
             letter-spacing: 1px;
             @media screen and (max-width: $breakpoint-md) {
               font-size: 7vw;
@@ -199,18 +199,18 @@ export default {
           h4 {
             font-family: 'acumin-pro', 'Helvetica Neue', sans-serif;
             width: 100%;
-            font-size: 1rem;
+            font-size: 14px;
             font-weight: 300;
             text-transform: none;
             letter-spacing: .5px;
-            margin-bottom: 10px;
+            margin-bottom: 7px;
             @media screen and (max-width: $breakpoint-md) {
               font-size: 3vw;
             }
           }
           p {
             max-width: 400px;
-            margin: 0 auto 60px auto;
+            margin: 0 auto 45px auto;
             @media screen and (max-width: $breakpoint-md) {
               margin-bottom: 3vw;
               font-size: 3vw;

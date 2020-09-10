@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout class="interior">
     <div class="page">
       <div class="interior">
         <h1 v-html="$page.wordPressPage.title" />
@@ -163,7 +163,7 @@ export default {
   }
   .page-content {
     font-size: 17px;
-    line-height: 1.4;
+    line-height: 1.5;
     h2, h3, h4, h5, h6 {
       text-align: left;
       margin: 0 0 20px 0;

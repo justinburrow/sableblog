@@ -27,27 +27,31 @@ html, body {
 .container {
   width: 100%;
   .interior {
-    max-width: 1660px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 30px;
   }
 
   p, li {
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.5;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     @media screen and (max-width: $breakpoint-md) {
-      font-size: 3.8vw;
-      margin-bottom: 4vw;
-      margin-top: 2vw;
+      font-size: 3.2vw;
+      margin-bottom: 3.5vw;
+      margin-top: 1.5vw;
     }
   }
 }
 
 .page {
   .interior {
-    max-width: 950px;
+    max-width: 1200px;
   }
+}
+
+.post.interior {
+  max-width: 705px;
 }
 
 .only-desktop {
@@ -79,16 +83,16 @@ html, body {
 }
 
 figure {
-  margin: 40px 0 0 0;
+  margin: 30px 0 0 0;
 }
 
 button {
-  margin-top: 10px;
+  margin-top: 7px;
   margin-left: auto;
   font-family: acumin-pro-extra-condensed, sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   text-transform: uppercase;
-  padding: 12px 25px;
+  padding: 10px 20px;
   line-height: 1;
   letter-spacing: 1px;
   border: 0;
@@ -104,13 +108,13 @@ button {
 }
 
 .post-list {
-    margin: 60px 0 0 0;
+    margin: 45px 0 0 0;
     padding: 0;
     list-style-type: none;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 50px;
+    grid-gap: 40px;
     @media screen and (max-width: $breakpoint-lg) {
       margin-top: 7vw;
       grid-template-columns: repeat(2, 1fr);
@@ -123,16 +127,16 @@ button {
       margin: 0;
       padding: 0;
       width: 100%;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
       @media screen and (max-width: $breakpoint-lg) {
         margin-bottom: 0;
         padding-bottom: 2vw;
       }
       h4 {
-        font-size: 15px;
+        font-size: 13px;
       }
       h2 {
-        font-size: 26px;
+        font-size: 20px;
         @media screen and (max-width: $breakpoint-md) {
           font-size: 6vw;
         }
@@ -141,16 +145,16 @@ button {
   }
 
   .page {
-    padding-bottom: 80px;
-    max-width: 950px;
+    padding-bottom: 60px;
+    max-width: 705px;
     margin: 0 auto 0 auto;
-    padding-top: 60px;
+    padding-top: 45px;
     .image-container {
-      padding: 0 30px 30px;
+      padding: 0 25px 25px;
       border-bottom: 1px solid black;
       border-top: 1px solid black;
-      margin-bottom: 30px;
-      padding-top: 30px;
+      margin-bottom: 25px;
+      padding-top: 25px;
       img {
         width: 100%;
         max-width: 100%;
@@ -161,10 +165,10 @@ button {
       width: 100%;
     }
   .page-heading {
-    font-size: 14px;
+    font-size: 12px;
     border-bottom: 1px solid black;
-    margin: 0 0 30px 0;
-    padding: 0 0 30px 0;
+    margin: 0 0 23px 0;
+    padding: 0 0 23px 0;
     text-transform: uppercase;
     text-align: center;
   }
@@ -173,31 +177,31 @@ button {
     letter-spacing: 1px;
     text-align: center;
     text-transform: uppercase;
-    font-size: 48px;
-    margin: 0 0 30px;
+    font-size: 36px;
+    margin: 0 0 23px;
     padding: 0;
     line-height: 1.1;
     @media screen and (max-width: $breakpoint-md) {
-      font-size: 8vw;
+      font-size: 7vw;
       line-height: 1.2;
-      margin: 3vw 0;
+      margin: 2.5vw 0;
       padding: 0;
     }
   }
   h2 {
     text-align: center;
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 16px;
     margin: 0 0 10px 0;
     padding: 0;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     font-weight: 400;
     @media screen and (max-width: $breakpoint-md) {
       font-size: 3.5vw;
     }
   }
   .page-content {
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.5;
     h2, h3, h4, h5, h6 {
       text-align: left;
@@ -209,13 +213,13 @@ button {
       }
     }
     hr {
-      margin: 40px 0;
+      margin: 30px 0;
       height: 1px;
       border: none;
       background: black;
     }
     h2 {
-      font-size: 24px;
+      font-size: 18px;
       font-weight: 400;
       margin-bottom: 40px;
       @media screen and (max-width: $breakpoint-lg) {
@@ -236,7 +240,7 @@ button {
         margin-top: 2vw;
       }
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 4.5vw;
+        font-size: 4vw;
       }
     }
   }
