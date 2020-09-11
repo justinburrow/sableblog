@@ -211,6 +211,9 @@ export default {
           p {
             max-width: 400px;
             margin: 0 auto 45px auto;
+            @media screen and (max-width: $breakpoint-md) {
+              margin-bottom: 4vw !important;
+            }
           }
           a {
             display: inline-block;
