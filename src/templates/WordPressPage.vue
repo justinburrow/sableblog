@@ -120,9 +120,9 @@ export default {
     margin: 0 0 20px;
     padding: 0;
     @media screen and (max-width: $breakpoint-md) {
-      font-size: 10vw;
+      font-size: 9vw;
       line-height: 1.2;
-      margin: 5vw 0;
+      margin: 3vw 0;
       padding: 0;
     }
   }

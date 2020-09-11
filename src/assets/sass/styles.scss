@@ -41,8 +41,8 @@ html, body {
     margin-bottom: 16px;
     @media screen and (max-width: $breakpoint-md) {
       font-size: 3.8vw;
-      margin-bottom: 3.8vw;
-      margin-top: 1.6vw;
+      margin-bottom: 4vw;
+      margin-top: 2vw;
     }
   }
 }
@@ -119,11 +119,11 @@ button {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 42px;
     @media screen and (max-width: $breakpoint-lg) {
-      margin-top: 7.5vw;
+      margin-top: 7vw;
       grid-template-columns: repeat(2, 1fr);
     }
     @media screen and (max-width: $breakpoint-md) {
-      margin-top: 7.5vw;
+      margin-top: 7vw;
       grid-template-columns: repeat(1, 1fr);
     }
     li {
@@ -201,7 +201,7 @@ button {
     letter-spacing: 1px;
     font-weight: 400;
     @media screen and (max-width: $breakpoint-md) {
-      font-size: 3.7vw;
+      font-size: 3.5vw;
     }
   }
   .page-content {
@@ -212,7 +212,7 @@ button {
       margin: 0 0 23px 0;
       padding: 0 0 0 0;
       @media screen and (max-width: $breakpoint-lg) {
-        margin: 0 0 2.1vw 0;
+        margin: 0 0 2vw 0;
         padding: 0;
       }
     }
@@ -232,19 +232,19 @@ button {
         margin-bottom: 2vw;
       }
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 4.5vw;
-        margin-bottom: 4vw;
+        font-size: 5vw;
+        margin-bottom: 6vw;
       }
     }
     h3 {
       margin-top: 32px;
       @media screen and (max-width: $breakpoint-lg) {
-        font-size: 2.2vw;
+        font-size: 2vw;
         line-height: 1.2;
-        margin-top: 2.2vw;
+        margin-top: 2vw;
       }
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 4.2vw;
+        font-size: 4.5vw;
       }
     }
   }

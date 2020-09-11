@@ -272,9 +272,9 @@ export default {
     padding: 0;
     line-height: 1;
     @media screen and (max-width: $breakpoint-md) {
-      font-size: 7vw;
+      font-size: 9.5vw;
       line-height: 1.2;
-      margin: 2.5vw 0;
+      margin: 3vw 0;
       padding: 0;
     }
   }
@@ -304,13 +304,13 @@ export default {
       margin-bottom: 10px;
       margin-top: 0;
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 2vw;
-        margin-bottom: 2vw;
-        margin-top: 1vw;
-      }
-      @media screen and (max-width: $breakpoint-sm) {
         font-size: 3vw;
         margin-bottom: 2vw;
+        margin-top: 2vw;
+      }
+      @media screen and (max-width: $breakpoint-sm) {
+        font-size: 3.5vw;
+        margin-bottom: 2.5vw;
       }
     }
     .social-share {
@@ -369,7 +369,7 @@ export default {
         margin-top: 2vw;
       }
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 4.2vw;
+        font-size: 4vw;
       }
     }
     li {

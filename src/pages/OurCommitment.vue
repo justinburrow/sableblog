@@ -104,9 +104,9 @@ export default {
     padding: 0;
     line-height: 1.1;
     @media screen and (max-width: $breakpoint-md) {
-      font-size: 6vw;
+      font-size: 9vw;
       line-height: 1.2;
-      margin: 2.5vw 0;
+      margin: 3vw 0;
       padding: 0;
     }
   }
