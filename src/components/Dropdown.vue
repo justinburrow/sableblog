@@ -141,6 +141,9 @@ export default {
       list-style-type: none;
       margin: 0;
       padding: 45px 20px;
+      @media screen and (max-width: $breakpoint-md) {
+        display: none;
+      }
       li {
         list-style-type: none;
         margin: 0 10px;
