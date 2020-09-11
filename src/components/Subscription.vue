@@ -51,7 +51,7 @@ export default {
 <style lang="scss" scoped>
   .subscription {
     background: rgba(0, 0, 0, 0.8);
-    width: 100vh;
+    width: 100vw;
     height: 100%;
     position: fixed;
     top: 0;
