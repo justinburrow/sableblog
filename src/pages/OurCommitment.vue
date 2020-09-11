@@ -85,7 +85,7 @@ export default {
   h2 {
     text-align: center;
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 24px;
     margin: 0 0 10px 0;
     padding: 0;
     letter-spacing: 1.5px;
@@ -123,7 +123,7 @@ export default {
       }
     }
     hr {
-      margin: 40px 0;
+      margin: 50px 0;
       height: 1px;
       border: none;
       background: black;

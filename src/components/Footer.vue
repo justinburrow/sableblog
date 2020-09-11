@@ -7,6 +7,7 @@
       <div class="instagram-feed">
         <ClientOnly>
           <div id="flockler-embed-17177230bd60efd482bfb4b945f55ff2"></div>
+          <script type="application/javascript" src="https://plugins.flockler.com/embed/16e88f68c280078e6c3cc65257156295/16ea79d892f0a038af66109643d7479f" async></script>
         </ClientOnly>
       </div>
     </section>
@@ -134,7 +135,7 @@ export default {
   }
   .instagram {
     border-top: 5px solid #f2f2f2;
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
 
     h4 {
@@ -143,7 +144,7 @@ export default {
       font-family: 'acumin-pro-extra-condensed', 'Helvetica Neue', sans-serif;
       font-weight: 600;
       font-style: normal;
-      font-size: 42px;
+      font-size: 45px;
       letter-spacing: 1px;
       padding: 0;
       margin: 25px 0 5px 0;
@@ -158,13 +159,13 @@ export default {
     }
 
     h5 {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 300;
       text-align: center;
       padding: 0;
       margin: 0;
       line-height: 1;
-      margin-bottom: 17px;
+      margin-bottom: 20px;
     }
 
     .instagram-feed {
@@ -185,7 +186,7 @@ export default {
 
     .footer-content {
       width: 100%;
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
@@ -246,7 +247,7 @@ export default {
     h6 {
       font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;
       font-weight: 600;
-      font-size: 1.4rem;
+      font-size: 20px;
       letter-spacing: 2px;
       margin: 0 0 15px 0;
       padding: 0;
@@ -270,13 +271,16 @@ export default {
     }
 
     p.copyright {
-      font-size: .9rem;
+      font-size: 14px;
       text-align: left;
       width: 100%;
       flex-shrink: none;
       border-top: 1px solid #333333;
       padding-top: 20px;
       color: #616161;
+      @media screen and (max-width: $breakpoint-md) {
+        font-size: 3.5vw;
+      }
     }
   }
 

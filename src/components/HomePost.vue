@@ -130,7 +130,7 @@ export default {
       margin: 0;
       padding: 0;
       text-transform: uppercase;
-      font-size: .9rem;
+      font-size: 14px;
       margin-top: 5px;
       margin-bottom: 5px;
       font-family: acumin-pro-condensed, Helvetica, sans-serif;
@@ -150,7 +150,7 @@ export default {
         font-size: 2.5vw;
       }
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 3.5vw;
+        font-size: 4.2vw;
         letter-spacing: .2vw;
       }
     }

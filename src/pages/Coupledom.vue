@@ -165,13 +165,19 @@ export default {
         font-weight: 200;
         color: white;
         left: 0;
-        font-size: 1.042vw;
+        font-size: 21px;
         width: 100%;
         padding: 0 30px;
+        @media screen and (max-width: $breakpoint-lg) {
+          font-size: 1.7vw;
+        }
         span {
           font-weight: 600;
-          font-size: 1.25vw;
+          font-size: 21px;
           margin-right: 10px;
+          @media screen and (max-width: $breakpoint-lg) {
+            font-size: 1.7vw;
+          }
         }
       }
     }
@@ -220,7 +226,7 @@ export default {
         }
         h2 {
           font-family: 'acumin-pro-extra-condensed', sans-serif;
-          font-size: 19px;
+          font-size: 21px;
           line-height: 1.2;
           text-transform: uppercase;
           letter-spacing: .7px;
@@ -230,7 +236,7 @@ export default {
         }
 
         p {
-          font-size: 13px;
+          font-size: 16px;
           &.disclaimer {
             margin-top: 30px;
             font-size: 12px;
@@ -308,7 +314,7 @@ export default {
         }
 
         .hooper-pagination {
-          bottom: -40px;
+          bottom: 0;
           .hooper-indicator {
             background-color: rgba(0,0,0,0.2);
             &.is-active {

@@ -89,15 +89,15 @@ export default {
   h1 {
     margin-top: 30px;
     font-family: 'acumin-pro-extra-condensed';
-    font-size: 1.8rem;
+    font-size: 24px;
+    font-weight: 300;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-align: center;
     border-bottom: 1px solid black;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
   }
   .post-list {
-    
     li {
       &.no-results {
         text-align: center;

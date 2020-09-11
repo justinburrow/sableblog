@@ -69,12 +69,12 @@ export default {
     margin-top: 24px;
     font-family: 'acumin-pro-extra-condensed';
     font-weight: 500;
-    font-size: 1.8rem;
+    font-size: 22px;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-align: center;
     border-bottom: 1px solid black;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     margin-bottom: 30px;
     color: black;
     @media screen and (max-width: $breakpoint-md) {

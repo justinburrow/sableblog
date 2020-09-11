@@ -60,7 +60,7 @@ export default {
   h6 {
     font-family: 'acumin-pro-extra-condensed';
     text-transform: uppercase;
-    font-size: 1.4rem;
+    font-size: 20px;
     font-weight: 600;
     margin: 0 0 10px 0;
     padding: 0;
@@ -77,7 +77,7 @@ export default {
   input {
     padding: 10px;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 14px;
     flex-grow: 1;
     border-radius: 0;
     border: none;

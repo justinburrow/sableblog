@@ -76,9 +76,9 @@ export default {
 
 <style lang="scss" scoped>
   .featured-posts {
-    margin: 45px 0 0 0;
+    margin: 48px 0 0 0;
     @media screen and (max-width: $breakpoint-md) {
-      margin: 5vw 0 0 0;
+      margin: 5.3vw 0 0 0;
     }
     h3 {
       text-align: center;
@@ -86,7 +86,7 @@ export default {
       font-family: 'acumin-pro-extra-condensed', 'Helvetica Neue', sans-serif;
       font-weight: 600;
       font-style: normal;
-      font-size: 42px;
+      font-size: 45px;
       letter-spacing: 1px;
       @media screen and (max-width: $breakpoint-md) {
         font-size: 9vw;

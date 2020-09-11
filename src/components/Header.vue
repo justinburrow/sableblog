@@ -150,7 +150,7 @@
         background: white;
         padding: 15px 0 0;
         width: 100%;
-        max-width: 1200px;
+        max-width: 1280px;
         position: relative;
         z-index: 5;
         margin: 0 auto;
@@ -186,7 +186,7 @@
               padding-bottom: 0;
             }
             img {
-              width: 208px;
+              width: 225px;
               @media screen and (max-width: $breakpoint-xl) {
                 width: 20vw;
               }
@@ -220,7 +220,7 @@
               margin: 0;
               padding: 0;
               list-style-type: none;
-              font-size: 16px;
+              font-size: 18px;
               letter-spacing: .5px;
               margin-top: -20px;
                 li {
@@ -231,7 +231,7 @@
                   text-transform: uppercase;
                   position: relative;
                   padding: 0 10px;
-                  font-size: 16px;
+                  font-size: 18px;
                   &.active, &:hover {
                     &:after {
                       content: ' ';
@@ -263,7 +263,7 @@
                     font-weight: 600;
                     font-style: normal;
                     list-style-type: none;
-                    font-size: 1.3rem;
+                    font-size: 20px;
                     letter-spacing: .05rem;
                     text-transform: uppercase;
                     margin-top: 0;
@@ -273,15 +273,15 @@
               }
 
           .logo {
-            margin: 10px 6% 0;
+            margin: 8px 6% 0;
             padding-bottom: 0;
           }
 
           .search {
             position: relative;
             img {
-              margin-top: 5px;
-              width: 19px;
+              margin-top: 2px;
+              width: 21px;
               fill: black;
               filter: brightness(0);
             }

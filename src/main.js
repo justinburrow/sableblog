@@ -2,13 +2,15 @@ import DefaultLayout from '~/layouts/Default.vue'
 import VScrollLock from 'v-scroll-lock'
 import VueAgile from 'vue-agile'
 import VueCookies from 'vue-cookies'
-
+import VueSocialSharing from 'vue-social-sharing'
 
 export default function (Vue, {router, head, isClient}) {
   Vue.component('Layout', DefaultLayout);
   Vue.use(VScrollLock);
   Vue.use(VueAgile);
   Vue.use(VueCookies);
+  Vue.use(VueSocialSharing);
+
 
   head.link.push({
     rel: "stylesheet",
@@ -16,9 +18,22 @@ export default function (Vue, {router, head, isClient}) {
   });
 
   head.script.push({
+    src: "https://kit.fontawesome.com/70d564e194.js",
+    crossorigin: "anonymous",
+    async: true,
+    defer: true,
+    body: true
+  })
+
+  head.script.push({
     src: "https://flockler.embed.codes/KAn5xj",
     body: true,
     async: true
+  });
+
+  head.script.push({
+    src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
+    async: true,
   });
 
   head.link.push({
@@ -131,30 +146,10 @@ export default function (Vue, {router, head, isClient}) {
     }
   }
 
-
-
   if (typeof window !== "undefined") {
     Vue.prototype.$scrollToTop = () => window.scrollTo(0,0);
     document.addEventListener('DOMContentLoaded', function() {
       actions.mobileDetect();
-
-      const flocklerContainer = document.querySelector('#flockler-embed-17177230bd60efd482bfb4b945f55ff2');
-      setTimeout(function loadFlockler() {
-        if (document.body.contains(flocklerContainer)) {
-          Vue.prototype.$flockler = window.flcklr.Embeds.create(window.flcklr.EmbedConfigs['17177230bd60efd482bfb4b945f55ff2']);
-        } else {
-          setTimeout(loadFlockler, 50);
-        }
-      });
-
-      if (!window.adsbygoogle) {
-        console.log('no google');
-        head.script.push({
-          src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
-          async: true,
-          "data-ad-client": "ca-pub-2302445914551399"
-        })
-      }
     });
   }
 

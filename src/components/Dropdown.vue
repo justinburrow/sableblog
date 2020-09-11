@@ -23,6 +23,7 @@
           <li v-for="cat in $static.allWordPressCategory.edges" @click="hideDropdown()">
             <g-link :to="cat.node.path">{{cat.node.title}}</g-link>
           </li>
+          <li @click="hideDropdown()"><g-link to="/coupledom/">Coupledom</g-link></li>
           <li @click="hideDropdown()"><g-link to="/pages/about-us/">About</g-link></li>
           <li @click="hideDropdown()"><g-link to="/our-commitment/">Our Commitment</g-link></li>
           <li><a href="#" @click="$store.showPopup = true">Subscribe</a></li>
@@ -183,7 +184,7 @@ export default {
           h2 {
             margin: 0;
             padding: 0;
-            font-size: 20px;
+            font-size: 22px;
             display: inline;
           }
           p {
@@ -236,6 +237,9 @@ export default {
         font-size: 20px;
         text-transform: uppercase;
         margin-right: 10px;
+        @media screen and (max-width: $breakpoint-md) {
+          font-size: 5vw;
+        }
       }
       input {
         flex-grow: 1;

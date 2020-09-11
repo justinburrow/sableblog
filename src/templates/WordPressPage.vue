@@ -156,6 +156,7 @@ export default {
       margin: 2vw 0 4vw 0;
     }
     .author {
+      font-size: 14px;
       @media screen and (max-width: $breakpoint-md) {
         font-size: 3vw;
       }

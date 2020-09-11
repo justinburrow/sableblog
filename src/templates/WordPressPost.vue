@@ -20,7 +20,32 @@
 
         <div class="post-details">
           <div class="social-share">
-            <div id="s9-widget-wrapper" ref="socialWidget"></div>
+            <ShareNetwork
+              network="facebook"
+              url="https://www.sablelabs.co/2020/09/08/the-alternative-exodus/"
+              :title="$page.wordPressPost.title"
+              :description="excerpt"
+            >
+                <i class="fab fah fa-lg fa-facebook-f"></i>
+            </ShareNetwork>
+            <ShareNetwork
+              network="twitter"
+              :url="fullPath"
+              :title="$page.wordPressPost.title"
+              :description="$page.wordPressPost.excerpt"
+            >
+                <i class="fab fah fa-lg fa-twitter"></i>
+            </ShareNetwork>
+            <ShareNetwork
+              network="pinterest"
+              :url="fullPath"
+              :title="$page.wordPressPost.title"
+              :description="$page.wordPressPost.excerpt"
+              :media="featuredImage"
+            >
+                <i class="fab fah fa-lg fa-pinterest-p"></i>
+            </ShareNetwork>
+
           </div>
           <span class="author" v-if="$page.wordPressPost.featuredMedia"> {{$page.wordPressPost.featuredMedia.caption | removeHTML}}</span>
         </div>
@@ -38,6 +63,13 @@
         <div v-for="node in $page.wordPressPost.categories[0].belongsTo.edges">
           <g-link :to="node.path"><HomePost :post="node" /></g-link>
         </div>
+
+        <Adsense
+          class="adsense"
+          ad-client="ca-pub-2302445914551399"
+          ad-style="display: none;"
+          >
+        </Adsense>
 
       </div>
     </div>
@@ -92,28 +124,20 @@
 <script>
 import moment from 'moment'
 import HomePost from '~/components/HomePost.vue'
+import Adsense from '~/components/Adsense.vue'
 
 export default {
   metaInfo () {
     let image = this.$page.wordPressPost.featuredMedia;
 
     return {
-      script: [
-        {
-          src: "//cdn.social9.com/js/socialshare.min.js",
-          id: "s9-sdk",
-          content: "4266dc65e04e4349a4e7e982e355b153",
-          async: "true",
-          defer: "true",
-        }
-      ],
       title: this.$page.wordPressPost.title,
       date: this.$page.wordPressPost.date,
       meta: [
         {
           key: 'description',
           name: 'description',
-          content: this.$page.wordPressPost.excerpt
+          content: this.excerpt
         },
         {
           key: 'og:type',
@@ -148,18 +172,19 @@ export default {
         {
           key: 'og:description',
           property: 'og:description',
-          content: this.$page.wordPressPost.excerpt || ''
+          content: this.excerpt
         },
         {
           key: 'twitter:description',
           property: 'twitter:description',
-          content: this.$page.wordPressPost.excerpt || ''
+          content: this.excerpt
         }
       ]
     }
   },
   components: {
-    HomePost
+    HomePost,
+    Adsense
   },
   methods: {
     formatDate(postDate) {
@@ -170,33 +195,37 @@ export default {
       return val.replace(regex, "");
     }
   },
+  data() {
+    return {
+      fullPath: '',
+      excerpt: '',
+      featuredImage: ''
+    }
+  },
   mounted() {
     let pCount = this.$refs.postContent.getElementsByTagName('p').length;
     pCount = Math.floor(pCount/2);
-    //const articleAd = document.createElement('div');
-    //const contentHolder = document.createElement('div');
-    //contentHolder.setAttribute('class', 'content');
-    //articleAd.appendChild(contentHolder);
-    //articleAd.setAttribute('id', 'article-ad');
-    //this.$refs.postContent.getElementsByTagName('p')[pCount].after(articleAd);
+
+    this.fullPath = this.$page.metadata.siteUrl + this.$page.wordPressPost.path;
+    if (this.$page.wordPressPost.excerpt) {
+      this.excerpt = this.removeHTML(this.$page.wordPressPost.excerpt);
+    }
+    if (this.$page.wordPressPost.featuredMedia) {
+      this.featuredImage = this.$page.wordPressPost.featuredMedia.sourceUrl;
+    }
   },
   filters: {
     removeHTML: function (val) {
       let regex = /(<([^>]+)>)/ig;
       return val.replace(regex, "");
     }
-  },
-  beforeRouteUpdate (to, from, next) {
-    console.log(this.$refs.socialWidget);
-    this.$refs.socialWidget.innerHTML = '';
-    next();
   }
 }
 </script>
 
 <style lang="scss">
   #single-post {
-    padding-bottom: 90px;
+    padding-bottom: 40px;
     margin: 0 auto;
     @media screen and (max-width: $breakpoint-lg) {
       padding-bottom: 7.5vw;
@@ -216,16 +245,16 @@ export default {
       color: #b2b2b2;
     }
     h2 {
-      margin-top: 24px;
+      margin-top: 25px;
       font-family: 'acumin-pro-extra-condensed';
       font-weight: 500;
-      font-size: 1.8rem;
+      font-size: 24px;
       letter-spacing: 2px;
       text-transform: uppercase;
       text-align: center;
       border-bottom: 1px solid black;
       padding-bottom: 5px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       color: black;
       @media screen and (max-width: $breakpoint-md) {
         font-size: 5vw;
@@ -238,7 +267,7 @@ export default {
     letter-spacing: 1px;
     text-align: center;
     text-transform: uppercase;
-    font-size: 45px;
+    font-size: 40px;
     margin: 0 0 23px;
     padding: 0;
     line-height: 1;
@@ -267,12 +296,13 @@ export default {
   .post-details {
     display: flex;
     justify-content: space-between;
-    margin: 17px 0 32px 0;
+    margin: 15px 0 32px 0;
     color: #B2B2B2;
     .author {
       font-size: 14px;
       line-height: 1.5;
-      margin-bottom: 17px;
+      margin-bottom: 10px;
+      margin-top: 0;
       @media screen and (max-width: $breakpoint-md) {
         font-size: 2vw;
         margin-bottom: 2vw;
@@ -284,29 +314,32 @@ export default {
       }
     }
     .social-share {
-      opacity: .5;
+      opacity: .35;
+      a {
+        margin-right: 10px;
+        cursor: pointer;
+        padding: 8px;
+      }
       @media screen and (max-width: $breakpoint-md) {
-        a {
-          margin-right: 0;
-        }
+
       }
     }
   }
   .post-content {
     font-family: 'acumin-pro', sans-serif;
     padding: 0 5%;
-    margin-left: 150px;
+    margin-left: 160px;
     @media screen and (max-width: $breakpoint-lg) {
       padding: 0;
       margin-left: 0;
     }
     h2, h3, h4, h5, h6 {
       text-align: left;
-      margin: 0 0 17px 0;
+      margin: 0 0 20px 0;
       padding: 0;
       font-weight: 400;
       @media screen and (max-width: $breakpoint-lg) {
-        margin: 0 0 1.7vw 0;
+        margin: 0 0 1.8vw 0;
         padding: 0;
       }
     }
@@ -379,13 +412,13 @@ export default {
 }
 .you-may-also-like {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   background: black;
   display: flex;
   flex-wrap: wrap;
   color: white;
-  padding: 17px 0;
+  padding: 20px 0;
   a {
     color: white;
     text-decoration: none;
