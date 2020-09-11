@@ -356,7 +356,7 @@ export default {
         margin-bottom: 2vw;
       }
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 4.5vw;
+        font-size: 5vw;
         margin-bottom: 6vw;
       }
     }
@@ -369,7 +369,7 @@ export default {
         margin-top: 2vw;
       }
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 3.5vw;
+        font-size: 4.2vw;
       }
     }
     li {

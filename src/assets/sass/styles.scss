@@ -40,8 +40,8 @@ html, body {
     line-height: 1.5;
     margin-bottom: 16px;
     @media screen and (max-width: $breakpoint-md) {
-      font-size: 3vw;
-      margin-bottom: 3.5vw;
+      font-size: 3.8vw;
+      margin-bottom: 3.8vw;
       margin-top: 1.6vw;
     }
   }
@@ -142,7 +142,7 @@ button {
         font-size: 23px;
         line-height: 1.1;
         @media screen and (max-width: $breakpoint-md) {
-          font-size: 5.3vw;
+          font-size: 6vw;
         }
       }
     }
@@ -186,9 +186,9 @@ button {
     padding: 0;
     line-height: 1.1;
     @media screen and (max-width: $breakpoint-md) {
-      font-size: 7.5vw;
+      font-size: 8vw;
       line-height: 1.2;
-      margin: 2.5vw 0;
+      margin: 4vw 0;
       padding: 0;
     }
   }

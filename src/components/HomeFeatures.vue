@@ -93,7 +93,7 @@ export default {
     max-width: 1280px;
     margin: 0 auto 25px auto;
     @media screen and (max-width: $breakpoint-md) {
-      margin-bottom: 2.2vw;
+      margin-bottom: 0vw;
     }
     img {
       width: 100vw;

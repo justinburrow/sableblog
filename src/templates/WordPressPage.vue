@@ -88,7 +88,7 @@ export default {
       width: 100%;
     }
     @media screen and (max-width: $breakpoint-md) {
-      padding-top: 0 !important;
+      padding-top: 3vw !important;
     }
   }
   .page-heading {
@@ -120,9 +120,9 @@ export default {
     margin: 0 0 20px;
     padding: 0;
     @media screen and (max-width: $breakpoint-md) {
-      font-size: 9vw;
+      font-size: 10vw;
       line-height: 1.2;
-      margin: 3vw 0;
+      margin: 5vw 0;
       padding: 0;
     }
   }

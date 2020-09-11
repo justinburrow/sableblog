@@ -150,8 +150,9 @@ export default {
         font-size: 2.5vw;
       }
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 4.2vw;
+        font-size: 6vw;
         letter-spacing: .2vw;
+        margin-top: 3.5vw;
       }
     }
   }

@@ -170,6 +170,10 @@ export default {
         padding: 0 30px;
         @media screen and (max-width: $breakpoint-lg) {
           font-size: 1.7vw;
+          padding: 0 2vw;
+        }
+        @media screen and (max-width: $breakpoint-md) {
+          bottom: 0;
         }
         span {
           font-weight: 600;
@@ -191,6 +195,10 @@ export default {
       @media screen and (max-width: $breakpoint-xl) {
         padding: 15px 0;
       }
+      @media screen and (max-width: $breakpoint-md) {
+        box-shadow: none;
+        padding: 0;
+      }
       .content {
         display: flex;
         flex-wrap: wrap;
@@ -200,6 +208,10 @@ export default {
         width: 46.8%;
         @media screen and (max-width: $breakpoint-xl) {
           width: 100%;
+        }
+        @media screen and (max-width: $breakpoint-md) {
+          width: 100%;
+          margin: 3vw 0;
         }
         video {
           width: 100%;
@@ -274,10 +286,20 @@ export default {
         font-style: normal;
         font-size: 45px;
         letter-spacing: 1px;
+        @media screen and (max-width: $breakpoint-md) {
+          padding: 2vw 1vw;
+          line-height: 1;
+          width: 100%;
+          margin-bottom: 0;
+          font-size: 9vw;
+        }
       }
 
       .videos {
         margin-bottom: 80px;
+        @media screen and (max-width: $breakpoint-md) {
+          margin-bottom: 4vw;
+        }
         .video-holder {
           position: relative;
           padding-bottom: 56.25%;
