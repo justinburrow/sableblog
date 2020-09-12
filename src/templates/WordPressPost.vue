@@ -306,7 +306,6 @@ export default {
       @media screen and (max-width: $breakpoint-md) {
         font-size: 3vw;
         margin-bottom: 2vw;
-        margin-top: 2vw;
       }
       @media screen and (max-width: $breakpoint-sm) {
         font-size: 3.5vw;
@@ -315,6 +314,8 @@ export default {
     }
     .social-share {
       opacity: .35;
+      flex-shrink: 0;
+      margin-right: 15px;
       a {
         margin-right: 10px;
         cursor: pointer;
