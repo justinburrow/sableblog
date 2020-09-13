@@ -14,7 +14,8 @@ export default function (Vue, {router, head, isClient}) {
 
   head.link.push({
     rel: "stylesheet",
-    href: "https://use.typekit.net/zmf6fgh.css"
+    href: "https://use.typekit.net/zmf6fgh.css",
+    async: true
   });
 
   head.script.push({
