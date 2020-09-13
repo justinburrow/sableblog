@@ -63,14 +63,6 @@
         <div v-for="node in $page.wordPressPost.categories[0].belongsTo.edges">
           <g-link :to="node.path"><HomePost :post="node" /></g-link>
         </div>
-
-        <Adsense
-          class="adsense"
-          ad-client="ca-pub-2302445914551399"
-          ad-style="display: none;"
-          >
-        </Adsense>
-
       </div>
     </div>
 
@@ -124,7 +116,6 @@
 <script>
 import moment from 'moment'
 import HomePost from '~/components/HomePost.vue'
-import Adsense from '~/components/Adsense.vue'
 
 export default {
   metaInfo () {
@@ -183,8 +174,7 @@ export default {
     }
   },
   components: {
-    HomePost,
-    Adsense
+    HomePost
   },
   methods: {
     formatDate(postDate) {
