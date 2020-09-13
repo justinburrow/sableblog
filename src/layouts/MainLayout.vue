@@ -14,7 +14,6 @@
 
     <Footer />
     <Subscription :show-sub="$store.showPopup"/>
-    <script type="application/javascript" src="//resources.infolinks.com/js/infolinks_main.js" async defer></script>
   </div>
 </template>
 
@@ -52,8 +51,7 @@
       }, 1000);
     },
     mounted() {
-      window.infolinks_pid = 3286642;
-      window.infolinks_wsid = 0;
+
     }
   }
 </script>
