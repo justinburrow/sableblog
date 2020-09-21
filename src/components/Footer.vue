@@ -7,7 +7,7 @@
       <div class="instagram-feed">
         <ClientOnly>
           <div id="flockler-embed-17177230bd60efd482bfb4b945f55ff2"></div>
-          <script type="application/javascript" src="https://plugins.flockler.com/embed/16e88f68c280078e6c3cc65257156295/16ea79d892f0a038af66109643d7479f" async></script>
+          <script type="application/javascript" src="https://plugins.flockler.com/embed/171753313d60794c3405e22a3ba95654/17177230bd60efd482bfb4b945f55ff2" async></script>
         </ClientOnly>
       </div>
     </section>

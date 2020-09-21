@@ -24,12 +24,6 @@ export default function (Vue, {router, head, isClient}) {
     async: true,
     defer: true,
     body: true
-  })
-
-  head.script.push({
-    src: "https://flockler.embed.codes/KAn5xj",
-    body: true,
-    async: true
   });
 
   head.link.push({
