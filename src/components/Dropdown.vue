@@ -36,28 +36,33 @@
 
 <static-query>
   query {
-    allCategoryImages {
-      edges {
-        node {
-          id
-          acf {
-            categoryImage
-          }
-        }
-      }
-    }
-
-    allWordPressCategory(order: ASC, filter: { slug: { ne: "homepage-hero-banners"}} ) {
-      edges {
-        node {
-          id
-          title
-          path
-          count
+  allCategoryImages {
+    edges {
+      node {
+        id
+        acf {
+          categoryImage
         }
       }
     }
   }
+
+  allWordPressCategory(order: ASC,
+    filter: {
+        slug: { nin: ["homepage-hero-banners", "uncategorized"]}
+      }
+    )
+    {
+    edges {
+      node {
+        id
+        title
+        path
+        count
+      }
+    }
+  }
+}
 </static-query>
 
 <script>
