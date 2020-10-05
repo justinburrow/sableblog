@@ -36,7 +36,7 @@ query Home {
     }
   }
 
-  allWordPressCategory(order: ASC, filter: { slug: { ne: "homepage-hero-banners"}} ) {
+  allWordPressCategory(order: ASC, filter: { slug: { nin: ["homepage-hero-banners", "uncategorized"]}} ) {
     edges {
       node {
         id
