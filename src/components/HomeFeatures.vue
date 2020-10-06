@@ -27,19 +27,19 @@
       <div class="content">
         <div class="video">
           <video poster="~@/assets/images/video-poster.jpg" controls playsinline><source src="~@/assets/video/sable-labs-home-video.mp4" type="video/mp4" /></video>
+          <h4>Our Story</h4>
         </div>
         <div class="coupledom">
-          <div class="coupledom-content">
-            <h3>Coupledom Movement</h3>
-            <h4>Coupledom / (‘Kapaldam)</h4>
-            <p>The realm of shared experiences between two partners in life or business, creating extraordinary outcomes.</p>
-            <g-link to="/coupledom"><a href="#">Read More</a></g-link>
+          <div class="coupledom-image">
+            <div class="coupledom-content">
+              <h3>Coupledom Movement</h3>
+              <h4>Coupledom / (‘Kapaldam)</h4>
+              <p>The realm of shared experiences between two partners in life or business, creating extraordinary outcomes.</p>
+              <g-link to="/coupledom"><a href="#">Read More</a></g-link>
+            </div>
           </div>
+          <h4>Coupledom Around The World</h4>
         </div>
-      </div>
-      <div class="titles only-desktop">
-        <h4>Our Story</h4>
-        <h4>Coupledom Around The World</h4>
       </div>
     </div>
   </div>
@@ -59,7 +59,7 @@
                   acf {
                     dtBannerImage
                     mobBannerImage
-                    bannerLink 
+                    bannerLink
                   }
                 }
               }
@@ -161,27 +161,30 @@ export default {
           display: block;
           width: 100%;
         }
+        @media screen and (max-width: $breakpoint-xl) {
+          margin-bottom: 5vw;
+        }
       }
       .coupledom {
-        background-image: url('~@/assets/images/coupledom-background.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: relative;
-        @media screen and (max-width: $breakpoint-xl) {
-          margin-top: 22px;
-          padding-top: 56%;
-        }
-        .coupledom-content {
-          font-family: 'acumin-pro', 'Helvetica Neue', sans-serif;
-          font-weight: 300;
-          font-style: normal;
-          text-align: center;
-          padding: 0 18px;
+        .coupledom-image {
+          background-image: url('~@/assets/images/coupledom-background.jpg');
+          background-repeat: no-repeat;
+          background-size: cover;
+          position: relative;
           width: 100%;
-          color: white;
-          position: absolute;
-          top: 50%;
-          transform: translateY(-40%);
+          padding-top: 56%;
+          .coupledom-content {
+            font-family: 'acumin-pro', 'Helvetica Neue', sans-serif;
+            font-weight: 300;
+            font-style: normal;
+            text-align: center;
+            padding: 0 18px;
+            width: 100%;
+            color: white;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-45%);
+          }
           h3, h4 {
             margin: 0;
             padding: 0;
@@ -214,6 +217,7 @@ export default {
             margin: 0 auto 45px auto;
             @media screen and (max-width: $breakpoint-md) {
               margin-bottom: 4vw !important;
+              font-size: 3vw !important;
             }
           }
           a {
