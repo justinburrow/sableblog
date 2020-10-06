@@ -47,7 +47,7 @@
 
 <static-query>
   query {
-    allWordPressCategory(order: ASC, filter: {slug: {nin: ["homepage-hero-banners", "uncategorized"]}}) {
+    allWordPressCategory(order: ASC, filter: {slug: {eq: "homepage-hero-banners"}}) {
       edges {
         node {
           title
