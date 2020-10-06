@@ -38,8 +38,8 @@
         </div>
       </div>
       <div class="titles only-desktop">
-        <h4>Video</h4>
-        <h4>Couples</h4>
+        <h4>Our Story</h4>
+        <h4>Coupledom Around The World</h4>
       </div>
     </div>
   </div>
