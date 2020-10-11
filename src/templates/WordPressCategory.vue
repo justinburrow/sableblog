@@ -16,7 +16,7 @@
 query WordPressCategory ($id: ID!, $page: Int) {
   wordPressCategory(id: $id) {
     title
-    belongsTo(page: $page, perPage: 10) @paginate {
+    belongsTo(page: $page, perPage: 30) @paginate {
       pageInfo {
         totalPages
         currentPage
