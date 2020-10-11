@@ -16,7 +16,7 @@
 
 <page-query>
 query {
-  allWordPressPost {
+  allWordPressPost(filter: { slug: { nin: ["homepage-hero-banners", "uncategorized"]}}) {
     edges {
       node {
         id
@@ -66,7 +66,8 @@ export default {
         id: "id",
         field: [
           "title",
-          "excerpt"
+          "excerpt",
+          "categories"
         ]
       }
     });
@@ -77,7 +78,12 @@ export default {
       if (this.index === null || this.searchingBy.length < 3) return [];
       return this.index.search({
         query: this.searchingBy,
-        limit: 15
+        limit: 30
+      },
+      {
+        field: "categories",
+        query: "homepage-hero-banners",
+        bool: "not"
       })
     }
   }
