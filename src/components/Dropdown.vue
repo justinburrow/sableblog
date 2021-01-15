@@ -266,7 +266,7 @@ export default {
     }
     .mobile-categories {
       padding: 5vw 0;
-      background: black;
+      background: rgba(0,0,0,0.9);
       width: 100%;
       ul {
         margin: 0 auto;
