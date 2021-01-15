@@ -67,7 +67,7 @@ export default {
     position: absolute;
     top: 0;
     height: 100vh;
-    background: black;
+    background: rgba(0,0,0,0.9);
     z-index: 100;
     box-shadow: 7px 0 5px 0 rgba(0,0,0,0.5);
     left: 0;
