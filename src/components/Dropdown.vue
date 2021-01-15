@@ -266,7 +266,6 @@ export default {
     }
     .mobile-categories {
       padding: 5vw 0;
-      background: rgba(0,0,0,0.9);
       width: 100%;
       ul {
         margin: 0 auto;
@@ -282,6 +281,7 @@ export default {
         border-bottom: 1px solid #666;
         margin-bottom: 3vw;
         padding-bottom: 3vw;
+        list-style-type: none;
       }
       a {
         color: white;
