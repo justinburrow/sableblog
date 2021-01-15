@@ -110,8 +110,9 @@ export default {
     }
     li {
       margin-bottom: 0;
-      &:first-child {
-        margin-right: 8px;
+      margin-right: 8px;
+      &:last-child {
+        margin-right: 0;
       }
     }
     button {
