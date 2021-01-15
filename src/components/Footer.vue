@@ -1,6 +1,10 @@
 <template>
   <div class="bottom-section">
 
+    <div v-if="isMobile" class="porte-noire-banner">
+      <a href="https://www.portenoire.co.uk/" target="_blank"><img src="~@/assets/images/porte-noire.gif" alt="Porte Noire"></a>
+    </div>
+
     <section class="instagram">
       <h4>Connect With Us</h4>
       <h5>#sablelabs</h5>
@@ -117,7 +121,8 @@ export default {
   },
   data() {
     return {
-      currentYear: Number
+      currentYear: Number,
+      isMobile: this.$store.isMobile
     }
   },
   mounted() {
@@ -131,6 +136,20 @@ export default {
     margin-top: 65px;
     @media screen and (max-width: $breakpoint-md) {
       margin-top: 3vw;
+    }
+    .porte-noire-banner {
+      background: #f2f2f2;
+      padding: 5vw;
+      margin: 5vw 0;
+      a {
+        display: block;
+        margin: 0 auto;
+        max-width: 75vw;
+        img {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
     }
   }
   .instagram {
