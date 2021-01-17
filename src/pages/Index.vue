@@ -66,6 +66,7 @@ export default {
           }
         }));
       });
+      this.filteredPosts = this.filteredPosts.slice(0, 20);
     },
   },
   mounted() {
