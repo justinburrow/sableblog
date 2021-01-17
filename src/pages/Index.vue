@@ -2,50 +2,40 @@
   <Layout class="interior">
     <div class="interior">
       <section class="featured-posts">
-        <h3>Features</h3>
           <ul class="post-list">
-            <li v-for="cat in $page.allWordPressCategory.edges" :key="cat.node.id" v-if="cat.node.count > 0">
-              <HomePost :post="newestPost(cat.node.id)" />
+            <li v-for="post in this.filteredPosts" :key="post.id">
+              <HomePost :post="post"/>
             </li>
           </ul>
       </section>
     </div>
   </Layout>
 </template>
-
+e
 <page-query>
-query Home {
-  allWordPressPost(sortBy: "date", order: DESC) {
-    edges {
-      node {
-        id
-        title
-        path
-        date
-        excerpt
-        categories {
+  query Home {
+    allWordPressPost(sortBy: "date", order: DESC) {
+      edges {
+        node {
           id
           title
-        }
-        featuredMedia {
-          sourceUrl
-          altText
-          caption
+          path
+          date
+          excerpt
+          categories {
+            id
+            title
+            slug
+          }
+          featuredMedia {
+            sourceUrl
+            altText
+            caption
+          }
         }
       }
     }
   }
-
-  allWordPressCategory(order: ASC, filter: { slug: { nin: ["homepage-hero-banners", "uncategorized"]}} ) {
-    edges {
-      node {
-        id
-        count
-        slug
-      }
-    }
-  }
-}
 </page-query>
 
 <script>
@@ -61,15 +51,26 @@ export default {
   components: {
     HomePost
   },
-  methods: {
-    newestPost(id) {
-      const posts = this.$page.allWordPressPost.edges;
-      let postArr = [];
-      let newestPostContent = posts.find((post) => {
-        return post.node.categories[0].id == id;
-      });
-      return newestPostContent;
+  data() {
+    return {
+      filteredPosts: []
     }
+  },
+  methods: {
+    filterPosts() {
+      let that = this;
+      this.$page.allWordPressPost.edges.filter(function(post) {
+        if (post.node.categories.filter(function (cat) {
+          if (cat.slug !== 'homepage-hero-banners' && cat.slug !== 'uncategorized') {
+            that.filteredPosts.push(post)
+          }
+        }));
+      });
+    },
+  },
+  mounted() {
+    this.filterPosts();
+    console.log(this.filteredPosts);
   }
 }
 </script>
