@@ -159,6 +159,8 @@ export default {
       @media screen and (max-width: $breakpoint-lg) {
         margin-bottom: 0;
         line-height: 1;
+        font-size: 2vw;
+        font-weight: 600;
       }
     }
 
