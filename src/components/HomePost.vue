@@ -6,9 +6,16 @@
         </div>
         <span>Read More</span>
       </div>
-      <h4 v-for="(cat, i) in post.node.categories" :key="i">
-        <g-link :to="cat.path"><span v-if="i == 0">{{cat.title}}</span></g-link>
-      </h4>
+
+        <h4>
+          <span v-for="(cat, i) of post.node.categories" :key="i">
+            <g-link :to="cat.path">
+              {{cat.title}}
+              <span v-if="i != Object.keys(post.node.categories).length - 1">, </span>
+            </g-link>
+          </span>
+        </h4>
+
       <h2><g-link :to="post.node.path">{{post.node.title}}</g-link></h2>
       <p class="excerpt" v-if="post.node.excerpt">
         <g-link :to="post.node.path"><v-clamp autoresize class="excerpt only-desktop" :max-lines="2">{{post.node.excerpt | removeHTML}}</v-clamp></g-link>

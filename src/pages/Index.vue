@@ -27,6 +27,7 @@ e
             id
             title
             slug
+            path
           }
           featuredMedia {
             sourceUrl
