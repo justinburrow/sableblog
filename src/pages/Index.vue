@@ -3,7 +3,7 @@
     <div class="interior">
       <section class="featured-posts">
           <ul class="post-list">
-            <li v-for="post in this.filteredPosts" :key="post.id">
+            <li v-for="post in this.uniquePosts" :key="post.id">
               <HomePost :post="post"/>
             </li>
           </ul>
@@ -22,6 +22,7 @@ e
           path
           date
           excerpt
+          slug
           categories {
             id
             title
@@ -53,25 +54,34 @@ export default {
   },
   data() {
     return {
-      filteredPosts: []
+      filteredPosts: [],
+      uniquePosts: []
     }
   },
   methods: {
     filterPosts() {
       let that = this;
       this.$page.allWordPressPost.edges.filter(function(post) {
-        if (post.node.categories.filter(function (cat) {
+        post.node.categories.filter(function(cat) {
           if (cat.slug !== 'homepage-hero-banners' && cat.slug !== 'uncategorized') {
-            that.filteredPosts.push(post)
+            that.filteredPosts.push(post);
           }
-        }));
-      });
-      this.filteredPosts = this.filteredPosts.slice(0, 20);
+        })
+      })
     },
+    uniquePostFilter(data, key) {
+      console.log('wee');
+      return [
+        ...new Map(
+          data.map(x => [key(x), x])
+        ).values()
+      ]
+    }
   },
   mounted() {
     this.filterPosts();
-    console.log(this.filteredPosts);
+    this.uniquePosts = this.uniquePostFilter(this.filteredPosts, post => post.node.id);
+    this.uniquePosts.slice(0, 20);
   }
 }
 </script>
