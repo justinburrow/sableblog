@@ -4,10 +4,14 @@
       <section class="featured-posts">
           <ul>
             <span v-if="!isMobile" class="post-list">
-              <li v-for="(post, index) in this.uniquePosts" :key="post.id" v-bind:class="{'wide-banner only-desktop': index == 6}">
+              <li v-for="(post, index) in this.uniquePosts" :key="post.id" v-bind:class="[{'wide-banner only-desktop': index == 6},{'wide-banner only-desktop': index == 16}]">
                 <div class="coupledom-movement only-desktop" v-if="!isMobile && index == 6">
                   <button><a href="/coupledom/">Read More</a></button>
                 </div>
+                <div class="porte-noire-banner only-desktop" v-else-if="!isMobile && index == 16">
+                  <a href="https://portenoire.co.uk" target="_blank"><img src="~@/assets/images/porte-noire.gif" alt="Porte Noire"></a>
+                </div>
+
                 <HomePost v-else :post="post"/>
               </li>
             </span>
@@ -144,6 +148,23 @@ export default {
         bottom: 18%;
         font-size: 25px;
         letter-spacing: 2px;
+      }
+    }
+    .porte-noire-banner {
+      background: #f2f2f2;
+      width: 100%;
+      max-width: 100%;
+      padding: 100px;
+      position: relative;
+      a {
+        position: absolute;
+        display: block;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        img {
+          max-width: 400px;
+        }
       }
     }
   }
