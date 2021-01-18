@@ -59,10 +59,16 @@ html, body {
 
 .post.interior {
   max-width: 755px;
-  figure iframe {
-    @media screen and (max-width: $breakpoint-md) {
+  figure {
+    iframe {
+      @media screen and (max-width: $breakpoint-md) {
+        max-width: 100%;
+        margin-bottom: 5vw;
+      }
+    }
+    img {
+      width: 100%;
       max-width: 100%;
-      margin-bottom: 5vw;
     }
   }
 }
