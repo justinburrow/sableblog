@@ -10,8 +10,7 @@
         <h4>
           <span v-for="(cat, i) of post.node.categories" :key="i">
             <g-link :to="cat.path">
-              {{cat.title}}
-              <span v-if="i != Object.keys(post.node.categories).length - 1">, </span>
+              {{cat.title}}<span v-if="i != Object.keys(post.node.categories).length - 1">, </span>
             </g-link>
           </span>
         </h4>
