@@ -48,8 +48,7 @@
     created() {
       setTimeout(() => {
         this.$flockler;
-        console.log('test');
-      }, 1000);
+      }, 2000);
     },
     mounted() {
     }
