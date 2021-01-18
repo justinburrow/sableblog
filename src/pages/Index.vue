@@ -2,16 +2,30 @@
   <Layout class="interior">
     <div class="interior">
       <section class="featured-posts">
-          <ul class="post-list">
-            <li v-for="post in this.uniquePosts" :key="post.id">
-              <HomePost :post="post"/>
+          <ul>
+            <span v-if="!isMobile" class="post-list">
+              <li v-for="(post, index) in this.uniquePosts" :key="post.id" v-bind:class="{'wide-banner': index == 6}">
+                <div class="coupledom-movement only-desktop" v-if="!isMobile && index == 6">
+                  <button><a href="/coupledom/">Read More</a></button>
+                </div>
+                <HomePost v-else :post="post"/>
+              </li>
+            </span>
+
+          <span v-if="isMobile" class="post-list">
+            <li v-for="(post, index) in this.uniquePosts" :key="post.id" v-bind:class="{'wide-banner': index == 8}">
+              <div class="coupledom-movement only-mobile" v-if="isMobile && index == 8">
+                <button><a href="/coupledom/">Read More</a></button>
+              </div>
+              <HomePost v-else :post="post"/>
             </li>
-          </ul>
+          </span>
+        </ul>
       </section>
     </div>
   </Layout>
 </template>
-e
+
 <page-query>
   query Home {
     allWordPressPost(sortBy: "date", order: DESC) {
@@ -103,6 +117,28 @@ export default {
       letter-spacing: 1px;
       @media screen and (max-width: $breakpoint-md) {
         font-size: 9vw;
+      }
+    }
+    .coupledom-movement {
+      width: 100%;
+      max-width: 100%;
+      padding-top: 23%;
+      background: url(~@/assets/images/coupledom-movement-dt.jpg) no-repeat;
+      background-size: contain;
+      background-position: center top;
+      flex: 0 0 1;
+      position: relative;
+      @media screen and (max-width: $breakpoint-md) {
+        background: url(~@/assets/images/coupledom-movement-mob.jpg) no-repeat;
+      }
+      button {
+        display: block;
+        position: absolute;
+        transform: translateX(-50%);
+        left: 50%;
+        bottom: 18%;
+        font-size: 25px;
+        letter-spacing: 2px;
       }
     }
   }

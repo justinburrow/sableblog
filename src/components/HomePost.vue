@@ -57,10 +57,15 @@ export default {
 </script>
 
 <style lang="scss">
+ul {
+  padding-left: 0;
+}
   .home-post {
     width: 100%;
     text-decoration: none;
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 
     a {
       color: black;
@@ -124,11 +129,9 @@ export default {
         }
       }
       @media screen and (max-width: $breakpoint-lg) {
-        width: 45%;
-        max-height: auto;
-        padding-top: 0;
-        margin-right: 5vw;
+        width: 43%;
         position: relative;
+        padding-top: 25%;
       }
     }
 

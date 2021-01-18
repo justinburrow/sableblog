@@ -103,11 +103,22 @@ button {
   background: linear-gradient(0deg, #18413c 50%, #224c45 50%);
   color: white;
   border-radius: 0;
+  transition: all 0.3s ease;
+  &:hover {
+    background: linear-gradient(0deg, #112f2b 50%, #142e2a 50%);
+  }
   @media screen and (max-width: $breakpoint-md) {
     font-size: 5vw;
   }
   &:hover {
     cursor: pointer;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
@@ -116,25 +127,31 @@ button {
     padding: 0;
     list-style-type: none;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 42px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     @media screen and (max-width: $breakpoint-lg) {
       margin-top: 7vw;
-      grid-template-columns: repeat(2, 1fr);
     }
     @media screen and (max-width: $breakpoint-md) {
-      margin-top: 7vw;
-      grid-template-columns: repeat(1, 1fr);
+
     }
     li {
       margin: 0;
       padding: 0;
-      width: 100%;
+      width: 30%;
       margin-bottom: 42px;
+      display: flex;
+
+      &.wide-banner {
+        width: 100vw;
+        margin: 0 calc(50% - 50vw) 42px;
+        display: block;
+      }
       @media screen and (max-width: $breakpoint-lg) {
         margin-bottom: 0;
-        padding-bottom: 2.15vw;
+        padding-bottom: 8vw;
+        width: 100%;
       }
       h4 {
         font-size: 14px;
