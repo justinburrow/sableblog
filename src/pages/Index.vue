@@ -4,7 +4,7 @@
       <section class="featured-posts">
           <ul>
             <span v-if="!isMobile" class="post-list">
-              <li v-for="(post, index) in this.uniquePosts" :key="post.id" v-bind:class="{'wide-banner': index == 6}">
+              <li v-for="(post, index) in this.uniquePosts" :key="post.id" v-bind:class="{'wide-banner only-desktop': index == 6}">
                 <div class="coupledom-movement only-desktop" v-if="!isMobile && index == 6">
                   <button><a href="/coupledom/">Read More</a></button>
                 </div>
@@ -13,10 +13,8 @@
             </span>
 
           <span v-if="isMobile" class="post-list">
-            <li v-for="(post, index) in this.uniquePosts" :key="post.id" v-bind:class="{'wide-banner': index == 8}">
-              <div class="coupledom-movement only-mobile" v-if="isMobile && index == 8">
-                <button><a href="/coupledom/">Read More</a></button>
-              </div>
+            <li v-for="(post, index) in this.uniquePosts" :key="post.id" v-bind:class="{'wide-banner only-mobile': index == 8}">
+              <a href="/coupledom/" class="coupledom-movement only-mobile" v-if="isMobile && index == 8">Coupledom</a>
               <HomePost v-else :post="post"/>
             </li>
           </span>
@@ -70,7 +68,8 @@ export default {
   data() {
     return {
       filteredPosts: [],
-      uniquePosts: []
+      uniquePosts: [],
+      isMobile: this.$store.isMobile
     }
   },
   methods: {
@@ -85,7 +84,6 @@ export default {
       })
     },
     uniquePostFilter(data, key) {
-      console.log('wee');
       return [
         ...new Map(
           data.map(x => [key(x), x])
@@ -97,6 +95,7 @@ export default {
     this.filterPosts();
     this.uniquePosts = this.uniquePostFilter(this.filteredPosts, post => post.node.id);
     this.uniquePosts.slice(0, 20);
+    console.log(this.isMobile);
   }
 }
 </script>
@@ -130,6 +129,12 @@ export default {
       position: relative;
       @media screen and (max-width: $breakpoint-md) {
         background: url(~@/assets/images/coupledom-movement-mob.jpg) no-repeat;
+        background-size: cover;
+        font-size: 0;
+        line-height: 0;
+        display: block;
+        width: 100%;
+        margin-top: 10vw;
       }
       button {
         display: block;

@@ -128,7 +128,7 @@ export default function (Vue, {router, head, isClient}) {
       store.menuOpen = false;
     },
     mobileDetect() {
-      if (window.innerWidth < 768) {
+      if (screen.width < 768) {
         store.isMobile = true;
       } else {
         store.isMobile = false;
