@@ -7,6 +7,7 @@
         <span>Read More</span>
       </div>
 
+      <div class="home-post-info">
         <h4>
           <span v-for="(cat, i) of post.node.categories" :key="i">
             <g-link :to="cat.path">
@@ -15,11 +16,12 @@
           </span>
         </h4>
 
-      <h2><g-link :to="post.node.path">{{post.node.title}}</g-link></h2>
-      <p class="excerpt" v-if="post.node.excerpt">
-        <g-link :to="post.node.path"><v-clamp autoresize class="excerpt only-desktop" :max-lines="2">{{post.node.excerpt | removeHTML}}</v-clamp></g-link>
-        <g-link :to="post.node.path"><v-clamp autoresize class="excerpt only-mobile-tablet" :max-lines="2" v-html>{{post.node.excerpt | removeHTML}}</v-clamp></g-link>
-        </p>
+        <h2><g-link :to="post.node.path">{{post.node.title}}</g-link></h2>
+        <p class="excerpt" v-if="post.node.excerpt">
+          <g-link :to="post.node.path"><v-clamp autoresize class="excerpt only-desktop" :max-lines="2">{{post.node.excerpt | removeHTML}}</v-clamp></g-link>
+          <g-link :to="post.node.path"><v-clamp autoresize class="excerpt only-mobile-tablet" :max-lines="3" v-html>{{post.node.excerpt | removeHTML}}</v-clamp></g-link>
+          </p>
+      </div>
   </article>
 </template>
 
@@ -58,6 +60,7 @@ export default {
   .home-post {
     width: 100%;
     text-decoration: none;
+    display: flex;
 
     a {
       color: black;
@@ -121,15 +124,27 @@ export default {
         }
       }
       @media screen and (max-width: $breakpoint-lg) {
-        width: 100%;
+        width: 45%;
         max-height: auto;
-        padding-top: 92%;
+        padding-top: 0;
+        margin-right: 5vw;
         position: relative;
+      }
+    }
+
+    .home-post-info {
+      @media screen and (max-width: $breakpoint-lg) {
+        width: 50%;
+        letter-spacing: 0;
       }
     }
 
     .excerpt {
       margin-top: 5px;
+      @media screen and (max-width: $breakpoint-lg) {
+        line-height: 1.4;
+        font-size: 3vw;
+      }
     }
 
     h4 {
@@ -141,11 +156,15 @@ export default {
       margin-bottom: 5px;
       font-family: acumin-pro-condensed, Helvetica, sans-serif;
       font-weight: 300;
+      @media screen and (max-width: $breakpoint-lg) {
+        margin-bottom: 0;
+        line-height: 1;
+      }
     }
 
     h2 {
       font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;
-      font-weight: 700;
+      font-weight: 600;
       text-transform: uppercase;
       text-align: left;
       letter-spacing: 1px;
@@ -156,9 +175,9 @@ export default {
         font-size: 2.5vw;
       }
       @media screen and (max-width: $breakpoint-md) {
-        font-size: 6vw;
-        letter-spacing: .2vw;
-        margin-top: 3.5vw;
+        font-size: 5vw;
+        letter-spacing: 0;
+        margin-top: 1.5vw;
       }
     }
   }
