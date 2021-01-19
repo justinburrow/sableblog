@@ -98,8 +98,7 @@ export default {
   mounted() {
     this.filterPosts();
     this.uniquePosts = this.uniquePostFilter(this.filteredPosts, post => post.node.id);
-    this.uniquePosts.slice(0, 19);
-    console.log(this.isMobile);
+    this.uniquePosts = this.uniquePosts.slice(0, 25);
   }
 }
 </script>
