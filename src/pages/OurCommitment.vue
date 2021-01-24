@@ -1,9 +1,9 @@
 <template>
   <Layout class="interior">
     <div class="video-banner only-desktop">
-      <video v-if="!isMobile" src="~@/assets/video/trees-movie-cropped.mp4" autoplay poster="posterimage.jpg" loop>
+      <video v-if="!isMobile" src="~@/assets/video/trees-movie-cropped.mp4" autoplay="true" loop>
       </video>
-      <img src="~@/assets/images/ci_logo.png" alt="Conservation International">
+      <img src="~@/assets/images/ci_sable_logo.png" alt="Conservation International">
     </div>
     <div class="video-banner only-mobile">
       <img src="~@/assets/images/ci_mob_logo.jpg" alt="Conservation International">
@@ -34,6 +34,11 @@
 <script>
 
 export default {
+  data() {
+    return {
+      isMobile: this.$store.isMobile
+    }
+  },
   metaInfo() {
     return {
       title: this.$page.allWordPressPage.edges[0].node.title,
@@ -64,7 +69,7 @@ export default {
 <style lang="scss">
   .video-banner {
     height: 22vw;
-    margin: 0 calc(50% - 50vw) 42px;
+    margin: 0 calc(50% - 50vw) 80px;
     position: relative;
     z-index: 1;
     img {
@@ -72,7 +77,7 @@ export default {
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      max-width: 700px;
+      max-width: 900px;
     }
     @media screen and (max-width: $breakpoint-md) {
       width: 100vw;
