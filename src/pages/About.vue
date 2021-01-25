@@ -90,6 +90,7 @@ export default {
       position: relative;
       .video {
         margin-bottom: 60px;
+        position: relative;
         @media screen and (max-width: $breakpoint-md) {
           margin-bottom: 8vw;
         }
