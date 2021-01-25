@@ -26,7 +26,7 @@ export default {
 <style lang="scss" scoped>
   .ad-banner {
     position: absolute;
-    top: 8.3%;
+    top: 0;
     right: -200px;
     width: 161px;
     a {

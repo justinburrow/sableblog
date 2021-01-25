@@ -9,7 +9,6 @@
           </g-link>
         </div>
         <h1 v-html="$page.wordPressPost.title"/>
-
         <div class="post-image">
          <img
           v-if="$page.wordPressPost.featuredMedia"
@@ -19,6 +18,7 @@
         </div>
 
         <div class="post-details">
+          <AdBanner />
           <div class="social-share">
             <ShareNetwork
               network="facebook"
@@ -116,6 +116,7 @@
 <script>
 import moment from 'moment'
 import HomePost from '~/components/HomePost.vue'
+import AdBanner from '~/components/AdBanner.vue'
 
 export default {
   metaInfo () {
@@ -174,7 +175,8 @@ export default {
     }
   },
   components: {
-    HomePost
+    HomePost,
+    AdBanner
   },
   methods: {
     formatDate(postDate) {
@@ -203,6 +205,10 @@ export default {
     if (this.$page.wordPressPost.featuredMedia) {
       this.featuredImage = this.$page.wordPressPost.featuredMedia.sourceUrl;
     }
+    let parNum = document.querySelectorAll(':p > strong');
+    parNum = Math.floor(parNum/2);
+    console.log(parNum);
+
   },
   filters: {
     removeHTML: function (val) {
@@ -288,6 +294,9 @@ export default {
     justify-content: space-between;
     margin: 15px 0 32px 0;
     color: #B2B2B2;
+    .ad-banner {
+      top: 120px;
+    }
     .author {
       font-size: 14px;
       line-height: 1.5;
@@ -318,8 +327,7 @@ export default {
   }
   .post-content {
     font-family: 'acumin-pro', sans-serif;
-    padding: 0 5%;
-    margin-left: 160px;
+    padding: 0;
     @media screen and (max-width: $breakpoint-lg) {
       padding: 0;
       margin-left: 0;

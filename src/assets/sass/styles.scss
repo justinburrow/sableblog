@@ -30,6 +30,7 @@ html, body {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 30px;
+    position: relative;
     @media screen and (max-width: $breakpoint-md) {
       padding: 0 3vw;
     }
@@ -58,7 +59,8 @@ html, body {
 }
 
 .post.interior {
-  max-width: 755px;
+  max-width: 950px;
+  position: relative;
   figure {
     iframe {
       @media screen and (max-width: $breakpoint-md) {

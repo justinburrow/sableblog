@@ -2,8 +2,12 @@
   <Layout class="interior">
     <div class="container coupledom">
 
-      <div class="hero">
-        <h1><span>coupledom / (‘kʌpəldəm)</span> 1. The realm of shared experiences between two partners, in life or business</h1>
+      <div class="hero" v-if="!isMobile">
+        <img src="~@/assets/images/coupledom-page-banner-dt.jpg" alt="Coupledom">
+      </div>
+
+      <div class="hero" v-if="isMobile">
+        <img src="~@/assets/images/coupledom-page-banner-mob.jpg" alt="Coupledom">
       </div>
 
       <div class="introduction">
@@ -112,6 +116,7 @@ export default {
   data() {
     return {
       videos: [],
+      isMobile: this.$store.isMobile,
       hooperSettings: {
         itemsToShow: 1,
         centerMode: false,
@@ -151,13 +156,24 @@ export default {
 </script>
 
 <style lang="scss">
+.interior {
+  padding: 0 !important;
+  width: 100%;
+  max-width: 100% !important;
+}
   .coupledom {
-    .hero {
+    width: 100%;
+    img {
       width: 100%;
-      padding-top: 39%;
-      background: url('~@/assets/images/coupledom-hero-background.jpg') no-repeat center top;
-      background-size: cover;
-      position: relative;
+      max-width: 100%;
+    }
+    .hero {
+      margin: 0 calc(50% - 50vw) 80px;
+      width: 100%;
+      margin-bottom: 50px;
+      @media screen and (max-width: $breakpoint-md) {
+        margin-bottom: 5vw;
+      }
       h1 {
         position: absolute;
         bottom: 2.865vw;
