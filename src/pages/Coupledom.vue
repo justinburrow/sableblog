@@ -1,5 +1,5 @@
 <template>
-  <Layout class="interior">
+  <Layout class="page interior">
     <div class="container coupledom">
 
       <div class="hero" v-if="!isMobile">
@@ -156,7 +156,7 @@ export default {
 </script>
 
 <style lang="scss">
-.interior {
+.page.interior {
   padding: 0 !important;
   width: 100%;
   max-width: 100% !important;
