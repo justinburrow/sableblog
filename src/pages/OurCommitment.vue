@@ -78,12 +78,16 @@ export default {
       top: 50%;
       transform: translate(-50%, -50%);
       max-width: 900px;
+      @media screen and (max-width: $breakpoint-lg) {
+        width: 100%;
+        max-width: 100%;
+      }
     }
-    @media screen and (max-width: $breakpoint-md) {
+    @media screen and (max-width: $breakpoint-lg) {
       width: 100vw;
       max-width: 100vw;
-      height: 40vw;
-      margin-bottom: 5vw;
+      height: 26vw;
+      margin-bottom: 4vw;
     }
   }
   .page {
