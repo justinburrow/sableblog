@@ -15,7 +15,7 @@
           <ul>
             <li class="blog" :class="blogHover ? 'active':''" @mouseenter="openBlogDropdown(), bloghover = true, searchHover = false" @click="openBlogDropdown(), bloghover = true, searchHover = false"><a>Blog</a></li>
             <li class="commitment" @mouseenter="showDropdown = false, bloghover = false; searchHover = false;" @click="setActive('commitment')" :class="{active: isActive('commitment')}"><a href="/our-commitment/">Our Commitment</a></li>
-            <li class="about" @mouseenter="showDropdown = false, bloghover = false; searchHover = false;" @click="setActive('about')" :class="{active: isActive('about')}"><a href="/pages/about-us/">About</a></li>
+            <li class="about" @mouseenter="showDropdown = false, bloghover = false; searchHover = false;" @click="setActive('about')" :class="{active: isActive('about')}"><a href="/about/">About</a></li>
           </ul>
           <div class="logo" @mouseenter="bloghover = false; searchHover = false;" @click="setActive('')">
               <a href="/"><img src="~@/assets/images/sable-logo.svg" width="277" alt="S'able Labs" /></a>
