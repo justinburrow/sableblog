@@ -78,6 +78,8 @@ export default {
         return e.node
       }
     }));
+  },
+  mounted() {
     this.getSearchResults();
   },
   watch: {
@@ -94,7 +96,6 @@ export default {
         query: this.searchingBy,
         limit: 30
       }, function(results) {
-        console.log(results);
         return results
       });
       this.$forceUpdate();
