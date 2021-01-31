@@ -117,7 +117,7 @@ export default {
         this.$router.push({
           path: '/search/',
           query: { s: this.searchingBy }
-        });
+        }).catch(err => {});
         this.searchingBy = '';
       }
     }

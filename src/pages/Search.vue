@@ -7,6 +7,7 @@
           <li v-for="post in searchResults" class="post" :key="post.id" v-if="searchResults.length > 0">
             <SearchPost :post="post" />
           </li>
+          <li class="holder" v-if="searchResults % 3 !== 0"></li>
           <li class="no-results" v-if="searchResults.length == 0">Sorry, no posts were found</li>
         </ul>
       </section>
@@ -45,7 +46,8 @@ export default {
   data() {
     return {
       index: null,
-      searchingBy: ''
+      searchingBy: '',
+      searchResults: {}
     }
   },
   components: {
@@ -58,7 +60,7 @@ export default {
     this.searchingBy = to.query.s;
     next();
   },
-  mounted() {
+  created() {
     this.searchingBy = this.$route.query.s;
     this.index = new Flexsearch({
       tokenize: "forward",
@@ -71,20 +73,31 @@ export default {
         ]
       }
     });
-    this.index.add(this.$page.allWordPressPost.edges.map(e => e.node));
+    this.index.add(this.$page.allWordPressPost.edges.map(e => {
+      if (e.node.categories.indexOf('homepage-hero-banners' > 0)) {
+        return e.node
+      }
+    }));
+    this.getSearchResults();
   },
-  computed: {
-    searchResults() {
+  watch: {
+    searchingBy: function() {
+      this.getSearchResults();
+    }
+  },
+  methods: {
+    getSearchResults: function() {
+      this.searchingBy = this.$route.query.s;
+      var that = this;
       if (this.index === null || this.searchingBy.length < 3) return [];
-      return this.index.search({
+      this.searchResults = this.index.search({
         query: this.searchingBy,
         limit: 30
-      },
-      {
-        field: "categories",
-        query: "homepage-hero-banners",
-        bool: "not"
-      })
+      }, function(results) {
+        console.log(results);
+        return results
+      });
+      this.$forceUpdate();
     }
   }
 }

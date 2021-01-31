@@ -1,5 +1,5 @@
 <template>
-  <article class="home-post">
+  <div class="home-post">
       <div class="image">
         <g-link :to="post.path" v-if="post.featuredMedia != null"><img :src="post.featuredMedia.sourceUrl" :alt="post.featuredMedia.altText" /></g-link>
         <div class="overlay">
@@ -14,17 +14,19 @@
         <g-link :to="post.path"><v-clamp class="excerpt only-desktop" :max-lines="2">{{post.excerpt | removeHTML}}</v-clamp></g-link>
         <g-link :to="post.path"><v-clamp class="excerpt only-mobile-tablet" :max-lines="2">{{post.excerpt | removeHTML}}</v-clamp></g-link>
         </p>
-  </article>
+  </div>
 </template>
 
 <script>
 import VClamp from 'vue-clamp'
 import moment from 'moment'
+import HomePost from '~/components/HomePost.vue'
 
 export default {
   name: 'SearchPost',
   components: {
-    VClamp
+    VClamp,
+    HomePost
   },
   props: {
     'post': {

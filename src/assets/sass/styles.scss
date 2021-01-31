@@ -151,9 +151,6 @@ button {
     @media screen and (max-width: $breakpoint-lg) {
       margin-top: 7vw;
     }
-    @media screen and (max-width: $breakpoint-md) {
-
-    }
     li {
       margin: 0;
       padding: 0;
@@ -182,7 +179,7 @@ button {
       h2 {
         font-size: 23px;
         line-height: 1.1;
-        font-display: swap;
+        width: 100%;
         @media screen and (max-width: $breakpoint-md) {
           font-size: 5.5vw;
         }

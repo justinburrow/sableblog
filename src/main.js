@@ -86,7 +86,7 @@ export default function (Vue, {router, head, isClient}) {
     {
       key: 'og:image',
       property: 'og:image',
-      content: '~/assets/images/coupledom-banner.jpg'
+      content: '~/assets/images/idris-sabrina-default.jpg'
     },
     {
       key: 'twitter:card',
@@ -128,7 +128,7 @@ export default function (Vue, {router, head, isClient}) {
       store.menuOpen = false;
     },
     mobileDetect() {
-      if (screen.width < 768) {
+      if (screen.width <= 1024) {
         store.isMobile = true;
       } else {
         store.isMobile = false;

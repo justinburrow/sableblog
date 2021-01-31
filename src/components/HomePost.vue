@@ -176,6 +176,7 @@ ul {
       line-height: 1;
       padding: 0;
       margin: 10px 0 0 0;
+      widht: 100%;
       @media screen and (max-width: $breakpoint-xl) {
         font-size: 2.5vw;
       }
