@@ -12,7 +12,7 @@
                   <a href="https://portenoire.co.uk" target="_blank"><img src="~@/assets/images/porte-noire.gif" alt="Porte Noire"></a>
                 </div>
 
-                <HomePost v-else :post="post"/>
+                <HomePost v-else :post="post" />
               </li>
             </span>
 
@@ -63,7 +63,9 @@ export default {
   metaInfo() {
     return {
       title: this.siteName,
-      titleTemplate: ''
+      titleTemplate: '',
+      postCount: this.$page.allWordPressPost.edges.length,
+      needSpacer: true
     }
   },
   components: {
@@ -73,7 +75,8 @@ export default {
     return {
       filteredPosts: [],
       uniquePosts: [],
-      isMobile: this.$store.isMobile
+      isMobile: this.$store.isMobile,
+      needSpacer: null
     }
   },
   methods: {

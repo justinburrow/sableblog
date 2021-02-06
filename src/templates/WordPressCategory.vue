@@ -2,7 +2,7 @@
   <Layout class="interior">
     <div class="category interior">
       <h1>{{ $page.wordPressCategory.title }}</h1>
-      <ul class="post-list">
+      <ul class="post-list" :class="{needSpacer: 'addSpacer'}">
         <li v-for="{ node } in $page.wordPressCategory.belongsTo.edges" :key="node.id" :class="$page.wordPressCategory.title | lowercase">
           <HomePost :post="{ node }" />
         </li>
@@ -46,9 +46,19 @@ import { Pager } from 'gridsome'
 import HomePost from '~/components/HomePost.vue'
 
 export default {
+  data () {
+    return {
+      needSpacer: false
+    }
+  },
   components: {
     Pager,
     HomePost
+  },
+  mounted() {
+    if (this.$page.wordPressCategory.belongsTo.edges % 3 != 0) {
+      this.needSpacer = true;
+    }
   },
   metaInfo () {
     return {

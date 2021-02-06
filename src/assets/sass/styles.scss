@@ -185,6 +185,13 @@ button {
         }
       }
     }
+    &.needSpacer {
+      &::after {
+        content: '' ;
+        display: block;
+        width: 30%;
+      }
+    }
   }
 
   .page {
