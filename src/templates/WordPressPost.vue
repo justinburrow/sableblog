@@ -123,13 +123,13 @@ export default {
     let image = this.$page.wordPressPost.featuredMedia;
 
     return {
-      title: this.toText(this.$page.wordPressPost.title),
+      title: this.$he.decode(this.$page.wordPressPost.title),
       date: this.$page.wordPressPost.date,
       meta: [
         {
           key: 'description',
           name: 'description',
-          content: this.excerpt
+          content: this.$he.decode(this.excerpt)
         },
         {
           key: 'og:type',
@@ -144,12 +144,12 @@ export default {
         {
           key: 'og:title',
           property: 'og:title',
-          content: unescape(this.$page.wordPressPost.title) + ' | S\'able Labs'
+          content: this.$he.decode(this.$page.wordPressPost.title) + ' | S\'able Labs'
         },
         {
           key: 'twitter:title',
           property: 'twitter:title',
-          content: this.$page.wordPressPost.title + ' | S\'able Labs'
+          content: this.$he.decode(this.$page.wordPressPost.title) + ' | S\'able Labs'
         },
         {
           key: 'og:image',
@@ -164,12 +164,12 @@ export default {
         {
           key: 'og:description',
           property: 'og:description',
-          content: this.excerpt
+          content: this.$he.decode(this.excerpt)
         },
         {
           key: 'twitter:description',
           property: 'twitter:description',
-          content: this.excerpt
+          content: this.$he.decode(this.excerpt)
         }
       ]
     }

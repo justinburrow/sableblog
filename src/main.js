@@ -3,14 +3,15 @@ import VScrollLock from 'v-scroll-lock'
 import VueAgile from 'vue-agile'
 import VueCookies from 'vue-cookies'
 import VueSocialSharing from 'vue-social-sharing'
+import he from 'he'
 
 export default function (Vue, {router, head, isClient}) {
   Vue.component('Layout', DefaultLayout);
+  Vue.prototype.$he = he;
   Vue.use(VScrollLock);
   Vue.use(VueAgile);
   Vue.use(VueCookies);
   Vue.use(VueSocialSharing);
-
 
   head.link.push({
     rel: "stylesheet",
