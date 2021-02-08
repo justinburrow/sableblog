@@ -407,6 +407,172 @@ export default {
         transform: translateX(-50%);
       }
     }
+
+    figcaption,
+    .wp-caption-text {
+    	color: #6d6d6d;
+    	display: block;
+    	font-size: 1.5rem;
+    	font-weight: 500;
+    	line-height: 1.2;
+    	margin-top: 1.5rem;
+    }
+
+    figcaption a,
+    .wp-caption-text a {
+    	color: inherit;
+    }
+
+    .wp-block-archives:not(.alignwide):not(.alignfull),
+    .wp-block-categories:not(.alignwide):not(.alignfull),
+    .wp-block-code,
+    .wp-block-columns:not(.alignwide):not(.alignfull),
+    .wp-block-cover:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.aligncenter),
+    .wp-block-embed:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.aligncenter),
+    .wp-block-gallery:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.aligncenter),
+    .wp-block-group:not(.has-background):not(.alignwide):not(.alignfull),
+    .wp-block-image:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.aligncenter),
+    .wp-block-latest-comments:not(.aligncenter):not(.alignleft):not(.alignright),
+    .wp-block-latest-posts:not(.aligncenter):not(.alignleft):not(.alignright),
+    .wp-block-media-text:not(.alignwide):not(.alignfull),
+    .wp-block-preformatted,
+    .wp-block-pullquote:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright),
+    .wp-block-quote,
+    .wp-block-quote.is-large,
+    .wp-block-quote.is-style-large,
+    .wp-block-verse,
+    .wp-block-video:not(.alignwide):not(.alignfull) {
+    	margin-bottom: 3rem;
+    	margin-top: 3rem;
+    }
+
+
+    /* Block: Shared Nesting Alignment Resets ---- */
+
+    [class*="__inner-container"] .wp-block-group:not(.alignfull):not(.alignwide):not(.alignleft):not(.alignright),
+    [class*="__inner-container"] .wp-block-cover:not(.alignfull):not(.alignwide):not(.alignleft):not(.alignright) {
+    	margin-left: auto;
+    	margin-right: auto;
+    	max-width: 58rem;
+    }
+
+    .wp-block-embed figcaption,
+    .wp-block-image figcaption {
+    	color: #6d6d6d;
+    	font-size: 1.4rem;
+    	margin-bottom: 0;
+    	margin-top: 1.5rem;
+    }
+
+    .entry-content > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide) {
+    	max-width: 58rem;
+    	width: calc(100% - 4rem);
+    }
+
+    [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide) {
+    	max-width: 58rem;
+    	width: 100%;
+    }
+
+    .alignnone,
+    .aligncenter,
+    .alignleft,
+    .alignright,
+    .alignwide {
+    	margin-top: 4rem;
+    	margin-right: auto;
+    	margin-bottom: 4rem;
+    	margin-left: auto;
+    }
+
+    [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
+    	margin-left: auto;
+    	margin-right: auto;
+    }
+
+    /* Full */
+
+    .alignfull {
+    	margin-top: 5rem;
+    	margin-right: auto;
+    	margin-bottom: 5rem;
+    	margin-left: auto;
+    	max-width: 100vw;
+    	position: relative;
+    	width: 100%;
+    }
+
+    [class*="__inner-container"] > .alignfull {
+    	max-width: 100%;
+    }
+
+    /* Wide */
+
+    .alignwide {
+    	max-width: 120rem;
+    	position: relative;
+    	width: calc(100% - 4rem);
+    }
+
+    [class*="__inner-container"] > .alignwide {
+    	width: 100%;
+    }
+
+    /* Center */
+
+    .aligncenter,
+    .aligncenter img {
+    	margin-left: auto;
+    	margin-right: auto;
+    }
+
+    /* Left and right */
+
+    .alignleft,
+    .alignright {
+    	max-width: 50%;
+    }
+
+    .alignleft {
+
+    	/*rtl:ignore*/
+    	float: left;
+    	margin: 0.3rem 2rem 2rem 2rem;
+    }
+
+    .alignright {
+
+    	/*rtl:ignore*/
+    	float: right;
+    	margin: 0.3rem 2rem 2rem 2rem;
+    }
+
+    [class*="wp-block"].alignfull:not(.has-background) [class*="__inner-container"] > .alignleft,
+    [class*="wp-block"].alignfull:not(.has-background) [class*="__inner-container"] > p .alignleft,
+    [class*="wp-block"].alignfull:not(.has-background) [class*="__inner-container"] > .wp-block-image .alignleft {
+
+    	/*rtl:ignore*/
+    	margin-left: 2rem;
+    }
+
+    [class*="wp-block"].alignfull:not(.has-background) [class*="__inner-container"] > .alignright,
+    [class*="wp-block"].alignfull:not(.has-background) [class*="__inner-container"] > p .alignright,
+    [class*="wp-block"].alignfull:not(.has-background) [class*="__inner-container"] > .wp-block-image .alignright {
+
+    	/*rtl:ignore*/
+    	margin-right: 2rem;
+    }
+
+    /* Entry Media ------------------------------- */
+
+    .alignfull > figcaption,
+    .alignfull > .wp-caption-text {
+    	margin-left: auto;
+    	margin-right: auto;
+    	max-width: 58rem;
+    	width: calc(100% - 4rem);
+    }
+
   }
 }
 .you-may-also-like {
