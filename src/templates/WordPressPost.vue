@@ -123,7 +123,7 @@ export default {
     let image = this.$page.wordPressPost.featuredMedia;
 
     return {
-      title: this.$page.wordPressPost.title,
+      title: this.toText(this.$page.wordPressPost.title),
       date: this.$page.wordPressPost.date,
       meta: [
         {
@@ -144,7 +144,7 @@ export default {
         {
           key: 'og:title',
           property: 'og:title',
-          content: this.$page.wordPressPost.title + ' | S\'able Labs'
+          content: unescape(this.$page.wordPressPost.title) + ' | S\'able Labs'
         },
         {
           key: 'twitter:title',
@@ -185,6 +185,11 @@ export default {
     removeHTML: function (val) {
       let regex = /(<([^>]+)>)/ig;
       return val.replace(regex, "");
+    },
+    toText(html) {
+      var txt = document.createElement("textarea");
+      txt.innerHTML = html;
+      return txt.value;
     }
   },
   data() {
@@ -205,9 +210,6 @@ export default {
     if (this.$page.wordPressPost.featuredMedia) {
       this.featuredImage = this.$page.wordPressPost.featuredMedia.sourceUrl;
     }
-    let parNum = document.querySelectorAll(':p > strong');
-    parNum = Math.floor(parNum/2);
-    console.log(parNum);
 
   },
   filters: {
