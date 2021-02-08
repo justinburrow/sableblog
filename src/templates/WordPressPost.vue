@@ -459,9 +459,9 @@ export default {
     .wp-block-embed figcaption,
     .wp-block-image figcaption {
     	color: #6d6d6d;
-    	font-size: 1.4rem;
+    	font-size: 1rem;
     	margin-bottom: 0;
-    	margin-top: 1.5rem;
+    	margin-top: 1.2rem;
     }
 
     .entry-content > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide) {
