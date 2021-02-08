@@ -412,10 +412,10 @@ export default {
     .wp-caption-text {
     	color: #6d6d6d;
     	display: block;
-    	font-size: 1.5rem;
+    	font-size: 1rem;
     	font-weight: 500;
     	line-height: 1.2;
-    	margin-top: 1.5rem;
+    	margin-top: 1.2rem;
     }
 
     figcaption a,
