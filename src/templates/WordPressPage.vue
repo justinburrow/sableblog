@@ -31,9 +31,6 @@ query WordPressPage ($id: ID!) {
       altText
       caption
     }
-    acf {
-      pageType
-    }
   }
 }
 </page-query>
