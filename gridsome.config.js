@@ -15,7 +15,7 @@ module.exports = {
   siteDescription: "A community for Coupledom",
   siteUrl: process.env.GRIDSOME_BASE_URL,
   icon: './src/favicon.png',
-  
+
   templates: {
     WordPressPage: [
       {
@@ -26,7 +26,7 @@ module.exports = {
     WordPressCategory: '/category/:slug', // adds route for "category" post type (Optional)
     WordPressPost: [
       {
-        path: '/:year/:month/:day/:slug',
+        path: '/posts/:slug',
         component: './src/templates/WordPressPost.vue', //adds route for "post" post type (Optional)
       },
     ]
