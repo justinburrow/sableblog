@@ -121,8 +121,8 @@ html, body {
 .wp-block-quote.is-style-large,
 .wp-block-verse,
 .wp-block-video:not(.alignwide):not(.alignfull) {
-	margin-bottom: 3rem;
-	margin-top: 3rem;
+	margin-bottom: 1rem;
+	margin-top: 1rem;
 }
 
 .wp-block-columns.alignfull,
@@ -132,7 +132,7 @@ html, body {
 }
 
 .wp-block-column {
-	margin-bottom: 3.2rem;
+	margin-bottom: 1rem;
 }
 
 .wp-block-column > *:first-child {
@@ -183,6 +183,7 @@ html, body {
     display: flex;
     margin-bottom: 1.75em;
     flex-wrap: wrap
+    align-items: baseline;
 }
 
 @media (min-width: 782px) {
