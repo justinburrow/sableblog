@@ -24,7 +24,7 @@
 
     </div>
     <div class="home-features">
-      <g-link to="/coupledom/"
+      <g-link to="/coupledom/">
         <g-image src="~/assets/images/coupledom-is.gif" alt="Coupledom Is" height="300" />
       </g-link>
     </div>
