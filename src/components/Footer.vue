@@ -47,6 +47,9 @@
               <li>
                 <g-link to="/pages/cookie-policy/">Cookie Policy</g-link>
               </li>
+              <li>
+                <g-link to="/pages/affiliate-disclosure/">Affiliate Disclosure</g-link>
+              </li>
             </ul>
           </li>
         </ul>
