@@ -47,7 +47,8 @@ export default {
     return {
       index: null,
       searchingBy: '',
-      searchResults: {}
+      searchResults: {},
+      validPosts: []
     }
   },
   components: {
@@ -73,20 +74,14 @@ export default {
         ]
       }
     });
-    this.index.add(this.$page.allWordPressPost.edges.map(e => {
-      let validPost = 0;
-      e.node.categories.forEach(function(s) {
-        if (s.slug == 'homepage-hero-banners' || 'uncategorized') {
-          validPost++;
-        }
-      })
-      if (validPost == 0) {
-        return e.node;
-      } else {
-        return false;
-      }
+    this.validPosts = this.$page.allWordPressPost.edges.filter(item => {
+      return item.node.categories.some(cat => {
+        return cat.slug != 'homepage-hero-banners';
+      });
+    });
+    this.index.add(this.validPosts.map(e => {
+      return e.node;
     }));
-    console.log(this.index);
   },
   mounted() {
     this.getSearchResults();
