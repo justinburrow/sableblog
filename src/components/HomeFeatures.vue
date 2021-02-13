@@ -24,23 +24,9 @@
 
     </div>
     <div class="home-features">
-      <div class="content">
-        <div class="video">
-          <video poster="~@/assets/images/video-poster.jpg" controls playsinline><source src="~@/assets/video/sable-labs-home-video.mp4" type="video/mp4" /></video>
-          <h4>Our Story</h4>
-        </div>
-        <div class="coupledom">
-          <div class="coupledom-image">
-            <div class="coupledom-content">
-              <h3>Coupledom Movement</h3>
-              <h4>Coupledom / (‘Kapaldam)</h4>
-              <p>The realm of shared experiences between two partners in life or business, creating extraordinary outcomes.</p>
-              <g-link to="/coupledom"><a href="#">Read More</a></g-link>
-            </div>
-          </div>
-          <h4>Coupledom Around The World</h4>
-        </div>
-      </div>
+      <g-link to="/coupledom/"
+        <g-image src="~/assets/images/coupledom-is.gif" alt="Coupledom Is" height="300" />
+      </g-link>
     </div>
   </div>
 </template>
@@ -136,119 +122,9 @@ export default {
     }
   }
   .home-features {
-    background-color: #f2f2f2;
-    padding: 25px 0;
-    box-shadow: 0px 10px 14px 0px rgba(0,0,0,0.3);
-    .content, .titles {
-      display: flex;
+    img {
       width: 100%;
-      max-width: 1280px;
-      margin: 0 auto;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      @media screen and (max-width: 1599px) {
-        padding: 0 20px;
-      }
-      div, h4 {
-        width: calc(50% - 15px);
-        @media screen and (max-width: $breakpoint-xl) {
-          width: 100%;
-        }
-      }
-      .video {
-        position: relative;
-        video {
-          object-fit: fill;
-          display: block;
-          width: 100%;
-        }
-        @media screen and (max-width: $breakpoint-xl) {
-          margin-bottom: 5vw;
-        }
-      }
-      .coupledom {
-        .coupledom-image {
-          background-image: url('~@/assets/images/coupledom-background.jpg');
-          background-repeat: no-repeat;
-          background-size: cover;
-          position: relative;
-          width: 100%;
-          padding-top: 56%;
-          .coupledom-content {
-            font-family: 'acumin-pro', 'Helvetica Neue', sans-serif;
-            font-weight: 300;
-            font-style: normal;
-            text-align: center;
-            padding: 0 18px;
-            width: 100%;
-            color: white;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-45%);
-          }
-          h3, h4 {
-            margin: 0;
-            padding: 0;
-          }
-          h3 {
-            font-family: 'acumin-pro-extra-condensed', 'Helvetica Neue', sans-serif;
-            font-weight: 600;
-            font-style: normal;
-            text-transform: uppercase;
-            font-size: 44px;
-            letter-spacing: 1px;
-            @media screen and (max-width: $breakpoint-md) {
-              font-size: 7vw;
-            }
-          }
-          h4 {
-            font-family: 'acumin-pro', 'Helvetica Neue', sans-serif;
-            width: 100%;
-            font-size: 16px;
-            font-weight: 300;
-            text-transform: none;
-            letter-spacing: .5px;
-            margin-bottom: 8px;
-            @media screen and (max-width: $breakpoint-md) {
-              font-size: 3vw;
-            }
-          }
-          p {
-            max-width: 400px;
-            margin: 0 auto 45px auto;
-            @media screen and (max-width: $breakpoint-md) {
-              margin-bottom: 4vw !important;
-              font-size: 3vw !important;
-            }
-          }
-          a {
-            display: inline-block;
-            text-decoration: none;
-            font-family: 'acumin-pro-condensed', 'Helvetica Neue', sans-serif;
-            font-weight: 600;
-            background: linear-gradient(0deg, #18413c 50%, #224c45 50%);
-            color: white;
-            border-radius: 0;
-            border: none;
-            text-transform: uppercase;
-            font-size: 20px;
-            padding: 3px 25px;
-            @media screen and (max-width: $breakpoint-md) {
-              font-size: 3.2vw;
-              padding: 1vw 5vw;
-            }
-          }
-        }
-      }
-      h4 {
-        text-transform: uppercase;
-        font-family: 'acumin-pro-condensed', 'Helvetica Neue', sans-serif;
-        font-weight: 300;
-        font-style: normal;
-        margin: 5px 0 0 0;
-        padding: 0;
-        font-size: 15px;
-      }
+      max-width: 100%;
     }
   }
 
