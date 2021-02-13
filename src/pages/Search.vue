@@ -17,7 +17,7 @@
 
 <page-query>
 query {
-  allWordPressPost(filter: { slug: { nin: ["homepage-hero-banners", "uncategorized"]}}) {
+  allWordPressPost {
     edges {
       node {
         id
@@ -74,10 +74,19 @@ export default {
       }
     });
     this.index.add(this.$page.allWordPressPost.edges.map(e => {
-      if (e.node.categories.indexOf('homepage-hero-banners' > 0)) {
-        return e.node
+      let validPost = 0;
+      e.node.categories.forEach(function(s) {
+        if (s.slug == 'homepage-hero-banners' || 'uncategorized') {
+          validPost++;
+        }
+      })
+      if (validPost == 0) {
+        return e.node;
+      } else {
+        return false;
       }
     }));
+    console.log(this.index);
   },
   mounted() {
     this.getSearchResults();
@@ -94,7 +103,7 @@ export default {
       if (this.index === null || this.searchingBy.length < 3) return [];
       this.searchResults = this.index.search({
         query: this.searchingBy,
-        limit: 30
+        limit: 60
       }, function(results) {
         return results
       });
