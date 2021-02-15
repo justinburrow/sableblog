@@ -1,9 +1,8 @@
 <template>
   <div>
     <div class="hero-banners">
-
       <!-- desktop banners -->
-      <div v-if="isMobile == false">
+      <div v-show="isMobile == false">
         <agile :autoplay="true" :nav-buttons="false" :speed="500" :autoplay-speed="8000" :dots="true">
           <div v-for="(banner, index) in $static.allWordPressCategory.edges[0].node.belongsTo.edges">
             <a :href="banner.node.acf.bannerLink" v-if="banner.node.acf.bannerLink"><img :src="banner.node.acf.dtBannerImage" /></a>
@@ -12,10 +11,10 @@
         </agile>
       </div>
 
-      <div v-else>
-        <!-- mobile banners -->
+      <!-- mobile banners -->
+      <div v-show="isMobile == true">
         <agile :autoplay="true" :nav-buttons="false" :speed="500" :autoplay-speed="8000" :dots="true">
-          <div v-for="(banner, index) in $static.allWordPressCategory.edges[0].node.belongsTo.edges" v-if="isMobile">
+          <div v-for="(banner, index) in $static.allWordPressCategory.edges[0].node.belongsTo.edges">
             <a :href="banner.node.acf.bannerLink" v-if="banner.node.acf.bannerLink"><img :src="banner.node.acf.mobBannerImage" /></a>
             <img v-else :src="banner.node.acf.mobBannerImage" />
           </div>
@@ -122,13 +121,18 @@ export default {
   .home-features {
     display: block;
     position: relative;
-    padding-top: 15%;
+    padding-top: 12%;
     background-image: url(~@/assets/images/coupledom-is.gif);
-    background-size: cover;
+    background-size: contain;
     background-position: center center;
+    background-repeat: no-repeat;
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
+    @media screen and (max-width: $breakpoint-md) {
+      padding-top: 15%;
+      background-size: cover;
+    }
   }
 
 </style>

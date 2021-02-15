@@ -16,7 +16,7 @@
           </span>
         </h4>
 
-        <h2><g-link :to="post.node.path"><span v-html="post.node.title"></span></g-link></h2>
+        <h2><g-link :to="post.node.path"><div class="title" v-html="post.node.title"></div></g-link></h2>
         <p class="excerpt" v-if="post.node.excerpt">
           <g-link :to="post.node.path"><v-clamp autoresize class="excerpt only-desktop" :max-lines="2">{{post.node.excerpt | removeHTML}}</v-clamp></g-link>
           <g-link :to="post.node.path"><v-clamp autoresize class="excerpt only-mobile-tablet" :max-lines="3" v-html>{{post.node.excerpt | removeHTML}}</v-clamp></g-link>
@@ -184,6 +184,9 @@ ul {
         font-size: 5vw;
         letter-spacing: 0;
         margin-top: 1.5vw;
+      }
+      .title {
+        display: inline;
       }
     }
   }

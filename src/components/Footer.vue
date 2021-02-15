@@ -1,7 +1,7 @@
 <template>
   <div class="bottom-section">
 
-    <div v-if="isMobile" class="porte-noire-banner">
+    <div v-show="isMobile" class="porte-noire-banner">
       <a href="https://www.portenoire.co.uk/" target="_blank"><img src="~@/assets/images/porte-noire.gif" alt="Porte Noire"></a>
     </div>
 

@@ -5,10 +5,10 @@
 
         <div class="post-category">
           <g-link :to="$page.wordPressPost.categories[0].path" class="category">
-            <h2 v-html="$page.wordPressPost.categories[0].title"></h2>
+            <div class="h2" v-html="$page.wordPressPost.categories[0].title"></div>
           </g-link>
         </div>
-        <h1 v-html="$page.wordPressPost.title"/>
+        <h1 v-html="$page.wordPressPost.title"></h1>
         <div class="post-image">
          <img
           v-if="$page.wordPressPost.featuredMedia"
@@ -242,7 +242,7 @@ export default {
     a {
       color: #b2b2b2;
     }
-    h2 {
+    .h2 {
       margin-top: 25px;
       font-family: 'acumin-pro-extra-condensed';
       font-weight: 500;

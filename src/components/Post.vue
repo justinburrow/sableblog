@@ -1,8 +1,8 @@
 <template>
   <div>
     <h2 v-if="post.categories" v-html="post.categories[0].title"></h2>
-    <h1 v-html="post.title" />
-    <div v-html="post.excerpt" />
+    <h1 v-html="post.title"></h1>
+    <div v-html="post.excerpt"></div>
     <g-link :to="post.path">
       Read More
     </g-link>

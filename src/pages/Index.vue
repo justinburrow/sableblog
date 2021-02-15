@@ -12,14 +12,14 @@
                   <a href="https://portenoire.co.uk" target="_blank"><img src="~@/assets/images/porte-noire.gif" alt="Porte Noire"></a>
                 </div>
 
-                <HomePost v-else :post="post" />
+                <HomePost :post="post" />
               </li>
             </span>
 
-          <span v-if="isMobile" class="post-list">
+          <span v-show="isMobile" class="post-list">
             <li v-for="(post, index) in this.uniquePosts" :key="post.id" v-bind:class="{'wide-banner only-mobile': index == 8}">
-              <a href="/coupledom/" class="coupledom-movement only-mobile" v-if="isMobile && index == 8">Coupledom</a>
-              <HomePost v-else :post="post"/>
+              <a href="/coupledom/" class="coupledom-movement only-mobile" v-show="isMobile && index == 8">Coupledom</a>
+              <HomePost :post="post"/>
             </li>
           </span>
         </ul>

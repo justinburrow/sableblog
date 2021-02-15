@@ -1,11 +1,7 @@
 <template>
   <div class="ad-banner">
-    <div v-if="!isMobile">
+    <div v-show="!isMobile">
       <a href="https://www.portenoire.co.uk" target="_blank"><img src="~@/assets/images/porte-noire-side-banner.jpg" alt="Porte Noire"></a>
-    </div>
-
-    <div class="ad-banner" v-if="isMobile">
-
     </div>
   </div>
 </template>

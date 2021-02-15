@@ -2,7 +2,7 @@
   <Layout class="interior">
     <div class="page">
       <div class="interior">
-        <h1 v-html="$page.wordPressPage.title" />
+        <h1 v-html="$page.wordPressPage.title"></h1>
         <div class="page-image" v-if="$page.wordPressPage.featuredMedia != null">
          <img
           v-if="$page.wordPressPage.featuredMedia != null"

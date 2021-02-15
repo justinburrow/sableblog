@@ -6,7 +6,7 @@
         <img src="~@/assets/images/coupledom-page-banner-dt.jpg" alt="Coupledom">
       </div>
 
-      <div class="hero" v-if="isMobile">
+      <div class="hero" v-show="isMobile">
         <img src="~@/assets/images/coupledom-page-banner-mob.jpg" alt="Coupledom">
       </div>
 
