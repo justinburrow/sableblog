@@ -85,7 +85,7 @@ export default {
     script.setAttribute("src", "https://www.google.com/recaptcha/api.js");
     script.setAttribute("defer", true);
     script.setAttribute("async", true);
-    document.head.appendChild(script);
+    document.getElementsByTagName('head')[0].appendChild(script);
   },
   methods: {
     submitForm() {
