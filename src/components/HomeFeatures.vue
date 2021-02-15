@@ -23,11 +23,9 @@
       </div>
 
     </div>
-    <div class="home-features">
-      <g-link to="/coupledom/">
-        <g-image src="~/assets/images/coupledom-is.gif" alt="Coupledom Is" height="300" />
-      </g-link>
-    </div>
+    <a href="/coupledom/" class="home-features">
+      Coupledom Is
+    </a>
   </div>
 </template>
 
@@ -122,10 +120,15 @@ export default {
     }
   }
   .home-features {
-    img {
-      width: 100%;
-      max-width: 100%;
-    }
+    display: block;
+    position: relative;
+    padding-top: 15%;
+    background-image: url(~@/assets/images/coupledom-is.gif);
+    background-size: cover;
+    background-position: center center;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
 </style>
