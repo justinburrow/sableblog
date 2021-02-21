@@ -105,31 +105,51 @@ export default {
         this.showCategories = state;
       }
     },
-    methods: {
-      filterNewCatImage(catId) {
-        let matchedCatPosts = []
+    created() {
+      this.$static.allWordPressCategory.edges.forEach((cat) => {
+        const catId = cat.node.id;
+        let matchedPosts = [];
+        let matchedPost = {}
 
-        // Find all posts that match the category
+        // Create an array of all possible posts for the category
         this.$static.allWordPressPost.edges.forEach((post) => {
           post.node.categories.filter((cat) => {
             if (cat.id === catId) {
-              matchedCatPosts.push(post.node);
+              matchedPosts.push(post.node);
+            }
+          })
+        });
+
+        // Remove categories from each post that don't match
+        matchedPosts.forEach((post) => {
+          post.categories.forEach((cat, i) => {
+            if (cat.id != catId) {
+              post.categories.splice(1, i);
             }
           })
         })
 
-        // Check to see if the image has already been used
-        const that = this;
-        const uniqueImages = matchedCatPosts.filter(function(post) {
-          return post != that.catImages.includes(post.id);
+        // Push the first post that isn't already in this.catImages
+        if (Array.isArray(this.catImages) && this.catImages.length) {
+          matchedPost = matchedPosts.find((p) => {
+            if (!this.catImages.includes(p)) {
+              return p;
+            }
+          })
+        } else {
+          matchedPost = matchedPosts[0];
+        }
+        this.catImages.push(matchedPost);
+      })
+    },
+    methods: {
+      filterNewCatImage(catId) {
+        const matchedPost = this.catImages.find((post) => {
+          return post.categories.some((cat) => {
+            return cat.id == catId;
+          })
         })
-
-        // Get the newest post that matches the ID and has not been used, push the ID to an array
-        const newestCatImage = uniqueImages.find(i => i.categories.filter(c => c.id == catId));
-        this.catImages.concat(newestCatImage.id);
-
-        // Set the category image to the Featured Image of the newest post
-        return newestCatImage.featuredMedia.sourceUrl;
+        return matchedPost.featuredMedia.sourceUrl;
       },
       hideDropdown() {
         this.$emit('hideDropdown')
