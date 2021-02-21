@@ -4,7 +4,7 @@
       <ul class="categories" v-if="this.showSearchBar == false && this.showCategories == false">
         <li v-for="cat in $static.allWordPressCategory.edges" class="cat" :key="cat.node.id" v-if="cat.node.count > 0" @click="hideDropdown()">
           <div class="image">
-            <g-link :to="cat.node.path"><g-image :src="filterCatImage(cat.node.id)" alt="cat.node.title"></g-image></g-link>
+            <g-link :to="cat.node.path"><g-image :src="filterNewCatImage(cat.node.id)" alt="cat.node.title"></g-image>--></g-link>
           </div>
            <g-link :to="cat.node.path" class="title"><h2>{{cat.node.title}}</h2></g-link>
         </li>
@@ -62,7 +62,22 @@
       }
     }
   }
-}
+
+  allWordPressPost(sortBy: "date", order: DESC) {
+      edges {
+        node {
+          id
+          date
+          featuredMedia {
+            sourceUrl
+          }
+          categories {
+            id
+          }
+        }
+      }
+    }
+  }
 </static-query>
 
 <script>
@@ -75,7 +90,8 @@ export default {
           results: [],
           showSearchBar: this.showSearch,
           searchingBy: '',
-          showCategories: this.mobileCatTrigger
+          showCategories: this.mobileCatTrigger,
+          catImages: []
         }
     },
     watch: {
@@ -90,22 +106,30 @@ export default {
       }
     },
     methods: {
-      filterCatImage(id) {
-        const catImages = this.$static.allCategoryImages.edges;
-        let newArr = [];
-        catImages.forEach(({node}) => {
-          newArr.push({
-            id: node.id,
-            imageUrl: node.acf.categoryImage
+      filterNewCatImage(catId) {
+        let matchedCatPosts = []
+
+        // Find all posts that match the category
+        this.$static.allWordPressPost.edges.forEach((post) => {
+          post.node.categories.filter((cat) => {
+            if (cat.id === catId) {
+              matchedCatPosts.push(post.node);
+            }
           })
-        });
-        let catImage = null;
-        newArr.filter((cat) => {
-          if (cat.id == id) {
-            catImage = cat.imageUrl
-          }
-        });
-        return catImage;
+        })
+
+        // Check to see if the image has already been used
+        const that = this;
+        const uniqueImages = matchedCatPosts.filter(function(post) {
+          return post != that.catImages.includes(post.id);
+        })
+
+        // Get the newest post that matches the ID and has not been used, push the ID to an array
+        const newestCatImage = uniqueImages.find(i => i.categories.filter(c => c.id == catId));
+        this.catImages.concat(newestCatImage.id);
+
+        // Set the category image to the Featured Image of the newest post
+        return newestCatImage.featuredMedia.sourceUrl;
       },
       hideDropdown() {
         this.$emit('hideDropdown')
