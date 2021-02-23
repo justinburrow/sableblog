@@ -196,6 +196,9 @@ export default {
         font-size: 4.5vw;
       }
     }
+    ul {
+      list-style-type: none;
+    }
   }
 
 </style>

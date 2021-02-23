@@ -327,7 +327,7 @@ export default {
       }
     }
   }
-  .post-content {
+  .post-conten, .page-content {
     font-family: 'acumin-pro', sans-serif;
     padding: 0;
     @media screen and (max-width: $breakpoint-lg) {

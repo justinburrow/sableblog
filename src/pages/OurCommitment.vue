@@ -69,9 +69,12 @@ export default {
 <style lang="scss">
   .video-banner {
     height: 22vw;
-    margin: 0 calc(50% - 50vw) 80px;
+    margin: 0 calc(50% - 50vw) 0;
     position: relative;
     z-index: 1;
+    video {
+      width: 100%;
+    }
     img {
       position: absolute;
       left: 50%;
@@ -87,7 +90,7 @@ export default {
       width: 100vw;
       max-width: 100vw;
       height: 26vw;
-      margin-bottom: 4vw;
+      margin-bottom: 2vw;
     }
   }
   .page {
