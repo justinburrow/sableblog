@@ -136,7 +136,6 @@ ul {
       @media screen and (max-width: $breakpoint-lg) {
         width: 43%;
         position: relative;
-        padding-top: 25%;
       }
     }
 
