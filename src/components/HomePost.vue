@@ -74,9 +74,13 @@ ul {
 
     .image {
       width: 100%;
-      overflow: hidden;
       position: relative;
-      padding-top: 100%;
+      a {
+        overflow: hidden;
+        position: relative;
+        padding-top: 100%;
+        display: block;
+      }
       img {
         width: 100%;
         height: 100%;
