@@ -50,6 +50,12 @@
           <span class="author" v-if="$page.wordPressPost.featuredMedia"> {{$page.wordPressPost.featuredMedia.caption | removeHTML}}</span>
         </div>
         <div ref="postContent" class="post-content" v-html="$page.wordPressPost.content"></div>
+        <div class="affiliate-disclaimer" v-if="isAffiliate">
+          <h4>Affiliate Disclaimer</h4>
+          <div v-html="$page.allWordPressPage.edges[0].node.content"></div>
+        </div>
+
+
       </div>
 
       <div class="you-may-also-like" v-if="$page.wordPressPost.categories[0].belongsTo.edges.length > 0">
@@ -82,6 +88,9 @@
       excerpt
       path
       link
+      tags {
+        slug
+      }
       featuredMedia {
         sourceUrl
         altText
@@ -108,6 +117,17 @@
             }
           }
       	}
+      }
+    }
+    allWordPressPage(filter: {slug: {eq: "affiliate-disclosure"}}) {
+      edges {
+        node {
+          id
+          slug
+          title
+          content
+          date
+        }
       }
     }
   }
@@ -196,7 +216,8 @@ export default {
     return {
       fullPath: '',
       excerpt: '',
-      featuredImage: ''
+      featuredImage: '',
+      isAffiliate: false
     }
   },
   mounted() {
@@ -210,6 +231,12 @@ export default {
     if (this.$page.wordPressPost.featuredMedia) {
       this.featuredImage = this.$page.wordPressPost.featuredMedia.sourceUrl;
     }
+
+    this.$page.wordPressPost.tags.forEach((t) => {
+      if (t = 'affiliate') {
+        this.isAffiliate = true;
+      }
+    })
 
   },
   filters: {
@@ -327,7 +354,7 @@ export default {
       }
     }
   }
-  .post-conten, .page-content {
+  .post-content, .page-content {
     font-family: 'acumin-pro', sans-serif;
     padding: 0;
     @media screen and (max-width: $breakpoint-lg) {
@@ -575,6 +602,14 @@ export default {
     	width: calc(100% - 4rem);
     }
 
+  }
+  .affiliate-disclaimer {
+    h4 {
+      text-align: center;
+    }
+    border-top: 1px solid rgba(0,0,0,0.2);
+    margin-top: 60px;
+    padding-top: 20px;
   }
 }
 .you-may-also-like {
