@@ -66,7 +66,7 @@ ul {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    align-content: start;
+    align-content: flex-start;
 
     a {
       color: black;
