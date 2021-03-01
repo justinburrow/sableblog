@@ -50,8 +50,8 @@
           <span class="author" v-if="$page.wordPressPost.featuredMedia"> {{$page.wordPressPost.featuredMedia.caption | removeHTML}}</span>
         </div>
         <div ref="postContent" class="post-content" v-html="$page.wordPressPost.content"></div>
-        <div class="affiliate-disclaimer" v-if="isAffiliate">
-          <h4>Affiliate Disclaimer</h4>
+        <div class="affiliate-disclosure" v-if="isAffiliate">
+          <h4 v-html="$page.allWordPressPage.edges[0].node.title"></h4>
           <div v-html="$page.allWordPressPage.edges[0].node.content"></div>
         </div>
 
@@ -603,7 +603,7 @@ export default {
     }
 
   }
-  .affiliate-disclaimer {
+  .affiliate-disclosure {
     h4 {
       text-align: center;
     }
