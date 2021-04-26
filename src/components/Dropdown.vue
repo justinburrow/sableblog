@@ -188,6 +188,9 @@ export default {
     transform: translateX(-50%);
     padding: 0;
     margin: 0;
+    @media screen and (max-width: $breakpoint-md) {
+      top: 6vw;
+    }
     ul.categories {
       display: flex;
       justify-content: space-between;
