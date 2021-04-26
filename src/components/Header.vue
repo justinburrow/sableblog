@@ -320,7 +320,7 @@
         top: var(--header-offset);
       }
       @media screen and (max-width: $breakpoint-md) {
-        margin-top: -20px;
+        margin-top: -7vw;
       }
     }
 

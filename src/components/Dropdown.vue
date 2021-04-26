@@ -19,10 +19,16 @@
       </div>
 
       <div class="mobile-categories" v-if="this.showCategories == true">
-        <ul>
-          <li v-for="cat in $static.allWordPressCategory.edges" @click="hideDropdown()">
-            <g-link :to="cat.node.path">{{cat.node.title}}</g-link>
-          </li>
+        <ul class="cd-accordion cd-accordion--animated">
+          <li class="cd-accordion__item cd-accordion__item--has-children">
+            <input class="cd-accordion__input" type="checkbox" name ="Blog" id="Blog">
+            <label class="cd-accordion__label cd-accordion__label--icon-folder" for="Blog"><span>Blog</span></label>
+            <ul class="cd-accordion__sub cd-accordion__sub--l1">
+              <li v-for="cat in $static.allWordPressCategory.edges" @click="hideDropdown()">
+                <g-link :to="cat.node.path">{{cat.node.title}}</g-link>
+              </li>
+              </ul>
+            </li>
           <li @click="hideDropdown()"><g-link to="/coupledom/">Coupledom</g-link></li>
           <li @click="hideDropdown()"><g-link to="/pages/about-us/">About</g-link></li>
           <li @click="hideDropdown()"><g-link to="/our-commitment/">Our Commitment</g-link></li>
@@ -319,7 +325,7 @@ export default {
       li {
         font-family: 'acumin-pro-condensed';
         font-size: 5vw;
-        text-align: center;
+        text-align: left;
         text-transform: uppercase;
         letter-spacing: .3vw;
         border-bottom: 1px solid #666;
@@ -335,42 +341,116 @@ export default {
       }
     }
   }
+
   .spacer {
     height: 100px;
     width: 100%;
     background: transparent;
   }
+
   .post-info {
-      width: 100%;
-      display: flex;
-      a {
-        text-decoration: none;
-        flex-grow: 1;
-        &.title {
-          width: 60%;
-        }
-        &.read-more {
-          flex-grow: 0;
-          margin-left: 10px;
-        }
+    width: 100%;
+    display: flex;
+    a {
+      text-decoration: none;
+      flex-grow: 1;
+      &.title {
+        width: 60%;
       }
-      h4 {
-        font-family: 'acumin-pro-extra-condensed', Helvetica, sans-serif;
-        text-align: left;
-        font-size: 22px;
-        text-transform: uppercase;
-        margin: 0 10px 0 0;
-        line-height: 1;
-      }
-      a {
-        color: white;
-        font-size: 12px;
-        text-transform: uppercase;
-        text-decoration: none;
-        &.read-more {
-          text-decoration: underline;
-          flex-shrink: 0;
-        }
+      &.read-more {
+        flex-grow: 0;
+        margin-left: 10px;
       }
     }
+    h4 {
+      font-family: 'acumin-pro-extra-condensed', Helvetica, sans-serif;
+      text-align: left;
+      font-size: 22px;
+      text-transform: uppercase;
+      margin: 0 10px 0 0;
+      line-height: 1;
+    }
+    a {
+      color: white;
+      font-size: 12px;
+      text-transform: uppercase;
+      text-decoration: none;
+      &.read-more {
+        text-decoration: underline;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  .cd_accordion__sub {
+    background: #105651;
+  }
+
+  .cd-accordion--animated .cd-accordion__label::after {
+    transition: transform .3s;
+  }
+
+  .cd-accordion__sub--is-visible {
+    display: block;
+  }
+
+  .cd-accordion__input:checked ~ .cd-accordion__label::after {
+    transform: rotate(90deg);
+  }
+
+  .cd-accordion__item {
+    user-select: none;
+
+  .cd-accordion__input { // hide native checkbox
+    position: absolute;
+    opacity: 0;
+  }
+
+  .cd-accordion__label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: black;
+    color: white;
+    text-align: left;
+  }
+  .cd-accordion__sub {
+    display: none; // by default hide all sub menus
+  }
+
+  .cd-accordion__input:checked ~ .cd-accordion__sub { // show children when item is checked
+    display: block;
+    background: #105651;
+    width: 100vw;
+    margin-left: -15px;
+    padding-top: 3vw;
+    padding-left: 15px;
+    margin-top: 5vw;
+  }
+
+  .cd-accordion__label::after {
+    order: 2;
+    position: absolute;
+    content: '>';
+    font-size: 8vw;
+    right: 0;
+  }
+
+  .cd-accordion__input:checked ~ .cd-accordion__sub { // show children when item is checked
+    display: block;
+    li:last-child {
+      border: none;
+      margin-bottom: 0;
+    }
+  }
+
+  .cd-accordion__sub--l1 .cd-accordion__label {
+    padding-left: 16px;
+    text-align: left;
+
+    &:hover {
+      background: rgba(0,0,0,0.7);
+    }
+  }
+}
 </style>
