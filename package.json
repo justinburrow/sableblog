@@ -1,0 +1,19 @@
+{
+  "name": "sable-2021-coupledom-splash-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justinburrow/sableblog.git"
+  },
+  "author": "Justin Burrow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justinburrow/sableblog/issues"
+  },
+  "homepage": "https://github.com/justinburrow/sableblog#readme"
+}
