@@ -6,7 +6,7 @@ html, body {
 }
 
 body {
-  background-color: black;
+  // background-color: black;
   background-align: top center;
   position: relative;
   padding: 0 20px;
@@ -14,17 +14,17 @@ body {
 
 @media (max-width: 500px) {
   body {
-    background-image: url('images/background_mob.jpg');
-    background-size: cover;
-    background-position: center top;
+    //background-image: url('images/background_mob.jpg');
+    //background-size: cover;
+    //background-position: center top;
   }
 }
 
 @media (min-width: 501px) {
   body {
-    background-image: url('images/background_desktop.jpg');
-    background-size: cover;
-    background-position: center top;
+    //background-image: url('images/background_desktop.jpg');
+    //background-size: cover;
+    //background-position: center top;
   }
 }
 

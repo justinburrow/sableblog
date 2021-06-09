@@ -5,26 +5,21 @@ html, body {
 }
 
 body {
-  background-color: black;
   background-align: top center;
   position: relative;
   padding: 0 20px;
 }
 
-@media (max-width: 500px) {
-  body {
-    background-image: url("/background_mob.632beaba.jpg");
-    background-size: cover;
-    background-position: center top;
-  }
+.background {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
-@media (min-width: 501px) {
-  body {
-    background-image: url("/background_desktop.966a6291.jpg");
-    background-size: cover;
-    background-position: center top;
-  }
-}
+
 .logo img {
   display: block;
   max-width: 11.8vw;
