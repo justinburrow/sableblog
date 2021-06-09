@@ -1,0 +1,238 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css";
+html, body {
+  width: 100%;
+  height: 100vh;
+}
+
+body {
+  background-color: black;
+  background-align: top center;
+  position: relative;
+  padding: 0 20px;
+}
+
+@media (max-width: 500px) {
+  body {
+    background-image: url("/background_mob.4e522577.jpg");
+    background-size: cover;
+    background-position: center top;
+  }
+}
+@media (min-width: 501px) {
+  body {
+    background-image: url("/background_desktop.3bf982a2.jpg");
+    background-size: cover;
+    background-position: center top;
+  }
+}
+.logo img {
+  display: block;
+  max-width: 11.8vw;
+  width: 100%;
+  position: relative;
+  top: 2.5vw;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media (max-width: 1151px) {
+  .logo img {
+    max-width: 38.7vw;
+    top: 5.1vw;
+  }
+}
+@media (max-width: 1151px) {
+  .logo img {
+    max-width: 38.7vw;
+    top: 11.1vw;
+  }
+}
+
+.coupledom {
+  position: relative;
+  top: 22vw;
+  max-width: 34vw;
+  margin: 0 auto;
+  text-align: center;
+}
+.coupledom img {
+  width: 100%;
+}
+.coupledom img.join {
+  max-width: 45%;
+  margin-top: 2vw;
+}
+@media (max-width: 1151px) {
+  .coupledom {
+    top: 40vh;
+    max-width: 100%;
+  }
+  .coupledom img {
+    width: 100%;
+    max-width: 100%;
+  }
+  .coupledom img.join {
+    max-width: 65%;
+    margin-top: 5vh;
+  }
+}
+@media (max-width: 1151px) {
+  .coupledom #mc_embed_signup {
+    width: 100%;
+  }
+}
+.coupledom #mc_embed_signup input.email, .coupledom #mc_embed_signup input {
+  border-radius: 0;
+  padding: 1.5vw 2.5vw;
+  color: white !important;
+}
+.coupledom #mc_embed_signup input.email {
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.32);
+  margin: 0;
+  border: none;
+  letter-spacing: 0.05vw;
+}
+.coupledom #mc_embed_signup input.email::placeholder {
+  color: white;
+}
+@media (max-width: 1151px) {
+  .coupledom #mc_embed_signup input.email {
+    width: 60%;
+    font-size: 3vw;
+    padding: 5vw 7vw;
+  }
+}
+.coupledom #mc_embed_signup input.button {
+  margin-left: -4px;
+  font-size: 0;
+  line-height: 0;
+  background: url("/subscribe.c38fc3b2.jpg") no-repeat;
+  background-size: cover;
+  background-position: top center;
+  padding: 1.5vw;
+  width: 10vw;
+}
+@media (max-width: 1151px) {
+  .coupledom #mc_embed_signup input.button {
+    width: 26.9vw;
+    margin-left: -2vw;
+    padding: 5vw;
+  }
+}
+@media (max-width: 1151px) {
+  .coupledom #mc_embed_signup .clear {
+    height: 0;
+    width: auto;
+    display: inline;
+  }
+}
+@media (max-width: 1151px) {
+  .coupledom #mc_embed_signup {
+    width: 100%;
+  }
+}
+.coupledom p.disclaimer {
+  font-size: 12px;
+  color: white;
+  width: 74%;
+  margin: 0 auto;
+  line-height: 1.2;
+}
+@media (max-width: 1151px) {
+  .coupledom p.disclaimer {
+    width: 100%;
+    letter-spacing: 0;
+    font-size: 2.7vw;
+    line-height: 1.4;
+    margin-top: 3vw;
+  }
+}
+.coupledom p.disclaimer a {
+  color: white;
+  text-decoration: underline;
+}
+.coupledom p.disclaimer a:visited {
+  color: white;
+}
+.coupledom ul.social {
+  margin: 2vw auto 1vw auto;
+  list-style-type: none;
+  width: 100%;
+  max-width: 8vw;
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 1151px) {
+  .coupledom ul.social {
+    max-width: 40vw;
+    margin-top: 5vh;
+  }
+}
+.coupledom ul.social li {
+  display: block;
+  width: 1.35vw;
+  position: relative;
+}
+@media (max-width: 1151px) {
+  .coupledom ul.social li {
+    width: 5vw;
+  }
+}
+.coupledom ul.social li img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  top: 50%;
+  transfrom: translateY(-50%);
+}
+.coupledom ul.social li:last-child {
+  width: 1.54vw;
+}
+@media (max-width: 1151px) {
+  .coupledom ul.social li:last-child {
+    width: 6vw;
+  }
+}
+
+body.legal {
+  background: white;
+}
+body.legal .logo {
+  margin: 50px auto 50px auto;
+  max-width: 400px;
+  position: relative;
+}
+body.legal .logo img {
+  width: 100%;
+  max-width: 100%;
+  top: 0;
+  left: 0;
+  transform: none;
+}
+body.legal .container {
+  display: block;
+  padding-bottom: 50px;
+}
+body.legal .container h1 {
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 30px;
+}
+body.legal .container ol li {
+  margin-bottom: 30px;
+}
+body.legal .container p {
+  margin-bottom: 30px;
+}
+body.legal .container h3 {
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+body.legal .container ul {
+  list-style-type: disc;
+}
+
+/*# sourceMappingURL=/styles.e7562816.css.map */
