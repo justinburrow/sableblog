@@ -20,12 +20,19 @@
       justify-self: center;
       align-self: center;
       margin-right: 2.60vw;
-      &:nth-child(3) {
-        margin-right: 0;
+      &:nth-child(4) {
+        text-align: center;
+        img {
+          margin: 0 auto;
+        }
+      }
+      &:nth-child(5) {
+        margin-left: 2.60vw;
+        text-align: right;
       }
       &:last-child {
-        margin-right: none;
         flex-grow: 0;
+        text-align: right;
       }
     }
     .logo {
