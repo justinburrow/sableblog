@@ -1,9 +1,6 @@
 <template>
   <div class="layout">
     <header>
-      <ClientOnly>
-        <Announcements />
-      </ClientOnly>
       <Header />
     </header>
 
@@ -18,7 +15,6 @@
 </template>
 
 <script>
-  import Announcements from '~/components/Announcements.vue'
   import Header from '~/components/Header.vue'
   import HomeFeatures from '~/components/HomeFeatures.vue'
   import Footer from '~/components/Footer.vue'
@@ -26,7 +22,6 @@
 
   export default {
     components: {
-      Announcements,
       Header,
       HomeFeatures,
       Footer,
