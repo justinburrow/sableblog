@@ -57,7 +57,7 @@
 </div>
 </template>
 
-<static-query>
+<!--<static-query>
   query {
     allWordPressPage(filter: {slug: {eq: "homepage-settings"}}) {
       edges {
@@ -85,7 +85,7 @@
     }
   }
 
-</static-query>
+</static-query>-->
 
 
 <script>
