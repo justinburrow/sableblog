@@ -7,8 +7,7 @@
       <slot />
     </div>
 
-    <Footer />
-    <Subscription :show-sub="$store.showPopup"/>
+    <Footer />/>
   </div>
 </template>
 
