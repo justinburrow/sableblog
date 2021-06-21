@@ -78,10 +78,14 @@ onblur="this.placeholder = 'search'">
       }
     },
     created() {
-      window.addEventListener("scroll", this.updateScrollPosition);
+      if (process.isClient) {
+        window.addEventListener("scroll", this.updateScrollPosition);
+      }
     },
     beforeDestroy() {
-      window.removeEventListener("scroll", this.updateScrollPosition);
+      if (process.isClient) {
+        window.removeEventListener("scroll", this.updateScrollPosition);
+      }
     }
   }
 </script>
