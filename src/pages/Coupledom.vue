@@ -253,7 +253,6 @@ export default {
           margin-top: 2vw;
         }
         h2 {
-          font-family: 'acumin-pro-extra-condensed', sans-serif;
           font-size: 21px;
           line-height: 1.2;
           text-transform: uppercase;
@@ -295,9 +294,7 @@ export default {
       overflow: hidden;
 
       h3 {
-        text-align: center;
         text-transform: uppercase;
-        font-family: 'acumin-pro-extra-condensed', 'Helvetica Neue', sans-serif;
         font-weight: 600;
         font-style: normal;
         font-size: 45px;
@@ -337,7 +334,6 @@ export default {
           }
           p {
             color: black;
-            font-family: 'acumin-pro-extra-condensed';
             text-transform: uppercase;
             margin-top: 5px;
             font-size: 20px;

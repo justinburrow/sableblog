@@ -76,7 +76,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .page {
     padding-top: 60px !important;
     max-width: 950px !important;
@@ -109,9 +109,7 @@ export default {
     }
   }
   h1 {
-    font-family: acumin-pro-extra-condensed, sans-serif;
     letter-spacing: 1px;
-    text-align: center;
     text-transform: uppercase;
     font-size: 60px;
     margin: 0 0 20px;

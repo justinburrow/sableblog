@@ -73,16 +73,14 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .category {
   h1 {
     margin-top: 24px;
-    font-family: 'acumin-pro-extra-condensed';
     font-weight: 500;
     font-size: 22px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    text-align: center;
     border-bottom: 1px solid black;
     padding-bottom: 10px;
     margin-bottom: 30px;

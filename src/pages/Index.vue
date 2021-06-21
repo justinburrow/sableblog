@@ -91,9 +91,7 @@ export default {
       margin: 5.3vw 0 0 0;
     }
     h3 {
-      text-align: center;
       text-transform: uppercase;
-      font-family: 'acumin-pro-extra-condensed', 'Helvetica Neue', sans-serif;
       font-weight: 600;
       font-style: normal;
       font-size: 45px;

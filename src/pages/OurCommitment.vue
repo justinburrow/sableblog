@@ -66,7 +66,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .video-banner {
     height: 22vw;
     margin: 0 calc(50% - 50vw) 0;
@@ -143,9 +143,7 @@ export default {
     }
   }
   h1 {
-    font-family: acumin-pro-extra-condensed, sans-serif;
     letter-spacing: 1px;
-    text-align: center;
     text-transform: uppercase;
     font-size: 45px;
     margin: 0 0 23px;

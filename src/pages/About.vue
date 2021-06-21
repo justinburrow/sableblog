@@ -123,7 +123,6 @@ export default {
           }
           h2 {
             text-align: left;
-            font-family: 'acumin-pro-extra-condensed', 'helvetica neue', sans-serif;
             font-weight: 600;
             font-size: 26px;
             margin-bottom: 10px;
@@ -158,7 +157,6 @@ export default {
         }
         h3 {
           font-size: 26px;
-          font-family: 'acumin-pro-extra-condensed', 'helvetica neue', sans-serif;
           font-weight: 600;
           text-align: center;
           margin-top: 50px;

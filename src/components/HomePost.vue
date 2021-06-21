@@ -172,7 +172,6 @@ ul {
     }
 
     h2 {
-      font-family: acumin-pro-extra-condensed, Helvetica, sans-serif;
       font-weight: 600;
       text-transform: uppercase;
       text-align: left;

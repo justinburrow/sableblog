@@ -108,11 +108,10 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .search-results {
   h1 {
     margin-top: 30px;
-    font-family: 'acumin-pro-extra-condensed';
     font-size: 24px;
     font-weight: 300;
     letter-spacing: 2px;

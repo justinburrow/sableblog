@@ -110,7 +110,6 @@ export default {
           text-transform: uppercase;
         }
         .title {
-          font-family: 'acumin-pro-extra-condensed', sans-serif;
           font-size: 40px;
           line-height: 1;
           letter-spacing: .5px;
