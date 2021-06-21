@@ -111,7 +111,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .contact-us {
   width: 100%;
   max-width: none !important;
