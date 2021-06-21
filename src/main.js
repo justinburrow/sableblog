@@ -4,28 +4,16 @@ import VueAgile from 'vue-agile'
 import VueCookies from 'vue-cookies'
 import VueSocialSharing from 'vue-social-sharing'
 import he from 'he'
+import DynamicMarquee from 'vue-dynamic-marquee';
 
 export default function (Vue, {router, head, isClient}) {
   Vue.component('Layout', DefaultLayout);
+  Vue.component('dynamic-marquee', DynamicMarquee)
   Vue.prototype.$he = he;
   Vue.use(VScrollLock);
   Vue.use(VueAgile);
   Vue.use(VueCookies);
   Vue.use(VueSocialSharing);
-
-  head.link.push({
-    rel: "stylesheet",
-    href: "https://use.typekit.net/zmf6fgh.css",
-    async: true
-  });
-
-  head.script.push({
-    src: "https://kit.fontawesome.com/70d564e194.js",
-    crossorigin: "anonymous",
-    async: true,
-    defer: true,
-    body: true
-  });
 
   head.link.push({
     rel: "preconnect",
@@ -117,8 +105,7 @@ export default function (Vue, {router, head, isClient}) {
   const store = Vue.observable({
     menuOpen: false,
     searchQuery: '',
-    showPopup: false,
-    isMobile: false
+    showPopup: false
   });
 
   const actions = {
@@ -128,20 +115,10 @@ export default function (Vue, {router, head, isClient}) {
     closeMenu() {
       store.menuOpen = false;
     },
-    mobileDetect() {
-      if (screen.width <= 1024) {
-        store.isMobile = true;
-      } else {
-        store.isMobile = false;
-      }
-    }
   }
 
   if (typeof window !== "undefined") {
     Vue.prototype.$scrollToTop = () => window.scrollTo(0,0);
-    document.addEventListener('DOMContentLoaded', function() {
-      actions.mobileDetect();
-    });
   }
 
   router.beforeEach((to, from, next) => {

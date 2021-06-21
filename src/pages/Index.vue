@@ -1,29 +1,7 @@
 <template>
-  <Layout class="interior">
+  <Layout>
     <div class="interior">
-      <section class="featured-posts">
-          <ul>
-            <span v-if="!isMobile" class="post-list">
-              <li v-for="(post, index) in this.uniquePosts" :key="post.id" v-bind:class="[{'wide-banner only-desktop': index == 6},{'wide-banner only-desktop': index == 16}]">
-                <div class="coupledom-movement only-desktop" v-if="!isMobile && index == 6">
-                  <button><a href="/coupledom/">Read More</a></button>
-                </div>
-                <div class="porte-noire-banner only-desktop" v-else-if="index == 16">
-                  <a href="https://portenoire.co.uk" target="_blank"><img src="~@/assets/images/porte-noire.gif" alt="Porte Noire"></a>
-                </div>
 
-                <HomePost v-else :post="post" />
-              </li>
-            </span>
-
-          <span v-show="isMobile" class="post-list">
-            <li v-for="(post, index) in this.uniquePosts" :key="post.id" v-bind:class="{'wide-banner only-mobile': index == 8}">
-              <a href="/coupledom/" class="coupledom-movement only-mobile" v-if="index == 8">Coupledom</a>
-              <HomePost v-else :post="post"/>
-            </li>
-          </span>
-        </ul>
-      </section>
     </div>
   </Layout>
 </template>

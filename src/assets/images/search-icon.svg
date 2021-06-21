@@ -1,7 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="20px" height="19px" viewBox="0 0 20 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Bitmap</title>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <image id="Bitmap" x="0" y="0" width="20" height="19" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAYAAACQjC21AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAFKADAAQAAAABAAAAEwAAAAAA/SztAAABfUlEQVQ4EZ2UwVGEQBRExZsXiwzECCQDMYMNYYxAbx41BK6exAw2g8UIFjNYq7w7Xrzia/ggDOCu/qre+b+7p5ndoTY6CiqO4wTqBqQgA6rK8Oy9L0UsVTQUCMuZFaZ6Bd6QsF4A1RpcEyxtuQgrQA1KkIROOFXn2WoIPf2MlgOFFT250OBx5t3MWhATM5SzhhkS/4PtcaF8DHFr5EQMzYM5p/8EbsC1LU+qhImwh2BP83uGNp1Qt+dD4YB5Jw/B6dCrQNV/AtudZHaNVgXqfTvT8MdqgsIXXYEVSDn66EkHhK/w6DCjUmBhTD5Sfhl4tkPWtyrAtDCUQC+2m6pjBk8KvsD7WGmn7lK64z9hvAezXx/asW1T1/UJ6ylz2sb8fPZ/DhayRroEHqjfAVUMViABbwTeRVH0SF+DKy6mYm2qD+wIO4VjVvCwdAEFm3ORdrqSdhIqfba0CWSzIqTpnvVDvXyTEy5tXuItqETXSc+7S1ny7+Xt98swvsj8DWVJZgjhAl2pAAAAAElFTkSuQmCC"></image>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="34.545" height="33.641" viewBox="0 0 34.545 33.641"><defs><style>.a{fill:#101010;}</style></defs><g transform="translate(-119.366 -54.87)"><g transform="translate(119.366 54.87)"><path class="a" d="M133.924,83.99a14.56,14.56,0,1,1,14.558-14.558A14.576,14.576,0,0,1,133.924,83.99Zm0-26.233A11.673,11.673,0,1,0,145.6,69.432,11.688,11.688,0,0,0,133.924,57.757Z" transform="translate(-119.366 -54.87)"/><path class="a" d="M136.271,72.839a1.432,1.432,0,0,1-1.009-.41l-8.443-8.295a1.442,1.442,0,1,1,2.021-2.057l8.443,8.291a1.442,1.442,0,0,1-1.012,2.471Z" transform="translate(-103.169 -39.198)"/></g></g></svg>
