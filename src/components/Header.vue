@@ -23,14 +23,9 @@
       <div id="categories" v-if="!isMobile" :class="{ shown: showCat }">
         <div class="container">
           <p class="category-title">A space for all things Coupledom</p>
-          <!--<ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>-->
+          <ul>
+            <li v-for=""></li>
+          </ul>
         </div>
       </div>
       <div id="search-box" v-if="!isMobile" :class="{ shown: showSearch }">
@@ -42,9 +37,33 @@ onblur="this.placeholder = 'search'">
       </div>
     </header>
 
-
   </div>
 </template>
+
+<static-query>
+  query {
+  allWordPressCategory (filter: {title: {ne: "Uncategorized"}}) {
+    edges {
+      node {
+        id
+        title
+        content
+      }
+    }
+  }
+	allCategoryImages {
+    edges {
+      node {
+        id
+  			acf {
+      		thumbnailImage
+          mainImage
+    		}
+      }
+    }
+  }
+}
+</static-query>
 
 <script>
 
@@ -61,7 +80,8 @@ onblur="this.placeholder = 'search'">
         scrollPosition: null,
         isFixed: false,
         showCat: false,
-        showSearch: false
+        showSearch: false,
+        catDetails: []
       }
     },
     methods: {
@@ -76,6 +96,24 @@ onblur="this.placeholder = 'search'">
           this.isFixed = false;
         }
       }
+    },
+    mounted() {
+      let that = this;
+      const allCatImages = this.$static.allCategoryImages.edges;
+      const cat = this.$static.allWordPressCategory.edges;
+      cat.filter(function(cat) {
+        let catID = cat.node.id;
+        allCatImages.filter(function(catImage) {
+          if (catID == catImage.node.id) {
+            let catInfo = {
+              ...cat.node,
+              ...catImage.node.acf
+            }
+            that.catDetails.push(catInfo)
+          }
+        })
+        that.catDetails.reverse();
+      })
     },
     created() {
       if (process.isClient) {
