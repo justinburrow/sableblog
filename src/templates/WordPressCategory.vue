@@ -10,13 +10,13 @@
       <Pager :info="$page.wordPressCategory.belongsTo.pageInfo"/>
     </div>-->
 
-    <header>
+    <div class="header">
       <img src="" alt="">
       <div class="caption">
         <h1></h1>
         <h2></h2>
       </div>
-    </header>
+    </div>
 
 
   </Layout>
