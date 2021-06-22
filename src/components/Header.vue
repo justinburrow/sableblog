@@ -3,9 +3,13 @@
     <header :class="{ fixed: isFixed }">
       <div class="top-bar"></div>
 
+      <div class="mobileHeader" v-if="isMobile">
+        <g-image src="~/assets/images/sable-logo.svg" alt="S'able Labs" />
+      </div>
+
       <div class="header-content">
         <nav>
-            <a href="#" :class="{ shown: showCat }" @click="showCat = !showCat">The Hub</a>
+            <a href="#" :class="{ shown: showCat }" @click="showCat = !showCat, showSearch = false">The Hub</a>
             <g-link to="/the-podcast">The Podcast</g-link>
             <g-link to="/about">About</g-link>
 
@@ -14,7 +18,7 @@
             </g-link>
 
             <button>Subscribe</button>
-            <button @click="showSearch = !showSearch" :class="{ shown: showCat }">
+            <button @click="showSearch = !showSearch, showCat = false" :class="{ shown: showCat }">
               <img src="~@/assets/images/search-icon.svg" alt="Search" />
             </button>
           </nav>
@@ -24,7 +28,12 @@
         <div class="container">
           <p class="category-title">A space for all things Coupledom</p>
           <ul>
-            <li v-for=""></li>
+            <li v-for="cat in catDetails" :key="cat.id" @click="showCat = !showCat">
+              <g-link :to="cat.path">
+                <img :src="cat.thumbnailImage" :alt="cat.title">
+                <h3>{{ cat.title }}</h3>
+              </g-link>
+            </li>
           </ul>
         </div>
       </div>
@@ -48,6 +57,7 @@ onblur="this.placeholder = 'search'">
         id
         title
         content
+        path
       }
     }
   }
@@ -90,7 +100,7 @@ onblur="this.placeholder = 'search'">
         this.evalFixed();
       },
       evalFixed() {
-        if (this.scrollPosition > 200) {
+        if (this.scrollPosition > 200 && !this.isMobile) {
           this.isFixed = true;
         } else {
           this.isFixed = false;
@@ -112,8 +122,8 @@ onblur="this.placeholder = 'search'">
             that.catDetails.push(catInfo)
           }
         })
-        that.catDetails.reverse();
       })
+      that.catDetails.reverse();
     },
     created() {
       if (process.isClient) {

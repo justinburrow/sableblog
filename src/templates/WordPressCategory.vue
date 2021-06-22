@@ -1,6 +1,6 @@
 <template>
   <Layout class="interior">
-    <div class="category interior">
+    <!--<div class="category interior">
       <h1>{{ $page.wordPressCategory.title }}</h1>
       <ul class="post-list" :class="{needSpacer: 'addSpacer'}">
         <li v-for="{ node } in $page.wordPressCategory.belongsTo.edges" :key="node.id" :class="$page.wordPressCategory.title | lowercase">
@@ -8,7 +8,17 @@
         </li>
       </ul>
       <Pager :info="$page.wordPressCategory.belongsTo.pageInfo"/>
-    </div>
+    </div>-->
+
+    <header>
+      <img src="" alt="">
+      <div class="caption">
+        <h1></h1>
+        <h2></h2>
+      </div>
+    </header>
+
+
   </Layout>
 </template>
 
@@ -72,26 +82,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.category {
-  h1 {
-    margin-top: 24px;
-    font-weight: 500;
-    font-size: 22px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border-bottom: 1px solid black;
-    padding-bottom: 10px;
-    margin-bottom: 30px;
-    color: black;
-    @media screen and (max-width: $breakpoint-md) {
-      font-size: 5vw;
-      margin-bottom: 5vw;
-    }
-  }
-  a {
-    color: black;
-  }
-}
-</style>

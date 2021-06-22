@@ -44,7 +44,24 @@
   </div>
 
   <div class="mobile-banner" v-if="isMobile">
+    <agile :autoplay="true" :nav-buttons="true" :speed="500" :autoplay-speed="10000" :dots="false">
+      <section>
+        <div class="headlines">
+          <img src="https://blog.sablelabs.co/wp-content/uploads/2021/06/banner-1-dt-scaled.jpg" />
+          <h1 class="black">We believe that the greatest outcomes are created when people come together</h1>
+          <h2 class="black">An experience for partnerships of all kinds</h2>
+          <a href="#" class="button__primary">Read About Coupledom ></a>
+        </div>
+      </section>
+      <section>
+        <div class="headlines">
+          <img src="https://blog.sablelabs.co/wp-content/uploads/2021/06/banner-2-dt-scaled.jpg" />
+          <h1 class="black">Head to Audible now to listen to our brand new podcast; Coupledom</h1>
+          <a href="#" class="button__primary">Listen Now ></a>
+        </div>
 
+      </section>
+    </agile>
   </div>
 
     <div class="marquee">
