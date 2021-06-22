@@ -22,27 +22,27 @@
               <img src="~@/assets/images/search-icon.svg" alt="Search" />
             </button>
           </nav>
-      </div>
 
-      <div id="categories" v-if="!isMobile" :class="{ shown: showCat }">
-        <div class="container">
-          <p class="category-title">A space for all things Coupledom</p>
-          <ul>
-            <li v-for="cat in catDetails" :key="cat.id" @click="showCat = !showCat">
-              <g-link :to="cat.path">
-                <img :src="cat.thumbnailImage" :alt="cat.title">
-                <h3>{{ cat.title }}</h3>
-              </g-link>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="search-box" v-if="!isMobile" :class="{ shown: showSearch }">
-        <div class="container">
-          <input type="text" name="" value="" placeholder="search" onfocus="this.placeholder = ''"
-onblur="this.placeholder = 'search'">
-          <img src="~@/assets/images/search-icon.svg" alt="Search" />
-        </div>
+          <div id="categories" v-if="!isMobile" :class="{ shown: showCat }">
+            <div class="container">
+              <p class="category-title">A space for all things Coupledom</p>
+              <ul>
+                <li v-for="cat in catDetails" :key="cat.id" @click="showCat = !showCat">
+                  <g-link :to="cat.path">
+                    <img :src="cat.thumbnailImage" :alt="cat.title">
+                    <h3>{{ cat.title }}</h3>
+                  </g-link>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div id="search-box" v-if="!isMobile" :class="{ shown: showSearch }">
+            <div class="container">
+              <input type="text" name="" value="" placeholder="search" onfocus="this.placeholder = ''"
+    onblur="this.placeholder = 'search'">
+              <img src="~@/assets/images/search-icon.svg" alt="Search" />
+            </div>
+          </div>
       </div>
     </header>
 
