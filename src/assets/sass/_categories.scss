@@ -3,8 +3,37 @@
   width: 100%;
   background: $lightbrown;
   flex-wrap: no-wrap;
+  position: relative;
+  margin-bottom: 100px;
   img {
     width: 50%;
     max-width: 50%;
+  }
+  .caption {
+    position: absolute;
+    top: 50%;
+    transform: positionY(-50%);
+    left: 55%;
+    h1 {
+      font-size: 7vw;
+      margin: 0;
+      padding: 0;
+      text-transform: lowercase;
+      line-height: 1;
+      font-weight: 600;
+    }
+    h2 {
+      font-weight: 300;
+      text-transform: none;
+      margin: 1.5vw 0 0 0;
+      padding: 0;
+      font-size: 1.3vw;
+    }
+  }
+}
+
+.catPostList {
+  ul {
+    list-style-type: none;
   }
 }

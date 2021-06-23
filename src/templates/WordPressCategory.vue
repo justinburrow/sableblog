@@ -1,21 +1,20 @@
 <template>
-  <Layout class="interior">
-    <!--<div class="category interior">
-      <h1>{{ $page.wordPressCategory.title }}</h1>
+  <Layout>
+    <div class="header">
+      <img :src="$page.categoryImages.acf.mainImage" :alt="$page.wordPressCategory.title">
+      <div class="caption">
+        <h1>{{ $page.wordPressCategory.title }}</h1>
+        <h2>{{ $page.wordPressCategory.content }}</h2>
+      </div>
+    </div>
+
+    <div class="catPostList">
       <ul class="post-list" :class="{needSpacer: 'addSpacer'}">
         <li v-for="{ node } in $page.wordPressCategory.belongsTo.edges" :key="node.id" :class="$page.wordPressCategory.title | lowercase">
-          <HomePost :post="{ node }" />
+          <MainPost :post="{ node }" />
         </li>
       </ul>
       <Pager :info="$page.wordPressCategory.belongsTo.pageInfo"/>
-    </div>-->
-
-    <div class="header">
-      <img src="" alt="">
-      <div class="caption">
-        <h1></h1>
-        <h2></h2>
-      </div>
     </div>
 
 
@@ -23,9 +22,11 @@
 </template>
 
 <page-query>
-query WordPressCategory ($id: ID!, $page: Int) {
+  query WordPressCategory ($id: ID!, $page: Int) {
   wordPressCategory(id: $id) {
     title
+    id
+    content
     belongsTo(page: $page, perPage: 30) @paginate {
       pageInfo {
         totalPages
@@ -48,27 +49,31 @@ query WordPressCategory ($id: ID!, $page: Int) {
       }
     }
   }
+  categoryImages(id: $id) {
+    acf {
+      mainImage
+    }
+  }
 }
+
 </page-query>
 
 <script>
 import { Pager } from 'gridsome'
-import HomePost from '~/components/HomePost.vue'
+import MainPost from '~/components/MainPost.vue'
 
 export default {
   data () {
     return {
-      needSpacer: false
+      nextCat: {}
     }
   },
   components: {
     Pager,
-    HomePost
+    MainPost
   },
   mounted() {
-    if (this.$page.wordPressCategory.belongsTo.edges % 3 != 0) {
-      this.needSpacer = true;
-    }
+
   },
   metaInfo () {
     return {

@@ -25,3 +25,14 @@ a.button {
     }
   }
 }
+
+.post-list {
+  padding: 0 5.3vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  li {
+    width: 30%;
+  }
+}
