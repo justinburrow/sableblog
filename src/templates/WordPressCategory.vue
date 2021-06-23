@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <div class="header">
-      <img :src="$page.categoryImages.acf.mainImage" :alt="$page.wordPressCategory.title">
+      <img :src="mainImage" :alt="$page.wordPressCategory.title">
       <div class="caption">
         <h1>{{ $page.wordPressCategory.title }}</h1>
         <h2>{{ $page.wordPressCategory.content }}</h2>
@@ -69,7 +69,8 @@ import MainPost from '~/components/MainPost.vue'
 export default {
   data () {
     return {
-      nextCat: {}
+      nextCat: {},
+      mainImage: null
     }
   },
   components: {
@@ -77,7 +78,12 @@ export default {
     MainPost
   },
   mounted() {
-
+    if (this.$page.categoryImages.acf.mainImage) {
+      this.mainImage = this.$page.categoryImages.acf.mainImage;
+      console.log(this.$page.categoryImages.acf.mainImage);
+    } else {
+      this.mainImage = null;
+    }
   },
   metaInfo () {
     return {
