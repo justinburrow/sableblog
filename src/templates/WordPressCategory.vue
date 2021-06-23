@@ -43,6 +43,10 @@
               sourceUrl
               caption
               altText
+              mediaDetails {
+                width
+                height
+              }
             }
         	}
         }

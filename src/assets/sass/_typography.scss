@@ -1,1 +1,17 @@
 @import url("https://use.typekit.net/zmf6fgh.css");
+
+@font-face {
+  font-family: 'Publico Banner Web';
+  src: url('assets/fonts/PublicoBanner-LightItalic-Web.woff2') format('woff2'),
+       url('assets/fonts/PublicoBanner-LightItalic-Web.woff') format('woff');
+  font-weight:  300;
+  font-style:   italic;
+  font-stretch: normal;
+}
+
+.PublicoBanner-LightItalic-Web {
+  font-family: 'Publico Banner Web';
+  font-weight:  300;
+  font-style:   italic;
+  font-stretch: normal;
+}

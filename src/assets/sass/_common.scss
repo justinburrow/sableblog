@@ -27,12 +27,67 @@ a.button {
 }
 
 .post-list {
-  padding: 0 5.3vw;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0 4.5vw;
   width: 100%;
+  gap: 5%;
+  margin: 0;
+  padding: 0 4.5vw;
   li {
-    width: 30%;
+    margin-bottom: 4.5vw;
+    position: relative;
+    h3 {
+      height: 6vw;
+    }
+    h4 {
+      height: 4.5vw;
+      overflow: hidden;
+      border-bottom: 2px solid $black;
+    }
+    &:nth-child(4) {
+      background: $lightbrown;
+      grid-column: 1/-1;
+      display: flex;
+      margin: 0 -4.5vw;
+      article {
+        flex-direction: row;
+        padding: 4.5vw;
+        flex-wrap: wrap;
+        position: relative;
+        .image {
+          order: 0;
+          width: 49.5%;
+          max-width: 49.5%;
+          padding-top: 36%;
+        }
+        .content {
+          left: 53%;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-20%);
+
+        }
+        h3{
+          order: 1;
+          width: 26%;
+          display: block;
+          flex: 1;
+          height: auto;
+          padding: 0;
+          margin: 0;
+          font-size: 4vw;
+        }
+        h4 {
+          margin-top: 5.8vw;
+          order: 2;
+          border: none;
+          font-size: 1.3vw;
+        }
+      }
+    }
+  }
+  em {
+    font-family: Publico Banner Web, serif;
   }
 }
