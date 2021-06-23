@@ -14,7 +14,7 @@
             <g-link to="/about">About</g-link>
 
             <g-link to="/" class="logo">
-              <g-image src="~/assets/images/sable-logo.svg" alt="S'able Labs" />
+              <g-image src="~/assets/images/sable-logo.svg" alt="S'able Labs" @click ="showCat = false"/>
             </g-link>
 
             <button>Subscribe</button>
