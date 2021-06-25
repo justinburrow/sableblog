@@ -9,7 +9,7 @@
     </div>
 
     <div class="catPostList">
-      <ul class="post-list" :class="{needSpacer: 'addSpacer'}">
+      <ul class="post-list">
         <li v-for="{ node } in $page.wordPressCategory.belongsTo.edges" :key="node.id" :class="$page.wordPressCategory.title | lowercase">
           <MainPost :post="{ node }" />
         </li>

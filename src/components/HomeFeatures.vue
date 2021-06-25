@@ -19,10 +19,6 @@
     </div>
   -->
 
-  <div class="announcement">
-
-  </div>
-
   <div class="desktop-banner" v-if="!isMobile">
     <agile :autoplay="true" :nav-buttons="true" :speed="500" :autoplay-speed="10000" :dots="false">
       <section>
@@ -41,6 +37,12 @@
         <img src="https://blog.sablelabs.co/wp-content/uploads/2021/06/banner-2-dt-scaled.jpg" />
       </section>
     </agile>
+    <div class="announcement" :class="{hide: !showAnnouncement}">
+      <div class="close-box" @click="showAnnouncement = false;" >
+        X
+      </div>
+      Listen to Coupledom with Ben &amp; Jerry, Kim Kardashian and Kris Jenner, and much more! Now on Audible >
+    </div>
   </div>
 
   <div class="mobile-banner" v-if="isMobile">
@@ -48,21 +50,24 @@
       <section>
         <div class="headlines">
           <img src="https://blog.sablelabs.co/wp-content/uploads/2021/06/banner-1-dt-scaled.jpg" />
-          <h1 class="black">We believe that the greatest outcomes are created when people come together</h1>
-          <h2 class="black">An experience for partnerships of all kinds</h2>
-          <a href="#" class="button__primary">Read About Coupledom ></a>
+          <h1 class="black">$static.allWordpressPage.carousel1Headline</h1>
+          <h2 class="black">$static.allWordpressPage.carousel1Subheading</h2>
+          <g-link to:"$static.allWordpressPage.carouselButtonLink" class="button__primary">
+            $static.allWordpressPage.carousel1ButtonText >
+          </g-link>
         </div>
       </section>
+
       <section>
         <div class="headlines">
           <img src="https://blog.sablelabs.co/wp-content/uploads/2021/06/banner-2-dt-scaled.jpg" />
           <h1 class="black">Head to Audible now to listen to our brand new podcast; Coupledom</h1>
           <a href="#" class="button__primary">Listen Now ></a>
         </div>
-
       </section>
     </agile>
   </div>
+
 
     <div class="marquee">
       <dynamic-marquee direction="row">
@@ -71,10 +76,29 @@
     </div>
 
   </div>
+
+  <div class="homepage-content interior">
+    <div class="ad-placement-1">
+      <g-link to="/" class="long-banner"><img src="~@/assets/images/coupledom-ad-banner.jpg" alt="Coupledom" /></g-link>
+    </div>
+
+    <div class="the-latest">
+      <h3>The Latest</h3>
+      <h4>from <em>the</em><br />S'able Team</h4>
+    </div>
+
+    <div class="bottom-nav" style="display: none;">
+      <h5><g-link to="/all-articles" >See all articles</g-link></h5>
+    </div>
+
+
+  </div>
+
+
 </div>
 </template>
 
-<!--<static-query>
+<static-query>
   query {
     allWordPressPage(filter: {slug: {eq: "homepage-settings"}}) {
       edges {
@@ -102,7 +126,7 @@
     }
   }
 
-</static-query>-->
+</static-query>
 
 
 <script>
@@ -114,7 +138,8 @@ export default {
   name: 'HomeFeatures',
   data() {
     return {
-      isMobile
+      isMobile,
+      showAnnouncement: true
     }
   },
   components: {

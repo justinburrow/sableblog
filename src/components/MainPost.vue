@@ -1,8 +1,9 @@
 <template>
   <article class="post">
+
     <div class="image" v-if="post.node.featuredMedia">
       <g-link :to="post.node.path">
-      <img :src="post.node.featuredMedia.sourceUrl" :alt="post.node.featuredMedia.altText" :width="post.node.featuredMedia.mediaDetails.width" :height="post.node.featuredMedia.mediaDetails.height"/>
+        <img :src="post.node.featuredMedia.sourceUrl" :alt="post.node.featuredMedia.altText" :width="post.node.featuredMedia.mediaDetails.width" :height="post.node.featuredMedia.mediaDetails.height"/>
       </g-link>
     </div>
 
@@ -14,7 +15,7 @@
 
     <h4 class="excerpt" v-if="post.node.excerpt">
       <g-link :to="post.node.path">
-        <v-clamp autoresize class="excerpt only-desktop" :max-lines="2">{{post.node.excerpt | removeHTML}}</v-clamp>
+        <div v-html="post.node.excerpt"></div>
       </g-link>
     </h4>
   </g-link>
@@ -22,7 +23,7 @@
   <h5>
     <span v-for="(cat, i) of post.node.categories" :key="i">
       <g-link :to="cat.path">
-        {{cat.title}}<span v-if="i != Object.keys(post.node.categories).length - 1">, </span>
+        {{cat.title}}
       </g-link>
     </span>
   </h5>
@@ -41,7 +42,7 @@ export default {
   },
   props: {
     'post': {
-      required: true,
+      //required: true,
     }
   },
   filters: {
@@ -56,7 +57,7 @@ export default {
   methods: {
     formatDate(postDate) {
       return moment(postDate).format('MMM Do, YYYY')
-    }
+    },
   }
 }
 </script>

@@ -1,14 +1,30 @@
 <template>
-  <Layout>
-    <div class="interior">
+  <Layout class="interior">
+    <ul class="home-posts">
+      <li v-for="post in $page.allWordPressPost.edges" class="post">
+        <HomePost :post="post.node" />
+      </li>
+    </ul>
 
+    <div class="coupledom_feature">
+      <div class="content">
+        <h5>Coupledom / (‘Kapaldam)</h5>
+        <h4>THE COUPLEDOM MOVEMENT</h4>
+        <p>The realm of shared experiences between two partners in life or business, creating extraordinary outcomes.</p>
+        <a href="#" class="button__primary">Read About Coupledom ></a>
+      </div>
     </div>
+
+    <div class="whats-trending">
+      <h3>what's trending</h3>
+    </div>
+
   </Layout>
 </template>
 
 <page-query>
   query Home {
-    allWordPressPost(sortBy: "date", order: DESC) {
+    allWordPressPost(sortBy: "date", order: DESC, limit: 9) {
       edges {
         node {
           id
@@ -35,7 +51,9 @@
 </page-query>
 
 <script>
+
 import HomePost from '~/components/HomePost.vue'
+import {isMobile} from 'mobile-device-detect'
 
 export default {
   metaInfo() {
@@ -43,18 +61,16 @@ export default {
       title: this.siteName,
       titleTemplate: '',
       postCount: this.$page.allWordPressPost.edges.length,
-      needSpacer: true
     }
   },
   components: {
-    HomePost
+    HomePost,
   },
   data() {
     return {
       filteredPosts: [],
       uniquePosts: [],
-      isMobile: this.$store.isMobile,
-      needSpacer: null
+      isMobile: null,
     }
   },
   methods: {
@@ -62,7 +78,7 @@ export default {
       let that = this;
       this.$page.allWordPressPost.edges.filter(function(post) {
         post.node.categories.filter(function(cat) {
-          if (cat.slug !== 'homepage-hero-banners' && cat.slug !== 'uncategorized') {
+          if (cat.slug !== 'Uncategorized') {
             that.filteredPosts.push(post);
           }
         })
@@ -79,71 +95,7 @@ export default {
   mounted() {
     this.filterPosts();
     this.uniquePosts = this.uniquePostFilter(this.filteredPosts, post => post.node.id);
-    this.uniquePosts = this.uniquePosts.slice(0, 20);
+    this.uniquePosts = this.uniquePosts.slice(0, 9);
   }
 }
 </script>
-
-<style lang="scss" scoped>
-  .featured-posts {
-    margin: 48px 0 0 0;
-    @media screen and (max-width: $breakpoint-md) {
-      margin: 5.3vw 0 0 0;
-    }
-    h3 {
-      text-transform: uppercase;
-      font-weight: 600;
-      font-style: normal;
-      font-size: 45px;
-      letter-spacing: 1px;
-      @media screen and (max-width: $breakpoint-md) {
-        font-size: 9vw;
-      }
-    }
-    .coupledom-movement {
-      width: 100%;
-      max-width: 100%;
-      padding-top: 23%;
-      background: url(~@/assets/images/coupledom-movement-dt.jpg) no-repeat;
-      background-size: contain;
-      background-position: center top;
-      flex: 0 0 1;
-      position: relative;
-      @media screen and (max-width: $breakpoint-md) {
-        background: url(~@/assets/images/coupledom-movement-mob.jpg) no-repeat;
-        background-size: cover;
-        font-size: 0;
-        line-height: 0;
-        display: block;
-        width: 100%;
-        margin-top: 10vw;
-      }
-      button {
-        display: block;
-        position: absolute;
-        transform: translateX(-50%);
-        left: 50%;
-        bottom: 18%;
-        font-size: 25px;
-        letter-spacing: 2px;
-      }
-    }
-    .porte-noire-banner {
-      background: #f2f2f2;
-      width: 100%;
-      max-width: 100%;
-      padding: 100px;
-      position: relative;
-      a {
-        position: absolute;
-        display: block;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        img {
-          max-width: 400px;
-        }
-      }
-    }
-  }
-</style>
