@@ -15,7 +15,7 @@
 
       <div class="mission">
         <div class="wrapper">
-          <g-image src="~/assets/images/sable-s.svg" alt="S'able Labs" />
+          <g-image src="~/assets/images/sable-s.svg" alt="S'able Labs" width="57" height="107" />
           <h3>Devoted to uplifting and celebrating partnerships and people without borders and without judgement; Share the dream with us and we’ll make it real together.</h3>
         </div>
       </div>

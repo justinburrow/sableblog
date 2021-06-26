@@ -11,13 +11,23 @@
         <h5>Coupledom / (‘Kapaldam)</h5>
         <h4>THE COUPLEDOM MOVEMENT</h4>
         <p>The realm of shared experiences between two partners in life or business, creating extraordinary outcomes.</p>
-        <a href="#" class="button__primary">Read About Coupledom ></a>
+        <a href="Coupledom with Idris and Sabrina Elba Audiobook | Idris Elba, Sabrina Elba | Audible.co.uk" target="_blank" class="button__primary">Read About Coupledom ></a>
       </div>
     </div>
 
     <div class="whats-trending">
       <h3>what's trending</h3>
+
+      <div class="trending-slider">
+          <TrendingPost :post="post.node" v-for="post in trendingPosts" :key="post.node.id" class="trending-post" />
+      </div>
+
+    <div class="porte-noire">
+      <a href="https://www.portenoire.co.uk/" target="_blank">
+        <g-image src="~/assets/images/porte-noire.gif" alt="Porte Noire Chmapagne" width="546" height="182"></g-image>
+      </a>
     </div>
+  </div>
 
   </Layout>
 </template>
@@ -33,6 +43,9 @@
           date
           excerpt
           slug
+          tags {
+            title
+          }
           categories {
             id
             title
@@ -44,6 +57,7 @@
             altText
             caption
           }
+
         }
       }
     }
@@ -52,7 +66,9 @@
 
 <script>
 
-import HomePost from '~/components/HomePost.vue'
+import HomePost from '~/components/HomePost.vue';
+import TrendingPost from '~/components/TrendingPost.vue';
+import { VueAgile } from 'vue-agile';
 import {isMobile} from 'mobile-device-detect'
 
 export default {
@@ -65,15 +81,27 @@ export default {
   },
   components: {
     HomePost,
+    TrendingPost,
   },
   data() {
     return {
       filteredPosts: [],
       uniquePosts: [],
       isMobile: null,
+      trendingPosts: []
     }
   },
   methods: {
+    getTrendingPosts() {
+      let that = this;
+      this.$page.allWordPressPost.edges.filter(function(post) {
+        post.node.tags.filter(function(tag) {
+          if (tag == 'trending' || 'Trending') {
+            that.trendingPosts.push(post);
+          }
+        });
+      });
+    },
     filterPosts() {
       let that = this;
       this.$page.allWordPressPost.edges.filter(function(post) {
@@ -94,8 +122,11 @@ export default {
   },
   mounted() {
     this.filterPosts();
+    this.getTrendingPosts();
     this.uniquePosts = this.uniquePostFilter(this.filteredPosts, post => post.node.id);
     this.uniquePosts = this.uniquePosts.slice(0, 9);
+    this.trendingPosts = this.uniquePostFilter(this.trendingPosts, post => post.node.id);
+    this.trendingPosts = this.trendingPosts.slice(0, 5);
   }
 }
 </script>

@@ -2,9 +2,18 @@
   <div class="home-slider">
       <ClientOnly>
         <carousel :dots="false" :items="1" :nav="false" :autoplay="true">
-          <div class="slide"><g-image src="~/assets/images/slides/slide1.jpg" alt="slide1"></g-image></div>
-          <div class="slide"><g-image src="~/assets/images/slides/slide2.jpg" alt="slide2"></g-image></div>
-          <div class="slide"><g-image src="~/assets/images/slides/slide3.jpg" alt="slide3"></g-image></div>
+          <div class="slide">
+            <g-image src="~/assets/images/slides/slide1.jpg" alt="slide1" width=
+            "100%" height="43.5vw"></g-image>
+          </div>
+          <div class="slide">
+            <g-image src="~/assets/images/slides/slide2.jpg" alt="slide2" width=
+            "100%" height="43.5vw"></g-image>
+          </div>
+          <div class="slide">
+            <g-image src="~/assets/images/slides/slide3.jpg" alt="slide3" width=
+            "100%" height="43.5vw"></g-image>
+          </div>
         </carousel>
       </ClientOnly>
   </div>
@@ -51,5 +60,5 @@ export default {
     }
   }
 }
-    
+
 </style>

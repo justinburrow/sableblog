@@ -38,13 +38,12 @@
 
 <script>
 import VClamp from 'vue-clamp'
-import moment from 'moment'
+import moment from 'moment';
 
 export default {
   name: 'HomePost',
   components: {
-    VClamp,
-
+    VClamp
   },
   props: {
     'post': {

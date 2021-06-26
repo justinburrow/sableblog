@@ -4,7 +4,7 @@
       <div class="top-bar"></div>
 
       <div class="mobileHeader" v-if="isMobile">
-        <g-image src="~/assets/images/sable-logo.svg" alt="S'able Labs" />
+        <g-image src="~/assets/images/sable-logo.svg" alt="S'able Labs" width="20vw" height="3.2vw" />
       </div>
 
       <div class="header-content">

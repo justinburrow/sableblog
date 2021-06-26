@@ -111,19 +111,19 @@
   }
 }
 
-.the-latest, .whats-trending {
+.the-latest {
   margin-top: 4vw;
   width: 100%;
   padding-bottom: 4vw;
   position: relative;
   h3 {
     font-size: 10.8vw;
-    font-weight: 700;
+    font-weight: 600;
     display: inline-block;
     margin: 0;
     padding: 0;
     text-transform: lowercase;
-    letter-spacing: -.2vw;
+    letter-spacing: -.1vw;
   }
   h4 {
     font-size: 2.4vw;
@@ -149,7 +149,7 @@
   }
 }
 
-.home-posts {
+.home-posts  {
   box-sizing: border-box;
   list-style-type: none;
   display: flex;
@@ -219,7 +219,7 @@
     &:nth-child(9n) {
       background-color: $lightbrown;
     }
-    article {
+    article, .trending-post {
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
@@ -255,7 +255,6 @@
           }
           a span {
             font-weight: 600;
-
           }
         }
       }
@@ -318,6 +317,76 @@
 
 .whats-trending {
   h3 {
-    font-size: 10.8vw;
+    font-size: 7.6vw;
+  }
+}
+
+.trending-slider {
+  article {
+    flex: none;
+    width: 35%;
+    img {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+  border-top: 1px solid $black;
+  border-bottom: 1px solid $black;
+  .trending-post {
+    border: 1px solid black;
+    width: auto;
+    &:nth-child(3n+2) {
+      background-color: $lightbrown;
+    }
+    a {
+      color: $black;
+      text-decoration: none;
+      &:visited {
+        color: black;
+      }
+    }
+  }
+  h4 {
+    margin: 0;
+    padding: 0;
+    order: 1;
+    text-align: left;
+    &:before {
+      width: 11px;
+      height: 11px;
+      background: $black;
+      margin-right: 10px;
+      content: '';
+      display: inline-block;
+      border-radius: 50%;
+    }
+    span {
+      font-weight: 300;
+      font-size: 0.8vw;
+      text-transform: uppercase;
+      &:after {
+        content: ' // ';
+      }
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
+      a span {
+        font-weight: 600;
+      }
+    }
+  }
+  h3 {
+    font-size: 3.6vw;
+    font-weight: 300;
+  }
+}
+
+.porte-noire {
+  text-align: center;
+  img {
+    width: 100%;
+    max-width: 28vw;
   }
 }
