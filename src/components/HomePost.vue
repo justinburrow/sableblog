@@ -22,14 +22,9 @@
 
       <p class="excerpt" v-if="post.excerpt">
         <g-link :to="post.path">
-          <v-clamp autoresize class="excerpt only-desktop" :max-lines="2">
+          <div>
             {{post.excerpt | removeHTML}}
-          </v-clamp>
-        </g-link>
-        <g-link :to="post.path">
-          <v-clamp autoresize class="excerpt only-mobile-tablet" :max-lines="3" v-html>
-            {{post.excerpt | removeHTML}}
-          </v-clamp>
+          </div>
         </g-link>
       </p>
 

@@ -4,19 +4,27 @@
     width: 36%;
     position: absolute;
     top: 50%;
-    margin-left: 11vw;
     transform: translateY(-50%);
     z-index: 5;
     margin: 0 0 0 10vw;
     padding: 0;
     @media screen and (max-width: $breakpoint-lg) {
+      order: 2;
       position: relative;
       top: 0;
       left: 0;
-      transform: none;
+      transform: translate(0);
       width: 100%;
       margin: 0;
       text-align: center;
+      img {
+        height: 44vw;
+        object-fit: cover;
+        object-position: top center;
+        top: 7vw;
+        display: block;
+        position: relative;
+      }
     }
     h1 {
       font-weight: 300;
@@ -27,7 +35,7 @@
       @media screen and (max-width: $breakpoint-lg) {
         font-size: 3.4vw;
         text-align: center;
-        padding-top: 8vw;
+        padding-top: 15vw;
       }
       &.black {
         color: $black;
@@ -60,7 +68,7 @@
     width: 100%;
     max-width: 100%;
     @media screen and (max-width: $breakpoint-lg) {
-      max-height: 44vw;
+      max-height: 42vw;
     }
   }
   a {
@@ -112,14 +120,20 @@
   text-transform: uppercase;
   font-family: acumin-pro-condensed;
   font-weight: 700;
-  position: relative;
-  top: 0vw;
   @media screen and (max-width: $breakpoint-lg) {
-    top: -20vw;
+    position: absolute;
+    bottom: 25vw;
   }
   .text {
     white-space: nowrap;
     font-family: acumin-pro-condensed;
+  }
+}
+
+.homepage-content {
+  @media screen and (max-width: $breakpoint-lg) {
+    position: relative;
+    top: -8vw;
   }
 }
 
@@ -196,7 +210,8 @@
       width: 100vw;
       margin-left: calc(50% - 50vw);
       margin-right: calc(50% - 50vw);
-      margin-bottom: -15vw;;
+      margin-bottom: -15vw;
+      padding: 5vw 3vw;
 
       &:after {
         display: none;
@@ -301,6 +316,7 @@
         text-align: left;
         @media screen and (max-width: $breakpoint-lg) {
           font-size: 3vw;
+          padding-bottom: 3vw;
         }
       }
     }

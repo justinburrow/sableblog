@@ -13,9 +13,11 @@
             <a href="https://www.audible.co.uk/pd/Coupledom-with-Idris-and-Sabrina-Elba-Audiobook/B0971LFP1B" @click="showCat = false; showSearch = false;">The Podcast</a>
             <g-link to="/about">About</g-link>
 
-            <g-link to="/" class="logo">
-              <g-image src="~/assets/images/sable-logo.svg" alt="S'able Labs" @click="showCat = false; showSearch = false;"/>
-            </g-link>
+            <div class="logo">
+              <g-link to="/">
+                <g-image src="~/assets/images/sable-logo.svg" alt="S'able Labs" @click="showCat = false; showSearch = false;"/>
+              </g-link>
+            </div>
 
             <button v-if="!isMobile" @click="showCat = false; showSearch = false;">Subscribe</button>
             <button @click="showSearch = !showSearch, showCat = false" :class="{ shown: showCat }">
