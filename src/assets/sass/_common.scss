@@ -36,6 +36,9 @@ a.button {
     width: 100%;
     max-width: 1362px;
     margin: 6vw auto;
+    @media screen and (max-width: $breakpoint-lg) {
+      margin-top: 12vw;
+    }
     img {
       width: 100%;
       max-width: 1362px;

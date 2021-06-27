@@ -25,9 +25,9 @@
       margin: 0;
       padding: 0;
       @media screen and (max-width: $breakpoint-lg) {
-        font-size: 4.5vw;
+        font-size: 3.4vw;
         text-align: center;
-        padding-top: 7qvw;
+        padding-top: 8vw;
       }
       &.black {
         color: $black;
@@ -48,7 +48,7 @@
         color: $white;
       }
       @media screen and (max-width: $breakpoint-lg) {
-        font-size: 3.5vw;
+        font-size: 3.0vw;
         text-align: center;
       }
     }
@@ -59,6 +59,9 @@
   img {
     width: 100%;
     max-width: 100%;
+    @media screen and (max-width: $breakpoint-lg) {
+      max-height: 44vw;
+    }
   }
   a {
     display: inline-block;
@@ -110,8 +113,9 @@
   font-family: acumin-pro-condensed;
   font-weight: 700;
   position: relative;
-  top: -10vw;
+  top: 0vw;
   @media screen and (max-width: $breakpoint-lg) {
+    top: -20vw;
   }
   .text {
     white-space: nowrap;
