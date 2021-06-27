@@ -4,20 +4,20 @@
       <div class="top-bar"></div>
 
       <div class="mobileHeader" v-if="isMobile">
-        <g-image src="~/assets/images/sable-logo.svg" alt="S'able Labs" width="20vw" height="3.2vw" />
+        <g-link to="/"><g-image src="~/assets/images/sable-logo.svg" alt="S'able Labs" width="20vw" height="3.2vw" /></g-link>
       </div>
 
       <div class="header-content">
         <nav>
             <a href="#" :class="{ shown: showCat }" @click="showCat = !showCat, showSearch = false">The Hub</a>
-            <g-link to="/the-podcast">The Podcast</g-link>
+            <a href="https://www.audible.co.uk/pd/Coupledom-with-Idris-and-Sabrina-Elba-Audiobook/B0971LFP1B" @click="showCat = false; showSearch = false;">The Podcast</a>
             <g-link to="/about">About</g-link>
 
             <g-link to="/" class="logo">
-              <g-image src="~/assets/images/sable-logo.svg" alt="S'able Labs" @click ="showCat = false"/>
+              <g-image src="~/assets/images/sable-logo.svg" alt="S'able Labs" @click="showCat = false; showSearch = false;"/>
             </g-link>
 
-            <button>Subscribe</button>
+            <button v-if="!isMobile" @click="showCat = false; showSearch = false;">Subscribe</button>
             <button @click="showSearch = !showSearch, showCat = false" :class="{ shown: showCat }">
               <img src="~@/assets/images/search-icon.svg" alt="Search" />
             </button>
@@ -77,7 +77,7 @@ onblur="this.placeholder = 'search'">
 
 <script>
 
-  import {isMobile} from 'mobile-device-detect'
+  import {isMobile} from 'mobile-device-detect';
 
   export default {
     name: 'Header',

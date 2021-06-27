@@ -62,9 +62,12 @@ footer {
       list-style-type: none;
       padding: 0;
       @media screen and (max-width: $breakpoint-lg) {
-        width: 45%;
+        width: 47%;
       }
       &.subscribe {
+        @media screen and (max-width: $breakpoint-lg) {
+          width: 100%;
+        }
         h6 {
           border-bottom: none;
           padding: 0 0 10px 0;
@@ -90,12 +93,29 @@ footer {
           &:hover {
             background: darken($lightbrown, 10%);
           }
+          @media screen and (max-width: $breakpoint-lg) {
+            width: 100%;
+            padding: 3vw 4vw;
+          }
         }
 
       }
       li {
         padding-left: 10px;
         font-size: 17px;
+        @media screen and (max-width: $breakpoint-lg) {
+          padding-left: 0;
+          width: 100%;
+          h6 {
+            font-size: 5vw;
+            margin-bottom: 2vw;
+          }
+          ul {
+            width: 100%;
+          }
+          font-size: 3.5vw;
+          width: 100%;
+        }
       }
     }
     a {
@@ -118,8 +138,15 @@ footer {
       border-bottom: 1px solid $black;
       letter-spacing: -0.5px;
       font-weight: 600;
+      @media screen and (max-width: $breakpoint-lg) {
+        h6 {
+          margin: 0 0 10px 0;
+        }
       &.subscribe {
         border-bottom: none;
+      }
+        padding: 0;
+        margin: 0;
       }
     }
   }

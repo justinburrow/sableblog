@@ -25,8 +25,9 @@
       margin: 0;
       padding: 0;
       @media screen and (max-width: $breakpoint-lg) {
-        font-size: 5vw;
+        font-size: 4.5vw;
         text-align: center;
+        padding-top: 7qvw;
       }
       &.black {
         color: $black;
@@ -47,9 +48,12 @@
         color: $white;
       }
       @media screen and (max-width: $breakpoint-lg) {
-        font-size: 4vw;
+        font-size: 3.5vw;
         text-align: center;
       }
+    }
+    @media screen and (max-width: $breakpoint-lg) {
+      position: relative;
     }
   }
   img {
@@ -105,6 +109,10 @@
   text-transform: uppercase;
   font-family: acumin-pro-condensed;
   font-weight: 700;
+  position: relative;
+  top: -10vw;
+  @media screen and (max-width: $breakpoint-lg) {
+  }
   .text {
     white-space: nowrap;
     font-family: acumin-pro-condensed;
@@ -124,6 +132,9 @@
     padding: 0;
     text-transform: lowercase;
     letter-spacing: -.1vw;
+    @media screen and (max-width: $breakpoint-lg) {
+      font-size: 15vw;
+    }
   }
   h4 {
     font-size: 2.4vw;
@@ -133,6 +144,11 @@
     position: relative;
     top: -1vw;
     left: 1.5vw;
+    @media screen and (max-width: $breakpoint-lg) {
+      font-size: 4.5vw;
+      margin-right: 1vw;
+      margin-top: 3vw;
+    }
   }
   &:after {
     top: 10px;
@@ -172,6 +188,19 @@
     margin-bottom: 60px;
     text-align: center;
     position: relative;
+    @media screen and (max-width: $breakpoint-lg) {
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      margin-bottom: -15vw;;
+
+      &:after {
+        display: none;
+      }
+      &:before {
+        display: none;
+      }
+    }
     &:after {
       content: '';
       bottom: 0;
@@ -220,7 +249,6 @@
       background-color: $lightbrown;
     }
     article {
-      text-align: left;
 
       h3 {
         order: 2;
@@ -231,6 +259,9 @@
         text-align: left;
         margin: 10px 0 40px 0;
         line-height: 1.1;
+        @media screen and (max-width: $breakpoint-lg) {
+          font-size: 5vw;
+        }
       }
       h4 {
         margin: 0;
@@ -240,6 +271,10 @@
         span {
           font-weight: 300;
           font-size: 0.8vw;
+          @media screen and (max-width: $breakpoint-lg) {
+            font-size: 2.5vw;
+            margin-bottom: 2vw;
+          }
           text-transform: uppercase;
           &:after {
             content: ' // ';
@@ -259,6 +294,10 @@
       }
       .excerpt {
         order: 4;
+        text-align: left;
+        @media screen and (max-width: $breakpoint-lg) {
+          font-size: 3vw;
+        }
       }
     }
   }
@@ -407,8 +446,14 @@
 .porte-noire {
   margin-top: 7.7vw;
   text-align: center;
+  @media screen and (max-width: $breakpoint-lg) {
+    margin-top: 12vw;
+  }
   img {
     width: 100%;
     max-width: 28vw;
+    @media screen and (max-width: $breakpoint-lg) {
+      max-width: 50vw;
+    }
   }
 }

@@ -25,14 +25,14 @@
         <div class="headlines">
           <h1 class="black">We believe that the greatest outcomes are created when people come together</h1>
           <h2 class="black">An experience for partnerships of all kinds</h2>
-          <a href="#" class="button__primary">Read About Coupledom ></a>
+          <a href="https://www.audible.co.uk/pd/Coupledom-with-Idris-and-Sabrina-Elba-Audiobook/B0971LFP1B" class="button__primary">Read About Coupledom ></a>
         </div>
         <img src="https://blog.sablelabs.co/wp-content/uploads/2021/06/banner-1-dt-scaled.jpg" />
       </section>
       <section>
         <div class="headlines">
           <h1 class="white">Head to Audible now to listen to our brand new podcast; Coupledom</h1>
-          <a href="#" class="button__primary">Listen Now ></a>
+          <a href="https://www.audible.co.uk/pd/Coupledom-with-Idris-and-Sabrina-Elba-Audiobook/B0971LFP1B" class="button__primary">Listen Now ></a>
         </div>
         <img src="https://blog.sablelabs.co/wp-content/uploads/2021/06/banner-2-dt-scaled.jpg" />
       </section>
@@ -50,11 +50,11 @@
       <section>
         <div class="headlines">
           <img src="https://blog.sablelabs.co/wp-content/uploads/2021/06/banner-1-dt-scaled.jpg" />
-          <h1 class="black">$static.allWordpressPage.carousel1Headline</h1>
-          <h2 class="black">$static.allWordpressPage.carousel1Subheading</h2>
-          <g-link to:"$static.allWordpressPage.carouselButtonLink" class="button__primary">
-            $static.allWordpressPage.carousel1ButtonText >
-          </g-link>
+          <h1 class="black">Head to Audible now to listen to our brand new podcast; Coupledom</h1>
+          <h2 class="black">An experience for partnerships of all kinds</h2>
+          <a href="https://www.audible.co.uk/pd/Coupledom-with-Idris-and-Sabrina-Elba-Audiobook/B0971LFP1B" target="_blank" class="button__primary">
+            Listen Now >
+          </a>
         </div>
       </section>
 
@@ -62,7 +62,7 @@
         <div class="headlines">
           <img src="https://blog.sablelabs.co/wp-content/uploads/2021/06/banner-2-dt-scaled.jpg" />
           <h1 class="black">Head to Audible now to listen to our brand new podcast; Coupledom</h1>
-          <a href="#" class="button__primary">Listen Now ></a>
+          <a href="https://www.audible.co.uk/pd/Coupledom-with-Idris-and-Sabrina-Elba-Audiobook/B0971LFP1B" class="button__primary">Listen Now ></a>
         </div>
       </section>
     </agile>

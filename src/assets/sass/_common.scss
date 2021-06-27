@@ -42,3 +42,28 @@ a.button {
     }
   }
 }
+
+.agile__actions {
+  @media screen and (max-width: $breakpoint-lg) {
+    top: -55vw;
+  }
+  position: absolute;
+  button.agile__nav-button {
+  cursor: pointer;
+  padding: 2vw;
+  z-index: 5;
+  position: absolute;
+  top: -25vw;
+  background: $black;
+  color: $white;
+  &.agile__nav-button--prev {
+    left: 0;
+    right: auto;
+    color: $white;
+  }
+  &.agile__nav-button--next {
+    right: -100vw;
+    color: $white;
+  }
+  }
+}

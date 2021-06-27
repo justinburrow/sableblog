@@ -3,6 +3,9 @@
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+  @media screen and (max-width: $breakpoint-lg) {
+    padding: 6% 3vw;
+  }
 
   .image {
     order: 3;
@@ -42,5 +45,8 @@
     font-size: 1.1vw;
     padding: 0;
     border-bottom: 0;
+    @media screen and ($breakpoint-lg) {
+      font-size: 3vw;
+    }
   }
 }

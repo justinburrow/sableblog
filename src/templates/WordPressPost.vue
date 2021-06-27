@@ -8,7 +8,7 @@
             <div class="h2" v-html="$page.wordPressPost.categories[0].title"></div>
           </g-link>
         </div>
-        <h1 v-html="$page.wordPressPost.title"></h1>
+        <g-link to="/"><h1 v-html="$page.wordPressPost.title"></h1></g-link>
         <div class="post-image">
          <img
           v-if="$page.wordPressPost.featuredMedia"
