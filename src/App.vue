@@ -14,7 +14,7 @@ query {
 </static-query>
 
 <script>
-import MainLayout from '~/layouts/MainLayout.vue'
+import MainLayout from '~/layouts/MainLayout.vue';
 
 export default {
   metaInfo() {

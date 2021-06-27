@@ -15,12 +15,16 @@
       </div>
     </div>
 
-    <div class="whats-trending">
+   <!--<div class="whats-trending">
       <h3>what's trending</h3>
 
-      <div class="trending-slider">
-          <TrendingPost :post="post.node" v-for="post in trendingPosts" :key="post.node.id" class="trending-post" />
-      </div>
+      <div class="slides">
+        <ul class="trending-slider">
+          <li v-for="post in this.uniquePosts" class="trending-post">
+            <TrendingFeatures :post="post.node" />
+          </li>
+        </ul>
+      </div>-->
 
     <div class="porte-noire">
       <a href="https://www.portenoire.co.uk/" target="_blank">
@@ -67,9 +71,7 @@
 <script>
 
 import HomePost from '~/components/HomePost.vue';
-import TrendingPost from '~/components/TrendingPost.vue';
-import { VueAgile } from 'vue-agile';
-import {isMobile} from 'mobile-device-detect'
+import TrendingFeatures from '~/components/TrendingFeatures.vue'
 
 export default {
   metaInfo() {
@@ -81,14 +83,18 @@ export default {
   },
   components: {
     HomePost,
-    TrendingPost,
+    TrendingFeatures,
   },
   data() {
     return {
       filteredPosts: [],
       uniquePosts: [],
       isMobile: null,
-      trendingPosts: []
+      trendingPostList: [],
+      sliderOptions: {
+        slidesToShow: 3.7,
+        centerMode: true,
+      }
     }
   },
   methods: {
@@ -97,7 +103,7 @@ export default {
       this.$page.allWordPressPost.edges.filter(function(post) {
         post.node.tags.filter(function(tag) {
           if (tag == 'trending' || 'Trending') {
-            that.trendingPosts.push(post);
+            that.trendingPostList.push(post);
           }
         });
       });
@@ -125,8 +131,8 @@ export default {
     this.getTrendingPosts();
     this.uniquePosts = this.uniquePostFilter(this.filteredPosts, post => post.node.id);
     this.uniquePosts = this.uniquePosts.slice(0, 9);
-    this.trendingPosts = this.uniquePostFilter(this.trendingPosts, post => post.node.id);
-    this.trendingPosts = this.trendingPosts.slice(0, 5);
+    this.trendingPostList = this.uniquePostFilter(this.trendingPostList, post => post.node.id);
+    this.trendingPostList = this.trendingPostList.slice(0, 5);
   }
 }
 </script>

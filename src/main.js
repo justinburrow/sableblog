@@ -6,6 +6,7 @@ import VueSocialSharing from 'vue-social-sharing'
 import he from 'he'
 import DynamicMarquee from 'vue-dynamic-marquee';
 
+
 export default function (Vue, {router, head, isClient}) {
   Vue.component('Layout', DefaultLayout);
   Vue.component('dynamic-marquee', DynamicMarquee)

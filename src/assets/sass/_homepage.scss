@@ -219,12 +219,8 @@
     &:nth-child(9n) {
       background-color: $lightbrown;
     }
-    article, .trending-post {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      width: 100%;
-      position: relative;
+    article {
+      text-align: left;
 
       h3 {
         order: 2;
@@ -315,28 +311,50 @@
   }
 }
 
-.whats-trending {
+/*.whats-trending {
   h3 {
     font-size: 7.6vw;
+    margin: 6.5vw 0 3.5vw 0;
+    padding: 0;
   }
 }
 
-.trending-slider {
-  article {
-    flex: none;
-    width: 35%;
-    img {
-      width: 100%;
-      max-width: 100%;
-    }
+.slides {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: 0;
+  padding-top: 0;
+  position: relative;
+  .trending-slider {
+    display: inline;
+    width: 100%;
   }
-  border-top: 1px solid $black;
-  border-bottom: 1px solid $black;
   .trending-post {
     border: 1px solid black;
-    width: auto;
+    margin: 0 0 0 0;
+    margin: 0 0 0 0;
+    display: block;
+    background: $white !important;
     &:nth-child(3n+2) {
       background-color: $lightbrown;
+    }
+    &:before {
+      left: 0;
+      width: 0;
+    }
+    &:after {
+      display: none !important;
+    }
+    article {
+      padding: 30px;
+    }
+    .image {
+      object-fit: cover;
+      img {
+        width: 100%;
+        max-width: 100%;
+      }
     }
     a {
       color: $black;
@@ -379,11 +397,15 @@
   }
   h3 {
     font-size: 3.6vw;
-    font-weight: 300;
+    font-weight: 200;
+    line-height: 1;
+    padding: 0;
+    margin: 1.4vw 0;
   }
-}
+}*/
 
 .porte-noire {
+  margin-top: 7.7vw;
   text-align: center;
   img {
     width: 100%;
