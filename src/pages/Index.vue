@@ -15,16 +15,12 @@
       </div>
     </div>
 
-   <!--<div class="whats-trending">
+   <div class="whats-trending">
       <h3>what's trending</h3>
 
       <div class="slides">
-        <ul class="trending-slider">
-          <li v-for="post in this.uniquePosts" class="trending-post">
-            <TrendingFeatures :post="post.node" />
-          </li>
-        </ul>
-      </div>-->
+
+      </div>
 
     <div class="porte-noire">
       <a href="https://www.portenoire.co.uk/" target="_blank">

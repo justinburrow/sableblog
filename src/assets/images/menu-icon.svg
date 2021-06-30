@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="48" viewBox="0 0 64 48"><title>noun_Hamburger_564924</title><path d="M4 8h56c2.2 0 4-1.8 4-4s-1.8-4-4-4H4C1.8 0 0 1.8 0 4s1.8 4 4 4zm56 12H4c-2.2 0-4 1.8-4 4s1.8 4 4 4h56c2.2 0 4-1.8 4-4s-1.8-4-4-4zm0 20H4c-2.2 0-4 1.8-4 4s1.8 4 4 4h56c2.2 0 4-1.8 4-4s-1.8-4-4-4z"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="48px" viewBox="0 0 64 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>menu-icon</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="menu-icon" fill="#000000" fill-rule="nonzero">
+            <path d="M4,8 L60,8 C62.2,8 64,6.2 64,4 C64,1.8 62.2,0 60,0 L4,0 C1.8,0 0,1.8 0,4 C0,6.2 1.8,8 4,8 Z M60,20 L4,20 C1.8,20 0,21.8 0,24 C0,26.2 1.8,28 4,28 L60,28 C62.2,28 64,26.2 64,24 C64,21.8 62.2,20 60,20 Z M60,40 L4,40 C1.8,40 0,41.8 0,44 C0,46.2 1.8,48 4,48 L60,48 C62.2,48 64,46.2 64,44 C64,41.8 62.2,40 60,40 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

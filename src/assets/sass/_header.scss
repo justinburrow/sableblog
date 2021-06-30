@@ -3,10 +3,13 @@
   width: 100%;
   height: 10px;
   position: relative;
-  z-index: 90;
+  z-index: 30;
   top: 0;
   position: fixed;
   @media screen and (max-width: $breakpoint-lg) {
+    &.shown {
+      display: none;
+    }
     height: 3vw;
     position: fixed;
     z-index: 12;
@@ -56,12 +59,26 @@ header {
 .mobileHeader {
   background: white;
   z-index: 10;
-  position: fixed;
   width: 100%;
+  position: fixed;
   padding: 3vw 5vw;
   margin-top: -2vw;
   text-align: center;
   border-bottom: 1px solid $black;
+  button.mobile-menu {
+    position: absolute;
+    z-index: 50;
+    left: 0;
+    top: 1vw;
+    padding: 2vw 5vw;
+    width: 12vw;
+      img {
+      width: 100%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      }
+    }
   img {
     width: 100%;
     max-width: 40vw;
@@ -82,17 +99,37 @@ header {
     flex-wrap: nowrap;
     width: 100%;
     line-height: 1;
+    button.close { display: none;}
     @media screen and (max-width: $breakpoint-lg) {
-      position: fixed;
+      &.shown {
+        display: block;
+        .logo {
+          display: none;
+        }
+        button.closePanel {
+          display: block;
+          position: absolute;
+          top: 2vw;
+          right: 3vw;
+          font-size: 6vw;
+        }
+      }
       display: block;
-      top: 0;
+      position: fixed;
+      height: 100vh;
+      width: 100vw;
+      top: calc(0 - 5vw);
       left: 0;
-      width: 100%;
-      height: 100%;
+      bottom: 0;
+      right: 0;
       background: $lightbrown;
       z-index: 15;
       padding: 10vw;
       transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      &.shown {
+        transform: translateX(0);
+      }
     }
     a, button {
       flex-grow: 0;
@@ -120,8 +157,20 @@ header {
         font-style: italic;
       }
       @media screen and (max-width: $breakpoint-lg) {
-        font-size: 20vw;
+        font-size: 10vw;
         display: block;
+        font-weight: 300;
+        font-style: normal;
+        text-align: left !important;
+      }
+      &.shown {
+        font-weight: 300;
+        font-style: normal;
+      }
+      a, button {
+        display: block;
+        text-align: left;
+        margin-bottom: 10vw;
       }
     }
     .logo {
