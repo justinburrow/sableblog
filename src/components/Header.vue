@@ -12,7 +12,7 @@
 
       <div class="header-content">
         <nav :class="{ shown: showCat }">
-            <button class="closePanel" @click="showCat = !showCat">X</button>
+            <button class="closePanel" @click="showCat = !showCat" v-if="isMobile">X</button>
             <a href="#" :class="{ shown: showCat }" @click="showCat = !showCat, showSearch = false">The Hub</a>
             <a href="https://www.audible.co.uk/pd/Coupledom-with-Idris-and-Sabrina-Elba-Audiobook/B0971LFP1B" @click="showCat = false; showSearch = false;">The Podcast</a>
             <g-link to="/about">About</g-link>
