@@ -17,10 +17,14 @@
 
    <div class="whats-trending">
       <h3>what's trending</h3>
+      <ul class="trending-posts">
+        <agile :options="trendingPostOptions">
+          <li v-for="post in $page.allWordPressPost.edges" :post="post.node">
+            <TrendingFeatures :post="post.node" />
+          </li>
+        </agile>
+      </ul>
 
-      <div class="slides">
-
-      </div>
 
     <div class="porte-noire">
       <a href="https://www.portenoire.co.uk/" target="_blank">
@@ -68,6 +72,7 @@
 
 import HomePost from '~/components/HomePost.vue';
 import TrendingFeatures from '~/components/TrendingFeatures.vue'
+import { VueAgile } from 'vue-agile';
 
 export default {
   metaInfo() {
@@ -80,6 +85,7 @@ export default {
   components: {
     HomePost,
     TrendingFeatures,
+    agile: VueAgile
   },
   data() {
     return {
@@ -87,9 +93,28 @@ export default {
       uniquePosts: [],
       isMobile: null,
       trendingPostList: [],
-      sliderOptions: {
-        slidesToShow: 3.7,
-        centerMode: true,
+      trendingPostOptions: {
+        dots: false,
+        mobileFirst: true,
+        speed: 3000,
+        slidesToShow: 2,
+        initialSlide: 0,
+        responsive: [
+          {
+            breakpoint: 800,
+            settings: {
+              slidesToShow: 2,
+              initialSlide: 0,
+            }
+          },
+          {
+            breakpoint: 1023,
+              settings: {
+                initialSlide: .25,
+                slidesToShow: 3.5,
+            }
+          }
+        ]
       }
     }
   },

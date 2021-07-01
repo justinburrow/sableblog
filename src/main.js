@@ -104,18 +104,12 @@ export default function (Vue, {router, head, isClient}) {
   );
 
   const store = Vue.observable({
-    menuOpen: false,
     searchQuery: '',
     showPopup: false
   });
 
   const actions = {
-    openMenu() {
-      store.menuOpen = true;
-    },
-    closeMenu() {
-      store.menuOpen = false;
-    },
+  
   }
 
   if (typeof window !== "undefined") {

@@ -69,7 +69,6 @@ export default {
      var divHeight = el.offsetHeight;
      var lineHeight = parseInt(el.style.lineHeight);
      var lines = divHeight / lineHeight;
-     console.log(this.$refs.titleBox);
    }
   }
 }

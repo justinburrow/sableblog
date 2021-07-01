@@ -162,10 +162,10 @@ header {
         font-weight: 300;
         font-style: normal;
         text-align: left !important;
-      }
-      &.shown {
-        font-weight: 300;
-        font-style: normal;
+        &.shown {
+          font-weight: 300;
+          font-style: normal;
+        }
       }
       a, button {
         display: block;
