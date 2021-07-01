@@ -194,8 +194,7 @@ export default {
     }
   },
   components: {
-    HomePost,
-    AdBanner
+    HomePost
   },
   methods: {
     formatDate(postDate) {

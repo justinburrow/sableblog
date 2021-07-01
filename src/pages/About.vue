@@ -4,7 +4,6 @@
       <div class="container">
         <h1>Welcome to S'able Labs</h1>
           <div class="video">
-            <AdBanner/>
             <video poster="~@/assets/images/video-poster.jpg" controls playsinline><source src="~@/assets/video/sable-labs-home-video.mp4" type="video/mp4" /></video>
           </div>
           <div class="content">
