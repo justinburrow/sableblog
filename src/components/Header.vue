@@ -45,9 +45,7 @@
       </div>
       <div id="search-box" v-if="!isMobile" :class="{ shown: showSearch }">
         <div class="container">
-          <input type="text" name="" value="" placeholder="search" onfocus="this.placeholder = ''"
-onblur="this.placeholder = 'search'">
-          <img src="~@/assets/images/search-icon.svg" alt="Search" />
+          <Search @hideSearch="showSearch = false"/>
         </div>
       </div>
     </header>
@@ -84,10 +82,12 @@ onblur="this.placeholder = 'search'">
 <script>
 
   import {isMobile} from 'mobile-device-detect';
+  import Search from '~/components/Search.vue';
 
   export default {
     name: 'Header',
     components: {
+      Search
     },
     props: [],
     data() {
@@ -111,6 +111,9 @@ onblur="this.placeholder = 'search'">
         } else {
           this.isFixed = false;
         }
+      },
+      hideSearch() {
+        this.showSearch = false;
       }
     },
     mounted() {

@@ -3,7 +3,7 @@
     <div class="interior">
       <section class="search-results">
         <h1>Searching For: "{{this.searchingBy}}"</h1>
-        <ul class="post-list">
+        <ul class="search-posts">
           <li v-for="post in searchResults" class="post" :key="post.id" v-if="searchResults.length > 0">
             <SearchPost :post="post" />
           </li>
@@ -76,7 +76,7 @@ export default {
     });
     this.validPosts = this.$page.allWordPressPost.edges.filter(item => {
       return item.node.categories.some(cat => {
-        return cat.slug != 'homepage-hero-banners';
+        return cat.slug != 'homepage-settings';
       });
     });
     this.index.add(this.validPosts.map(e => {

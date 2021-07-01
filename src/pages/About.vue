@@ -50,7 +50,6 @@
 
 <script>
 import axios from 'axios';
-import AdBanner from '~/components/AdBanner.vue';
 
 export default {
   metaInfo() {

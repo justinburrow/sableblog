@@ -18,7 +18,7 @@
         </div>
 
         <div class="post-details">
-          <AdBanner />
+
           <div class="social-share">
             <ShareNetwork
               network="facebook"
@@ -136,7 +136,6 @@
 <script>
 import moment from 'moment'
 import HomePost from '~/components/HomePost.vue'
-import AdBanner from '~/components/AdBanner.vue'
 
 export default {
   metaInfo () {
