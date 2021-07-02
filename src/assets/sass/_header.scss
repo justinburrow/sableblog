@@ -21,7 +21,9 @@ header {
   width: 100%;
   position: relative;
   background: $white;
+  z-index: 10;
   &.fixed {
+    position: fixed;
     .header-content {
       a, button {
         cursor: pointer;
@@ -48,6 +50,9 @@ header {
           }
         }
       }
+    }
+    #categories, #search-box {
+      bottom: -4.7vw;
     }
   }
   .wrapper {
