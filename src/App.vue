@@ -1,6 +1,6 @@
 <template>
-  <MainLayout @updateViewKey="viewKeyUpdate">
-    <router-view :key="viewKey"/>
+  <MainLayout>
+    <router-view :key="$route.fullPath"></router-view>
   </MainLayout>
 </template>
 
@@ -31,16 +31,6 @@ export default {
   },
   components: {
     MainLayout
-  },
-  data() {
-    return {
-      viewKey: 1
-    }
-  },
-  methods: {
-    viewKeyUpdate() {
-      this.viewKey++;
-    }
   }
 }
 </script>

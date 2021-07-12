@@ -1,17 +1,17 @@
 <template>
   <article class="post">
 
-    <div class="image" v-if="post.node.featuredMedia">
-      <g-link :to="post.node.path">
-        <img :src="post.node.featuredMedia.sourceUrl" :alt="post.node.featuredMedia.altText" :width="post.node.featuredMedia.mediaDetails.width" :height="post.node.featuredMedia.mediaDetails.height"/>
-      </g-link>
-    </div>
-
     <h3>
       <g-link :to="post.node.path">
         <div class="title" v-html="post.node.title"></div>
       </g-link>
     </h3>
+
+    <div class="image" v-if="post.node.featuredMedia">
+      <g-link :to="post.node.path">
+        <img :src="post.node.featuredMedia.sourceUrl" :alt="post.node.featuredMedia.altText" :width="post.node.featuredMedia.mediaDetails.width" :height="post.node.featuredMedia.mediaDetails.height"/>
+      </g-link>
+    </div>
 
     <h4 class="excerpt" v-if="post.node.excerpt">
       <g-link :to="post.node.path">

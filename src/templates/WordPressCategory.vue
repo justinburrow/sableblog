@@ -8,14 +8,16 @@
       </div>
     </div>
 
-    <div class="catPostList">
+    <PostList :posts="$page.wordPressCategory.belongsTo.edges"/>
+
+    <!--<div class="catPostList">
       <ul class="post-list">
         <li v-for="{ node } in $page.wordPressCategory.belongsTo.edges" :key="node.id" :class="$page.wordPressCategory.title | lowercase">
           <MainPost :post="{ node }" />
         </li>
       </ul>
       <Pager :info="$page.wordPressCategory.belongsTo.pageInfo"/>
-    </div>
+    </div>-->
 
 
   </Layout>
@@ -39,6 +41,10 @@
             title
             path
             excerpt
+            categories {
+              title
+              path
+            }
             featuredMedia {
               sourceUrl
               caption
@@ -64,7 +70,7 @@
 
 <script>
 import { Pager } from 'gridsome'
-import MainPost from '~/components/MainPost.vue'
+import PostList from '~/components/PostList.vue'
 
 export default {
   data () {
@@ -75,15 +81,24 @@ export default {
   },
   components: {
     Pager,
-    MainPost
+    PostList
+  },
+  methods: {
+    setCatImage() {
+      if (this.$page.categoryImages.acf.mainImage) {
+        this.mainImage = this.$page.categoryImages.acf.mainImage;
+      } else {
+        this.mainImage = null;
+      }
+    }
   },
   mounted() {
-    if (this.$page.categoryImages.acf.mainImage) {
-      this.mainImage = this.$page.categoryImages.acf.mainImage;
-      console.log(this.$page.categoryImages.acf.mainImage);
-    } else {
-      this.mainImage = null;
-    }
+    this.setCatImage();
+  },
+  beforeRouteUpdate (to, from, next) {
+    console.log('wee');
+    this.$forceUpdate();
+    next();
   },
   metaInfo () {
     return {
