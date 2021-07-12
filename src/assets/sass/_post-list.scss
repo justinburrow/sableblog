@@ -1,11 +1,12 @@
 .post-list-container {
+  padding-bottom: 4.5vw;
   ul {
     list-style-type: none;
   }
   .post-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    padding: 0 4.5vw 10vw 4.5vw;
+    padding: 0 4.5vw;
     width: 100%;
     gap: 5%;
     margin: 0;
@@ -15,11 +16,9 @@
     li {
       margin-bottom: 4.5vw;
       position: relative;
-      h3 {
-
-      }
       h4 {
         border-bottom: 2px solid $black;
+        width: 100%;
       }
       &:nth-child(4) {
         background: $lightbrown;
@@ -27,35 +26,39 @@
         display: flex;
         margin: 0 -4.5vw;
         article {
-          flex-direction: column;
+          display: block;
           padding: 4.5vw;
-          flex-wrap: nowrap;
-          align-items: center;
-          jusity-content: space-between;
           .image {
-            order: 0;
+            float: left;
+            order: 1;
             width: 49.5%;
             max-width: 49.5%;
             padding-top: 36%;
-            align-self: start;
+          }
+          .content {
+            padding-top: 2vw;
+            float: left;
+            margin-left: 4.5vw;
           }
           h3{
-            order: 1;
-            width: 30%;
+            width: 80%;
+            padding-top: 7vw;
             height: auto;
-            padding: 0;
             margin: 0;
             font-size: 4vw;
-            margin-left: 4.5vw;
-            align-self: start;
+            &[style] {
+              height: auto !important;
+            }
           }
           h4 {
-            margin-top: 0;
-            order: 2;
+            width: 80%;
             border: none;
+            margin-top: 0;
             font-size: 1.3vw;
-            margin-left: 4.5vw;
-            align-self: start;
+            clear: both;
+            &[style] {
+              height: auto !important;
+            }
           }
         }
       }

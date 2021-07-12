@@ -45,6 +45,7 @@
     font-size: 1.1vw;
     padding: 0;
     border-bottom: 0;
+    width: 100%;
     @media screen and ($breakpoint-lg) {
       font-size: 3vw;
     }
@@ -109,13 +110,15 @@
     h5 {
       order: 5;
       &:before {
-        width: 10px;
-        height: 10px;
+        width: .8vw;
+        height: .8vw;
         border-radius: 50%;
         background: $black;
         content: '';
         display: inline-block;
         margin-right: .4vw;
+        position: relative;
+        top: .2vw;
       }
       span {
         &:after {

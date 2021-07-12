@@ -2,8 +2,8 @@
   <Layout>
     <div class="post-list-container">
       <ul class="post-list">
-        <li v-for="{ node } in posts" :key="node.id">
-          <MainPost :post="{ node }" />
+        <li v-for="({ node }, index) in posts" :key="node.id">
+          <MainPost :post="{ node }" :index="index"/>
         </li>
       </ul>
       <!--<Pager :info="$page.wordPressCategory.belongsTo.pageInfo"/>-->
