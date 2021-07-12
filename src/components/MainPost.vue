@@ -1,34 +1,6 @@
 <template>
-  <article class="post" v-if="index != 3">
-    <h3>
-      <g-link :to="post.node.path">
-        <div class="title" v-html="post.node.title"></div>
-      </g-link>
-    </h3>
 
-    <div class="image" v-if="post.node.featuredMedia">
-      <g-link :to="post.node.path">
-        <img :src="post.node.featuredMedia.sourceUrl" :alt="post.node.featuredMedia.altText" :width="post.node.featuredMedia.mediaDetails.width" :height="post.node.featuredMedia.mediaDetails.height"/>
-      </g-link>
-    </div>
-
-    <h4 class="excerpt" v-if="post.node.excerpt">
-      <g-link :to="post.node.path">
-        <div v-html="post.node.excerpt"></div>
-      </g-link>
-    </h4>
-
-  <h5>
-    <span v-for="(cat, i) of post.node.categories" :key="i">
-      <g-link :to="cat.path">
-        {{cat.title}}
-      </g-link>
-    </span>
-  </h5>
-
-  </article>
-
-  <article class="post" v-else>
+  <article class="post" v-if="(index % 3 == 0) && index != 0">
     <div class="image" v-if="post.node.featuredMedia">
       <g-link :to="post.node.path">
         <img :src="post.node.featuredMedia.sourceUrl" :alt="post.node.featuredMedia.altText" :width="post.node.featuredMedia.mediaDetails.width" :height="post.node.featuredMedia.mediaDetails.height"/>
@@ -58,6 +30,37 @@
 
     </div>
   </article>
+
+  <article class="post" v-else>
+    <h3>
+      <g-link :to="post.node.path">
+        <div class="title" v-html="post.node.title"></div>
+      </g-link>
+    </h3>
+
+    <div class="image" v-if="post.node.featuredMedia">
+      <g-link :to="post.node.path">
+        <img :src="post.node.featuredMedia.sourceUrl" :alt="post.node.featuredMedia.altText" :width="post.node.featuredMedia.mediaDetails.width" :height="post.node.featuredMedia.mediaDetails.height"/>
+      </g-link>
+    </div>
+
+    <h4 class="excerpt" v-if="post.node.excerpt">
+      <g-link :to="post.node.path">
+        <div v-html="post.node.excerpt"></div>
+      </g-link>
+    </h4>
+
+    <h5>
+      <span v-for="(cat, i) of post.node.categories" :key="i">
+        <g-link :to="cat.path">
+          {{cat.title}}
+        </g-link>
+      </span>
+      <div class="arrow"><div class="head"></div></div>
+    </h5>
+  </article>
+
+
 </template>
 
 <script>

@@ -1,15 +1,10 @@
 <template>
   <Layout class="interior">
-    <div class="interior">
-      <section class="search-results">
-        <h1>Searching For: "{{this.searchingBy}}"</h1>
-        <ul class="search-posts">
-          <li v-for="post in searchResults" class="post" :key="post.id" v-if="searchResults.length > 0">
-            <SearchPost :post="post" />
-          </li>
-          <li class="holder" v-if="searchResults % 3 !== 0"></li>
-          <li class="no-results" v-if="searchResults.length == 0">Sorry, no posts were found</li>
-        </ul>
+    <div>
+      <section>
+        <h1>({{searchResults.length}}) result<span v-if="searchResults.length > 1">s</span> for: "{{this.searchingBy}}"</h1>
+        <SearchPostList :posts="searchResults" />
+        <div class="no-results" v-if="searchResults.length == 0">Sorry, no posts were found</div>
       </section>
     </div>
   </Layout>
@@ -31,6 +26,10 @@ query {
         featuredMedia {
           sourceUrl
           altText
+          mediaDetails {
+            width
+            height
+          }
         }
       }
     }
@@ -39,7 +38,7 @@ query {
 </page-query>
 
 <script>
-import SearchPost from '~/components/SearchPost.vue'
+import SearchPostList from '~/components/SearchPostList.vue'
 import Flexsearch from 'flexsearch'
 
 export default {
@@ -52,7 +51,7 @@ export default {
     }
   },
   components: {
-    SearchPost
+    SearchPostList
   },
   metaInfo: {
     title: 'S\'able Labs'
@@ -107,33 +106,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.search-results {
-  h1 {
-    margin-top: 30px;
-    font-size: 24px;
-    font-weight: 300;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-align: center;
-    border-bottom: 1px solid black;
-    padding-bottom: 10px;
-  }
-  .post-list {
-    li {
-      &.no-results {
-        text-align: center;
-      }
-    }
-
-    @media screen and (max-width: $breakpoint-lg) {
-      margin-bottom: 7vw;
-      padding-bottom: 7vw;
-    }
-    .read-more a {
-      color: white;
-    }
-  }
-}
-</style>

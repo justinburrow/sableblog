@@ -2,8 +2,8 @@
   <Layout>
     <div class="post-list-container">
       <ul class="post-list">
-        <li v-for="({ node }, index) in posts" :key="node.id">
-          <MainPost :post="{ node }" :index="index"/>
+        <li v-for="(post, index) in posts" :key="post.id">
+          <SearchPost :post="post" :index="index"/>
         </li>
       </ul>
       <!--<Pager :info="$page.wordPressCategory.belongsTo.pageInfo"/>-->
@@ -13,13 +13,13 @@
 
 <script>
 import { Pager } from 'gridsome'
-import MainPost from '~/components/MainPost.vue'
+import SearchPost from '~/components/SearchPost.vue'
 
 export default {
-  name: 'PostList',
+  name: 'SearchPostList',
   components: {
     Pager,
-    MainPost
+    SearchPost
   },
   props: {
     'posts': {
@@ -73,7 +73,7 @@ export default {
   },
   mounted() {
     this.setRowHeights();
-    window.addEventListener("scroll", this.setRowHeights());
+    window.addEventListener("resize", this.setRowHeights());
   }
 }
 </script>
