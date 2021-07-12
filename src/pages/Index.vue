@@ -145,7 +145,24 @@ export default {
           data.map(x => [key(x), x])
         ).values()
       ]
-    }
+    },
+    countLines() {
+      var headers = document.querySelectorAll('.post h3');
+      headers.forEach(function(el) {
+        let divHeight = el.offsetHeight;
+        let divStyles = window.getComputedStyle(el);
+        let lineHeight = divStyles.getPropertyValue("line-height").match(/\d+/)[0];
+        var padding_top = parseInt(divStyles.getPropertyValue("padding-top"));
+        var padding_bottom = parseInt(divStyles.getPropertyValue("padding-bottom"));
+        divHeight = divHeight - padding_top - padding_bottom;
+        let lines = Math.floor(divHeight / lineHeight);
+        if (lines > 2) {
+          el.closest('.post').classList.add('long-title');
+        } else if (lines < 2) {
+          el.closest('.post').querySelector('.image').style.paddingBottom = '40%';
+        }
+      })
+   }
   },
   mounted() {
     this.filterPosts();
@@ -154,6 +171,7 @@ export default {
     this.uniquePosts = this.uniquePosts.slice(0, 9);
     this.trendingPostList = this.uniquePostFilter(this.trendingPostList, post => post.node.id);
     this.trendingPostList = this.trendingPostList.slice(0, 5);
+    this.countLines();
   }
 }
 </script>
